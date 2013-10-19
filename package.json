@@ -1,0 +1,19 @@
+{
+  "author": "Terminal Pixel <blether@terminalpixel.co.uk>",
+  "name": "terminally-pixelated",
+  "description": "A bare-bones WordPress theme built with grunt and Sass",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-compass": "~0.4.0",
+    "grunt-contrib-imagemin": "~0.3.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-uglify": "~0.2.4",
+    "matchdep": "~0.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/terminalpixel/Terminally-Pixelated.git"
+  }
+}

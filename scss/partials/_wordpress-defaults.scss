@@ -1,0 +1,263 @@
+.alignnone {
+    margin: .5em 2em 2em 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: .5em auto .5em auto;
+}
+
+.alignright {
+    float:right;
+    margin: .5em 0 2em 2em;
+}
+
+.alignleft {
+    float: left;
+    margin: .5em 2em 2em 0;
+}
+
+.aligncenter {
+    display: block;
+    margin: .5em auto .5em auto;
+}
+
+a img.alignright {
+    float: right;
+    margin: .5em 0 2em 2em;
+}
+
+a img.alignnone {
+    margin: .5em 2em 2em 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: .5em 2em 2em 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 100%;
+    padding: .5em;
+    text-align: center;
+}
+
+.wp-caption.alignnone {
+    margin: .5em 2em 2em 0;
+}
+
+.wp-caption.alignleft {
+    margin: .5em 2em 2em 0;
+}
+
+.wp-caption.alignright {
+    margin: .5em 0 2em 2em;
+}
+
+.wp-caption img {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    font-size: ms($font-size, -1) * 1em;
+    margin: 0;
+    padding: 0 .5em;
+}
+
+
+// Comments
+
+
+.comments-title,
+.comment-list,
+.comment-reply-title,
+.must-log-in,
+.comment-respond .comment-form,
+.comment-respond iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 100%;
+}
+
+.comments-title {
+
+}
+
+.comment-list,
+.comment-list .children {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment-list .children {
+    margin-left: 1em;
+}
+
+.comment {
+    @extend %clearfix;
+}
+
+.comment-body {
+    padding: 2em 0;
+    position: relative;
+}
+
+.comment-author {
+    float: left;
+    width: 6em;
+    text-align: center;
+    margin-right: $grid-padding;
+}
+
+.comment-author .avatar {
+    display: block;
+    margin-bottom: 1em;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.comment-author .fn {
+    word-wrap: break-word;
+}
+
+.comment-author .fn,
+.comment-author .url,
+.comment-reply-link,
+.comment-reply-login {
+    color: #bc360a;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.says {
+    display: none;
+}
+
+.no-avatars .comment-author {
+    margin: 0 0 5px;
+    max-width: 100%;
+    position: relative;
+}
+
+.no-avatars .comment-metadata,
+.no-avatars .comment-content,
+.no-avatars .comment-list .reply {
+    width: 100%;
+}
+
+.comment-list .edit-link {
+    margin-left: 1em;
+}
+
+.comment-metadata,
+.comment-awaiting-moderation,
+.comment-content,
+.comment-list .reply {
+
+}
+
+.comment-meta,
+.comment-meta a {
+    
+}
+
+.comment-metadata {
+    margin-bottom: 1em;
+}
+
+.ping-meta {
+}
+
+.comment-awaiting-moderation {
+}
+
+/* Comment form */
+.comment-respond {
+    background-color: darken($bgc, 10%);
+    padding: $grid-padding;
+}
+
+
+.comment-reply-title {
+}
+
+.comment-reply-title small a {
+    display: inline-block;
+    float: right;
+    overflow: hidden;
+}
+
+.comment-reply-title small a:hover {
+    text-decoration: none;
+}
+
+.sidebar .comment-list .comment-reply-title,
+.sidebar .comment-list .comment-respond .comment-form {
+    padding: 0;
+}
+
+.comment-form .comment-notes {
+    margin-bottom: 1em;
+}
+
+.comment-form .comment-form-author,
+.comment-form .comment-form-email,
+.comment-form .comment-form-url {
+    margin-bottom: .5em;
+}
+
+.comment-form [for="author"],
+.comment-form [for="email"],
+.comment-form [for="url"],
+.comment-form [for="comment"] {
+    float: left;
+    padding: .5em 0;
+}
+
+.comment-form .required {
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"] {
+}
+
+.comment-form textarea {
+    width: 100%;
+}
+
+.form-allowed-tags,
+.form-allowed-tags code {
+    font-size: ms(-1, $font-size) * 1em;
+}
+
+.form-allowed-tags code {
+    font-size: ms(-1, $font-size) * 1em;
+}
+
+.comment-list .pingback,
+.comment-list .trackback {
+}
+
+.comment-navigation {
+    margin: 0 auto;
+}
+
+.no-comments {
+    text-align: center;
+}

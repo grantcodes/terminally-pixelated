@@ -1,0 +1,13 @@
+html, body {
+	-ms-overflow-x: hidden;
+	    overflow-x: hidden;
+}
+
+a {
+	color: $link-c;
+	@include transition(color $transition-fast);
+
+	&:hover, &:focus, &:active {
+		color: $link-hover-c;
+	}
+}

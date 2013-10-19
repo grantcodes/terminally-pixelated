@@ -1,0 +1,79 @@
+.main-wrapper {
+	@extend %clearfix;
+	max-width: $grid-max-width;
+	padding: 0 $grid-padding;
+	margin: 0 auto;
+}
+
+.main-content {
+	@include at-breakpoint ($mid-break) {
+		@include span-columns($mid-content-cols, $mid-cols);
+	}
+	@include at-breakpoint ($large-break lt-ie9) {
+		@include span-columns($large-content-cols, $large-cols);
+	}
+}
+
+.main-aside {
+	@include at-breakpoint ($mid-break) {
+		@include span-columns($mid-sidebar-cols, $mid-cols);
+		@include omega;
+	}
+	@include at-breakpoint ($large-break lt-ie9) {
+		@include span-columns($large-sidebar-cols, $large-cols);
+		@include omega;
+	}	
+}
+
+.main-nav {
+	ul {
+		padding: 0;
+		margin: 0;
+	}
+	
+	.menu {
+		@extend %block-list;
+		@include at-breakpoint($mid-break lt-ie9) {
+			& > li {
+				display: inline-block;
+			}
+		}
+	}
+
+	.sub-menu {
+		@extend %block-list;
+		@include at-breakpoint($mid-break lt-ie9) {
+			position: absolute;
+			max-height: 0;
+			overflow: hidden;
+		}
+	}
+}
+
+.main-nav li:hover > .sub-menu,
+.sub-menu:hover {
+	@include at-breakpoint($mid-break lt-ie9) {
+		max-height: 99em;
+	}
+}
+
+.main-footer {
+	clear: both;
+}
+
+.footer-widgets-wrapper {
+	@include at-breakpoint ($large-break lt-ie9) {
+		display: table;
+		width: 100%;
+	}
+}
+
+.footer-widgets {
+	@include at-breakpoint ($large-break lt-ie9) {
+		display: table-cell;
+		padding-left: $grid-padding;
+		&:first-child {
+			padding-left: 0;
+		}
+	}
+}

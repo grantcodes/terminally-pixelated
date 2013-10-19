@@ -1,0 +1,13 @@
+%input {
+	max-width: 100%;
+	display: inline-block;	
+}
+
+%button {
+	@extend %input;
+}
+
+input, select, textarea {
+	@extend %input;
+	
+}
