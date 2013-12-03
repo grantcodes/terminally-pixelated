@@ -1,5 +1,5 @@
+<?php do_action( 'terminally_pixelated_before_header' ); ?>
 <header class="main-header" role='banner'>
-    <h1>
-    	<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a>
-    </h1>
+  <?php do_action( 'terminally_pixelated_header' ); ?>
 </header>
+<?php do_action( 'terminally_pixelated_after_header' ); ?>

@@ -1,4 +1,9 @@
-<?php
-	get_template_part( 'templates/after-loop');
-	get_template_part( 'templates/footer');
-	get_template_part( 'templates/foot');
+          <?php do_action( 'terminally_pixelated_before_footer' ); ?>
+          <footer class="main-footer">
+            <?php do_action( 'terminally_pixelated_footer' ); ?>
+          </footer>
+          <?php do_action( 'terminally_pixelated_after_footer' ); ?>
+        </div><?php // End Main Wrapper ?>
+        <?php wp_footer(); ?>
+    </body>
+</html>
