@@ -7,8 +7,8 @@
 .widget_rss,
 .widget_nav_menu {
 	ul {
-		@extend %block-list;
-		
+		@extend %scut-list-unstyled;
+
 		ul {
 			padding-left: 1.5em;
 		}
@@ -16,7 +16,7 @@
 }
 
 .widgets {
-	
+
 }
 
 .widgettitle {

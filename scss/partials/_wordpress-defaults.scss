@@ -108,7 +108,7 @@ a img.aligncenter {
 }
 
 .comment {
-    @extend %clearfix;
+    @extend %scut-clearfix;
 }
 
 .comment-body {
@@ -173,7 +173,7 @@ a img.aligncenter {
 
 .comment-meta,
 .comment-meta a {
-    
+
 }
 
 .comment-metadata {

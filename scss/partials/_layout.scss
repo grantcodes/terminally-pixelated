@@ -1,5 +1,5 @@
 .main-wrapper {
-	@extend %clearfix;
+	@extend %scut-clearfix;
 	max-width: $grid-max-width;
 	padding: 0 $grid-padding;
 	margin: 0 auto;
@@ -22,7 +22,7 @@
 	@include at-breakpoint ($large-break lt-ie9) {
 		@include span-columns($large-sidebar-cols, $large-cols);
 		@include omega;
-	}	
+	}
 }
 
 .main-nav {
@@ -30,9 +30,9 @@
 		padding: 0;
 		margin: 0;
 	}
-	
+
 	.menu {
-		@extend %block-list;
+		@extend %scut-list-unstyled;
 		@include at-breakpoint($mid-break lt-ie9) {
 			& > li {
 				display: inline-block;
@@ -41,7 +41,7 @@
 	}
 
 	.sub-menu {
-		@extend %block-list;
+		@extend %scut-list-unstyled;
 		@include at-breakpoint($mid-break lt-ie9) {
 			position: absolute;
 			max-height: 0;

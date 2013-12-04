@@ -11,6 +11,7 @@ module.exports = function( grunt ) {
 
   var config = {
     sassModules: ['susy', 'modular-scale', 'animate'],
+    sassFiles: ['scss/style.scss', 'scss/editor-style.scss'],
     uglify: []
   };
 
@@ -26,6 +27,7 @@ module.exports = function( grunt ) {
           relativeAssets: true,
           require: config.sassModules,
           environment: 'production',
+          specify: config.sassFiles
         }
       }
     },
@@ -57,21 +59,12 @@ module.exports = function( grunt ) {
         beautify: true,
         files: config.uglify
       }
-    },
-
-    imagemin: {
-      files: [{
-        expand: true,
-        cwd: 'img',
-      src: '{,*/}*.{png,jpg,jpeg}',
-      dest: 'img'
-    }]
-  }
+    }
 
 });
 
 
 grunt.registerTask('default', ['watch']);
-grunt.registerTask('build', ['compass', 'uglify', 'imagemin']);
+grunt.registerTask('build', ['compass', 'uglify']);
 
 };
