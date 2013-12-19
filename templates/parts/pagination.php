@@ -1,1 +1,0 @@
-<nav class="page-nav"><?php previous_posts_link('&laquo; previous');?><?php next_posts_link('next &raquo;');?></nav>

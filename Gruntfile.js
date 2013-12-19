@@ -42,7 +42,7 @@ module.exports = function( grunt ) {
         options: {
           livereload: true
         },
-        files: ['**/*.css', '**/*.js', '**/*.php']
+        files: ['**/*.css', '**/*.js', '**/*.php', '**/*.twig']
       },
       uglify: {
         files: 'js/*.js',

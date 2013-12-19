@@ -1,0 +1,64 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{language_attributes}}> <![endif]-->
+<!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{language_attributes}}> <![endif]-->
+<!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{language_attributes}}> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" {{language_attributes}}> <!--<![endif]-->
+{% include 'partials/head.twig' %}
+
+    <body class="{{body_class}}">
+
+        <div class="main-wrapper">
+            {% block header %}
+                <header class="main-header" role='banner'>
+                    <h1 class="main-title">
+                        <a href="{{bloginfo('url')}}" rel="home">{{bloginfo('name')}}</a>
+                    </h1>
+                </header>
+            {% endblock %}
+
+            {% include 'partials/nav.twig' %}
+
+            <div class="main-content-sidebar-wrap">
+                <main role="main" class="main-content{% if not main_sidebar %}--full-width{% endif %}">
+                    {% if title %}
+                        <header role="heading">
+                            <h1 class="posttitle p-name">{{title}}</h1>
+                        </header>
+                    {% endif %}
+                    <div class="wrapper">
+                        {% block content %}
+                        Sorry, no content
+                        {% endblock %}
+                        {% block after_content %}
+                            {% if pagination %}
+                                {% include 'partials/pagination.twig' %}
+                            {% endif %}
+                        {% endblock %}
+                    </div>
+                </main>
+
+                {% if main_sidebar %}
+                    <aside class="main-aside {{sidebar_class}}">
+                        {{main_sidebar}}
+                    </aside>
+                {% endif %}
+            </div>
+
+            <footer class="main-footer">
+                {% if footer_widgets %}
+                    <section class="footer-widgets-wrapper">
+                        {% for widget_area in footer_widgets %}
+                            <div class="footer-widgets footer-widgets--{{loop.index}}">
+                                {{widget_area}}
+                            </div>
+                        {% endfor %}
+                    </section>
+                {% endif %}
+                <section class="footer-text">
+                    <p>Copyright  {{ 'now'|date('Y') }} {{bloginfo('name')}} | All Rights Reserved.</p>
+                </section>
+            </footer>
+        </div>
+        {{wp_footer}}
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<article class="{{post.post_class}}">
+    {% block content %}
+        <header>
+            <h1>
+                {% if is_archive %}<a href="{{post.get_path}}">{% endif %}
+                    {{post.title}}
+                {% if is_archive %}</a>{% endif %}
+            </h1>
+        </header>
+        {% if is_archive %}
+            <p>{{post.excerpt}}</p>
+        {% else %}
+            {{post.content}}
+        {% endif %}
+    {% endblock %}
+</article>

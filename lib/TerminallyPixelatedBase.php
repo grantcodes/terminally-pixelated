@@ -11,7 +11,9 @@ class TerminallyPixelatedBase {
 		$this->add_image_sizes();
 		$this->add_niceties();
 		add_action( 'init', array( $this, 'remove_crap' ) );
+		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
+		add_filter( 'timber_context', array( $this, 'timber_context' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 	}
 
@@ -48,6 +50,10 @@ class TerminallyPixelatedBase {
 
 	}
 
+	public function init() {
+		add_editor_style( get_stylesheet_directory_uri() . '/editor-style.css' );
+	}
+
 	private function add_niceties() {
 		// Add shortcode support to widgets
 		add_filter( 'widget_text', 'do_shortcode' );
@@ -77,7 +83,6 @@ class TerminallyPixelatedBase {
 
 	public function add_styles() {
 		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/style.css', false, 1 );
-		add_editor_style( get_stylesheet_directory_uri() . '/editor-style.css' );
 	}
 
 	public function add_sidebars() {
@@ -110,8 +115,25 @@ class TerminallyPixelatedBase {
 		register_nav_menu( 'main', 'The main site navigation' );
 	}
 
-	private function add_image_sizes () {
-		add_image_size( 'post-thumbnail', 715, 400, true );
+	private function add_image_sizes() {
+		// add_image_size( 'post-thumbnail', 715, 400, true );
+	}
+
+	public function timber_context( $data ) {
+		// Add menu
+		$data['main_menu'] = new TimberMenu( 'main' );
+
+		// Add sidebar
+		$data['main_sidebar'] = Timber::get_widgets( 'main-sidebar' );
+
+		// Add footer widgets
+		if ( $this->number_footer_widgets() ) {
+			for ( $i=1; $i <= $this->number_footer_widgets(); $i++ ) {
+				$data['footer_widgets'][$i + 1] = Timber::get_widgets( 'footer-widgets-' . $i );
+			}
+		}
+
+		return $data;
 	}
 }
 

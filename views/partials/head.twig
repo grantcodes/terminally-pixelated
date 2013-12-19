@@ -1,0 +1,16 @@
+<head>
+    <meta charset="{{ bloginfo('charset') }}" />
+    <title>{{wp_title}}</title>
+    <meta name="description" content="{{ bloginfo('description') }}">
+    <link rel="stylesheet" href="{{ stylesheet_uri }}" type="text/css" media="screen" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link rel="pingback" href="{{ bloginfo('pingback_url') }}" />
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    {{wp_head}}
+    {% block head %}
+    {% endblock %}
+</head>
