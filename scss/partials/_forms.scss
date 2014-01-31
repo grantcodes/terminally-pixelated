@@ -15,16 +15,16 @@
     border: $input-border;
 
     &:hover {
-        color: $input-hover-c;
-        background: $input-hover-bg;
-        border: $input-hover-border;
+        color: $input-c--hover;
+        background: $input-bg--hover;
+        border: $input-border--hover;
     }
 
     &:focus,
     &:active {
-        color: $input-active-c;
-        background: $input-active-bg;
-        border: $input-active-border;
+        color: $input-c--active;
+        background: $input-bg--active;;
+        border: $input-border--active;
     }
 }
 
@@ -35,16 +35,16 @@
     border: $button-border;
 
     &:hover {
-        color: $button-hover-c;
-        background: $button-hover-bg;
-        border: $button-hover-border;
+        color: $button-c--hover;
+        background: $button-bg--hover;
+        border: $button-border--hover;
     }
 
     &:focus,
     &:active {
-        color: $button-active-c;
-        background: $button-active-bg;
-        border: $button-active-border;
+        color: $button-c--active;
+        background: $button-bg--active;;
+        border: $button-border--active;
     }
 }
 

@@ -15,13 +15,13 @@
     background: $nav-link-bg;
 
     @include scut-selected(true) {
-        color: $nav-link-hover-c;
-        background: $nav-link-hover-bg;
+        color: $nav-link-c--hover;
+        background: $nav-link-bg--hover;
     }
 
     &.is-current {
-        color: $nav-link-current-c;
-        background: $nav-link-current-bg;
+        color: $nav-link-c--current;
+        background: $nav-link-bg--current;
     }
 
 }
@@ -40,12 +40,12 @@
     background: $subnav-link-bg;
 
     @include scut-selected(true) {
-        color: $subnav-link-hover-c;
-        background: $subnav-link-hover-bg;
+        color: $subnav-link-c--hover;
+        background: $subnav-link-bg--hover;
     }
 
     &.is-current {
-        color: $subnav-link-current-c;
-        background: $subnav-link-current-bg;
+        color: $subnav-link-c--current;
+        background: $subnav-link-bg--current;
     }
 }

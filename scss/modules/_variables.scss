@@ -62,7 +62,7 @@ $text-c: $black;
 $bgc: $white;
 
 $link-c: $blue;
-$link-hover-c: $red;
+$link-c--hover: $red;
 
 $header-bgc: $black;
 $header-c: $white;
@@ -70,20 +70,20 @@ $header-c: $white;
 $nav-link-c: $blue;
 $nav-link-bg: $bgc;
 
-$nav-link-hover-c: $red;
-$nav-link-hover-bg: $white;
+$nav-link-c--hover: $red;
+$nav-link-bg--hover: $white;
 
-$nav-link-current-c: $red;
-$nav-link-current-bg: $white;
+$nav-link-c--current: $red;
+$nav-link-bg--current: $white;
 
 $subnav-link-c: $nav-link-c;
 $subnav-link-bg: $nav-link-bg;
 
-$subnav-link-hover-c: $nav-link-hover-c;
-$subnav-link-hover-bg: $nav-link-hover-bg;
+$subnav-link-c--hover: $nav-link-c--hover;
+$subnav-link-bg--hover: $nav-link-bg--hover;
 
-$subnav-link-current-c: $nav-link-current-c;
-$subnav-link-current-bg: $nav-link-current-bg;
+$subnav-link-c--current: $nav-link-c--current;
+$subnav-link-bg--current: $nav-link-bg--current;
 
 $footer-bgc: $blue;
 $footer-c: $white;
@@ -92,25 +92,25 @@ $input-c: tint($text-c, 20%);
 $input-bg: shade($bgc, 20%);
 $input-border: 1px solid shade($input-bg, 30%);
 
-$input-hover-c: $input-c;
-$input-hover-bg: $input-bg;
-$input-hover-border: 1px solid $input-border;
+$input-c--hover: $input-c;
+$input-bg--hover: $input-bg;
+$input-border--hover: 1px solid $input-border;
 
-$input-active-c: $text-c;
-$input-active-bg: $bgc;
-$input-active-border: 1px solid $input-border;
+$input-c--active: $text-c;
+$input-bg--active: $bgc;
+$input-border--active: 1px solid $input-border;
 
 $button-c: $bgc;
 $button-bg: $green;
 $button-border: 1px solid shade($button-bg, 30%);
 
-$button-hover-c: $button-c;
-$button-hover-bg: shade($button-bg, 10%);
-$button-hover-border: 1px solid $button-border;
+$button-c--hover: $button-c;
+$button-bg--hover: shade($button-bg, 10%);
+$button-border--hover: 1px solid $button-border;
 
-$button-active-c: $button-hover-c;
-$button-active-bg: shade($button-bg, 15%);
-$button-active-border: 1px solid $button-border;
+$button-c--active: $button-c--hover;
+$button-bg--active: shade($button-bg, 15%);
+$button-border--active: 1px solid $button-border;
 
 
 // Transition Times

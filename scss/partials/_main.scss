@@ -10,6 +10,6 @@ a {
 	@include transition(color $transition-fast);
 
 	&:hover, &:focus, &:active {
-		color: $link-hover-c;
+		color: $link-c--hover;
 	}
 }
