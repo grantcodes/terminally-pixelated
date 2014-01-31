@@ -8,6 +8,6 @@ function terminally_pixelated_autoload( $class_name ) {
 		return false;
 	}
 }
+terminally_pixelated_autoload( 'TPHelpers' );
 terminally_pixelated_autoload( 'TerminallyPixelatedBase' );
 terminally_pixelated_autoload( 'TerminallyPixelatedCustom' );
-terminally_pixelated_autoload( 'TPHelpers' );

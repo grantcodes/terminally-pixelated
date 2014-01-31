@@ -51,7 +51,7 @@ class TerminallyPixelatedBase {
 	}
 
 	public function init() {
-		add_editor_style( get_stylesheet_directory_uri() . '/editor-style.css' );
+		add_editor_style( TPHelpers::get_theme_resource_uri( '/editor-style.css' ) );
 	}
 
 	private function add_niceties() {
@@ -82,7 +82,7 @@ class TerminallyPixelatedBase {
 	}
 
 	public function add_styles() {
-		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/style.css', false, 1 );
+		wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/style.css' ), false, 1 );
 	}
 
 	public function add_sidebars() {
