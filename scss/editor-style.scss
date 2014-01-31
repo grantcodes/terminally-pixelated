@@ -8,8 +8,8 @@
 @import "modules/variables";
 @import "modules/mixins";
 @import "vendor/normalize/normalize";
+@import "vendor/typecsset/typecsset";
 @import "vendor/scut/dist/scut";
-// @import "modules/helpers";
 @import "partials/fonts";
 @import "partials/typography";
 // @import "partials/layout";
@@ -26,4 +26,8 @@
 html, body {
 	margin: 0;
 	min-height: 100%;
+}
+
+body {
+    padding: 1em;
 }

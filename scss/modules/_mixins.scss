@@ -1,0 +1,3 @@
+@mixin tp-fs($scale) {
+    @include typecsset-font-size(ms($scale, $typecsset-base-font-size));
+}

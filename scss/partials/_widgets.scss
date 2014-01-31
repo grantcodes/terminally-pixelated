@@ -10,7 +10,7 @@
 		@extend %scut-list-unstyled;
 
 		ul {
-			padding-left: 1.5em;
+            @include typecsset-space(padding-left, 1);
 		}
 	}
 }

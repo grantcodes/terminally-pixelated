@@ -71,7 +71,7 @@ a img.aligncenter {
 }
 
 .wp-caption p.wp-caption-text {
-    font-size: ms($font-size, -1) * 1em;
+    @include tp-fs(-1);
     margin: 0;
     padding: 0 .5em;
 }
@@ -139,7 +139,6 @@ a img.aligncenter {
 .comment-reply-link,
 .comment-reply-login {
     color: #bc360a;
-    font-size: 14px;
     font-style: normal;
     font-weight: normal;
 }
@@ -243,11 +242,11 @@ a img.aligncenter {
 
 .form-allowed-tags,
 .form-allowed-tags code {
-    font-size: ms(-1, $font-size) * 1em;
+    @include tp-fs(-1);
 }
 
 .form-allowed-tags code {
-    font-size: ms(-1, $font-size) * 1em;
+    @include tp-fs(-1);
 }
 
 .comment-list .pingback,
