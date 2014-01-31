@@ -26,7 +26,7 @@ module.exports = function( grunt ) {
           fontsDir: 'fonts',
           relativeAssets: true,
           require: config.sassModules,
-          environment: 'production',
+          environment: 'development',
           specify: config.sassFiles
         }
       }
@@ -36,7 +36,7 @@ module.exports = function( grunt ) {
     watch: {
       compass: {
         files: '**/*.scss',
-        tasks: 'compass'
+        tasks: ['compass', 'autoprefixer', 'csso']
       },
       livereload: {
         options: {
@@ -44,27 +44,37 @@ module.exports = function( grunt ) {
         },
         files: ['**/*.css', '**/*.js', '**/*.php', '**/*.twig']
       },
-      uglify: {
-        files: 'js/*.js',
-        tasks: 'uglify',
+    },
+
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 version', 'ie 8', 'ie 9']
+      },
+      dist: {
         options: {
-          livereload: true
-        }
+          // Target-specific options go here.
+        },
+        src: '*.css',
+        dest: ''
       }
     },
 
-    uglify: {
-      options: {
-        mangle: false,
-        beautify: true,
-        files: config.uglify
+    csso: {
+      compress: {
+        options: {
+          report: 'min'
+        },
+        files: {
+          'main.css': ['style.css'],
+          'editor-style.css': ['editor-style.css']
+        }
       }
-    }
+    },
 
 });
 
 
 grunt.registerTask('default', ['watch']);
-grunt.registerTask('build', ['compass', 'uglify']);
+grunt.registerTask('build', ['compass', 'autoprefixer', 'csso']);
 
 };

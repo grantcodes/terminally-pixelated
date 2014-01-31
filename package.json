@@ -8,7 +8,8 @@
     "grunt": "~0.4.1",
     "grunt-contrib-compass": "~0.4.0",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-autoprefixer": "~0.6.4",
+    "grunt-csso": "~0.5.3",
     "matchdep": "~0.1.2"
   },
   "repository": {

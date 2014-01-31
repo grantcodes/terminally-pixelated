@@ -83,7 +83,7 @@ class TerminallyPixelatedBase {
 	}
 
 	public function add_styles() {
-		wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/style.css' ), false, 1 );
+		wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/main.css' ), false, 1 );
 	}
 
 	public function add_sidebars() {
