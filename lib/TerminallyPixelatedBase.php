@@ -5,6 +5,7 @@
 class TerminallyPixelatedBase {
 
 	function __construct() {
+		$this->add_routes();
 		$this->add_support();
 		$this->add_sidebars();
 		$this->add_menus();
@@ -134,6 +135,13 @@ class TerminallyPixelatedBase {
 		}
 
 		return $data;
+	}
+
+	public function add_routes() {
+		// Timber::add_route( ':var/:var2', function( $params ) {
+		// 	$query = array( 'var' => $params['var'], 'var2' => $params['var2'] );
+		// 	Timber::load_template( 'index.php', $query );
+		// });
 	}
 }
 
