@@ -1,13 +1,61 @@
+@include scut-reset-form;
+@include scut-reset-pointer;
+@include scut-reset-button;
+
+%input-shape {
+    max-width: 100%;
+    display: inline-block;
+    padding: .3em .8em;
+}
+
 %input {
-	max-width: 100%;
-	display: inline-block;	
+    @extend %input-shape;
+    color: $input-c;
+    background: $input-bg;
+    border: $input-border;
+
+    &:hover {
+        color: $input-hover-c;
+        background: $input-hover-bg;
+        border: $input-hover-border;
+    }
+
+    &:focus,
+    &:active {
+        color: $input-active-c;
+        background: $input-active-bg;
+        border: $input-active-border;
+    }
 }
 
 %button {
+    @extend %input-shape;
+    color: $button-c;
+    background: $button-bg;
+    border: $button-border;
+
+    &:hover {
+        color: $button-hover-c;
+        background: $button-hover-bg;
+        border: $button-hover-border;
+    }
+
+    &:focus,
+    &:active {
+        color: $button-active-c;
+        background: $button-active-bg;
+        border: $button-active-border;
+    }
+}
+
+input,
+select,
+textarea {
 	@extend %input;
 }
 
-input, select, textarea {
-	@extend %input;
-	
+button,
+.button,
+input[type=submit] {
+    @extend %button;
 }

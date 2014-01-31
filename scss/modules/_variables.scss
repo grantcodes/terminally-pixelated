@@ -72,16 +72,28 @@ $footer-bgc: $blue;
 $footer-c: $white;
 
 $input-c: tint($text-c, 20%);
-$input-bgc: shade($bgc, 20%);
-$input-border-c: shade($input-bgc, 30%);
+$input-bg: shade($bgc, 20%);
+$input-border: 1px solid shade($input-bg, 30%);
 
 $input-hover-c: $input-c;
-$input-hover-bgc: $input-bgc;
-$input-hover-border-c: $input-border-c;
+$input-hover-bg: $input-bg;
+$input-hover-border: 1px solid $input-border;
 
 $input-active-c: $text-c;
-$input-active-bgc: $bgc;
-$input-active-border-c: $input-border-c;
+$input-active-bg: $bgc;
+$input-active-border: 1px solid $input-border;
+
+$button-c: $bgc;
+$button-bg: $green;
+$button-border: 1px solid shade($button-bg, 30%);
+
+$button-hover-c: $button-c;
+$button-hover-bg: shade($button-bg, 10%);
+$button-hover-border: 1px solid $button-border;
+
+$button-active-c: $button-hover-c;
+$button-active-bg: shade($button-bg, 15%);
+$button-active-border: 1px solid $button-border;
 
 
 // Transition Times
