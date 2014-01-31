@@ -31,27 +31,26 @@
 		margin: 0;
 	}
 
-	.menu {
-		@extend %scut-list-unstyled;
-		@include at-breakpoint($mid-break lt-ie9) {
-			& > li {
-				display: inline-block;
-			}
-		}
-	}
+}
 
-	.sub-menu {
-		@extend %scut-list-unstyled;
-		@include at-breakpoint($mid-break lt-ie9) {
-			position: absolute;
-			max-height: 0;
-			overflow: hidden;
-		}
+.main-nav__ul {
+	@extend %scut-list-unstyled;
+	@include at-breakpoint($mid-break lt-ie9) {
+		@include scut-list-inline;
 	}
 }
 
-.main-nav li:hover > .sub-menu,
-.sub-menu:hover {
+.sub-nav {
+	@extend %scut-list-unstyled;
+	@include at-breakpoint($mid-break lt-ie9) {
+		position: absolute;
+		max-height: 0;
+		overflow: hidden;
+	}
+}
+
+.main-nav__li:hover > .sub-nav,
+.sub-nav:hover {
 	@include at-breakpoint($mid-break lt-ie9) {
 		max-height: 99em;
 	}

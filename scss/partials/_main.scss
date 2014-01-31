@@ -1,6 +1,8 @@
 html, body {
 	-ms-overflow-x: hidden;
 	    overflow-x: hidden;
+    min-height: 100%;
+    background-color: $bgc;
 }
 
 a {

@@ -1,14 +1,18 @@
 <nav class="main-nav" role="navigation">
-    <ul class="menu">
+    <ul class="main-nav__ul">
         {% for item in main_menu.get_items %}
-            <li class="nav-main-item {{item.class}} {{item.current ? 'custom-current-item-class'}}"><a class="nav-main-link" href="{{item.get_path}}">{{item.title}}</a>
-            {% if item.get_children %}
-                <ul class="sub-menu">
-                {% for child in item.get_children %}
-                    <li class="nav-drop-item"><a href="{{child.get_path}}">{{child.title}}</a></li>
-                {% endfor %}
-                </ul>
-            {% endif %}
+            <li class="main-nav__li {{item.class}} {{item.current}}">
+                <a class="main-nav__a {{item.current ? 'is-current'}}" href="{{item.get_path}}">{{item.title}}</a>
+                {% if item.get_children %}
+                    <ul class="sub-nav">
+                        {% for child in item.get_children %}
+                            <li class="sub-nav__li">
+                                <a class="sub-nav__a" href="{{child.get_path}}">{{child.title}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
         {% endfor %}
     </ul>
 </nav>

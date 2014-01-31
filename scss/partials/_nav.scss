@@ -1,0 +1,51 @@
+.main-nav {
+
+}
+
+.main-nav__ul {
+
+}
+
+.main-nav__li {
+
+}
+
+.main-nav__a {
+    color: $nav-link-c;
+    background: $nav-link-bg;
+
+    @include scut-selected(true) {
+        color: $nav-link-hover-c;
+        background: $nav-link-hover-bg;
+    }
+
+    &.is-current {
+        color: $nav-link-current-c;
+        background: $nav-link-current-bg;
+    }
+
+}
+
+// Unlike the main nav this is the ul element
+.sub-nav {
+
+}
+
+.sub-nav__li {
+
+}
+
+.sub-nav__a {
+    color: $subnav-link-c;
+    background: $subnav-link-bg;
+
+    @include scut-selected(true) {
+        color: $subnav-link-hover-c;
+        background: $subnav-link-hover-bg;
+    }
+
+    &.is-current {
+        color: $subnav-link-current-c;
+        background: $subnav-link-current-bg;
+    }
+}
