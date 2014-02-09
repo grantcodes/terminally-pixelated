@@ -17,7 +17,7 @@ Terminally Pixelated comes jam packed full of greatness:
 
 ## Getting started
 
-To download the theme use `git clone https://github.com/terminalpixel/Terminally-Pixelated.git --recursive` and then run `npm install` in the theme directory to install the required grunt modules.
+To download however you wish and then run `npm install`, `bower install` and `grunt bowercopy` in the theme directory to install the required grunt and bower modules and move them to the appropriate location.
 
 Run `grunt` in the theme directory to watch for file changes and start a live reload server.
 
@@ -45,11 +45,7 @@ This will create `padding-bottom` on an element with the value of half of your b
 
 There are a few dependencies required to build with Terminally Pixelated:
 
-- Ruby with some gems:
-- - compass >= 0.13.alpha.4
-- - animate >= 0.2.beta.0
-- - modular-scale
-- - susy
+- Ruby + Compass
 - NodeJS with some global packages:
 - - bower
 - - grunt

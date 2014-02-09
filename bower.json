@@ -1,0 +1,35 @@
+{
+  "name": "Terminally-Pixelated",
+  "version": "1",
+  "homepage": "https://github.com/terminalpixel/Terminally-Pixelated",
+  "authors": [
+    "Terminal Pixel <blether@terminalpixel.co.uk>"
+  ],
+  "description": "A developer orientated WordPress starter theme",
+  "keywords": [
+    "wordpress",
+    "timber",
+    "twig",
+    "scss",
+    "sass",
+    "grunt",
+    "bower"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "scut": "*",
+    "animate.sass": "*",
+    "normalize.scss": "kristerkari/normalize.scss",
+    "typecsset": "terminalpixel/typecsset#79f57ff2c1b5d21ac5a90839fc887907063fa014",
+    "modular-scale": "~2.0.4",
+    "susy": "~1.0.9"
+  }
+}

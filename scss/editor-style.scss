@@ -1,15 +1,14 @@
 // Compass
 @import "compass";
 @import "compass/css3";
-@import "animate";
-@import "susy";
-@import "modular-scale";
+@import "vendor/susy";
+@import "vendor/modular-scale";
 @import "partials/wp-comment";
 @import "modules/variables";
 @import "modules/mixins";
-@import "vendor/normalize/normalize";
-@import "vendor/typecsset/typecsset";
-@import "vendor/scut/dist/scut";
+@import "vendor/normalize";
+@import "vendor/typecsset";
+@import "vendor/scut";
 @import "partials/fonts";
 @import "partials/typography";
 // @import "partials/layout";

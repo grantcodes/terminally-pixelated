@@ -71,6 +71,33 @@ module.exports = function( grunt ) {
       }
     },
 
+    bowercopy: {
+      js: {
+        options: {
+          destPrefix: 'js/vendor'
+        },
+        files: {
+          'bxslider.js': 'bxslider/jQuery.bxSlider.min.js'
+        }
+      },
+      scss: {
+        options: {
+          destPrefix: 'scss/vendor'
+        },
+        files: {
+          '_normalize.scss': 'normalize.scss/_normalize.scss',
+          '_scut.scss': 'scut/dist/_scut.scss',
+          '_typecsset.scss': 'typecsset/typecsset.scss',
+          '_susy.scss': 'susy/sass/_susy.scss',
+          'susy': 'susy/sass/susy',
+          '_modular-scale.scss': 'modular-scale/stylesheets/_modular-scale.scss',
+          'modular-scale': 'modular-scale/stylesheets/modular-scale',
+          '_animate.sass': 'animate.sass/stylesheets/_animate.sass',
+          'animate': 'animate.sass/stylesheets/animate'
+        }
+      }
+    },
+
 });
 
 

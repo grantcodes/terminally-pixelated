@@ -1,9 +1,0 @@
-[submodule "scss/vendor/normalize"]
-	path = scss/vendor/normalize
-	url = https://github.com/kristerkari/normalize.scss.git
-[submodule "scss/vendor/scut"]
-	path = scss/vendor/scut
-	url = https://github.com/davidtheclark/scut.git
-[submodule "scss/vendor/typecsset"]
-	path = scss/vendor/typecsset
-	url = https://github.com/terminalpixel/typecsset.git
