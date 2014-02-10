@@ -10,7 +10,6 @@ module.exports = function( grunt ) {
 
 
   var config = {
-    sassModules: ['susy', 'modular-scale', 'animate'],
     sassFiles: ['scss/style.scss', 'scss/editor-style.scss'],
     uglify: []
   };
