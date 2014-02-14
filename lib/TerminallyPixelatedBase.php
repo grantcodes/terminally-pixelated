@@ -15,6 +15,7 @@ class TerminallyPixelatedBase {
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
 		add_filter( 'style_loader_tag', array( $this, 'tidy_style_tag' ) );
+		add_action( 'admin_init', array( $this, 'remove_image_links' ) );
 		add_filter( 'timber_context', array( $this, 'timber_context' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 	}
@@ -87,6 +88,13 @@ class TerminallyPixelatedBase {
 		return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 	}
 
+	public function remove_image_links() {
+		$image_set = get_option( 'image_default_link_type' );
+
+		if ($image_set !== 'none') {
+			update_option('image_default_link_type', 'none');
+		}
+	}
 
 	public static function number_footer_widgets() {
 		return 4;
