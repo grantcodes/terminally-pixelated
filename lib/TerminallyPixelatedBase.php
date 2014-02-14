@@ -14,6 +14,7 @@ class TerminallyPixelatedBase {
 		add_action( 'init', array( $this, 'remove_crap' ) );
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
+		add_filter( 'style_loader_tag', array( $this, 'tidy_style_tag' ) );
 		add_filter( 'timber_context', array( $this, 'timber_context' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 	}
@@ -77,6 +78,15 @@ class TerminallyPixelatedBase {
 		    remove_action( 'wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
 		}
 	}
+
+	public function tidy_style_tag( $input ) {
+		// Nabbed from the roots theme
+		preg_match_all( "!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches );
+		// Only display media if it is meaningful
+		$media = $matches[3][0] !== '' && $matches[3][0] !== 'all' ? ' media="' . $matches[3][0] . '"' : '';
+		return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
+	}
+
 
 	public static function number_footer_widgets() {
 		return 4;
