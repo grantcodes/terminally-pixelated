@@ -4,9 +4,9 @@ $legacy_support_for_ie: false;
 
 // Fonts
 
-$ratio: fourth();
-
+$ms-ratio: $fourth;
 $font-size: 1;
+$ms-base: $font-size;
 $line-height: ms($font-size, 1);
 
 $font-sans: Helvetica, Arial, sans-serif;
