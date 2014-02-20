@@ -1,8 +1,15 @@
+@include scut-reset-border-box;
+
 html, body {
 	-ms-overflow-x: hidden;
 	    overflow-x: hidden;
     min-height: 100%;
     background-color: $bgc;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 a {
