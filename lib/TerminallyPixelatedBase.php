@@ -177,6 +177,31 @@ class TerminallyPixelatedBase {
 			}
 		}
 
+		// Add title
+		if ( is_archive() ) {
+			$data['title'] = 'Archive';
+			if ( is_day() ) {
+				$data['title'] = 'Archive: ' . get_the_date( 'D M Y' );
+			} else if ( is_month() ) {
+				$data['title'] = 'Archive: ' . get_the_date( 'M Y' );
+			} else if ( is_year() ) {
+				$data['title'] = 'Archive: ' . get_the_date( 'Y' );
+			} else if ( is_tag() ) {
+				$data['title'] = single_tag_title( '', false );
+			} else if ( is_category() ) {
+				$data['title'] = single_cat_title( '', false );
+			} else if (is_post_type_archive()) {
+				$data['title'] = post_type_archive_title( '', false );
+			}
+		} elseif ( is_singular() ) {
+			$data['title'] = get_the_title();
+		}
+
+		// Add breadcrumbs
+		if ( function_exists( 'yoast_breadcrumb' ) ) {
+			$data['breadcrumbs'] = yoast_breadcrumb('<nav id="breadcrumbs" class="main-breadcrumbs">','</nav>', false );
+		}
+
 		return $data;
 	}
 
