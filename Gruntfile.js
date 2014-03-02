@@ -92,7 +92,9 @@ module.exports = function( grunt ) {
           '_modular-scale.scss': 'modular-scale/stylesheets/_modular-scale.scss',
           'modular-scale': 'modular-scale/stylesheets/modular-scale',
           '_animate.sass': 'animate.sass/stylesheets/_animate.sass',
-          'animate': 'animate.sass/stylesheets/animate'
+          'animate': 'animate.sass/stylesheets/animate',
+          '_sassybuttons.sass': 'sassy-buttons/_sassybuttons.sass',
+          'sassy-buttons': 'sassy-buttons/sassy-buttons'
         }
       }
     },
