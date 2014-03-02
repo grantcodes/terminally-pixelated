@@ -24,7 +24,6 @@ module.exports = function( grunt ) {
           javascriptsDir: 'js',
           fontsDir: 'fonts',
           relativeAssets: true,
-          require: config.sassModules,
           environment: 'development',
           specify: config.sassFiles
         }
@@ -76,6 +75,7 @@ module.exports = function( grunt ) {
           destPrefix: 'js/vendor'
         },
         files: {
+          'require.js': 'requirejs/require.js',
           'bxslider.js': 'bxslider/jQuery.bxSlider.min.js'
         }
       },
@@ -97,10 +97,21 @@ module.exports = function( grunt ) {
       }
     },
 
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: "js",
+          mainConfigFile: "js/main.js",
+          name: "main",
+          out: "js/main.min.js"
+        }
+      }
+    }
+
 });
 
 
 grunt.registerTask('default', ['watch']);
-grunt.registerTask('build', ['compass', 'autoprefixer', 'csso']);
+grunt.registerTask('build', ['compass', 'autoprefixer', 'csso', 'requirejs']);
 
 };

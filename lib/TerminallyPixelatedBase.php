@@ -4,6 +4,8 @@
  */
 class TerminallyPixelatedBase {
 
+	static $environment = 'production';
+
 	function __construct() {
 		$this->add_routes();
 		$this->add_support();
@@ -14,7 +16,9 @@ class TerminallyPixelatedBase {
 		add_action( 'init', array( $this, 'remove_crap' ) );
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_filter( 'style_loader_tag', array( $this, 'tidy_style_tag' ) );
+		add_filter( 'clean_url', array( $this, 'add_require_attributes' ), 10, 3 );
 		add_action( 'admin_init', array( $this, 'remove_image_links' ) );
 		add_filter( 'timber_context', array( $this, 'timber_context' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
@@ -101,7 +105,28 @@ class TerminallyPixelatedBase {
 	}
 
 	public function add_styles() {
-		wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/main.css' ), false, 1 );
+		if ( static::$environment == 'production' ) {
+			wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/main.css' ), false, 1 );
+		} else {
+			wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/style.css' ), false, 0 );
+		}
+	}
+
+	public function add_scripts() {
+		wp_enqueue_script( 'require', TPHelpers::get_theme_resource_uri( 'js/vendor/require.js' ), array( 'jquery' ) , 1, true );
+	}
+
+	function add_require_attributes( $good_protocol_url, $original_url, $_context){
+		if (false !== strpos($original_url, 'require.js')){
+			remove_filter( 'clean_url', array( $this, 'add_require_attributes' ), 10, 3 );
+			$url_parts = parse_url( $good_protocol_url );
+			if ( static::$environment == 'production' ) {
+				return $url_parts['scheme'] . '://' . $url_parts['host'] . $url_parts['path'] . "' data-main='" . TPHelpers::get_theme_resource_uri( 'js/main.min' );
+			} else {
+				return $url_parts['scheme'] . '://' . $url_parts['host'] . $url_parts['path'] . "' data-main='" . TPHelpers::get_theme_resource_uri( 'js/main' );
+			}
+		}
+		return $good_protocol_url;
 	}
 
 	public function add_sidebars() {
