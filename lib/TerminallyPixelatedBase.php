@@ -4,8 +4,6 @@
  */
 class TerminallyPixelatedBase {
 
-	static $environment = 'production';
-
 	function __construct() {
 		$this->add_routes();
 		$this->add_support();
@@ -105,7 +103,7 @@ class TerminallyPixelatedBase {
 	}
 
 	public function add_styles() {
-		if ( static::$environment == 'production' ) {
+		if ( !SCRIPT_DEBUG ) {
 			wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/main.css' ), false, 1 );
 		} else {
 			wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/style.css' ), false, 0 );
@@ -116,11 +114,11 @@ class TerminallyPixelatedBase {
 		wp_enqueue_script( 'require', TPHelpers::get_theme_resource_uri( 'js/vendor/require.js' ), array( 'jquery' ) , 1, true );
 	}
 
-	function add_require_attributes( $good_protocol_url, $original_url, $_context){
-		if (false !== strpos($original_url, 'require.js')){
+	function add_require_attributes( $good_protocol_url, $original_url, $_context ) {
+		if ( false !== strpos($original_url, 'require.js' ) ) {
 			remove_filter( 'clean_url', array( $this, 'add_require_attributes' ), 10, 3 );
 			$url_parts = parse_url( $good_protocol_url );
-			if ( static::$environment == 'production' ) {
+			if ( !SCRIPT_DEBUG ) {
 				return $url_parts['scheme'] . '://' . $url_parts['host'] . $url_parts['path'] . "' data-main='" . TPHelpers::get_theme_resource_uri( 'js/main.min' );
 			} else {
 				return $url_parts['scheme'] . '://' . $url_parts['host'] . $url_parts['path'] . "' data-main='" . TPHelpers::get_theme_resource_uri( 'js/main' );
