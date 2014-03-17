@@ -15,6 +15,7 @@ class TerminallyPixelatedBase {
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
+		add_action( 'wp_footer', array( $this, 'google_analytics' ), 100 );
 		add_filter( 'style_loader_tag', array( $this, 'tidy_style_tag' ) );
 		add_filter( 'clean_url', array( $this, 'add_require_attributes' ), 10, 3 );
 		add_action( 'admin_init', array( $this, 'remove_image_links' ) );
@@ -209,8 +210,17 @@ class TerminallyPixelatedBase {
 		// 	Timber::load_template( 'index.php', $query );
 		// });
 	}
+
+	public function google_analytics() {
+		if ( $ga_id = get_option( 'terminally_pixelated_googleanalytics' ) ) : ?>
+			<script>
+	            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+	            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+	            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+	            e.src='//www.google-analytics.com/analytics.js';
+	            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+	            ga('create','<?php echo $ga_id; ?>');ga('send','pageview');
+	        </script>
+		<?php endif;
+	}
 }
-
-
-
-
