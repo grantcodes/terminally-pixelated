@@ -109,18 +109,7 @@ $input-c--active: $text-c;
 $input-bg--active: $bgc;
 $input-border--active: 1px solid $input-border;
 
-$button-c: $bgc;
-$button-bg: $green;
-$button-border: 1px solid shade($button-bg, 30%);
-
-$button-c--hover: $button-c;
-$button-bg--hover: shade($button-bg, 10%);
-$button-border--hover: 1px solid $button-border;
-
-$button-c--active: $button-c--hover;
-$button-bg--active: shade($button-bg, 15%);
-$button-border--active: 1px solid $button-border;
-
+$button-bgc: $green;
 
 // Transition Times
 

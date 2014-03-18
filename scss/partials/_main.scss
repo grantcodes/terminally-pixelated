@@ -7,6 +7,11 @@ html, body {
     background-color: $bgc;
 }
 
+::selection {
+    color: $bgc;
+    background-color: $link-c;
+}
+
 img {
     max-width: 100%;
     height: auto;

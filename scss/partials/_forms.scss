@@ -2,14 +2,9 @@
 @include scut-reset-pointer;
 @include scut-reset-button;
 
-%input-shape {
-    max-width: 100%;
-    display: inline-block;
-    padding: .3em .8em;
-}
-
 %input {
-    @extend %input-shape;
+    max-width: 100%;
+    @include sassy-button-structure(.2em, 1em, .3em .5em);
     color: $input-c;
     background: $input-bg;
     border: $input-border;
@@ -29,23 +24,8 @@
 }
 
 %button {
-    @extend %input-shape;
-    color: $button-c;
-    background: $button-bg;
-    border: $button-border;
-
-    &:hover {
-        color: $button-c--hover;
-        background: $button-bg--hover;
-        border: $button-border--hover;
-    }
-
-    &:focus,
-    &:active {
-        color: $button-c--active;
-        background: $button-bg--active;;
-        border: $button-border--active;
-    }
+    max-width: 100%;
+    @include sassy-button('simple', .2em, 1em, $button-bgc);
 }
 
 input,
