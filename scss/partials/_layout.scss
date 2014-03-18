@@ -1,26 +1,30 @@
-.main-wrapper {
+%tp-container {
 	@extend %scut-clearfix;
-	max-width: $grid-max-width;
-	padding: 0 $grid-padding;
-	margin: 0 auto;
+	@include container;
+}
+
+@include global-box-sizing(border-box);
+
+.main-wrapper {
+	@extend %tp-container;
 }
 
 .main-content {
-	@include at-breakpoint ($mid-break) {
-		@include span-columns($mid-content-cols, $mid-cols);
+	@include breakpoint($mid-break) {
+		@include span($mid-content-cols of $mid-cols);
 	}
-	@include at-breakpoint ($large-break lt-ie9) {
-		@include span-columns($large-content-cols, $large-cols);
+	@include breakpoint($large-break, lt-ie9) {
+		@include span($large-content-cols of $large-cols);
 	}
 }
 
 .main-aside {
-	@include at-breakpoint ($mid-break) {
-		@include span-columns($mid-sidebar-cols, $mid-cols);
+	@include breakpoint($mid-break) {
+		@include span($mid-sidebar-cols of $mid-cols);
 		@include omega;
 	}
-	@include at-breakpoint ($large-break lt-ie9) {
-		@include span-columns($large-sidebar-cols, $large-cols);
+	@include breakpoint($large-break, lt-ie9) {
+		@include span($large-sidebar-cols of $large-cols);
 		@include omega;
 	}
 }
@@ -35,14 +39,14 @@
 
 .main-nav__ul {
 	@extend %scut-list-unstyled;
-	@include at-breakpoint($mid-break lt-ie9) {
+	@include breakpoint($mid-break, lt-ie9) {
 		@include scut-list-inline;
 	}
 }
 
 .sub-nav {
 	@extend %scut-list-unstyled;
-	@include at-breakpoint($mid-break lt-ie9) {
+	@include breakpoint($mid-break, lt-ie9) {
 		position: absolute;
 		max-height: 0;
 		overflow: hidden;
@@ -51,7 +55,7 @@
 
 .main-nav__li:hover > .sub-nav,
 .sub-nav:hover {
-	@include at-breakpoint($mid-break lt-ie9) {
+	@include breakpoint($mid-break, lt-ie9) {
 		max-height: 99em;
 	}
 }
@@ -61,14 +65,14 @@
 }
 
 .footer-widgets-wrapper {
-	@include at-breakpoint ($large-break lt-ie9) {
+	@include breakpoint($large-break, lt-ie9) {
 		display: table;
 		width: 100%;
 	}
 }
 
 .footer-widgets {
-	@include at-breakpoint ($large-break lt-ie9) {
+	@include breakpoint($large-break, lt-ie9) {
 		display: table-cell;
 		padding-left: $grid-padding;
 		&:first-child {

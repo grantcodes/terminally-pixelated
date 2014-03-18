@@ -43,12 +43,21 @@ $large-cols: 12;
 $large-content-cols: 8;
 $large-sidebar-cols: 4;
 
+$susy: (
+    container: 70em,
+    columns: 12,
+    gutters: 3/1.5,
+    math: fluid,
+    gutter-position: after
+);
+
 $grid-padding: 1em;
-$column-width: 3;
-$grid-max-width: 70em;
-$gutter-width: 1.5;
-$container-style: fluid;
-$border-box-sizing: true;
+// $column-width: 3;
+// $gutter-width: 1.5;
+
+// $small-grid: $small-cols ($column-width $gutter-width) fluid border-box;
+// $mid-grid: $mid-cols ($column-width $gutter-width) fluid border-box;
+// $large-grid: $large-cols ($column-width $gutter-width) fluid border-box;
 
 // Colors
 
