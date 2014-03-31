@@ -9,6 +9,15 @@ function terminally_pixelated_autoload( $class_name ) {
 	}
 }
 terminally_pixelated_autoload( 'TPHelpers' );
-terminally_pixelated_autoload( 'TerminallyPixelatedBase' );
-terminally_pixelated_autoload( 'TerminallyPixelatedCustom' );
-terminally_pixelated_autoload( 'TerminallyPixelatedCustomizer' );
+
+if ( !class_exists( 'Timber' ) ) {
+    if ( !is_admin() ) {
+        echo 'Timber not activated. Make sure you activate the plugin in <a href="' . get_admin_url( get_current_blog_id(), 'plugins.php' ) . '">/wp-admin/plugins.php</a>';
+    } else {
+        add_action( 'admin_notices', array( 'TPHelpers', 'timber_activate_message' ) );
+    }
+} else {
+    terminally_pixelated_autoload( 'TerminallyPixelatedBase' );
+    terminally_pixelated_autoload( 'TerminallyPixelatedCustom' );
+    terminally_pixelated_autoload( 'TerminallyPixelatedCustomizer' );
+}
