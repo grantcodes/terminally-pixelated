@@ -1,7 +1,17 @@
 {% extends "base.twig" %}
 
 {% block content %}
+    {% if is_archive %}
         {% for post in posts %}
-                {% include ['partials/article-'~post.post_type~'.twig', 'partials/article.twig'] %}
+                {% include ['partials/preview-'~post.post_type~'.twig', 'partials/preview.twig'] %}
         {% endfor %}
+    {% else %}
+        {% if post %}
+            {% include ['partials/article-'~post.post_type~'.twig', 'partials/article.twig'] %}
+        {% else %}
+            {% for post in posts %}
+                    {% include ['partials/article-'~post.post_type~'.twig', 'partials/article.twig'] %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
 {% endblock %}

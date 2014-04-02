@@ -192,8 +192,6 @@ class TerminallyPixelatedBase {
 			} else if (is_post_type_archive()) {
 				$data['title'] = post_type_archive_title( '', false );
 			}
-		} elseif ( is_singular() ) {
-			$data['title'] = get_the_title();
 		}
 
 		// Add breadcrumbs

@@ -1,0 +1,14 @@
+<article class="{{post.post_class}} single-post-preview">
+    {% block content %}
+        <header class="single-post-preview__header">
+            <h1 class="single-post-preview__title">
+                <a href="{{post.link}}">
+                    {{post.title}}
+                </a>
+            </h1>
+        </header>
+        <div class="single-post-preview__content">
+            {{post.get_preview()}}
+        </div>
+    {% endblock %}
+</article>

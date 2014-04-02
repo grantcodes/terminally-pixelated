@@ -1,16 +1,10 @@
-<article class="{{post.post_class}}">
+<article class="{{post.post_class}} single-post">
     {% block content %}
-        <header>
-            <h1>
-                {% if is_archive %}<a href="{{post.get_path}}">{% endif %}
-                    {{post.title}}
-                {% if is_archive %}</a>{% endif %}
-            </h1>
+        <header class="single-post__header">
+            <h1 class="single-post__title">{{post.title}}</h1>
         </header>
-        {% if is_archive %}
-            <p>{{post.excerpt}}</p>
-        {% else %}
+        <div class="single-post__content">
             {{post.content}}
-        {% endif %}
+        </div>
     {% endblock %}
 </article>
