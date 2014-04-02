@@ -44,7 +44,7 @@
 	}
 }
 
-.sub-nav {
+.main-nav__sub-nav {
 	@extend %scut-list-unstyled;
 	@include breakpoint($mid-break, lt-ie9) {
 		position: absolute;
@@ -53,8 +53,8 @@
 	}
 }
 
-.main-nav__li:hover > .sub-nav,
-.sub-nav:hover {
+.main-nav__li:hover > .main-nav__sub-nav,
+.main-nav__sub-nav:hover {
 	@include breakpoint($mid-break, lt-ie9) {
 		max-height: 99em;
 	}

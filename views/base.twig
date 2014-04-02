@@ -16,7 +16,7 @@
                 </header>
             {% endblock %}
 
-            {% include 'partials/nav.twig' %}
+            {% include 'partials/nav.twig' with { 'nav_class': 'main-nav', 'menu': main_menu } %}
 
             <div class="main-content-sidebar-wrap">
                 <main role="main" class="main-content{% if not main_sidebar %}--full-width{% endif %}">

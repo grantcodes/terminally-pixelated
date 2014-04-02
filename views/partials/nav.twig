@@ -1,13 +1,13 @@
-<nav class="main-nav" role="navigation">
-    <ul class="main-nav__ul">
-        {% for item in main_menu.get_items %}
-            <li class="main-nav__li {{item.class}} {{item.current}}">
-                <a class="main-nav__a {{item.current ? 'is-current'}}" href="{{item.get_path}}">{{item.title}}</a>
+<nav class="{{nav_class}}" role="navigation">
+    <ul class="{{nav_class}}__ul">
+        {% for item in menu.get_items %}
+            <li class="{{nav_class}}__li {{item.class}} {{item.current}}">
+                <a class="{{nav_class}}__a {{item.current ? 'is-current'}}" href="{{item.get_path}}">{{item.title}}</a>
                 {% if item.get_children %}
-                    <ul class="sub-nav">
+                    <ul class="{{nav_class}}__sub-nav">
                         {% for child in item.get_children %}
-                            <li class="sub-nav__li">
-                                <a class="sub-nav__a" href="{{child.get_path}}">{{child.title}}</a>
+                            <li class="{{nav_class}}__sub-nav__li">
+                                <a class="{{nav_class}}__sub-nav__a" href="{{child.get_path}}">{{child.title}}</a>
                             </li>
                         {% endfor %}
                     </ul>
