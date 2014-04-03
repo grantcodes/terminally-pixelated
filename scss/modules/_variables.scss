@@ -44,9 +44,9 @@ $large-content-cols: 8;
 $large-sidebar-cols: 4;
 
 $susy: (
-    container: 70em,
+    container: 60em,
     columns: 12,
-    gutters: 3/1.5,
+    gutters: .25,
     math: fluid,
     gutter-position: after
 );

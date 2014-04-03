@@ -1,6 +1,8 @@
 %tp-container {
 	@extend %scut-clearfix;
 	@include container;
+	padding-left: $grid-padding;
+	padding-right: $grid-padding;
 }
 
 @include global-box-sizing(border-box);
