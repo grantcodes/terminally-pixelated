@@ -25,14 +25,14 @@
     "tests"
   ],
   "dependencies": {
-    "scut": "*",
-    "animate.sass": "*",
+    "scut": "0.10.3",
     "normalize.scss": "kristerkari/normalize.scss",
     "typecsset": "terminalpixel/typecsset#79f57ff2c1b5d21ac5a90839fc887907063fa014",
-    "modular-scale": "~2.0.4",
+    "modular-scale": "~2.0.5",
     "susy": "~2.1.1",
-    "requirejs": "*",
+    "requirejs": "~2.1.11",
     "sassy-buttons": "*",
-    "breakpoint-sass": "~2.4.2"
+    "breakpoint-sass": "~2.4.2",
+    "animate.sass": "*"
   }
 }

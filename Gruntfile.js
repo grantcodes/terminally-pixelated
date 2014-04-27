@@ -76,7 +76,7 @@ module.exports = function( grunt ) {
         },
         files: {
           'require.js': 'requirejs/require.js',
-          'bxslider.js': 'bxslider/jQuery.bxSlider.min.js'
+          'bxslider.js': 'bxslider-4/jquery.bxslider.min.js'
         }
       },
       scss: {
@@ -116,6 +116,6 @@ module.exports = function( grunt ) {
 
 
 grunt.registerTask('default', ['watch']);
-grunt.registerTask('build', ['compass', 'autoprefixer', 'csso', 'requirejs']);
+grunt.registerTask('build', ['bowercopy', 'compass', 'autoprefixer', 'csso', 'requirejs']);
 
 };
