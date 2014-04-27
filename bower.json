@@ -33,6 +33,7 @@
     "requirejs": "~2.1.11",
     "sassy-buttons": "*",
     "breakpoint-sass": "~2.4.2",
-    "animate.sass": "*"
+    "animate.sass": "*",
+    "bxslider-4": "~4.1.2"
   }
 }
