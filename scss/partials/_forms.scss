@@ -39,3 +39,235 @@ button,
 input[type=submit] {
     @extend %button;
 }
+
+
+@if ($gravity-forms) {
+    .gform_fields {
+        @extend %scut-list-unstyled;
+        margin: 0;
+        padding: 0;
+    }
+
+    .gfield {
+        @include tp-trailer(.5);
+    }
+
+    .gfield_label {
+        display: inline-block;
+        @include tp-trailer(.5);
+    }
+
+    .gfield_required {
+        color: $error-c;
+        margin-left: 0.2em;
+    }
+
+    .gfield_description {
+        @include tp-leader(.5);
+        font-size: 0.8em;
+    }
+
+    .ginput_complex {
+        border-bottom: 1px solid $border-c;
+        border-top: 1px solid $border-c;
+        @include tp-padding-leader();
+        @include tp-padding-trailer();
+    }
+
+    .gfield_checkbox {
+        @extend %scut-list-inline;
+        margin: 0;
+
+        & > li {
+            @include typecsset-space(margin-right, 1);
+        }
+
+        input {
+            margin-right: 0.3em;
+        }
+    }
+
+
+    // Errors
+
+    .validation_error {
+        display: block;
+        background-color: $error-c;
+        color: lighten($error-c, 40%);
+        padding: .5em .8em;
+        border: 1px solid shade($error-c, 15%);
+        border-radius: .3em;
+        @include tp-trailer();
+    }
+
+    .gfield_error {
+        .gfield_description.validation_message {
+            @extend .validation_error;
+            margin-bottom: 0;
+            margin-top: 0.2em;
+            font-size: 0.8em;
+        }
+
+        input,
+        select,
+        textarea {
+            border-color: $error-c;
+        }
+    }
+
+    .gfield_creditcard_warning_message {
+            @extend .validation_error;
+
+    }
+
+
+    // Layouts
+
+    .gfield {
+        @extend %scut-clearfix;
+    }
+
+    .left_label {
+        @include breakpoint($mid-break, '.lt-ie9') {
+            .gfield_label {
+                @include span(3 of 10);
+                // text-align: right;
+                margin-top: 0.3em;
+            }
+            .ginput_container {
+                @include span(last 7 of 10);
+            }
+            .gfield_checkbox {
+                margin-top: 0.3em;
+            }
+        }
+        @include breakpoint($large-break, '.lt-ie9') {
+            .gfield_label {
+                @include span(2 of 10);
+                // text-align: right;
+                margin-top: 0.3em;
+            }
+            .ginput_container {
+                @include span(last 8 of 10);
+            }
+        }
+
+        &.gform_footer {
+            text-align: right;
+        }
+    }
+
+    .right_label {
+        @include breakpoint($mid-break, '.lt-ie9') {
+            .gfield_label {
+                @include span(last 3 of 10);
+                margin-top: 0.3em;
+            }
+            .ginput_container {
+                @include span(7 of 10);
+            }
+        }
+    }
+
+    .ginput_left {
+        clear: left;
+        @include span(5 of 10);
+    }
+
+    .ginput_right {
+        clear: right;
+        @include span(last 5 of 10);
+    }
+
+    .large {
+        width: 100%;
+    }
+
+    .medium {
+        width: 75%;
+    }
+
+    .small {
+        width: 50%;
+    }
+
+    .ginput_complex {
+        @extend %scut-clearfix;
+
+        label {
+            display: block;
+            font-size: 0.8em;
+            @include tp-leader(.5);
+            clear: both;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+            width: auto;
+        }
+    }
+
+    .gfield_list {
+        table-layout: auto;
+        width: 100%;
+    }
+
+    .gfield_list_cell {
+        padding: 0;
+        @include tp-padding-trailer(.5);
+
+        input {
+            width: 100%;
+        }
+    }
+
+    .gfield_list_icons {
+        padding: 0;
+        text-align: right;
+        @include tp-padding-trailer(.5);
+    }
+
+    .ginput_full {
+        @extend %scut-clearfix;
+        display: block;
+        width: 100%;
+        @include tp-trailer(1);
+    }
+
+    .ginput_cardinfo_left {
+        @include breakpoint($mid-break, '.lt-ie9') {
+            @include span(5 of 10);
+        }
+    }
+
+    .ginput_cardinfo_right {
+        @include breakpoint($mid-break, '.lt-ie9') {
+            @include span(last 5 of 10);
+        }
+    }
+
+    .ginput_card_expiration_month {
+        @include span(5 of 10);
+        @include tp-trailer(.5);
+    }
+
+    .ginput_card_expiration_year {
+        @include span(last 5 of 10);
+        @include tp-trailer(.5);
+    }
+
+    .ginput_card_security_code_icon {
+        display: none;
+    }
+
+    .gform_card_icon_container {
+        display: none;
+    }
+
+}

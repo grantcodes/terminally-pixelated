@@ -70,6 +70,8 @@ $green: #5EC97E;
 $text-c: $black;
 $bgc: $white;
 
+$border-c: mix($text-c, $bgc);
+
 $link-c: $blue;
 $link-c--hover: $red;
 
@@ -111,8 +113,14 @@ $input-border--active: 1px solid $input-border;
 
 $button-bgc: $green;
 
+$error-c: $red;
+
 // Transition Times
 
 $transition-fast: .2s;
 $transition-mid: $transition-fast * 2;
 $transition-slow: $transition-mid * 2;
+
+// Misc
+
+$gravity-forms: false;
