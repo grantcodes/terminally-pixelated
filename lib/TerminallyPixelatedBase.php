@@ -193,6 +193,9 @@ class TerminallyPixelatedBase {
 				$data['title'] = post_type_archive_title( '', false );
 			}
 		}
+		else if (is_search()) {
+			$data['title'] = 'Search Results for: ' . get_search_query();
+		}
 
 		// Add breadcrumbs
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
