@@ -8,3 +8,19 @@
 @mixin tp-fs($scale) {
     @include typecsset-font-size(ms($scale, $typecsset-base-font-size));
 }
+
+@mixin tp-leader($space: 1) {
+    @include typecsset-space(margin-top, $space);
+}
+
+@mixin tp-trailer($space: 1) {
+    @include typecsset-space(margin-bottom, $space);
+}
+
+@mixin tp-padding-leader($space: 1) {
+    @include typecsset-space(padding-top, $space);
+}
+
+@mixin tp-padding-trailer($space: 1) {
+    @include typecsset-space(padding-bottom, $space);
+}
