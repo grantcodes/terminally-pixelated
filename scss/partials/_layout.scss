@@ -1,13 +1,18 @@
 %tp-container {
-	@extend %scut-clearfix;
-	@include container;
-	padding-left: $grid-padding;
-	padding-right: $grid-padding;
+	@include tp-container;
 }
 
 @include global-box-sizing(border-box);
 
 .main-wrapper {
+	// @extend %tp-container;
+}
+
+.main-header__inner {
+	@extend %tp-container;
+}
+
+.main-content-sidebar-wrap {
 	@extend %tp-container;
 }
 
@@ -32,17 +37,15 @@
 }
 
 .main-nav {
-	ul {
-		padding: 0;
-		margin: 0;
-	}
 
 }
 
 .main-nav__ul {
+	@extend %tp-container;
 	@extend %scut-list-unstyled;
 	@include breakpoint($mid-break, lt-ie9) {
 		@include scut-list-inline;
+		@include tp-container;
 	}
 }
 
@@ -64,6 +67,10 @@
 
 .main-footer {
 	clear: both;
+}
+
+.main-footer__inner {
+	@extend %tp-container;
 }
 
 .footer-widgets-wrapper {

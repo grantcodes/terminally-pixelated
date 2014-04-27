@@ -10,9 +10,11 @@
         <div class="main-wrapper">
             {% block header %}
                 <header class="main-header" role='banner'>
-                    <h1 class="main-title">
-                        <a href="{{bloginfo('url')}}" rel="home">{{bloginfo('name')}}</a>
-                    </h1>
+                    <div class="main-header__inner">
+                        <h1 class="main-title">
+                            <a href="{{bloginfo('url')}}" rel="home">{{bloginfo('name')}}</a>
+                        </h1>
+                    </div>
                 </header>
             {% endblock %}
 
@@ -45,18 +47,20 @@
             </div>
 
             <footer class="main-footer">
-                {% if footer_widgets %}
-                    <section class="footer-widgets-wrapper">
-                        {% for widget_area in footer_widgets %}
-                            <div class="footer-widgets footer-widgets--{{loop.index}}">
-                                {{widget_area}}
-                            </div>
-                        {% endfor %}
+                <div class="main-footer__inner">
+                    {% if footer_widgets %}
+                        <section class="footer-widgets-wrapper">
+                            {% for widget_area in footer_widgets %}
+                                <div class="footer-widgets footer-widgets--{{loop.index}}">
+                                    {{widget_area}}
+                                </div>
+                            {% endfor %}
+                        </section>
+                    {% endif %}
+                    <section class="footer-text">
+                        <p>Copyright  {{ 'now'|date('Y') }} {{bloginfo('name')}} | All Rights Reserved.</p>
                     </section>
-                {% endif %}
-                <section class="footer-text">
-                    <p>Copyright  {{ 'now'|date('Y') }} {{bloginfo('name')}} | All Rights Reserved.</p>
-                </section>
+                </div>
             </footer>
         </div>
         {{wp_footer}}

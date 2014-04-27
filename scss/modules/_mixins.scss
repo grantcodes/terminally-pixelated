@@ -1,3 +1,10 @@
+@mixin tp-container() {
+    @include scut-clearfix;
+    @include container;
+    padding-left: $grid-padding;
+    padding-right: $grid-padding;
+}
+
 @mixin tp-fs($scale) {
     @include typecsset-font-size(ms($scale, $typecsset-base-font-size));
 }
