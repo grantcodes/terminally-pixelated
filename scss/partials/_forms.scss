@@ -2,17 +2,26 @@
 @include scut-reset-pointer;
 @include scut-reset-button;
 
+// Fixing something with normalize
+input[type=search] {
+    box-sizing: border-box;
+}
+
 %input {
     max-width: 100%;
     @include sassy-button-structure(.2em, 1em, .3em .5em);
     color: $input-c;
     background: $input-bg;
     border: $input-border;
+    box-shadow: 0 0 .2em inset rgba(0,0,0,.3);
+    transition: all;
+    outline: none;
 
     &:hover {
         color: $input-c--hover;
         background: $input-bg--hover;
         border: $input-border--hover;
+        box-shadow: 0 0 .1em inset rgba(0,0,0,.3);
     }
 
     &:focus,
@@ -20,12 +29,14 @@
         color: $input-c--active;
         background: $input-bg--active;;
         border: $input-border--active;
+        box-shadow: 0 0 .2em rgba(0,0,0,.3);
     }
 }
 
 %button {
     max-width: 100%;
-    @include sassy-button('simple', .2em, 1em, $button-bgc);
+    text-align: center;
+    @include sassy-button('flat', .2em, 1em, $button-bgc);
 }
 
 input,

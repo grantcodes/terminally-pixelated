@@ -62,10 +62,10 @@ $grid-padding: 1em;
 // Colors
 
 $white: #FCFCFC;
-$black: #222;
-$blue: #2A5B7E;
-$red: #A84538;
-$green: #5EC97E;
+$black: #333;
+$blue: #478BC2;
+$red: #BF4240;
+$green: #7FCD6A;
 
 $text-c: $black;
 $bgc: $white;
@@ -100,18 +100,18 @@ $footer-bgc: $blue;
 $footer-c: $white;
 
 $input-c: tint($text-c, 20%);
-$input-bg: shade($bgc, 20%);
-$input-border: 1px solid shade($input-bg, 30%);
+$input-bg: shade($bgc, 2%);
+$input-border: 1px solid shade($input-bg, 15%);
 
 $input-c--hover: $input-c;
 $input-bg--hover: $input-bg;
-$input-border--hover: 1px solid $input-border;
+$input-border--hover: 1px solid $blue;
 
 $input-c--active: $text-c;
 $input-bg--active: $bgc;
-$input-border--active: 1px solid $input-border;
+$input-border--active: $input-border--hover;
 
-$button-bgc: $green;
+$button-bgc: $blue;
 
 $error-c: $red;
 
