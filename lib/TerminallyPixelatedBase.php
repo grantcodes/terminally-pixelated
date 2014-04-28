@@ -192,9 +192,11 @@ class TerminallyPixelatedBase {
 				$data['title'] = single_cat_title( '', false );
 			} else if (is_post_type_archive()) {
 				$data['title'] = post_type_archive_title( '', false );
+			} else if ( is_author() ) {
+				$data['title'] = get_the_author();
 			}
 		}
-		else if (is_search()) {
+		else if ( is_search() ) {
 			$data['title'] = 'Search Results for: ' . get_search_query();
 		}
 
