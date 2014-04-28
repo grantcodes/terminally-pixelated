@@ -20,6 +20,7 @@ class TerminallyPixelatedBase {
 		add_filter( 'clean_url', array( $this, 'add_require_attributes' ), 10, 3 );
 		add_action( 'admin_init', array( $this, 'remove_image_links' ) );
 		add_filter( 'timber_context', array( $this, 'timber_context' ) );
+		add_filter( 'timber_context', array( $this, 'schema' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 	}
 
@@ -203,6 +204,26 @@ class TerminallyPixelatedBase {
 		}
 
 		return $data;
+	}
+
+	public function schema ( $context ) {
+		$context['schema'] = array();
+
+		if ( is_single() ) {
+			$type = "Article";
+		} else if ( is_author() ) {
+			$type = 'ProfilePage';
+		} elseif( is_search() ) {
+			$type = 'SearchResultsPage';
+		}  else if ( is_archive() ) {
+			$type = 'Blog';
+		} else {
+			$type = 'WebPage';
+		}
+
+		$context['schema']['type'] = $type;
+
+		return $context;
 	}
 
 	public function add_routes() {

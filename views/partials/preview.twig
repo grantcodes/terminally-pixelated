@@ -1,13 +1,13 @@
-<article class="{{post.post_class}} single-post-preview">
+<article class="{{post.post_class}} single-post-preview" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
     {% block content %}
         <header class="single-post-preview__header">
-            <h1 class="single-post-preview__title">
+            <h1 class="single-post-preview__title" itemprop="headline">
                 <a href="{{post.link}}">
                     {{post.title}}
                 </a>
             </h1>
         </header>
-        <div class="single-post-preview__content">
+        <div class="single-post-preview__content" itemprop="text">
             {{post.get_preview()}}
         </div>
     {% endblock %}

@@ -1,9 +1,9 @@
-<article class="{{post.post_class}} single-post">
+<article class="{{post.post_class}} single-post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
     {% block content %}
         <header class="single-post__header">
-            <h1 class="single-post__title">{{post.title}}</h1>
+            <h1 class="single-post__title" itemprop="headline">{{post.title}}</h1>
         </header>
-        <div class="single-post__content">
+        <div class="single-post__content" itemprop="text">
             {{post.content}}
         </div>
     {% endblock %}
