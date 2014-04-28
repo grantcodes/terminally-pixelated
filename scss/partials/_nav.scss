@@ -1,5 +1,5 @@
 .main-nav {
-
+    background-color: $nav-bgc;
 }
 
 .main-nav__ul {
@@ -13,6 +13,10 @@
 .main-nav__a {
     color: $nav-link-c;
     background: $nav-link-bg;
+    text-decoration: none;
+    outline: none;
+    @include tp-padding-leader(.5);
+    @include tp-padding-trailer(.5);
 
     @include scut-selected(true) {
         color: $nav-link-c--hover;
@@ -28,7 +32,22 @@
 
 // Unlike the main nav this is the ul element
 .main-nav__sub-nav {
+    background-color: $subnav-bgc;
+    @include typecsset-space(padding-left, .5);
+    @include typecsset-space(padding-right, .5);
 
+    transition: opacity $transition-mid, max-height $transition-mid;
+
+    @include breakpoint($mid-break, '.lt-ie9') {
+        opacity: 0;
+    }
+}
+
+.main-nav__li:hover > .main-nav__sub-nav,
+.main-nav__sub-nav:hover {
+    @include breakpoint($mid-break, '.lt-ie9') {
+        opacity: 1;
+    }
 }
 
 .main-nav__sub-nav__li {
@@ -36,8 +55,12 @@
 }
 
 .main-nav__sub-nav__a {
+    text-decoration: none;
     color: $subnav-link-c;
     background: $subnav-link-bg;
+    outline: none;
+    @include tp-padding-leader(.25);
+    @include tp-padding-trailer(.25);
 
     @include scut-selected(true) {
         color: $subnav-link-c--hover;

@@ -1,10 +1,12 @@
 .main-footer {
     color: $footer-c;
     background-color: $footer-bgc;
+    @include tp-padding-leader();
+    @include tp-padding-trailer();
 }
 
 .footer-widgets {
-
+    @include tp-trailer()
 }
 
 .footer-text {

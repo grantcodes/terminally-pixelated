@@ -78,22 +78,26 @@ $link-c--hover: $red;
 $header-bgc: $black;
 $header-c: $white;
 
-$nav-link-c: $blue;
-$nav-link-bg: $bgc;
+$nav-bgc: $blue;
 
-$nav-link-c--hover: $red;
-$nav-link-bg--hover: $white;
+$nav-link-c: $black;
+$nav-link-bg: none;
 
-$nav-link-c--current: $red;
-$nav-link-bg--current: $white;
+$nav-link-c--hover: $white;
+$nav-link-bg--hover: none;
 
-$subnav-link-c: $nav-link-c;
+$nav-link-c--current: $white;
+$nav-link-bg--current: none;
+
+$subnav-bgc: $black;
+
+$subnav-link-c: $blue;
 $subnav-link-bg: $nav-link-bg;
 
-$subnav-link-c--hover: $nav-link-c--hover;
+$subnav-link-c--hover: $white;
 $subnav-link-bg--hover: $nav-link-bg--hover;
 
-$subnav-link-c--current: $nav-link-c--current;
+$subnav-link-c--current: $white;
 $subnav-link-bg--current: $nav-link-bg--current;
 
 $footer-bgc: $blue;

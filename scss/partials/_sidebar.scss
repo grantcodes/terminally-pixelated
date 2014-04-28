@@ -1,0 +1,11 @@
+.main-aside {
+
+    .widget {
+        @include tp-trailer(2);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+}

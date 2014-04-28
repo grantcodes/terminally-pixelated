@@ -4,7 +4,20 @@ html, body {
 	-ms-overflow-x: hidden;
 	    overflow-x: hidden;
     min-height: 100%;
+    background-color: $footer-bgc;
+}
+
+.main-wrapper {
     background-color: $bgc;
+}
+
+.main-content {
+    border-bottom: 1px solid $border-c;
+    @include tp-padding-trailer(2);
+    @include breakpoint($mid-break, '.lt-ie9') {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
 }
 
 ::selection {

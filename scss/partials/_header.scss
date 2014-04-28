@@ -1,4 +1,10 @@
 .main-header {
     background-color: $header-bgc;
     color: $header-c;
+    @include tp-padding-leader();
+    @include tp-padding-trailer();
+}
+
+.main-title {
+    margin: 0;
 }
