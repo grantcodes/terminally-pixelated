@@ -101,6 +101,21 @@ module.exports = function( grunt ) {
       }
     },
 
+    favicons: {
+      options: {
+        // Task-specific options go here.
+        appleTouchBackgroundColor: '#FFFFFF',
+        tileColor: 'auto',
+        androidHomescreen: true,
+        html: 'views/partials/head.twig',
+        HTMLPrefix: '{{icon_path}}'
+      },
+      your_target: {
+        src: 'icons/icon.png',
+        dest: 'icons'
+      },
+    },
+
     requirejs: {
       compile: {
         options: {

@@ -12,7 +12,8 @@
     "grunt-autoprefixer": "~0.7.3",
     "grunt-bowercopy": "~1.0.0",
     "grunt-csso": "~0.6.1",
-    "matchdep": "~0.3.0"
+    "matchdep": "~0.3.0",
+    "grunt-favicons": "^0.6.4"
   },
   "repository": {
     "type": "git",

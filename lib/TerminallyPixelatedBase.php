@@ -205,6 +205,9 @@ class TerminallyPixelatedBase {
 			$data['breadcrumbs'] = yoast_breadcrumb('<nav id="breadcrumbs" class="main-breadcrumbs">','</nav>', false );
 		}
 
+		// Icon path
+		$data['icon_path'] = TPHelpers::get_theme_resource_uri( '/icons/' );
+
 		return $data;
 	}
 
