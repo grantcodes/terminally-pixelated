@@ -163,52 +163,52 @@ class TerminallyPixelatedBase {
 		// add_image_size( 'post-thumbnail', 715, 400, true );
 	}
 
-	public function timber_context( $data ) {
+	public function timber_context( $context ) {
 		// Add menu
-		$data['main_menu'] = new TimberMenu( 'main' );
+		$context['main_menu'] = new TimberMenu( 'main' );
 
 		// Add sidebar
-		$data['main_sidebar'] = Timber::get_widgets( 'main-sidebar' );
+		$context['main_sidebar'] = Timber::get_widgets( 'main-sidebar' );
 
 		// Add footer widgets
 		if ( $this->number_footer_widgets() ) {
 			for ( $i=1; $i <= $this->number_footer_widgets(); $i++ ) {
-				$data['footer_widgets'][$i + 1] = Timber::get_widgets( 'footer-widgets-' . $i );
+				$context['footer_widgets'][$i + 1] = Timber::get_widgets( 'footer-widgets-' . $i );
 			}
 		}
 
 		// Add title
 		if ( is_archive() ) {
-			$data['title'] = 'Archive';
+			$context['title'] = 'Archive';
 			if ( is_day() ) {
-				$data['title'] = 'Archive: ' . get_the_date( 'D M Y' );
+				$context['title'] = 'Archive: ' . get_the_date( 'D M Y' );
 			} else if ( is_month() ) {
-				$data['title'] = 'Archive: ' . get_the_date( 'M Y' );
+				$context['title'] = 'Archive: ' . get_the_date( 'M Y' );
 			} else if ( is_year() ) {
-				$data['title'] = 'Archive: ' . get_the_date( 'Y' );
+				$context['title'] = 'Archive: ' . get_the_date( 'Y' );
 			} else if ( is_tag() ) {
-				$data['title'] = single_tag_title( '', false );
+				$context['title'] = single_tag_title( '', false );
 			} else if ( is_category() ) {
-				$data['title'] = single_cat_title( '', false );
+				$context['title'] = single_cat_title( '', false );
 			} else if (is_post_type_archive()) {
-				$data['title'] = post_type_archive_title( '', false );
+				$context['title'] = post_type_archive_title( '', false );
 			} else if ( is_author() ) {
-				$data['title'] = get_the_author();
+				$context['title'] = get_the_author();
 			}
 		}
 		else if ( is_search() ) {
-			$data['title'] = 'Search Results for: ' . get_search_query();
+			$context['title'] = 'Search Results for: ' . get_search_query();
 		}
 
 		// Add breadcrumbs
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
-			$data['breadcrumbs'] = yoast_breadcrumb('<nav id="breadcrumbs" class="main-breadcrumbs">','</nav>', false );
+			$context['breadcrumbs'] = yoast_breadcrumb('<nav id="breadcrumbs" class="main-breadcrumbs">','</nav>', false );
 		}
 
 		// Icon path
-		$data['icon_path'] = TPHelpers::get_theme_resource_uri( '/icons/' );
+		$context['icon_path'] = TPHelpers::get_theme_resource_uri( '/icons/' );
 
-		return $data;
+		return $context;
 	}
 
 	public function schema ( $context ) {
