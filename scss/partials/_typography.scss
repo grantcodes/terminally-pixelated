@@ -3,28 +3,64 @@
 body {
 	font-family: $font-body;
 	color: $text-c;
+	line-height: $line-height;
+	@include tp-fs(0);
 }
 
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+p {
+	margin: 0;
+	@include tp-trailer();
+}
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.1;
 	a {
 		text-decoration: none;
 	}
 }
 
+h1 {
+	@include tp-fs(3);
+	@include tp-leader();
+	@include tp-trailer(2);
+}
+
+h2 {
+	@include tp-fs(2);
+	@include tp-trailer(2);
+}
+
+h3 {
+	@include tp-fs(1);
+	@include tp-trailer();
+}
+
+h4 {
+	@include tp-fs(0);
+	@include tp-trailer();
+}
+
+h5 {
+	@include tp-fs(0);
+	@include tp-trailer(.5);
+}
+
+h6 {
+	@include tp-fs(-1);
+	@include tp-trailer(.5);
+}
+
 .h1 {
 	@extend h1;
-
 }
 
 .h2 {
 	@extend h2;
-
 }
 
 .h3 {
@@ -41,4 +77,18 @@ h6, .h6 {
 
 .h6 {
 	@extend h6;
+}
+
+ul,
+ol,
+dd,
+pre,
+address,
+blockquote {
+    @include tp-trailer();
+}
+
+li > ul,
+li > ol {
+    margin-bottom: 0;
 }

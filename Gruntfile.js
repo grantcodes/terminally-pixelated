@@ -86,7 +86,6 @@ module.exports = function( grunt ) {
         files: {
           '_normalize.scss': 'normalize.scss/_normalize.scss',
           '_scut.scss': 'scut/dist/_scut.scss',
-          '_typecsset.scss': 'typecsset/typecsset.scss',
           '_breakpoint.scss': 'breakpoint-sass/stylesheets/_breakpoint.scss',
           'breakpoint': 'breakpoint-sass/stylesheets/breakpoint',
           '_susy.scss': 'susy/sass/_susy.scss',

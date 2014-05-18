@@ -33,8 +33,8 @@
 // Unlike the main nav this is the ul element
 .main-nav__sub-nav {
     background-color: $subnav-bgc;
-    @include typecsset-space(padding-left, .5);
-    @include typecsset-space(padding-right, .5);
+    @include tp-space(padding-left, .5);
+    @include tp-space(padding-right, .5);
 
     transition: opacity $transition-mid, max-height $transition-mid;
 
