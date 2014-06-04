@@ -310,42 +310,33 @@ class TerminallyPixelatedBase {
 	}
 
 	public function unveil_images( $html ) {
-		$dom = new DOMDocument();
-		$dom->formatOutput = true;
-		$dom->preserveWhiteSpace = false;
+		$html = preg_replace_callback(
+			'#<img([^>]+?)src=[\'"]?([^\'"\s>]+)[\'"]?([^>]*)>#',
+			function ($matches) {
+				$first_attributes = $matches[1];
+				$src = $matches[2];
+				$last_attributes = $matches[3];
 
-		$dom->loadHTML( $html );
-		$images = $dom->getElementsByTagName( 'img' );
+				// Check for retina image
+				$pathinfo = pathinfo( $src );
+				$retina_src = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '@2x.' . $pathinfo['extension'];
+				if ( @get_headers( $retina_src )[0] === 'HTTP/1.1 404 Not Found' ) {
+					$retina_src = '';
+				} else {
+					$retina_src = 'data-src-retina="' . $retina_src . '"';
+				}
 
-		foreach ( $images as $img ) {
-			// Grab attributes
-			$title = $img->getAttribute('title');
-			$src = $img->getAttribute('src');
-		    $alt = $img->getAttribute('alt');
-		    // Remove height and width
-		    $img->removeAttribute('height');
-		    $img->removeAttribute('width');
-		    // Set src to loader image and data-src to actual source
-			$img->setAttribute( 'src', TPHelpers::get_theme_resource_uri( 'img/loader.gif' ) );
-			$img->setAttribute( 'data-src', $src );
-			// Add retina image if exists
-			$pathinfo = pathinfo( $src );
-			$retina_src = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '@2x.' . $pathinfo['extension'];
-			if ( @get_headers( $retina_src )[0] !== 'HTTP/1.1 404 Not Found' ) {
-				$img->setAttribute( 'data-src-retina', $retina_src );
-			}
-			// Create a noscript fallback
-			$noscript = $dom->createElement( 'noscript' );
-			$noscript_node = $img->parentNode->insertBefore( $noscript, $img );
-			$new_img = $dom->createElement( 'IMG' );
-		    $fallback_image = $noscript_node->appendChild( $new_img );
-		    $fallback_image->setAttribute( 'src', $src );
-		    $fallback_image->setAttribute( 'alt', $alt );
-		    $fallback_image->setAttribute( 'title', $title );
-		}
+				// Remove width and height attributes
+				$first_attributes = preg_replace( "/width|height=\"[0-9]*\"/", '', $first_attributes );
+				$last_attributes = preg_replace( "/width|height=\"[0-9]*\"/", '', $last_attributes );
 
-		$html = $dom->saveHTML();
-		$html = preg_replace( '~<(?:!DOCTYPE|/?(?:html|head|body))[^>]*>\s*~i', '', $html );
+				$image = '<img' . $first_attributes . 'src="' . TPHelpers::get_theme_resource_uri( 'img/loader.gif' ) . '" data-src="' . $src . '"' . $retina_src . $last_attributes . '><noscript><img' . $first_attributes . 'src="' . $src . '"' . $last_attributes . '></noscript>';
+
+				return $image;
+			},
+			$html
+		);
+
 		return $html;
 	}
 }
