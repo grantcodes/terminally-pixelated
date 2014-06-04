@@ -5,3 +5,8 @@ if (typeof jQuery === 'function') {
 // require(['jquery'], function($){
 
 // });
+
+require(['jquery', 'vendor/unveil'], function($){
+    $('html').removeClass('no-js');
+    $('main img').unveil();
+});

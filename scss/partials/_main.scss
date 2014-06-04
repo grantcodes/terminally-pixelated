@@ -28,6 +28,10 @@ html, body {
 img {
     max-width: 100%;
     height: auto;
+
+    .no-js &[data-src] {
+        display: none;
+    }
 }
 
 a {

@@ -22,6 +22,7 @@ class TerminallyPixelatedBase {
 		add_filter( 'timber_context', array( $this, 'timber_context' ) );
 		add_filter( 'timber_context', array( $this, 'schema' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
+		add_filter( 'the_content', array( $this, 'unveil_images' ), 0, 4 );
 	}
 
 	private function add_support() {
@@ -254,5 +255,39 @@ class TerminallyPixelatedBase {
 	            ga('create','<?php echo $ga_id; ?>');ga('send','pageview');
 	        </script>
 		<?php endif;
+	}
+
+	public function unveil_images( $html ) {
+		$dom = new DOMDocument();
+		$dom->formatOutput = true;
+		$dom->preserveWhiteSpace = false;
+
+		$dom->loadHTML( $html );
+		$images = $dom->getElementsByTagName( 'img' );
+
+		foreach ( $images as $img ) {
+			// Grab attributes
+			$title = $img->getAttribute('title');
+			$src = $img->getAttribute('src');
+		    $alt = $img->getAttribute('alt');
+		    // Remove height and width
+		    $img->removeAttribute('height');
+		    $img->removeAttribute('width');
+		    // Set src to loader image and data-src to actual source
+			$img->setAttribute( 'src', TPHelpers::get_theme_resource_uri( 'img/loader.gif' ) );
+			$img->setAttribute( 'data-src', $src );
+			// Create a noscript fallback
+			$noscript = $dom->createElement( 'noscript' );
+			$noscript_node = $img->parentNode->insertBefore( $noscript, $img );
+			$new_img = $dom->createElement( 'IMG' );
+		    $fallback_image = $noscript_node->appendChild( $new_img );
+		    $fallback_image->setAttribute( 'src', $src );
+		    $fallback_image->setAttribute( 'alt', $alt );
+		    $fallback_image->setAttribute( 'title', $title );
+		}
+
+		$html = $dom->saveHTML();
+		$html = preg_replace( '~<(?:!DOCTYPE|/?(?:html|head|body))[^>]*>\s*~i', '', $html );
+		return $html;
 	}
 }

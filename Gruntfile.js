@@ -76,6 +76,7 @@ module.exports = function( grunt ) {
         },
         files: {
           'require.js': 'requirejs/require.js',
+          'unveil.js': 'unveil/jquery.unveil.min.js',
           'bxslider.js': 'bxslider-4/jquery.bxslider.min.js'
         }
       },
