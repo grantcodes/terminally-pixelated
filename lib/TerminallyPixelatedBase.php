@@ -23,6 +23,8 @@ class TerminallyPixelatedBase {
 		add_filter( 'timber_context', array( $this, 'schema' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 		add_filter( 'the_content', array( $this, 'unveil_images' ), 0, 4 );
+		add_filter( 'wp_generate_attachment_metadata', array( $this, 'retina_support_attachment_meta' ), 10, 2 );
+		add_filter( 'delete_attachment', array( $this, 'delete_retina_support_images' ) );
 	}
 
 	private function add_support() {
@@ -257,6 +259,56 @@ class TerminallyPixelatedBase {
 		<?php endif;
 	}
 
+	public function retina_support_attachment_meta( $metadata, $attachment_id ) {
+	    foreach ( $metadata as $key => $value ) {
+	        if ( is_array( $value ) ) {
+	            foreach ( $value as $image => $attr ) {
+	                if ( is_array( $attr ) )
+	                    self::retina_support_create_images( get_attached_file( $attachment_id ), $attr['width'], $attr['height'], true );
+	            }
+	        }
+	    }
+
+	    return $metadata;
+	}
+
+	public function retina_support_create_images( $file, $width, $height, $crop = false ) {
+	    if ( $width || $height ) {
+	        $resized_file = wp_get_image_editor( $file );
+	        if ( ! is_wp_error( $resized_file ) ) {
+	            $filename = $resized_file->generate_filename( $width . 'x' . $height . '@2x' );
+
+	            $resized_file->resize( $width * 2, $height * 2, $crop );
+	            $resized_file->save( $filename );
+
+	            $info = $resized_file->get_size();
+
+	            return array(
+	                'file' => wp_basename( $filename ),
+	                'width' => $info['width'],
+	                'height' => $info['height'],
+	            );
+	        }
+	    }
+	    return false;
+	}
+
+	function delete_retina_support_images( $attachment_id ) {
+	    $meta = wp_get_attachment_metadata( $attachment_id );
+	    $upload_dir = wp_upload_dir();
+	    $path = pathinfo( $meta['file'] );
+	    foreach ( $meta as $key => $value ) {
+	        if ( 'sizes' === $key ) {
+	            foreach ( $value as $sizes => $size ) {
+	                $original_filename = $upload_dir['basedir'] . '/' . $path['dirname'] . '/' . $size['file'];
+	                $retina_filename = substr_replace( $original_filename, '@2x.', strrpos( $original_filename, '.' ), strlen( '.' ) );
+	                if ( file_exists( $retina_filename ) )
+	                    unlink( $retina_filename );
+	            }
+	        }
+	    }
+	}
+
 	public function unveil_images( $html ) {
 		$dom = new DOMDocument();
 		$dom->formatOutput = true;
@@ -276,6 +328,12 @@ class TerminallyPixelatedBase {
 		    // Set src to loader image and data-src to actual source
 			$img->setAttribute( 'src', TPHelpers::get_theme_resource_uri( 'img/loader.gif' ) );
 			$img->setAttribute( 'data-src', $src );
+			// Add retina image if exists
+			$pathinfo = pathinfo( $src );
+			$retina_src = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '@2x.' . $pathinfo['extension'];
+			if ( @get_headers( $retina_src )[0] !== 'HTTP/1.1 404 Not Found' ) {
+				$img->setAttribute( 'data-src-retina', $retina_src );
+			}
 			// Create a noscript fallback
 			$noscript = $dom->createElement( 'noscript' );
 			$noscript_node = $img->parentNode->insertBefore( $noscript, $img );
