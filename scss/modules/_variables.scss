@@ -7,7 +7,7 @@ $legacy_support_for_ie: false;
 $ms-ratio: $fourth;
 $font-size: 1;
 $ms-base: $font-size;
-$line-height: ms($font-size, 1);
+$line-height: 1.4;
 
 $font-sans: Helvetica, Arial, sans-serif;
 $font-serif: Georgia, serif;
@@ -15,16 +15,6 @@ $font-h: $font-sans;
 $font-body: $font-sans;
 
 $normalize_headings: false;
-
-$typecsset-base-font-size: 16px * $font-size;
-$typecsset-base-line-height: 16px * $line-height;
-
-$typecsset-h1-size: ms(3, $typecsset-base-font-size);
-$typecsset-h2-size: ms(2, $typecsset-base-font-size);
-$typecsset-h3-size: ms(1, $typecsset-base-font-size);
-$typecsset-h4-size: ms(0, $typecsset-base-font-size);
-$typecsset-h5-size: ms(0, $typecsset-base-font-size);
-$typecsset-h6-size: ms(-1, $typecsset-base-font-size);
 
 // Break Points
 

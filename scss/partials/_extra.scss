@@ -3,7 +3,7 @@ blockquote {
     margin-left: 0;
     font-family: $font-serif;
     font-style: italic;
-    @include typecsset-space(padding-left, 1);
+    @include tp-space(padding-left, 1);
     @include tp-padding-leader(.5);
     @include tp-padding-trailer(.5);
 
