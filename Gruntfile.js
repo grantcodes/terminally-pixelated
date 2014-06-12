@@ -11,8 +11,14 @@ module.exports = function( grunt ) {
 
   var config = {
     sassFiles: ['scss/style.scss', 'scss/editor-style.scss'],
-    uglify: []
+    sassPartials: ['scss/**/_*.scss'],
+    cssFiles: ['style.css', 'main.css'],
+    jsFiles: ['js/**/*.js'],
+    templateFiles: ['**/*.php', 'views/**/*.twig'],
+    devDomain: 'local.wordpress-trunk.dev'
   };
+  config.allSassFiles = config.sassFiles.concat(config.sassPartials);
+  config.bsFiles = config.cssFiles.concat(config.jsFiles).concat(config.templateFiles)
 
   grunt.initConfig({
     compass: {
@@ -34,14 +40,21 @@ module.exports = function( grunt ) {
     watch: {
       compass: {
         files: '**/*.scss',
-        tasks: ['compass', 'autoprefixer', 'csso']
-      },
-      livereload: {
-        options: {
-          livereload: true
+        tasks: ['cssCompileDev']
+      }
+    },
+
+    browserSync: {
+      dev: {
+        bsFiles: {
+          src: config.bsFiles
         },
-        files: ['**/*.css', '**/*.js', '**/*.php', '**/*.twig']
-      },
+        options: {
+          watchTask: true,
+          debugInfo: true,
+          proxy: config.devDomain,
+        }
+      }
     },
 
     autoprefixer: {
@@ -49,9 +62,6 @@ module.exports = function( grunt ) {
         browsers: ['last 2 version', 'ie 8', 'ie 9']
       },
       dist: {
-        options: {
-          // Target-specific options go here.
-        },
         src: '*.css',
         dest: ''
       }
@@ -134,7 +144,12 @@ module.exports = function( grunt ) {
 });
 
 
-grunt.registerTask('default', ['watch']);
-grunt.registerTask('build', ['bowercopy', 'compass', 'autoprefixer', 'csso', 'requirejs', 'clean:icons', 'favicons']);
+grunt.registerTask('cssCompileDev', ['compass']);
+grunt.registerTask('cssCompileDist', ['compass', 'autoprefixer', 'csso']);
+grunt.registerTask('jsCompile', ['requirejs']);
+grunt.registerTask('iconsCompile', ['clean:icons', 'favicons']);
+grunt.registerTask('default', ['browserSync', 'watch']);
+grunt.registerTask('serve', ['default']);
+grunt.registerTask('build', ['bowercopy', 'cssCompileDist', 'jsCompile', 'iconsCompile']);
 
 };
