@@ -14,11 +14,12 @@ module.exports = function( grunt ) {
     sassPartials: ['scss/**/_*.scss'],
     cssFiles: ['style.css', 'main.css'],
     jsFiles: ['js/**/*.js'],
-    templateFiles: ['**/*.php', 'views/**/*.twig'],
-    devDomain: 'local.wordpress-trunk.dev'
+    templateFiles: ['**/*.php', 'views/**/*.twig']
   };
   config.allSassFiles = config.sassFiles.concat(config.sassPartials);
   config.bsFiles = config.cssFiles.concat(config.jsFiles).concat(config.templateFiles)
+
+  var tpConfig = require('./terminally-pixelated.json');
 
   grunt.initConfig({
     compass: {
@@ -41,6 +42,10 @@ module.exports = function( grunt ) {
       compass: {
         files: '**/*.scss',
         tasks: ['cssCompileDev']
+      },
+      tpconfig: {
+        files: 'terminally-pixelated.json',
+        tasks: ['jsontoscss']
       }
     },
 
@@ -52,7 +57,7 @@ module.exports = function( grunt ) {
         options: {
           watchTask: true,
           debugInfo: true,
-          proxy: config.devDomain,
+          proxy: tpConfig.devDomain.replace(/'/g, ''),
         }
       }
     },
@@ -143,6 +148,13 @@ module.exports = function( grunt ) {
 
 });
 
+grunt.registerTask('jsontoscss', 'Converts the config json file into scss variables', function(){
+  grunt.log.writeln('Generating sass variables');
+  var json2sass = require('json2sass');
+  var input = json2sass.readFile('../../../terminally-pixelated.json');
+  var scss = json2sass.getContent(input, 'scss');
+  grunt.file.write('scss/modules/_tp-config.scss', scss);
+});
 
 grunt.registerTask('cssCompileDev', ['compass']);
 grunt.registerTask('cssCompileDist', ['compass', 'autoprefixer', 'csso']);
@@ -150,6 +162,6 @@ grunt.registerTask('jsCompile', ['requirejs']);
 grunt.registerTask('iconsCompile', ['clean:icons', 'favicons']);
 grunt.registerTask('default', ['browserSync', 'watch']);
 grunt.registerTask('serve', ['default']);
-grunt.registerTask('build', ['bowercopy', 'cssCompileDist', 'jsCompile', 'iconsCompile']);
+grunt.registerTask('build', ['bowercopy', 'jsontoscss', 'cssCompileDist', 'jsCompile', 'iconsCompile']);
 
 };

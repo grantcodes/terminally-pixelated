@@ -16,11 +16,6 @@ $font-body: $font-sans;
 
 $normalize_headings: false;
 
-// Break Points
-
-$mid-break: 30em;
-$large-break: 60em;
-
 // Grid
 
 $small-cols: 4;
@@ -34,7 +29,7 @@ $large-content-cols: 8;
 $large-sidebar-cols: 4;
 
 $susy: (
-    container: 60em,
+    container: $large-break,
     columns: 12,
     gutters: .25,
     math: fluid,

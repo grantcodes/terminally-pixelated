@@ -28,4 +28,20 @@ class TPHelpers {
 		<?php
 	}
 
+	/**
+	 * Gets a variable from the terminally-pixelated.json file
+	 * @param  string  $key the variable to retrieve
+	 * @return mixed   the value of the variable
+	 */
+	public static function get_setting( $key ) {
+		if ( !self::$json_settings ) {
+			$file = file_get_contents( get_stylesheet_directory() . '/terminally-pixelated.json' );
+			self::$json_settings = (array) json_decode( $file );
+		}
+		if ( isset( self::$json_settings[$key] ) ) {
+			return self::$json_settings[$key];
+		}
+		return false;
+	}
+
 }

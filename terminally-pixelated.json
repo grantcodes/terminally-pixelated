@@ -1,0 +1,5 @@
+{
+    "devDomain": "'local.wordpress-trunk.dev'",
+    "mid-break": "30em",
+    "large-break": "60em"
+}
