@@ -160,6 +160,30 @@ module.exports = function( grunt ) {
           'docs/styleguide': 'scss/*/**/*.scss'
         }
       }
+    },
+
+    phantomcss: {
+      options: {},
+      large_screen: {
+        options: {
+          screenshots: 'test/visual/large/screenshots/',
+          results: 'results/visual/large',
+          viewportSize: [1024, 768]
+        },
+        src: [
+          'test/visual/**/*.js'
+        ]
+      },
+      small_screen: {
+        options: {
+          screenshots: 'test/visual/small/screenshots/',
+          results: 'results/visual/small',
+          viewportSize: [320, 480]
+        },
+        src: [
+          'test/visual/**/*.js'
+        ]
+      }
     }
 
 });
