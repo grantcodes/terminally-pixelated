@@ -1,3 +1,10 @@
+// Forms
+//
+// Covers styles used for forms, such as the `<input>` and `<select>`
+// elements.
+//
+// Styleguide 1
+
 @include scut-reset-form;
 @include scut-reset-pointer;
 @include scut-reset-button;
@@ -39,12 +46,36 @@ input[type=search] {
     @include sassy-button('flat', .2em, 1em, $button-bgc);
 }
 
+// General input styles
+//
+// :hover - Simple hover style
+// :focus - Focus and active styles
+// :active - Focus and active styles
+//
+// markup:
+// <input class="{$modifiers}" />
+// <select class="{$modifiers}">
+//  <option>Option</option>
+// </select>
+// <textarea class="{$modifiers}"></textarea>
+//
+// Styleguide 1.1
 input,
 select,
 textarea {
 	@extend %input;
 }
 
+// Buttons
+//
+// :hover - Simple hover style
+// :focus - Focus style
+// :active - Active style
+//
+// markup:
+// <button class="button {$modifiers}">Button</button>
+//
+// Styleguide 1.2
 button,
 .button,
 input[type=submit] {

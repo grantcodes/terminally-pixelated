@@ -15,6 +15,7 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-csso": "~0.6.1",
     "grunt-favicons": "^0.6.4",
+    "grunt-styleguide": "^0.2.15",
     "json2sass": "git://github.com/renancouto/json2sass",
     "matchdep": "~0.3.0"
   },

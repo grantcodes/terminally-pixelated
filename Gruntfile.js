@@ -144,6 +144,22 @@ module.exports = function( grunt ) {
 
     clean: {
       icons: ['views/partials/icons.twig']
+    },
+
+    styleguide: {
+      options: {
+        framework: {
+          name: 'kss'
+        },
+        template: {
+          src: 'styleguide'
+        }
+      },
+      dist: {
+        files: {
+          'docs/styleguide': 'scss/*/**/*.scss'
+        }
+      }
     }
 
 });
