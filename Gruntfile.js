@@ -45,7 +45,7 @@ module.exports = function( grunt ) {
       },
       tpconfig: {
         files: 'terminally-pixelated.json',
-        tasks: ['jsontoscss']
+        tasks: ['shared_config']
       }
     },
 
@@ -125,21 +125,10 @@ module.exports = function( grunt ) {
         html: 'views/partials/icons.twig',
         HTMLPrefix: '{{icon_path}}'
       },
-      your_target: {
+      icons: {
         src: 'icons/icon.png',
         dest: 'icons'
       },
-    },
-
-    requirejs: {
-      compile: {
-        options: {
-          baseUrl: "js",
-          mainConfigFile: "js/main.js",
-          name: "main",
-          out: "js/main.min.js"
-        }
-      }
     },
 
     clean: {
@@ -184,24 +173,30 @@ module.exports = function( grunt ) {
           'test/visual/**/*.js'
         ]
       }
+    },
+
+    shared_config: {
+      filesTest: {
+        options: {
+          name: 'globalConfig',
+          cssFormat: 'dash',
+          jsFormat: 'camelcase'
+        },
+        src: 'terminally-pixelated.json',
+        dest: [
+          'scss/modules/_tp-config.scss'
+        ]
+      }
     }
 
 });
 
-grunt.registerTask('jsontoscss', 'Converts the config json file into scss variables', function(){
-  grunt.log.writeln('Generating sass variables');
-  var json2sass = require('json2sass');
-  var input = json2sass.readFile('../../../terminally-pixelated.json');
-  var scss = json2sass.getContent(input, 'scss');
-  grunt.file.write('scss/modules/_tp-config.scss', scss);
-});
-
 grunt.registerTask('cssCompileDev', ['compass']);
 grunt.registerTask('cssCompileDist', ['compass', 'autoprefixer', 'csso']);
-grunt.registerTask('jsCompile', ['requirejs']);
+grunt.registerTask('jsCompile', []);
 grunt.registerTask('iconsCompile', ['clean:icons', 'favicons']);
 grunt.registerTask('default', ['browserSync', 'watch']);
 grunt.registerTask('serve', ['default']);
-grunt.registerTask('build', ['bowercopy', 'jsontoscss', 'cssCompileDist', 'jsCompile', 'iconsCompile']);
+grunt.registerTask('build', ['bowercopy', 'shared_config', 'cssCompileDist', 'jsCompile', 'iconsCompile']);
 
 };
