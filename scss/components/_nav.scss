@@ -38,14 +38,14 @@
 
     transition: opacity $transition-mid, max-height $transition-mid;
 
-    @include breakpoint($mid-break, '.lt-ie9') {
+    @include breakpoint($mid-break) {
         opacity: 0;
     }
 }
 
 .main-nav__li:hover > .main-nav__sub-nav,
 .main-nav__sub-nav:hover {
-    @include breakpoint($mid-break, '.lt-ie9') {
+    @include breakpoint($mid-break) {
         opacity: 1;
     }
 }

@@ -8,14 +8,14 @@
 }
 
 .footer-widgets-wrapper {
-    @include breakpoint($large-break, '.lt-ie9') {
+    @include breakpoint($large-break) {
         display: table;
         width: 100%;
     }
 }
 
 .footer-widgets {
-    @include breakpoint($large-break, '.lt-ie9') {
+    @include breakpoint($large-break) {
         display: table-cell;
         padding-left: $grid-padding;
         &:first-child {

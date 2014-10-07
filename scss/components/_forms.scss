@@ -170,7 +170,7 @@ input[type=submit] {
     }
 
     .left_label {
-        @include breakpoint($mid-break, '.lt-ie9') {
+        @include breakpoint($mid-break) {
             .gfield_label {
                 @include span(3 of 10);
                 // text-align: right;
@@ -183,7 +183,7 @@ input[type=submit] {
                 margin-top: 0.3em;
             }
         }
-        @include breakpoint($large-break, '.lt-ie9') {
+        @include breakpoint($large-break) {
             .gfield_label {
                 @include span(2 of 10);
                 // text-align: right;
@@ -200,7 +200,7 @@ input[type=submit] {
     }
 
     .right_label {
-        @include breakpoint($mid-break, '.lt-ie9') {
+        @include breakpoint($mid-break) {
             .gfield_label {
                 @include span(last 3 of 10);
                 margin-top: 0.3em;
@@ -283,13 +283,13 @@ input[type=submit] {
     }
 
     .ginput_cardinfo_left {
-        @include breakpoint($mid-break, '.lt-ie9') {
+        @include breakpoint($mid-break) {
             @include span(5 of 10);
         }
     }
 
     .ginput_cardinfo_right {
-        @include breakpoint($mid-break, '.lt-ie9') {
+        @include breakpoint($mid-break) {
             @include span(last 5 of 10);
         }
     }

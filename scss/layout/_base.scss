@@ -23,8 +23,7 @@
 		margin-bottom: 0;
 		@include span($mid-content-cols of $mid-cols);
 	}
-	@include breakpoint($large-break, '.lt-ie9') {
-		margin-bottom: 0;
+	@include breakpoint($large-break) {
 		@include span($large-content-cols of $large-cols);
 	}
 }
