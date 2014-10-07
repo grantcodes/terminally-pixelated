@@ -17,7 +17,6 @@ class TerminallyPixelatedBase {
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_action( 'wp_footer', array( $this, 'google_analytics' ), 100 );
 		add_filter( 'style_loader_tag', array( $this, 'tidy_style_tag' ) );
-		add_filter( 'clean_url', array( $this, 'add_require_attributes' ), 10, 3 );
 		add_action( 'admin_init', array( $this, 'remove_image_links' ) );
 		add_filter( 'timber_context', array( $this, 'timber_context' ) );
 		add_filter( 'timber_context', array( $this, 'schema' ) );
@@ -116,20 +115,9 @@ class TerminallyPixelatedBase {
 	}
 
 	public function add_scripts() {
-		wp_enqueue_script( 'require', TPHelpers::get_theme_resource_uri( 'js/vendor/require.js' ), array( 'jquery' ) , 1, true );
-	}
-
-	function add_require_attributes( $good_protocol_url, $original_url, $_context ) {
-		if ( false !== strpos($original_url, 'require.js' ) ) {
-			remove_filter( 'clean_url', array( $this, 'add_require_attributes' ), 10, 3 );
-			$url_parts = parse_url( $good_protocol_url );
-			if ( !SCRIPT_DEBUG ) {
-				return $url_parts['scheme'] . '://' . $url_parts['host'] . $url_parts['path'] . "' data-main='" . TPHelpers::get_theme_resource_uri( 'js/main.min' );
-			} else {
-				return $url_parts['scheme'] . '://' . $url_parts['host'] . $url_parts['path'] . "' data-main='" . TPHelpers::get_theme_resource_uri( 'js/main' );
-			}
-		}
-		return $good_protocol_url;
+		wp_register_script( 'unveil', TPHelpers::get_theme_resource_uri( '/js/vendor/unveil.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'bxslider', TPHelpers::get_theme_resource_uri( '/js/vendor/bxslider.js' ), array( 'jquery' ), false, true );
+		wp_enqueue_script( 'main', TPHelpers::get_theme_resource_uri( '/js/main.js' ), array( 'jquery', 'unveil' ), false, true );
 	}
 
 	public function add_sidebars() {

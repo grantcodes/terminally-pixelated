@@ -29,7 +29,6 @@
     "normalize.scss": "kristerkari/normalize.scss",
     "modular-scale": "~2.0.5",
     "susy": "~2.1.1",
-    "requirejs": "~2.1.11",
     "sassy-buttons": "*",
     "breakpoint-sass": "~2.4.2",
     "animate.sass": "*",
