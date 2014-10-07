@@ -34,6 +34,16 @@ img {
     }
 }
 
+// Links
+// 
+// :hover - hover state
+// :active - active state
+// :vistited - visited state
+// 
+// markup:
+// <a href="/" class="{$modifiers}">Link</a>
+// 
+// Styleguide 1.5
 a {
 	color: $link-c;
 	@include transition(color $transition-fast);
