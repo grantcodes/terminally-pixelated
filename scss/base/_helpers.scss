@@ -1,0 +1,7 @@
+.screen-reader-text {
+    @extend %scut-hide-visually;
+}
+
+.invisible {
+    @extend %scut-hide-visually;
+}

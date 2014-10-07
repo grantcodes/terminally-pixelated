@@ -17,7 +17,7 @@ module.exports = function( grunt ) {
     templateFiles: ['**/*.php', 'views/**/*.twig']
   };
   config.allSassFiles = config.sassFiles.concat(config.sassPartials);
-  config.bsFiles = config.cssFiles.concat(config.jsFiles).concat(config.templateFiles)
+  config.bsFiles = config.cssFiles.concat(config.jsFiles).concat(config.templateFiles);
 
   var tpConfig = require('./terminally-pixelated.json');
 
@@ -184,7 +184,7 @@ module.exports = function( grunt ) {
         },
         src: 'terminally-pixelated.json',
         dest: [
-          'scss/modules/_tp-config.scss'
+          'scss/utils/_tp-config.scss'
         ]
       }
     }

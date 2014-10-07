@@ -1,0 +1,25 @@
+.main-footer {
+    clear: both;
+    @include tp-leader(2);
+}
+
+.main-footer__inner {
+    @extend %tp-container;
+}
+
+.footer-widgets-wrapper {
+    @include breakpoint($large-break, '.lt-ie9') {
+        display: table;
+        width: 100%;
+    }
+}
+
+.footer-widgets {
+    @include breakpoint($large-break, '.lt-ie9') {
+        display: table-cell;
+        padding-left: $grid-padding;
+        &:first-child {
+            padding-left: 0;
+        }
+    }
+}

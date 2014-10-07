@@ -1,0 +1,47 @@
+.main-nav {
+    @include tp-trailer(2);
+}
+
+.main-nav__ul {
+    @extend %tp-container;
+    @extend %scut-list-unstyled;
+    @include breakpoint($mid-break, '.lt-ie9') {
+        @include scut-list-inline;
+        @include tp-container;
+    }
+}
+
+.main-nav__li {
+    @include breakpoint($mid-break, '.lt-ie9') {
+        margin-right: 0.5em;
+    }
+}
+
+.main-nav__a {
+    display: block;
+}
+
+.main-nav__sub-nav {
+    @extend %scut-list-unstyled;
+    margin-left: 0;
+    @include breakpoint($mid-break, '.lt-ie9') {
+        position: absolute;
+        max-height: 0;
+        overflow: hidden;
+        left: -9999em;
+        min-width: 10em;
+        max-width: 20em;
+    }
+}
+
+.main-nav__sub-nav__a {
+    display: block;
+}
+
+.main-nav__li:hover > .main-nav__sub-nav,
+.main-nav__sub-nav:hover {
+    @include breakpoint($mid-break, '.lt-ie9') {
+        max-height: 99em;
+        left: auto;
+    }
+}

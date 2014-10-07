@@ -1,0 +1,30 @@
+%tp-container {
+	@include tp-container;
+}
+
+@include global-box-sizing(border-box);
+
+.main-wrapper {
+	// @extend %tp-container;
+}
+
+.main-header__inner {
+	@extend %tp-container;
+}
+
+.main-content-sidebar-wrap {
+	@extend %tp-container;
+}
+
+.main-content {
+	@include tp-trailer(2);
+
+	@include breakpoint($mid-break) {
+		margin-bottom: 0;
+		@include span($mid-content-cols of $mid-cols);
+	}
+	@include breakpoint($large-break, '.lt-ie9') {
+		margin-bottom: 0;
+		@include span($large-content-cols of $large-cols);
+	}
+}

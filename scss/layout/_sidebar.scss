@@ -1,0 +1,18 @@
+.main-aside {
+    @include breakpoint($mid-break) {
+        @include span($mid-sidebar-cols of $mid-cols);
+        @include omega;
+    }
+    @include breakpoint($large-break, '.lt-ie9') {
+        @include span($large-sidebar-cols of $large-cols);
+        @include omega;
+    }
+    
+    .widget {
+        @include tp-trailer(2);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
