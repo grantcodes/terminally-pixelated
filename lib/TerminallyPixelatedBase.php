@@ -107,7 +107,7 @@ class TerminallyPixelatedBase {
 	}
 
 	public function add_styles() {
-		if ( !SCRIPT_DEBUG ) {
+		if ( !defined( 'SCRIPT_DEBUG' ) || false === SCRIPT_DEBUG ) {
 			wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/main.css' ), false, 1 );
 		} else {
 			wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/style.css' ), false, 0 );
