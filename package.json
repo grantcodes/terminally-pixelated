@@ -6,18 +6,18 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.5",
-    "grunt-autoprefixer": "~1.0.1",
-    "grunt-bowercopy": "~1.1.0",
+    "grunt-autoprefixer": "~2.0.0",
+    "grunt-bowercopy": "~1.2.0",
     "grunt-browser-sync": "^1.5.3",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-compass": "~1.0.1",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-csso": "~0.6.3",
-    "grunt-favicons": "^0.6.1",
-    "grunt-shared-config": "^0.3.8",
-    "grunt-styleguide": "^0.2.15",
+    "grunt-csso": "~0.6.5",
+    "grunt-favicons": "^0.6.4",
+    "grunt-shared-config": "^0.3.11",
+    "grunt-styleguide": "^0.2.17",
     "matchdep": "~0.3.0",
-    "phantomjs": "^1.9.10"
+    "phantomjs": "^1.9.12"
   },
   "repository": {
     "type": "git",
