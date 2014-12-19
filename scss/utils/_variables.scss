@@ -5,12 +5,12 @@ $legacy_support_for_ie: false;
 // Fonts
 
 $ms-ratio: $fourth;
-$font-size: 1;
+$font-size: 1.1;
 $ms-base: $font-size;
 $line-height: 1.4;
 
-$font-sans: Helvetica, Arial, sans-serif;
-$font-serif: Georgia, serif;
+$font-sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$font-serif: 'Merriweather' ,Georgia, serif;
 $font-h: $font-sans;
 $font-body: $font-sans;
 

@@ -107,6 +107,7 @@ class TerminallyPixelatedBase {
 	}
 
 	public function add_styles() {
+		wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,300italic,700italic|Merriweather:300italic,300,700,700italic', false );
 		if ( !defined( 'SCRIPT_DEBUG' ) || false === SCRIPT_DEBUG ) {
 			wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/main.css' ), false, 1 );
 		} else {
