@@ -14,9 +14,15 @@ input[type=search] {
     box-sizing: border-box;
 }
 
+// Set up some variables
+$input-border-radius: .2em;
+$input-font-size: 1em;
+$input-padding-vertical: .3em;
+$input-padding-horizontal: .5em;
+
 %input {
     max-width: 100%;
-    @include sassy-button-structure(.2em, 1em, .3em .5em);
+    @include sassy-button-structure($input-border-radius, $input-font-size, $input-padding-vertical $input-padding-horizontal);
     color: $input-c;
     background: $input-bg;
     border: $input-border;
@@ -34,7 +40,7 @@ input[type=search] {
     &:focus,
     &:active {
         color: $input-c--active;
-        background: $input-bg--active;;
+        background: $input-bg--active;
         border: $input-border--active;
         box-shadow: 0 0 .2em rgba(0,0,0,.3);
     }
@@ -312,4 +318,206 @@ input[type=submit] {
         display: none;
     }
 
+}
+
+
+// Custom select overwrites
+/*
+ * Selecter v3.2.3 - 2014-10-24
+ * A jQuery plugin for replacing default select elements. Part of the Formstone Library.
+ * http://formstone.it/selecter/
+ *
+ * Copyright 2014 Ben Plum; MIT Licensed
+ */
+
+
+.selecter {
+  margin: 0;
+}
+
+.selecter-selected {
+  @extend %input;
+  padding-right: $input-padding-horizontal * 2 + .6em;
+  display: block;
+}
+.selecter-selected:after {
+  right: $input-padding-horizontal;
+  border-left: .3em solid transparent;
+  border-right: .3em solid transparent;
+  border-top: .3em solid darken($input-bg, 30%);
+}
+.no-touch .selecter-selected:hover {
+  // color: #333333;
+}
+.no-touch .selecter.disabled .selecter-selected:hover {
+  // color: #cccccc;
+}
+.selecter-options {
+  border: $input-border--active;
+  border-top: none;
+  background: $input-bg--active;
+  border-radius: 0 0 $input-border-radius $input-border-radius;
+  box-shadow: 0 0 .2em rgba(0,0,0,.3);
+}
+.selecter-group {
+  border-bottom: 1px solid darken($input-bg--active, 20%);
+  color: darken($input-c--active, 20%);
+  font-size: $input-font-size;
+  padding: $input-padding-vertical $input-padding-horizontal;
+  text-transform: uppercase;
+}
+.selecter-item {
+  background: $input-bg--active;
+  border-bottom: 1px solid darken($input-bg--active, 20%);
+  color: $input-c--active;
+  font-size: $input-font-size;
+  padding: $input-padding-vertical $input-padding-horizontal;
+}
+.selecter-item.selected {
+  background: $input-bg;
+}
+.selecter-item.disabled {
+  color: lighten($input-c, 30%);
+}
+.selecter-item:first-child {
+  border-radius: 0;
+}
+.selecter-item:last-child {
+  border-bottom: 0;
+  border-radius: 0 0 $input-border-radius $input-border-radius;
+}
+.no-touch .selecter-item:hover,
+.no-touch .selecter-item.selected:hover {
+  color: #333333;
+  background-color: #cccccc;
+}
+.selecter-item.disabled,
+.no-touch .selecter-item.disabled:hover {
+  color: #cccccc;
+  background-color: #ffffff;
+}
+.selecter.open .selecter-selected {
+  border-radius: $input-border-radius $input-border-radius 0 0;
+}
+.selecter.open .selecter-selected,
+.selecter.focus .selecter-selected {
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.selecter.cover .selecter-options {
+  border-width: 1px;
+  border-radius: $input-border-radius;
+}
+.selecter.cover .selecter-options .selecter-item.first {
+  border-radius: $input-border-radius $input-border-radius 0 0;
+}
+.selecter.cover.open .selecter-selected {
+  border-radius: $input-border-radius $input-border-radius 0 0;
+}
+.selecter.bottom .selecter-options {
+  border-width: 1px 1px 0;
+}
+.selecter.bottom .selecter-item:last-child {
+  border: none;
+}
+.selecter.bottom.open .selecter-selected {
+  border-radius: 0 0 $input-border-radius $input-border-radius;
+}
+.selecter.bottom.open .selecter-options {
+  border-radius: $input-border-radius $input-border-radius 0 0;
+}
+.selecter.bottom .cover.open .selecter-selected {
+  border-radius: $input-border-radius;
+}
+.selecter.bottom .cover.open .selecter-options {
+  border-radius: $input-border-radius;
+}
+.selecter.multiple .selecter-options {
+  border-width: 1px;
+  border-radius: $input-border-radius;
+}
+.selecter.disabled .selecter-selected {
+  background: #ffffff;
+  border-color: #cccccc;
+  color: #cccccc;
+}
+.selecter.disabled .selecter-options {
+  background: #ffffff;
+  border-color: #cccccc;
+}
+.selecter.disabled .selecter-group,
+.selecter.disabled .selecter-item {
+  border-color: #cccccc;
+  color: #cccccc;
+}
+.selecter.disabled .selecter-item.selected,
+.no-touch .selecter.disabled .selecter-item.selected:hover {
+  background: #fafafa;
+}
+.selecter.disabled .selecter-item,
+.no-touch .selecter.disabled .selecter-item:hover {
+  color: #cccccc;
+  background-color: #ffffff;
+}
+
+
+// Picker custom checkbox and radio overwrites
+
+$picker-size: round($font-size * 16px);
+
+.picker {
+  display: inline-block;
+  overflow: visible;
+}
+
+.picker .picker-handle {
+  width: $picker-size;
+  height: $picker-size;
+  padding: 0;
+}
+
+.picker.picker-checkbox .picker-handle {
+  border: none;
+  border-radius: 0;
+}
+
+.picker.picker-checkbox .picker-flag {
+  @extend %input;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.picker.picker-checkbox.checked .picker-flag {
+  background: url(img/icons/check.svg);
+  background-repeat: no-repeat;
+  background-size: 80% auto;
+  background-position: center;
+}
+
+
+.picker.picker-radio .picker-handle {
+  @extend %input;
+  display: inline-block;
+  border-width: 1px;
+  border-radius: 100%;
+  position: relative;
+  padding: 0;
+}
+
+.picker.picker-radio .picker-flag {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  left: 4px;
+  bottom: 4px;
+  border-radius: 100%;
+  background: none;
+  width: $picker-size - 10px;
+  height: $picker-size - 10px;
+  margin: 0;
+}
+
+.picker.picker-radio.checked .picker-flag {
+  background-color: $input-c--hover;
 }

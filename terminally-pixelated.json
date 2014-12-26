@@ -1,5 +1,10 @@
 {
-    "devDomain": "'local.wordpress.dev'",
+    "devDomain": "'local.kilbryde.dev'",
     "mid-break": "30em",
-    "large-break": "60em"
+    "large-break": "60em",
+    "classes": {
+        "nav": "main-nav",
+        "content": "main-content",
+        "footer": "main-footer"
+    }
 }

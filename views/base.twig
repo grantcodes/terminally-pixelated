@@ -21,10 +21,10 @@
                 </header>
             {% endblock %}
 
-            {% include 'partials/nav.twig' with { 'nav_class': 'main-nav', 'menu': main_menu } %}
+            {% include 'partials/nav.twig' with { 'nav_class': terminally_pixelated.classes.nav, 'menu': main_menu } %}
 
             <div class="main-content-sidebar-wrap">
-                <main role="main" class="main-content {% if not main_sidebar %}main-content--full-width{% endif %}" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/{{schema.type}}">
+                <main role="main" class="{{terminally_pixelated.classes.content}} {% if not main_sidebar %}{{terminally_pixelated.classes.content}}--full-width{% endif %}" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/{{schema.type}}">
                     {% if title %}
                         <header role="heading">
                             <h1 class="posttitle p-name">{{title}}</h1>
@@ -49,8 +49,8 @@
                 {% endif %}
             </div>
 
-            <footer class="main-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
-                <div class="main-footer__inner">
+            <footer class="{{terminally_pixelated.classes.footer}}" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+                <div class="{{terminally_pixelated.classes.footer}}__inner">
                     {% if footer_widgets %}
                         <section class="footer-widgets-wrapper">
                             {% for widget_area in footer_widgets %}

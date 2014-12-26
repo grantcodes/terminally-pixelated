@@ -33,6 +33,21 @@
     "breakpoint-sass": "~2.5.0",
     "animate.sass": "*",
     "bxslider-4": "~4.1.2",
-    "unveil": "~1.3.0"
+    "unveil": "~1.3.0",
+    "Boxer": "~3.3.0",
+    "Naver": "~3.1.2",
+    "Pager": "~1.1.0",
+    "Picker": "~3.1.2",
+    "Ranger": "~3.1.0",
+    "Roller": "~3.2.7",
+    "Rubberband": "~3.1.2",
+    "Shifter": "~3.1.2",
+    "Selecter": "~3.2.3",
+    "Scroller": "~3.1.2",
+    "Sizer": "~3.0.6",
+    "Stepper": "~3.0.8",
+    "Tabber": "~3.0.13",
+    "Wallpaper": "~3.1.18",
+    "Zoomer": "~3.0.13"
   }
 }

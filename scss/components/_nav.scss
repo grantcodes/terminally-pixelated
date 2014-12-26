@@ -72,3 +72,43 @@
         background: $subnav-link-bg--current;
     }
 }
+
+
+// Naver overwrites
+
+.naver-handle {
+    background-color: $nav-bgc;
+    color: $nav-link-c;
+    border: none;
+    font-size: 1em;
+    @include tp-space(padding, .5);
+}
+
+.naver-handle:after {
+    display: block;
+    border: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    width: 15px;
+    height: 15px;
+    box-shadow: none;
+    background-image: url(img/icons/menu.svg);
+
+    .naver.open & {
+        background-size: contain;
+        background-image: url(img/icons/cross.svg);
+        content: '';
+    }
+}
+
+.naver.enabled .naver-container {
+    background-color: $nav-bgc;
+    color: $nav-link-c;
+    border: none;
+}
+
+.naver-wrapper {
+    transition: all $transition-mid;
+}

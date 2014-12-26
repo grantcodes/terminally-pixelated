@@ -117,9 +117,28 @@ class TerminallyPixelatedBase {
 	}
 
 	public function add_scripts() {
+		// Unveil for lazy loading images
 		wp_register_script( 'unveil', TPHelpers::get_theme_resource_uri( '/js/vendor/unveil.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'bxslider', TPHelpers::get_theme_resource_uri( '/js/vendor/bxslider.js' ), array( 'jquery' ), false, true );
-		wp_enqueue_script( 'main', TPHelpers::get_theme_resource_uri( '/js/main.js' ), array( 'jquery', 'unveil' ), false, true );
+		// Formstone scripts for various front end niceness
+		wp_register_script( 'fs-boxer', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/boxer.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-naver', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/naver.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-pager', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/pager.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-picker', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/picker.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-ranger', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/ranger.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-roller', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/roller.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-rubberband', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/rubberband.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-scroller', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/scroller.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-selecter', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/selecter.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-shifter', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/shifter.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-sizer', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/sizer.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-stepper', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/stepper.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-tabber', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/tabber.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-wallpaper', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/wallpaper.js' ), array( 'jquery' ), false, true );
+		wp_register_script( 'fs-zoomer', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/zoomer.js' ), array( 'jquery' ), false, true );
+		// Base script
+		wp_register_script( 'tp-main', TPHelpers::get_theme_resource_uri( '/js/main.js' ), array( 'jquery', 'unveil', 'fs-naver', 'fs-picker', 'fs-selecter' ), false, true );
+		wp_localize_script( 'tp-main', 'TerminallyPixelated', TPHelpers::get_setting() );
+		wp_enqueue_script( 'tp-main' );
 	}
 
 	public function add_sidebars() {
@@ -205,6 +224,9 @@ class TerminallyPixelatedBase {
 
 		// Icon path
 		$context['icon_path'] = TPHelpers::get_theme_resource_uri( '/icons/' );
+
+		// Add json settings
+		$context['terminally_pixelated'] = TPHelpers::get_setting();
 
 		return $context;
 	}
@@ -310,7 +332,8 @@ class TerminallyPixelatedBase {
 				// Check for retina image
 				$pathinfo = pathinfo( $src );
 				$retina_src = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '@2x.' . $pathinfo['extension'];
-				if ( @get_headers( $retina_src )[0] === 'HTTP/1.1 404 Not Found' ) {
+				$headers = @get_headers( $retina_src );
+				if ( $headers[0] === 'HTTP/1.1 404 Not Found' ) {
 					$retina_src = '';
 				} else {
 					$retina_src = 'data-src-retina="' . $retina_src . '"';

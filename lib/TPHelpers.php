@@ -4,6 +4,8 @@
  */
 class TPHelpers {
 
+	static $json_settings = null;
+
 	/**
 	 * Returns the uri of a theme resource
 	 * @param  string $resource relative resource uri with or without a starting /
@@ -33,12 +35,15 @@ class TPHelpers {
 	 * @param  string  $key the variable to retrieve
 	 * @return mixed   the value of the variable
 	 */
-	public static function get_setting( $key ) {
+	public static function get_setting( $key = false ) {
 		if ( !self::$json_settings ) {
 			$file = file_get_contents( get_stylesheet_directory() . '/terminally-pixelated.json' );
 			self::$json_settings = (array) json_decode( $file );
 		}
-		if ( isset( self::$json_settings[$key] ) ) {
+		if ( false === $key ) {
+			return self::$json_settings;
+		}
+		elseif ( isset( self::$json_settings[$key] ) ) {
 			return self::$json_settings[$key];
 		}
 		return false;

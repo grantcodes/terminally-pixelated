@@ -92,7 +92,21 @@ module.exports = function( grunt ) {
         files: {
           'require.js': 'requirejs/require.js',
           'unveil.js': 'unveil/jquery.unveil.min.js',
-          'bxslider.js': 'bxslider-4/jquery.bxslider.min.js'
+          'fs/boxer.js': 'Boxer/jquery.fs.boxer.min.js',
+          'fs/naver.js': 'Naver/jquery.fs.naver.min.js',
+          'fs/pager.js': 'Pager/jquery.fs.pager.min.js',
+          'fs/picker.js': 'Picker/jquery.fs.picker.min.js',
+          'fs/ranger.js': 'Ranger/jquery.fs.ranger.min.js',
+          'fs/roller.js': 'Roller/jquery.fs.roller.min.js',
+          'fs/rubberband.js': 'Rubberband/jquery.fs.rubberband.min.js',
+          'fs/scroller.js': 'Scroller/jquery.fs.scroller.min.js',
+          'fs/selecter.js': 'Selecter/jquery.fs.selecter.min.js',
+          'fs/shifter.js': 'Shifter/jquery.fs.shifter.min.js',
+          'fs/sizer.js': 'Sizer/jquery.fs.sizer.min.js',
+          'fs/stepper.js': 'Stepper/jquery.fs.stepper.min.js',
+          'fs/tabber.js': 'Tabber/jquery.fs.tabber.min.js',
+          'fs/wallpaper.js': 'Wallpaper/jquery.fs.wallpaper.min.js',
+          'fs/zoomer.js': 'Zoomer/jquery.fs.zoomer.min.js'
         }
       },
       scss: {
@@ -111,7 +125,20 @@ module.exports = function( grunt ) {
           '_animate.sass': 'animate.sass/stylesheets/_animate.sass',
           'animate': 'animate.sass/stylesheets/animate',
           '_sassybuttons.sass': 'sassy-buttons/_sassybuttons.sass',
-          'sassy-buttons': 'sassy-buttons/sassy-buttons'
+          'sassy-buttons': 'sassy-buttons/sassy-buttons',
+          'fs/_boxer.scss': 'Boxer/jquery.fs.boxer.css',
+          'fs/_naver.scss': 'Naver/jquery.fs.naver.css',
+          'fs/_pager.scss': 'Pager/jquery.fs.pager.css',
+          'fs/_picker.scss': 'Picker/jquery.fs.picker.css',
+          'fs/_ranger.scss': 'Ranger/jquery.fs.ranger.css',
+          'fs/_roller.scss': 'Roller/jquery.fs.roller.css',
+          'fs/_scroller.scss': 'Scroller/jquery.fs.scroller.css',
+          'fs/_selecter.scss': 'Selecter/jquery.fs.selecter.css',
+          'fs/_shifter.scss': 'Shifter/jquery.fs.shifter.css',
+          'fs/_stepper.scss': 'Stepper/jquery.fs.stepper.css',
+          'fs/_tabber.scss': 'Tabber/jquery.fs.tabber.css',
+          'fs/_wallpaper.scss': 'Wallpaper/jquery.fs.wallpaper.css',
+          'fs/_zoomer.scss': 'Zoomer/jquery.fs.zoomer.css'
         }
       }
     },
