@@ -46,47 +46,41 @@ $grid-padding: 1em;
 
 // Colors
 
-$white: #FCFCFC;
-$black: #333;
-$blue: #478BC2;
-$red: #BF4240;
-$green: #7FCD6A;
-
-$text-c: $black;
-$bgc: $white;
+$text-c: $colors-black;
+$bgc: $colors-white;
 
 $border-c: mix($text-c, $bgc);
 
-$link-c: $blue;
-$link-c--hover: $red;
+$link-c: $colors-blue;
+$link-c--hover: $colors-red;
 
-$header-bgc: $black;
-$header-c: $white;
+$header-bgc: $colors-black;
+$header-c: $colors-white;
 
-$nav-bgc: $blue;
+$nav-bgc: $colors-blue;
 
-$nav-link-c: $black;
+$nav-link-c: $colors-black;
 $nav-link-bg: none;
 
-$nav-link-c--hover: $white;
+$nav-link-c--hover: $colors-white;
 $nav-link-bg--hover: none;
 
-$nav-link-c--current: $white;
+$nav-link-c--current: $colors-white;
 $nav-link-bg--current: none;
 
-$subnav-bgc: $black;
+$subnav-bgc: $colors-black;
 
-$subnav-link-c: $blue;
+$subnav-link-c: $colors-blue;
 $subnav-link-bg: $nav-link-bg;
 
-$subnav-link-c--hover: $white;
+$subnav-link-c--hover: $colors-white;
 $subnav-link-bg--hover: $nav-link-bg--hover;
 
-$subnav-link-c--current: $white;
+$subnav-link-c--current: $colors-white;
 $subnav-link-bg--current: $nav-link-bg--current;
 
-$footer-bgc: $blue;
-$footer-c: $white;
+$footer-bgc: $colors-blue;
+$footer-c: $colors-white;
 
 $input-c: tint($text-c, 20%);
 $input-bg: shade($bgc, 2%);
@@ -94,15 +88,15 @@ $input-border: 1px solid shade($input-bg, 15%);
 
 $input-c--hover: $input-c;
 $input-bg--hover: $input-bg;
-$input-border--hover: 1px solid $blue;
+$input-border--hover: 1px solid $colors-blue;
 
 $input-c--active: $text-c;
 $input-bg--active: $bgc;
 $input-border--active: $input-border--hover;
 
-$button-bgc: $blue;
+$button-bgc: $colors-blue;
 
-$error-c: $red;
+$error-c: $colors-red;
 
 // Transition Times
 

@@ -13,7 +13,7 @@ module.exports = function( grunt ) {
     sassFiles: ['scss/style.scss', 'scss/editor-style.scss'],
     sassPartials: ['scss/**/_*.scss'],
     cssFiles: ['style.css', 'main.css'],
-    jsFiles: ['js/**/*.js'],
+    jsFiles: ['js/**/*.js', 'terminally-pixelated.json'],
     templateFiles: ['**/*.php', 'views/**/*.twig']
   };
   config.allSassFiles = config.sassFiles.concat(config.sassPartials);
@@ -57,6 +57,7 @@ module.exports = function( grunt ) {
         options: {
           watchTask: true,
           debugInfo: true,
+          open: false,
           proxy: tpConfig.devDomain.replace(/'/g, ''),
         }
       }
