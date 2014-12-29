@@ -1,0 +1,76 @@
+/* Auto generated icon font */
+<% if (fontfaceStyles) { %>
+    @font-face {
+        font-family:"<%= fontBaseName %>";
+        <% if (fontSrc1) { %>
+            src: <%= fontSrc1 %>;
+        <% }%>
+        <% if (fontSrc2) { %>
+            src: <%= fontSrc2 %>;
+        <% }%>
+        font-weight: normal;
+        font-style: normal;
+    }
+<% } %>
+/*<% if (baseStyles) { %>.icon {
+    font-family:"<%= fontBaseName %>";
+    display:inline-block;
+    font-style:normal;
+    speak:none;
+    -webkit-font-smoothing:antialiased;
+    }
+<% } %>*/
+<% if (iconsStyles) { %>
+    <% for (var glyphIdx = 0; glyphIdx < glyphs.length; glyphIdx++) { %>
+        $icon-<%= glyphs[glyphIdx] %>: "\<%= codepoints[glyphIdx] %>";
+    <% } %>
+<% } %>
+
+@mixin tp-icon($char, $selector: ':before') {
+    &#{$selector} {
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        font-family: "<%= fontBaseName %>";
+        content: $char;
+    }
+}
+
+/*@mixin icon-font-family($char) {
+  font-family: nth($char, 1);
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  font-family:"<%= fontBaseName %>";\\
+}
+
+@mixin icon-font() {
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin icon-content($char) {
+  content: nth($char, 2);
+}
+
+@mixin icon($char) {
+  @include icon-font-family($char);
+  @include icon-font();
+
+  &:before {
+    @include icon-content($char);
+  }
+}*/

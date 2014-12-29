@@ -211,12 +211,32 @@ module.exports = function( grunt ) {
           'scss/utils/_tp-config.scss'
         ]
       }
+    },
+
+    webfont: {
+        icons: {
+            src: 'img/icons/*.svg',
+            dest: 'fonts',
+            destCss: 'scss/vendor',
+            options: {
+                stylesheet: 'scss',
+                syntax: 'bem',
+                htmlDemo: false,
+                template: './icon-font-template.scss',
+                relativeFontPath: 'fonts/',
+                templateOptions: {
+                    baseClass: 'icon-icon',
+                    classPrefix: 'icon-',
+                    mixinPrefix: 'icon-'
+                }
+            }
+        }
     }
 
 });
 
 grunt.registerTask('cssCompileDev', ['sass']);
-grunt.registerTask('cssCompileDist', ['sass', 'autoprefixer', 'csso']);
+grunt.registerTask('cssCompileDist', ['webfont', 'sass', 'autoprefixer', 'csso']);
 grunt.registerTask('jsCompile', []);
 grunt.registerTask('iconsCompile', ['clean:icons', 'favicons']);
 grunt.registerTask('default', ['browserSync', 'watch']);
