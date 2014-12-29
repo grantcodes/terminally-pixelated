@@ -1,112 +1,68 @@
-<!DOCTYPE html>
-<html class="main-wrapper" lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>Style Guide</title>
-  <meta name="description" content="">
-  <meta name="generator" content="kss-node" />
-
-  <meta name="viewport" content="width=device-width">
-
-  <link rel="stylesheet" href="public/kss.css">
-  <link rel="stylesheet" href="public/prism.css">
-  <link rel="stylesheet" href="../../style.css">
-
-</head>
-<body class="main-wrapper"><div id="kss-wrapper">
-  <div id="kss-nav">
-    <header id="kss-header">
-    </header>
-    <aside>
-      <nav><ul>
-        <li><a href="index.html">0.0: Overview</a></li>
+<div id="kss-nav">
+  <aside>
+    <nav>
+      <ul class="kss-menu">
+        <li><a href="#kss-content">0.0: Overview</a></li>
         {{#eachRoot}}
-          <li><a href="section-{{reference}}.html">{{reference}}.0: {{header}}</a></li>
+          <li><a href="#section-{{reference}}">{{reference}}.0: {{header}}</a></li>
         {{/eachRoot}}
-      </ul></nav>
-    </aside>
-  </div>
-  <div role="main" id="kss-main">
-    <article id="kss-content">
-      {{#if overview}}
-        {{{overview}}}
-      {{else}}
+      </ul>
+    </nav>
+  </aside>
+</div>
+<div id="kss-main">
+  <article id="kss-content">
+    {{{overview}}}
 
-        {{!
-          Find each section, in order.
-          If there's no markup or modifiers supplied, use a Markdown-only
-          layout instead.
+    {{!
+      Find each section, in order.
+      If there's no markup or modifiers supplied, use a Markdown-only
+      layout instead.
 
-          The "root" element comes first in this loop, and can be detected using
-          the "#ifDepth 1" block as seen below.
-        }}
-        {{#eachSection rootNumber}}
-          {{#ifDepth 1}}
-            <h1 class="kss-title"><span class="kss-ref">{{ reference }}.0</span> - {{ header }}</h1>
+      The "root" element comes first in this loop, and can be detected using
+      the "#ifDepth 1" block as seen below.
+    }}
+
+    {{#eachRoot}}
+      {{#eachSection reference}}
+        {{#ifDepth 1}}
+          <h1 class="kss-title" id="section-{{reference}}"><span class="kss-ref">{{ reference }}.0</span> - {{ header }}</h1>
+        {{else}}
+         <section class="kss-depth-{{ refDepth }}" id="section-{{reference}}">
+          <h1 class="kss-title"><span class="kss-ref">{{ reference }}</span> - {{ header }}</h1>
+        {{/ifDepth}}
+          {{#if markup}}
+              <div class="kss-box">{{{description}}}</div>
+              <table class="kss-mod-list">
+                <tr class="kss-mod-desc-group">
+                  <td class="kss-mod-desc"><p>Default styling</p></td>
+                  <td class="kss-mod-name"></td>
+                </tr>
+                <tr class="kss-mod-example">
+                  <td colspan="2">{{modifierMarkup}}</td>
+                </tr>
+              {{#eachModifier}}
+                <tr class="kss-mod-desc-group">
+                  <td class="kss-mod-desc">{{{description}}}</td>
+                  <td class="kss-mod-name"><p>{{name}}</p></td>
+                </tr>
+                <tr class="kss-mod-example">
+                  <td colspan="2">{{modifierMarkup}}</td>
+                </tr>
+              {{/eachModifier}}
+              </table>
+              <div class="kss-markup">
+                <pre class="prettyprint lang-html"><code class="language-html">{{markup}}</code></pre>
+              </div>
           {{else}}
-           <section class="kss-depth-{{ refDepth }}">
-            <h1 class="kss-title"><span class="kss-ref">{{ reference }}</span> - {{ header }}</h1>
-          {{/ifDepth}}
-            {{#if markup}}
-                <div class="kss-box">{{{description}}}</div>
-                <table class="kss-mod-list">
-                  <tr class="kss-mod-desc-group">
-                    <td class="kss-mod-desc"><p>Default styling</p></td>
-                    <td class="kss-mod-name"></td>
-                  </tr>
-                  <tr class="kss-mod-example">
-                    <td colspan="2">{{modifierMarkup}}</td>
-                  </tr>
-                {{#eachModifier}}
-                  <tr class="kss-mod-desc-group">
-                    <td class="kss-mod-desc">{{{description}}}</td>
-                    <td class="kss-mod-name"><p>{{name}}</p></td>
-                  </tr>
-                  <tr class="kss-mod-example">
-                    <td colspan="2">{{modifierMarkup}}</td>
-                  </tr>
-                {{/eachModifier}}
-                </table>
-                <div class="kss-markup">
-                  <pre class="prettyprint lang-html">{{markup}}</pre>
-                </div>
-            {{else}}
-                {{#if description}}
-                  {{{description}}}
-                {{/if}}
-            {{/if}}
-          {{#ifDepth 1}} {{else}}
-            </section>
-          {{/ifDepth}}
-        {{/eachSection}}
-      {{/if}}
-    </article>
-  </div>
-  <footer>
-  </footer>
-  <!-- SCRIPTS -->
-  <script src="public/kss.js"></script>
-  <script src="public/prism.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      var sidebarAdjust = function() {
-        // Match footer/body height
-        var height = Math.max($(window).height(), $('#kss-main').height());
-
-        if ($(window).width() <= 768) {
-          $('#kss-main, #kss-nav').height('auto');
-        } else {
-          $('#kss-main, #kss-nav').height(height);
-        }
-      };
-
-      $(window).resize(sidebarAdjust);
-      $(window).scroll(sidebarAdjust);
-      sidebarAdjust();
-
-    });
-  </script>
-</div></body>
-</html>
+              {{#if description}}
+                {{{description}}}
+              {{/if}}
+          {{/if}}
+        {{#ifDepth 1}} {{else}}
+          </section>
+        {{/ifDepth}}
+      {{/eachSection}}
+    {{/eachRoot}}
+  </article>
+</div>

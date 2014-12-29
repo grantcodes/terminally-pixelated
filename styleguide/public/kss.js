@@ -45,3 +45,25 @@
   new KssStateGenerator;
 
 }).call(this);
+
+hljs.initHighlightingOnLoad();
+
+(function($){
+  var stickyNavTop = $('#kss-nav').offset().top;
+
+  var stickyNav = function(){
+    var scrollTop = $(window).scrollTop();
+
+    if (scrollTop > stickyNavTop) {
+        $('#kss-nav').addClass('is-fixed');
+    } else {
+        $('#kss-nav').removeClass('is-fixed');
+    }
+  };
+
+  stickyNav();
+
+  $(window).scroll(function() {
+      stickyNav();
+  });
+})(jQuery);

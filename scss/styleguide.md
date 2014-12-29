@@ -1,3 +1,1 @@
-# Style Guide
-
-The is the living style guide
+This is the living styleguide.

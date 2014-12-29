@@ -356,6 +356,8 @@ input[type=submit] {
 
 .selecter {
   margin: 0;
+  max-width: 100%;
+  display: inline-block;
 }
 
 .selecter-selected {

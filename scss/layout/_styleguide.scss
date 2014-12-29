@@ -1,0 +1,44 @@
+.kss-menu {
+    @include scut-list-inline;
+    @include tp-breakpoint($mid-break) {
+        @include scut-list-unstyled;
+        li {
+            display: block;
+        }
+    }
+    @include tp-trailer();
+    @include tp-padding-leader(.5);
+    @include tp-padding-trailer(.5);
+
+    li {
+        margin-right: 0.5em;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+#kss-nav {
+    @include tp-breakpoint($mid-break) {
+        @include span($mid-sidebar-cols of $mid-cols);
+
+        &.is-fixed {
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+    }
+    @include tp-breakpoint($large-break) {
+        @include span($large-sidebar-cols of $large-cols);
+    }
+}
+
+#kss-main {
+    @include tp-breakpoint($mid-break) {
+        @include span(last $mid-content-cols of $mid-cols);
+    }
+    @include tp-breakpoint($large-break) {
+        @include span(last $large-content-cols of $large-cols);
+    }
+}
