@@ -113,25 +113,25 @@ blockquote {
 }
 
 // Unordered Lists
-// 
+//
 // markup:
 // <ul>
-// <li>Item 1</li>
-// <li>Item 2</li>
-// <li>Item 3</li>
+//     <li>Item 1</li>
+//     <li>Item 2</li>
+//     <li>Item 3</li>
 // </ul>
-// 
+//
 // Styleguide 1.3
 
 // Ordered Lists
-// 
+//
 // markup:
 // <ol>
-// <li>Item 1</li>
-// <li>Item 2</li>
-// <li>Item 3</li>
+//     <li>Item 1</li>
+//     <li>Item 2</li>
+//     <li>Item 3</li>
 // </ol>
-// 
+//
 // Styleguide 1.4
 li > ul,
 li > ol {
@@ -139,12 +139,12 @@ li > ol {
 }
 
 // Blockquotes
-// 
+//
 // markup:
 // <blockquote>
-// <p>This is a quote</p>
+//     <p>This is a quote</p>
 // </blockquote>
-// 
+//
 // Styleguide 1.4
 blockquote {
     border-left: 2px solid $text-c;

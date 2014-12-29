@@ -42,3 +42,7 @@
         @include span(last $large-content-cols of $large-cols);
     }
 }
+
+.kss-mod-list {
+    width: 100%;
+}

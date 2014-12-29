@@ -1,0 +1,77 @@
+// Pagination
+//
+// markup:
+// <nav class="pagination">
+//     <a href="#" class="pagination__link pagination__link--prev">
+//         <span class="pagination__link__text pagination__link__text--prev">Prev</span>
+//     </a>
+//     <ul class="pagination__ul">
+//         <li class="pagination__li">
+//             <a href="#" class="pagination__link">1</a>
+//         </li>
+//         <li class="pagination__li">
+//             <span class="pagination__link current">2</span>
+//         </li>
+//         <li class="pagination__li">
+//             <a href="#" class="pagination__link">3</a>
+//         </li>
+//     </ul>
+//     <a href="#" class="pagination__link pagination__link--next">
+//         <span class="pagination__link__text--next">Next</span>
+//     </a>
+// </nav>
+//
+// Styleguide 3.1
+
+.pagination {
+    text-align: center;
+    @include tp-leader();
+    @include tp-trailer();
+
+}
+
+.pagination__ul {
+    display: inline-block;
+    @extend %scut-list-inline;
+}
+
+.pagination__link {
+    display: inline-block;
+    padding: .2em .3em;
+    background: darken($bgc, 10%);
+    color: $text-c;
+    text-decoration: none;
+    text-align: center;
+    min-width: 1.5em;
+    transition: all $transition-fast;
+
+    @include scut-selected(true) {
+        background: $link-c;
+        color: $bgc;
+    }
+
+    &.current {
+        background: darken($bgc, 15%);
+        color: lighten($text-c, 40%);
+    }
+}
+
+.pagination__link--next {
+    &:after {
+        content: '›';
+    }
+}
+
+.pagination__link__text--next {
+    @extend %scut-hide-visually;
+}
+
+.pagination__link--prev {
+    &:before {
+        content: '‹';
+    }
+}
+
+.pagination__link__text--prev {
+    @extend %scut-hide-visually;
+}
