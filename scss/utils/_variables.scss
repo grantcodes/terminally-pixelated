@@ -106,8 +106,12 @@ $button-bgc--active: darken($colors-blue, 25%);
 $button-c--active: darken($colors-white, 10%);
 $button-border--active: none;
 
-
 $error-c: $colors-red;
+
+$notification-c: $colors-blue;
+$notification-c--error: $colors-red;
+$notification-c--success: $colors-green;
+$notification-c--warning: $colors-orange;
 
 // Transition Times
 

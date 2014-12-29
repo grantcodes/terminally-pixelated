@@ -1,0 +1,78 @@
+// Notifications
+//
+// Styleguide 4
+
+// Standard notification
+//
+// .notification--error - Something bad has happened
+// .notification--success - Something good has happened
+// .notification--warning - Something that may be bad has happened
+//
+// markup:
+// <div class="notification {$modifiers}">
+//     <div class="notification__content">
+//         This is a notification!
+//     </div>
+// </div>
+//
+// Styleguide 4.1
+
+.notification {
+    display: block;
+    text-align: left;
+    width: 100%;
+    border-radius: 4px;
+    position: relative;
+    @include tp-space(padding, .5);
+    @include tp-space(padding-left, 2);
+    @include tp-trailer();
+    @include tp-fs(0);
+
+    background-color: $notification-c;
+    color: tp-readable-color($notification-c);
+    @include tp-icon($icon-record);
+
+    &:before {
+        text-align: center;
+        line-height: $line-height;
+        position: absolute;
+        @include tp-space(width, 1);
+        @include tp-space(margin-right, .5);
+        @include tp-space(left, .5);
+        @include tp-space(top, .5);
+    }
+}
+
+.notification--error {
+    background-color: $notification-c--error;
+    color: tp-readable-color($notification-c--error);
+    @include tp-icon($icon-circle-cross);
+
+    &:before {
+        line-height: $line-height;
+    }
+}
+
+.notification--success {
+    background-color: $notification-c--success;
+    color: tp-readable-color($notification-c--success);
+    @include tp-icon($icon-circle-check);
+
+    &:before {
+        line-height: $line-height;
+    }
+}
+
+.notification--warning {
+    background-color: $notification-c--warning;
+    color: tp-readable-color($notification-c--warning);
+    @include tp-icon($icon-circle-minus);
+
+    &:before {
+        line-height: $line-height;
+    }
+}
+
+.notification__content {
+
+}
