@@ -5,14 +5,14 @@
 .main-nav__ul {
     @extend %tp-container;
     @extend %scut-list-unstyled;
-    @include breakpoint($mid-break) {
-        @include scut-list-inline;
+    @include tp-breakpoint($mid-break) {
+        @include scut-list-inline();
         @include tp-container;
     }
 }
 
 .main-nav__li {
-    @include breakpoint($mid-break) {
+    @include tp-breakpoint($mid-break) {
         margin-right: 0.5em;
     }
 }
@@ -24,7 +24,7 @@
 .main-nav__sub-nav {
     @extend %scut-list-unstyled;
     margin-left: 0;
-    @include breakpoint($mid-break) {
+    @include tp-breakpoint($mid-break) {
         position: absolute;
         max-height: 0;
         overflow: hidden;
@@ -40,7 +40,7 @@
 
 .main-nav__li:hover > .main-nav__sub-nav,
 .main-nav__sub-nav:hover {
-    @include breakpoint($mid-break) {
+    @include tp-breakpoint($mid-break) {
         max-height: 99em;
         left: auto;
     }

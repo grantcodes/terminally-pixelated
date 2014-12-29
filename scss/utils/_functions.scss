@@ -1,0 +1,7 @@
+@function tp-tint($color, $percentage) {
+    @return mix(#fff, $color, $percentage);
+}
+
+@function tp-shade($color, $percentage) {
+    @return mix(#000, $color, $percentage);
+}

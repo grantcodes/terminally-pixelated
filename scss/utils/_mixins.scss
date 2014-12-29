@@ -33,3 +33,14 @@
 @mixin tp-padding-trailer($space: 1) {
     @include tp-space(padding-bottom, $space);
 }
+
+@mixin tp-breakpoint($breakpoint, $fallback: false) {
+    @media (min-width: #{$breakpoint}) {
+        @content;
+    }
+    @if ($fallback) {
+        #{$fallback} {
+            @content;
+        }
+    }
+}

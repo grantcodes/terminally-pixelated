@@ -20,9 +20,15 @@ $input-font-size: 1em;
 $input-padding-vertical: .3em;
 $input-padding-horizontal: .5em;
 
+@mixin input-structure($input-border-radius: $input-border-radius, $input-font-size: $input-font-size, $input-padding-vertical: $input-padding-vertical, $input-padding-horizontal: $input-padding-horizontal) {
+  border-radius: $input-border-radius;
+  font-size: $input-font-size;
+  padding: $input-padding-vertical $input-padding-horizontal;
+}
+
 %input {
     max-width: 100%;
-    @include sassy-button-structure($input-border-radius, $input-font-size, $input-padding-vertical $input-padding-horizontal);
+    @include input-structure();
     color: $input-c;
     background: $input-bg;
     border: $input-border;
@@ -49,7 +55,24 @@ $input-padding-horizontal: .5em;
 %button {
     max-width: 100%;
     text-align: center;
-    @include sassy-button('flat', .2em, 1em, $button-bgc);
+    @include input-structure();
+    background-color: $button-bgc;
+    border: $button-border;
+    color: $button-c;
+
+    &:hover,
+    &:focus {
+      background-color: $button-bgc--hover;
+      border: $button-border--hover;
+      color: $button-c--hover;
+    }
+
+    &:active {
+      background-color: $button-bgc--active;
+      border: $button-border--active;
+      color: $button-c--active;
+      transform: translate(1px 1px);
+    }
 }
 
 // General input styles
@@ -141,9 +164,9 @@ input[type=submit] {
     .validation_error {
         display: block;
         background-color: $error-c;
-        color: lighten($error-c, 40%);
+        color: tp-lighten($error-c, 40%);
         padding: .5em .8em;
-        border: 1px solid shade($error-c, 15%);
+        border: 1px solid tp-shade($error-c, 15%);
         border-radius: .3em;
         @include tp-trailer();
     }
@@ -176,7 +199,7 @@ input[type=submit] {
     }
 
     .left_label {
-        @include breakpoint($mid-break) {
+        @include tp-breakpoint($mid-break) {
             .gfield_label {
                 @include span(3 of 10);
                 // text-align: right;
@@ -189,7 +212,7 @@ input[type=submit] {
                 margin-top: 0.3em;
             }
         }
-        @include breakpoint($large-break) {
+        @include tp-breakpoint($large-break) {
             .gfield_label {
                 @include span(2 of 10);
                 // text-align: right;
@@ -206,7 +229,7 @@ input[type=submit] {
     }
 
     .right_label {
-        @include breakpoint($mid-break) {
+        @include tp-breakpoint($mid-break) {
             .gfield_label {
                 @include span(last 3 of 10);
                 margin-top: 0.3em;
@@ -289,13 +312,13 @@ input[type=submit] {
     }
 
     .ginput_cardinfo_left {
-        @include breakpoint($mid-break) {
+        @include tp-breakpoint($mid-break) {
             @include span(5 of 10);
         }
     }
 
     .ginput_cardinfo_right {
-        @include breakpoint($mid-break) {
+        @include tp-breakpoint($mid-break) {
             @include span(last 5 of 10);
         }
     }
@@ -377,7 +400,7 @@ input[type=submit] {
   background: $input-bg;
 }
 .selecter-item.disabled {
-  color: lighten($input-c, 30%);
+  color: tp-lighten($input-c, 30%);
 }
 .selecter-item:first-child {
   border-radius: 0;

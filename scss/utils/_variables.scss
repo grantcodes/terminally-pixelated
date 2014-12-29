@@ -82,9 +82,9 @@ $subnav-link-bg--current: $nav-link-bg--current;
 $footer-bgc: $colors-blue;
 $footer-c: $colors-white;
 
-$input-c: tint($text-c, 20%);
-$input-bg: shade($bgc, 2%);
-$input-border: 1px solid shade($input-bg, 15%);
+$input-c: tp-tint($text-c, 20%);
+$input-bg: tp-shade($bgc, 2%);
+$input-border: 1px solid tp-shade($input-bg, 15%);
 
 $input-c--hover: $input-c;
 $input-bg--hover: $input-bg;
@@ -95,6 +95,17 @@ $input-bg--active: $bgc;
 $input-border--active: $input-border--hover;
 
 $button-bgc: $colors-blue;
+$button-c: $colors-white;
+$button-border: none;
+
+$button-bgc--hover: darken($colors-blue, 20%);
+$button-c--hover: $colors-white;
+$button-border--hover: none;
+
+$button-bgc--active: darken($colors-blue, 25%);
+$button-c--active: darken($colors-white, 10%);
+$button-border--active: none;
+
 
 $error-c: $colors-red;
 

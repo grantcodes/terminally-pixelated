@@ -22,24 +22,22 @@ module.exports = function( grunt ) {
   var tpConfig = require('./terminally-pixelated.json');
 
   grunt.initConfig({
-    compass: {
+
+    sass: {
+      options: {
+        sourceMap: true
+      },
       dist: {
-        options: {
-          sassDir: 'scss',
-          imagesDir: 'img',
-          cssDir: '.',
-          javascriptsDir: 'js',
-          fontsDir: 'fonts',
-          relativeAssets: true,
-          environment: 'development',
-          specify: config.sassFiles
+        files: {
+          'style.css': 'scss/style.scss',
+          'editor-style.css': 'scss/editor-style.scss'
         }
       }
     },
 
     // default watch configuration
     watch: {
-      compass: {
+      sass: {
         files: '**/*.scss',
         tasks: ['cssCompileDev']
       },
@@ -125,8 +123,6 @@ module.exports = function( grunt ) {
           'modular-scale': 'modular-scale/stylesheets/modular-scale',
           '_animate.sass': 'animate.sass/stylesheets/_animate.sass',
           'animate': 'animate.sass/stylesheets/animate',
-          '_sassybuttons.sass': 'sassy-buttons/_sassybuttons.sass',
-          'sassy-buttons': 'sassy-buttons/sassy-buttons',
           'fs/_boxer.scss': 'Boxer/jquery.fs.boxer.css',
           'fs/_naver.scss': 'Naver/jquery.fs.naver.css',
           'fs/_pager.scss': 'Pager/jquery.fs.pager.css',
@@ -219,8 +215,8 @@ module.exports = function( grunt ) {
 
 });
 
-grunt.registerTask('cssCompileDev', ['compass']);
-grunt.registerTask('cssCompileDist', ['compass', 'autoprefixer', 'csso']);
+grunt.registerTask('cssCompileDev', ['sass']);
+grunt.registerTask('cssCompileDist', ['sass', 'autoprefixer', 'csso']);
 grunt.registerTask('jsCompile', []);
 grunt.registerTask('iconsCompile', ['clean:icons', 'favicons']);
 grunt.registerTask('default', ['browserSync', 'watch']);

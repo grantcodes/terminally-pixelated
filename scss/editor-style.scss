@@ -1,30 +1,4 @@
-// Compass
-@import "compass";
-
-@import "vendor/breakpoint";
-@import "vendor/susy";
-@import "vendor/modular-scale";
-
-@import "utils/wp-comment";
-@import "utils/tp-config";
-@import "utils/variables";
-@import "utils/mixins";
-
-@import "vendor/normalize";
-@import "vendor/scut";
-@import "vendor/sassybuttons";
-
-@import "base/fonts";
-@import "base/typography";
-@import "base/base";
-@import "base/helpers";
-@import "base/wordpress-defaults";
-
-@import "components/header";
-@import "components/nav";
-@import "components/footer";
-@import "components/widgets";
-@import "components/forms";
+@import "style";
 
 html, body {
 	margin: 0;
