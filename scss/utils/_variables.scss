@@ -96,15 +96,15 @@ $input-border--active: $input-border--hover;
 
 $button-bgc: $colors-blue;
 $button-c: $colors-white;
-$button-border: none;
+$button-border: 1px solid $button-bgc;
 
 $button-bgc--hover: darken($colors-blue, 20%);
 $button-c--hover: $colors-white;
-$button-border--hover: none;
+$button-border--hover: 1px solid $button-bgc--hover;
 
 $button-bgc--active: darken($colors-blue, 25%);
 $button-c--active: darken($colors-white, 10%);
-$button-border--active: none;
+$button-border--active: 1px solid $button-bgc--active;
 
 $error-c: $colors-red;
 
@@ -118,6 +118,12 @@ $notification-c--warning: $colors-orange;
 $transition-fast: .2s;
 $transition-mid: $transition-fast * 2;
 $transition-slow: $transition-mid * 2;
+
+// Input structure
+$input-border-radius: .2em;
+$input-font-size: 1em;
+$input-padding-vertical: .3em;
+$input-padding-horizontal: .5em;
 
 // Misc
 

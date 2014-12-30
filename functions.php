@@ -20,4 +20,5 @@ if ( !class_exists( 'Timber' ) ) {
     terminally_pixelated_autoload( 'TerminallyPixelatedBase' );
     terminally_pixelated_autoload( 'TerminallyPixelatedCustom' );
     terminally_pixelated_autoload( 'TerminallyPixelatedCustomizer' );
+    terminally_pixelated_autoload( 'TerminallyPixelatedWoocommerce' );
 }

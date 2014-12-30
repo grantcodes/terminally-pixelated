@@ -1,0 +1,8 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {{woocommerce}}
+    {% if show_comments %}
+        {{fn('comments_template')}}
+    {% endif %}
+{% endblock %}

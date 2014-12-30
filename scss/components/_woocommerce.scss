@@ -1,0 +1,156 @@
+// Namespace everything to win the specificty war
+body.woocommerce #main-wrapper,
+body.woocommerce-page #main-wrapper {
+
+
+    // Buttons
+
+    .button,
+    button,
+    input[type=submit],
+    #respond input#submit {
+        background: none;
+        @include tp-button();
+    }
+
+
+    // Inputs
+
+    .quantity {
+        width: 4.5em;
+        margin: 0;
+    }
+
+    input.qty {
+        height: auto;
+        width: auto;
+        @include tp-input();
+        text-align: left;
+        padding-right: 2em;
+        padding-right: calc(#{$input-padding-horizontal} + 20px);
+        width: 4.5em;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+
+    .quantity .minus,
+    .quantity .plus {
+        @include tp-input();
+        padding: 0;
+        line-height: 0;
+        font-weight: bold;
+        font-size: 12px;
+        height: 50%;
+        background: none;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        right: 1px;
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            border: none;
+            border-left: $input-border;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $link-c;
+        }
+    }
+
+    .quantity .plus {
+        top: 1px;
+    }
+
+    .quantity .minus {
+        bottom: 1px;
+    }
+
+
+    // Notifications
+
+    .woocommerce-message,
+    .woocommerce-info,
+    .woocommerce-error {
+        background: none;
+        @include tp-notification();
+    }
+    .woocommerce-message {
+        @include tp-notification(success);
+    }
+    .woocommerce-error {
+        @include tp-notification(error);
+    }
+
+
+    // Images
+
+    #content div.product div.images img,
+    div.product div.images img,
+    #content div.product div.images img,
+    div.product div.images img,
+    ul.products li.product img,
+    ul.products li.product img {
+        box-shadow: none;
+    }
+
+
+    // Price
+
+    .price {
+        color: $text-c;
+        font-weight: bold;
+    }
+
+
+    // On sale label
+
+    .onsale {
+        box-shadow: none;
+        text-shadow: none;
+        color: $bgc;
+        background: $notification-c--success;
+        border-radius: 50%;
+        width: 4em;
+        height: 4em;
+        padding: 0.5em;
+        line-height: 3em;
+        transform: rotate(5deg);
+    }
+
+
+    // Pagination
+
+    .woocommerce-pagination {
+        @include tp-pagination(' ul.page-numbers', ' .page-numbers');
+    }
+
+
+    // Cart
+
+    #content table.cart a.remove,
+    table.cart a.remove,
+    #content table.cart a.remove,
+    table.cart a.remove {
+        color: $notification-c--error;
+
+        &:hover {
+            background-color: $notification-c--error;
+            color: $bgc;
+        }
+    }
+
+    .required {
+        color: $notification-c--error;
+    }
+
+}

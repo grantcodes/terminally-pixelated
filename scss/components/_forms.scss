@@ -14,27 +14,23 @@ input[type=search] {
     box-sizing: border-box;
 }
 
-// Set up some variables
-$input-border-radius: .2em;
-$input-font-size: 1em;
-$input-padding-vertical: .3em;
-$input-padding-horizontal: .5em;
-
 @mixin input-structure($input-border-radius: $input-border-radius, $input-font-size: $input-font-size, $input-padding-vertical: $input-padding-vertical, $input-padding-horizontal: $input-padding-horizontal) {
   border-radius: $input-border-radius;
   font-size: $input-font-size;
   padding: $input-padding-vertical $input-padding-horizontal;
+  line-height: 1.2;
 }
 
-%input {
+@mixin tp-input {
     max-width: 100%;
     @include input-structure();
     color: $input-c;
     background: $input-bg;
     border: $input-border;
-    box-shadow: 0 0 .2em inset rgba(0,0,0,.3);
+    box-shadow: inset 0 0 .6em rgba(0,0,0,.07);
     transition: all;
     outline: none;
+    font-weight: normal;
 
     &:hover {
         color: $input-c--hover;
@@ -52,13 +48,20 @@ $input-padding-horizontal: .5em;
     }
 }
 
-%button {
+%input {
+  @include tp-input();
+}
+
+@mixin tp-button {
     max-width: 100%;
     text-align: center;
     @include input-structure();
     background-color: $button-bgc;
     border: $button-border;
     color: $button-c;
+    box-shadow: none;
+    text-shadow: none;
+    font-weight: normal;
 
     &:hover,
     &:focus {
@@ -73,6 +76,10 @@ $input-padding-horizontal: .5em;
       color: $button-c--active;
       transform: translate(1px 1px);
     }
+}
+
+%button {
+  @include tp-button();
 }
 
 // General input styles

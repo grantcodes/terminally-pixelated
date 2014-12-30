@@ -11,27 +11,31 @@
     font-size: $rem * 1rem;
 }
 
-@mixin tp-space( $property, $count: 1) {
+@mixin tp-space( $property, $count: 1, $important: false) {
     $rem: $line-height * 1rem * $count;
     $px: $line-height * 16px * $count;
+    @if ($important) {
+        $rem: $rem + !important;
+        $px: $px + !important;
+    }
     #{$property}: $px;
     #{$property}: $rem;
 }
 
-@mixin tp-leader($space: 1) {
-    @include tp-space(margin-top, $space);
+@mixin tp-leader($space: 1, $important: false) {
+    @include tp-space(margin-top, $space, $important);
 }
 
-@mixin tp-trailer($space: 1) {
-    @include tp-space(margin-bottom, $space);
+@mixin tp-trailer($space: 1, $important: false) {
+    @include tp-space(margin-bottom, $space, $important);
 }
 
-@mixin tp-padding-leader($space: 1) {
-    @include tp-space(padding-top, $space);
+@mixin tp-padding-leader($space: 1, $important: false) {
+    @include tp-space(padding-top, $space, $important);
 }
 
-@mixin tp-padding-trailer($space: 1) {
-    @include tp-space(padding-bottom, $space);
+@mixin tp-padding-trailer($space: 1, $important: false) {
+    @include tp-space(padding-bottom, $space, $important);
 }
 
 @mixin tp-breakpoint($breakpoint, $fallback: false) {
