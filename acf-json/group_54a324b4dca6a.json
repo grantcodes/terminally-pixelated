@@ -1,0 +1,46 @@
+{
+  "key":"group_54a324b4dca6a",
+  "title":"Page Layout",
+  "fields":[
+    {
+      "key":"field_54a324e04125a",
+      "label":"",
+      "name":"terminally_pixelated_sidebar",
+      "prefix":"",
+      "type":"radio",
+      "instructions":"",
+      "required":0,
+      "conditional_logic":0,
+      "wrapper":{
+        "width":"",
+        "class":"",
+        "id":""
+      },
+      "choices":{
+        "right":"Right Sidebar",
+        "left":"Left Sidebar",
+        "none":"No Sidebar"
+      },
+      "other_choice":0,
+      "save_other_choice":0,
+      "default_value":"right",
+      "layout":"vertical"
+    }
+  ],
+  "location":[
+    [
+      {
+        "param":"page_template",
+        "operator":"==",
+        "value":"default"
+      }
+    ]
+  ],
+  "menu_order":0,
+  "position":"side",
+  "style":"default",
+  "label_placement":"top",
+  "instruction_placement":"label",
+  "hide_on_screen":"",
+  "modified":1419978094
+}

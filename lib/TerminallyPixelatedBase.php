@@ -228,6 +228,14 @@ class TerminallyPixelatedBase {
 		// Add json settings
 		$context['terminally_pixelated'] = TPHelpers::get_setting();
 
+		// Sidebar layout settings
+		if ( $layout = get_field( 'terminally_pixelated_sidebar' ) ) {
+			if ( $layout == 'none' ) {
+				$context['main_sidebar'] = false;
+			}
+			$context['body_class'] .= ' sidebar-position-' . $layout;
+		}
+
 		return $context;
 	}
 

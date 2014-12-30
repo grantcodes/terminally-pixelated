@@ -22,9 +22,15 @@
 	@include tp-breakpoint($mid-break) {
 		margin-bottom: 0;
 		@include span($mid-content-cols of $mid-cols);
+		.sidebar-position-left & {
+			@include omega();
+		}
 	}
 	@include tp-breakpoint($large-break) {
 		@include span($large-content-cols of $large-cols);
+		.sidebar-position-left & {
+			@include omega();
+		}
 	}
 
 	&--full-width {
