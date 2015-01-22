@@ -10,7 +10,8 @@
                     <div class="main-header__inner">
                         <h1 class="main-title" itemprop="headline">
                             <a href="{{bloginfo('url')}}" rel="home">
-                                {% if logo %}
+                                {% if theme.theme_mod('terminally_pixelated_logo') %}
+                                    {% set logo = TimberImage(theme.theme_mod('terminally_pixelated_logo')) %}
                                     <img src="{{logo.src}}" alt="{{bloginfo('name')}}">
                                 {% else %}
                                     {{bloginfo('name')}}
