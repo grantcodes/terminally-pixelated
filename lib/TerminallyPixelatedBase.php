@@ -174,10 +174,6 @@ class TerminallyPixelatedBase {
 	}
 
 	public function timber_context( $context ) {
-		// Add logo
-		// if ( $logo = get_theme_mod( 'terminally_pixelated_logo' ) ) {
-		// 	$context['logo'] = new TimberImage( $logo );
-		// }
 
 		// Add menu
 		$context['main_menu'] = new TimberMenu( 'main' );
