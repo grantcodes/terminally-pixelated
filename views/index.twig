@@ -15,6 +15,8 @@
         {% endif %}
     {% endif %}
     {% if show_comments %}
+        {{fn('tha_comments_before')}}
         {{fn('comments_template')}}
+        {{fn('tha_comments_after')}}
     {% endif %}
 {% endblock %}

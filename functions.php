@@ -21,4 +21,5 @@ if ( !class_exists( 'Timber' ) ) {
     terminally_pixelated_autoload( 'TerminallyPixelatedCustom' );
     terminally_pixelated_autoload( 'TerminallyPixelatedCustomizer' );
     terminally_pixelated_autoload( 'TerminallyPixelatedWoocommerce' );
+    require_once( get_stylesheet_directory() . '/lib/vendor/tha-theme-hooks.php' );
 }

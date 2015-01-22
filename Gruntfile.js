@@ -137,6 +137,14 @@ module.exports = function( grunt ) {
           'fs/_wallpaper.scss': 'Wallpaper/jquery.fs.wallpaper.css',
           'fs/_zoomer.scss': 'Zoomer/jquery.fs.zoomer.css'
         }
+      },
+      php: {
+        options: {
+          destPrefix: 'lib/vendor'
+        },
+        files: {
+          'tha-theme-hooks.php': 'themehookalliance/tha-theme-hooks.php'
+        }
       }
     },
 
