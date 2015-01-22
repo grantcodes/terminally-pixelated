@@ -44,9 +44,6 @@
     // Custom selects
     $('select').selecter();
 
-    // Lazy load images
-    $('main img').unveil();
-
     // Smooth scrolling
     $('a[href*=#]:not([href=#])').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {

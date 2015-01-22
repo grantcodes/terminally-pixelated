@@ -90,7 +90,7 @@ module.exports = function( grunt ) {
         },
         files: {
           'require.js': 'requirejs/require.js',
-          'unveil.js': 'unveil/jquery.unveil.min.js',
+          'lazysizes.js': 'lazysizes/lazysizes.min.js',
           'fs/boxer.js': 'Boxer/jquery.fs.boxer.min.js',
           'fs/naver.js': 'Naver/jquery.fs.naver.min.js',
           'fs/pager.js': 'Pager/jquery.fs.pager.min.js',

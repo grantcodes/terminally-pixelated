@@ -21,9 +21,7 @@ class TerminallyPixelatedBase {
 		add_filter( 'timber_context', array( $this, 'timber_context' ) );
 		add_filter( 'timber_context', array( $this, 'schema' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
-		add_filter( 'the_content', array( $this, 'unveil_images' ), 0, 4 );
-		add_filter( 'wp_generate_attachment_metadata', array( $this, 'retina_support_attachment_meta' ), 10, 2 );
-		add_filter( 'delete_attachment', array( $this, 'delete_retina_support_images' ) );
+		add_filter( 'get_image_tag', array( $this, 'retina_lazyload_images' ), 10, 6 );
 	}
 
 	private function add_support() {
@@ -117,8 +115,8 @@ class TerminallyPixelatedBase {
 	}
 
 	public function add_scripts() {
-		// Unveil for lazy loading images
-		wp_register_script( 'unveil', TPHelpers::get_theme_resource_uri( '/js/vendor/unveil.js' ), array( 'jquery' ), false, true );
+		// Lazysizes for lazy loading images
+		wp_register_script( 'lazysizes', TPHelpers::get_theme_resource_uri( '/js/vendor/lazysizes.js' ), array(), false, true );
 		// Formstone scripts for various front end niceness
 		wp_register_script( 'fs-boxer', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/boxer.js' ), array( 'jquery' ), false, true );
 		wp_register_script( 'fs-naver', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/naver.js' ), array( 'jquery' ), false, true );
@@ -136,7 +134,7 @@ class TerminallyPixelatedBase {
 		wp_register_script( 'fs-wallpaper', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/wallpaper.js' ), array( 'jquery' ), false, true );
 		wp_register_script( 'fs-zoomer', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/zoomer.js' ), array( 'jquery' ), false, true );
 		// Base script
-		wp_register_script( 'tp-main', TPHelpers::get_theme_resource_uri( '/js/main.js' ), array( 'jquery', 'unveil', 'fs-naver', 'fs-picker', 'fs-selecter' ), false, true );
+		wp_register_script( 'tp-main', TPHelpers::get_theme_resource_uri( '/js/main.js' ), array( 'jquery', 'lazysizes', 'fs-naver', 'fs-picker', 'fs-selecter' ), false, true );
 		wp_localize_script( 'tp-main', 'TerminallyPixelated', TPHelpers::get_setting() );
 		wp_enqueue_script( 'tp-main' );
 	}
@@ -279,85 +277,24 @@ class TerminallyPixelatedBase {
 		<?php endif;
 	}
 
-	public function retina_support_attachment_meta( $metadata, $attachment_id ) {
-	    foreach ( $metadata as $key => $value ) {
-	        if ( is_array( $value ) ) {
-	            foreach ( $value as $image => $attr ) {
-	                if ( is_array( $attr ) )
-	                    self::retina_support_create_images( get_attached_file( $attachment_id ), $attr['width'], $attr['height'], true );
-	            }
-	        }
-	    }
-
-	    return $metadata;
-	}
-
-	public function retina_support_create_images( $file, $width, $height, $crop = false ) {
-	    if ( $width || $height ) {
-	        $resized_file = wp_get_image_editor( $file );
-	        if ( ! is_wp_error( $resized_file ) ) {
-	            $filename = $resized_file->generate_filename( $width . 'x' . $height . '@2x' );
-
-	            $resized_file->resize( $width * 2, $height * 2, $crop );
-	            $resized_file->save( $filename );
-
-	            $info = $resized_file->get_size();
-
-	            return array(
-	                'file' => wp_basename( $filename ),
-	                'width' => $info['width'],
-	                'height' => $info['height'],
-	            );
-	        }
-	    }
-	    return false;
-	}
-
-	function delete_retina_support_images( $attachment_id ) {
-	    $meta = wp_get_attachment_metadata( $attachment_id );
-	    $upload_dir = wp_upload_dir();
-	    $path = pathinfo( $meta['file'] );
-	    foreach ( $meta as $key => $value ) {
-	        if ( 'sizes' === $key ) {
-	            foreach ( $value as $sizes => $size ) {
-	                $original_filename = $upload_dir['basedir'] . '/' . $path['dirname'] . '/' . $size['file'];
-	                $retina_filename = substr_replace( $original_filename, '@2x.', strrpos( $original_filename, '.' ), strlen( '.' ) );
-	                if ( file_exists( $retina_filename ) )
-	                    unlink( $retina_filename );
-	            }
-	        }
-	    }
-	}
-
-	public function unveil_images( $html ) {
-		$html = preg_replace_callback(
-			'#<img([^>]+?)src=[\'"]?([^\'"\s>]+)[\'"]?([^>]*)>#',
-			function ($matches) {
-				$first_attributes = $matches[1];
-				$src = $matches[2];
-				$last_attributes = $matches[3];
-
-				// Check for retina image
-				$pathinfo = pathinfo( $src );
-				$retina_src = $pathinfo['dirname'] . '/' . $pathinfo['filename'] . '@2x.' . $pathinfo['extension'];
-				$headers = @get_headers( $retina_src );
-				if ( $headers[0] === 'HTTP/1.1 404 Not Found' ) {
-					$retina_src = '';
-				} else {
-					$retina_src = 'data-src-retina="' . $retina_src . '"';
-				}
-
-				// Remove width and height attributes
-				$first_attributes = preg_replace( "/width|height=\"[0-9]*\"/", '', $first_attributes );
-				$last_attributes = preg_replace( "/width|height=\"[0-9]*\"/", '', $last_attributes );
-
-				$image = '<img' . $first_attributes . 'src="' . TPHelpers::get_theme_resource_uri( 'img/loader.gif' ) . '" data-src="' . $src . '"' . $retina_src . $last_attributes . '><noscript><img' . $first_attributes . 'src="' . $src . '"' . $last_attributes . '></noscript>';
-
-				return $image;
-			},
-			$html
+	public function retina_lazyload_images( $html, $id, $alt, $title, $align, $size ) {
+		// var_dump( $html );
+		$img = new TimberImage( $id );
+		$context = array(
+			'id' => $id,
+			'alt' => $alt,
+			'title' => $title,
+			'align' => $align,
+			'size' => $size,
+			'img' => new TimberImage( $id ),
+			'class' => 'align' . esc_attr($align) .' size-' . esc_attr($size) . ' wp-image-' . $id . ' lazyload',
+			'width' => $img->sizes[$size]['width'],
+			'height' => $img->sizes[$size]['height'],
+			'placeholder_src' => TPHelpers::get_theme_resource_uri( 'img/loader.gif' )
 		);
+		$img = Timber::compile( 'partials/retina-img.twig', $context );
+		$img = str_replace( array("\r", "\n" ), '', $img );
 
-		return $html;
+		return $img;
 	}
 }
