@@ -42,3 +42,7 @@
 		}
 	}
 }
+
+.single-post__content {
+	@extend %scut-clearfix;
+}

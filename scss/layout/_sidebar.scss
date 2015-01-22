@@ -2,13 +2,13 @@
     @include tp-breakpoint($mid-break) {
         @include span(last $mid-sidebar-cols of $mid-cols);
         .sidebar-position-left & {
-            @include remove-omega();
+            @include span(first $mid-sidebar-cols of $mid-cols);
         }
     }
     @include tp-breakpoint($large-break) {
         @include span(last $large-sidebar-cols of $large-cols);
         .sidebar-position-left & {
-            @include remove-omega();
+            @include span(first $large-sidebar-cols of $large-cols);
         }
     }
 
