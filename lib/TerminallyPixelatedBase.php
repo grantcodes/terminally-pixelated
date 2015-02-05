@@ -108,35 +108,37 @@ class TerminallyPixelatedBase {
 	public function add_styles() {
 		wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,300italic,700italic|Merriweather:300italic,300,700,700italic', false );
 		if ( !defined( 'SCRIPT_DEBUG' ) || false === SCRIPT_DEBUG ) {
-			wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/main.css' ), false, 1 );
+			// wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/main.css' ), false, 1 );
+			TPHelpers::enqueue( 'main.css' );
 		} else {
-			wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/style.css' ), false, 0 );
+			// wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/style.css' ), false, 0 );
+			TPHelpers::enqueue( 'style.css' );
 		}
 	}
 
 	public function add_scripts() {
 		// Lazysizes for lazy loading images
-		wp_register_script( 'lazysizes', TPHelpers::get_theme_resource_uri( '/js/vendor/lazysizes.js' ), array(), false, true );
+		TPHelpers::register( 'js/vendor/lazysizes.js' );
 		// Formstone scripts for various front end niceness
-		wp_register_script( 'fs-boxer', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/boxer.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-naver', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/naver.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-pager', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/pager.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-picker', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/picker.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-ranger', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/ranger.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-roller', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/roller.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-rubberband', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/rubberband.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-scroller', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/scroller.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-selecter', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/selecter.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-shifter', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/shifter.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-sizer', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/sizer.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-stepper', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/stepper.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-tabber', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/tabber.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-wallpaper', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/wallpaper.js' ), array( 'jquery' ), false, true );
-		wp_register_script( 'fs-zoomer', TPHelpers::get_theme_resource_uri( '/js/vendor/fs/zoomer.js' ), array( 'jquery' ), false, true );
+		TPHelpers::register( 'js/vendor/fs/boxer.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/naver.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/pager.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/picker.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/ranger.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/roller.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/rubberband.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/scroller.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/selecter.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/shifter.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/sizer.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/stepper.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/tabber.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/wallpaper.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/zoomer.js', array( 'jquery' ) );
 		// Base script
-		wp_register_script( 'tp-main', TPHelpers::get_theme_resource_uri( '/js/main.js' ), array( 'jquery', 'lazysizes', 'fs-naver', 'fs-picker', 'fs-selecter' ), false, true );
-		wp_localize_script( 'tp-main', 'TerminallyPixelated', TPHelpers::get_setting() );
-		wp_enqueue_script( 'tp-main' );
+		TPHelpers::register( 'js/main.js', array( 'jquery', 'js/vendor/lazysizes.js', 'js/vendor/fs/naver.js', 'js/vendor/fs/picker.js', 'js/vendor/fs/selecter.js' ) );
+		wp_localize_script( 'js/main.js', 'TerminallyPixelated', TPHelpers::get_setting() );
+		wp_enqueue_script( 'js/main.js' );
 	}
 
 	public function add_sidebars() {

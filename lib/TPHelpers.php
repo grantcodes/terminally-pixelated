@@ -19,6 +19,42 @@ class TPHelpers {
 	}
 
 	/**
+	 * A wrapper function to more easily enqueue js and css
+	 * @param  string  $resource the location of the file
+	 * @param  array   $deps     the dependencies
+	 * @return null              enqueues the file
+	 */
+	public static function enqueue( $resource, $deps = false ) {
+		$uri = static::get_theme_resource_uri( $resource );
+		if ( '/' == substr( $resource, 0, 1 ) ) {
+			$resource = substr( $resource, 1 );
+		}
+		if ( strpos( $resource, '.js', strlen( $resource ) - 3 ) !== false ) {
+			wp_enqueue_script( $resource, $uri, $deps, false, true );
+		} elseif ( strpos( $resource, '.css', strlen( $resource ) - 4 ) !== false ) {
+			wp_enqueue_style( $resource, $uri, $deps, false, false );
+		}
+	}
+
+	/**
+	 * A wrapper function to more easily register js and css
+	 * @param  string  $resource the location of the file
+	 * @param  array   $deps     the dependencies
+	 * @return null              registers the file
+	 */
+	public static function register( $resource, $deps = false ) {
+		$uri = static::get_theme_resource_uri( $resource );
+		if ( '/' == substr( $resource, 0, 1 ) ) {
+			$resource = substr( $resource, 1 );
+		}
+		if ( strpos( $resource, '.js', strlen( $resource ) - 3 ) !== false ) {
+			wp_register_script( $resource, $uri, $deps, false, true );
+		} elseif ( strpos( $resource, '.css', strlen( $resource ) - 4 ) !== false ) {
+			wp_register_style( $resource, $uri, $deps, false, false );
+		}
+	}
+
+	/**
 	 * Outputs an error message saying that timber needs to be activated
 	 * @return null
 	 */
