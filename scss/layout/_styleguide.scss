@@ -1,6 +1,6 @@
 .kss-menu {
     @include scut-list-inline;
-    @include tp-breakpoint($mid-break) {
+    @include breakpoint($mid-break) {
         @include scut-list-unstyled;
         li {
             display: block;
@@ -20,7 +20,7 @@
 }
 
 #kss-nav {
-    @include tp-breakpoint($mid-break) {
+    @include breakpoint($mid-break) {
         @include span($mid-sidebar-cols of $mid-cols);
 
         &.is-fixed {
@@ -29,16 +29,16 @@
             z-index: 100;
         }
     }
-    @include tp-breakpoint($large-break) {
+    @include breakpoint($large-break) {
         @include span($large-sidebar-cols of $large-cols);
     }
 }
 
 #kss-main {
-    @include tp-breakpoint($mid-break) {
+    @include breakpoint($mid-break) {
         @include span(last $mid-content-cols of $mid-cols);
     }
-    @include tp-breakpoint($large-break) {
+    @include breakpoint($large-break) {
         @include span(last $large-content-cols of $large-cols);
     }
 }

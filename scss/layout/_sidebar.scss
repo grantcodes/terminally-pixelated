@@ -1,11 +1,11 @@
 .main-aside {
-    @include tp-breakpoint($mid-break) {
+    @include breakpoint($mid-break) {
         @include span(last $mid-sidebar-cols of $mid-cols);
         .sidebar-position-left & {
             @include span(first $mid-sidebar-cols of $mid-cols);
         }
     }
-    @include tp-breakpoint($large-break) {
+    @include breakpoint($large-break) {
         @include span(last $large-sidebar-cols of $large-cols);
         .sidebar-position-left & {
             @include span(first $large-sidebar-cols of $large-cols);

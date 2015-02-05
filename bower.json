@@ -29,7 +29,6 @@
     "normalize.scss": "kristerkari/normalize.scss",
     "modular-scale": "~2.0.5",
     "susy": "libsass",
-    "breakpoint-sass": "~2.5.0",
     "animate.sass": "*",
     "bxslider-4": "~4.1.2",
     "Boxer": "~3.3.0",
@@ -48,6 +47,7 @@
     "Wallpaper": "~3.1.18",
     "Zoomer": "~3.0.13",
     "lazysizes": "~0.7.2",
-    "themehookalliance": "zamoose/themehookalliance"
+    "themehookalliance": "zamoose/themehookalliance",
+    "compass-breakpoint": "~2.5.0"
   }
 }
