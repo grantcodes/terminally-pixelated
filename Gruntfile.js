@@ -89,7 +89,6 @@ module.exports = function( grunt ) {
           destPrefix: 'js/vendor'
         },
         files: {
-          'require.js': 'requirejs/require.js',
           'lazysizes.js': 'lazysizes/lazysizes.min.js',
           'fs/boxer.js': 'Boxer/jquery.fs.boxer.min.js',
           'fs/naver.js': 'Naver/jquery.fs.naver.min.js',
@@ -121,8 +120,6 @@ module.exports = function( grunt ) {
           'susy': 'susy/sass/susy',
           '_modular-scale.scss': 'modular-scale/stylesheets/_modular-scale.scss',
           'modular-scale': 'modular-scale/stylesheets/modular-scale',
-          '_animate.sass': 'animate.sass/stylesheets/_animate.sass',
-          'animate': 'animate.sass/stylesheets/animate',
           'fs/_boxer.scss': 'Boxer/jquery.fs.boxer.css',
           'fs/_naver.scss': 'Naver/jquery.fs.naver.css',
           'fs/_pager.scss': 'Pager/jquery.fs.pager.css',
