@@ -47,6 +47,7 @@
     "Zoomer": "~3.0.13",
     "lazysizes": "~0.7.2",
     "themehookalliance": "zamoose/themehookalliance",
-    "compass-breakpoint": "~2.5.0"
+    "compass-breakpoint": "~2.5.0",
+    "TGM-Plugin-Activation": "thomasgriffin/TGM-Plugin-Activation#~2.4.0"
   }
 }

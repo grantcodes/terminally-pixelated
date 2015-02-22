@@ -140,7 +140,8 @@ module.exports = function( grunt ) {
           destPrefix: 'lib/vendor'
         },
         files: {
-          'tha-theme-hooks.php': 'themehookalliance/tha-theme-hooks.php'
+          'tha-theme-hooks.php': 'themehookalliance/tha-theme-hooks.php',
+          'class-tgm-plugin-activation.php': 'TGM-Plugin-Activation/class-tgm-plugin-activation.php'
         }
       }
     },

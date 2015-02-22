@@ -22,6 +22,7 @@ class TerminallyPixelatedBase {
 		add_filter( 'timber_context', array( $this, 'schema' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 		add_filter( 'get_image_tag', array( $this, 'retina_lazyload_images' ), 10, 6 );
+		add_action( 'tgmpa_register', array( $this, 'require_plugins' ) );
 	}
 
 	private function add_support() {
@@ -294,5 +295,17 @@ class TerminallyPixelatedBase {
 		$img = str_replace( array("\r", "\n" ), '', $img );
 
 		return $img;
+	}
+
+	public function require_plugins() {
+		$plugins = array(
+			array(
+	            'name'             => 'Timber Library',
+	            'slug'             => 'timber-library',
+	            'required'         => true,
+	            'force_activation' => true
+	        )
+		);
+		tgmpa( $plugins );
 	}
 }
