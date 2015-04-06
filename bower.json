@@ -30,24 +30,11 @@
     "modular-scale": "~2.0.6",
     "susy": "~2.2.2",
     "bxslider-4": "~4.2.2",
-    "Boxer": "~3.3.0",
-    "Naver": "~3.1.2",
-    "Pager": "~1.1.0",
-    "Picker": "~3.1.2",
-    "Ranger": "~3.1.0",
-    "Roller": "~3.2.9",
-    "Rubberband": "~3.1.2",
-    "Shifter": "~3.1.2",
-    "Selecter": "~3.2.4",
-    "Scroller": "~3.1.2",
-    "Sizer": "~3.0.6",
-    "Stepper": "~3.0.8",
-    "Tabber": "~3.0.13",
-    "Wallpaper": "~3.1.19",
-    "Zoomer": "~3.0.13",
     "lazysizes": "~0.7.2",
     "themehookalliance": "zamoose/themehookalliance",
     "compass-breakpoint": "~2.5.0",
-    "TGM-Plugin-Activation": "thomasgriffin/TGM-Plugin-Activation#~2.4.0"
+    "TGM-Plugin-Activation": "thomasgriffin/TGM-Plugin-Activation#~2.4.0",
+    "formstone": "~0.4.3",
+    "typographic": "~2.9.1"
   }
 }

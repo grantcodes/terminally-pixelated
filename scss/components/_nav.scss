@@ -80,17 +80,26 @@
 }
 
 
-// Naver overwrites
+// Formstone overwrites
 
-.naver-handle {
+#main-nav-handle {
+    @include breakpoint($large-break) {
+        display: none;
+    }
+}
+
+.fs-navigation-toggle-handle.fs-navigation-enabled {
     background-color: $nav-bgc;
     color: $nav-link-c;
     border: none;
+    border-radius: 0;
     font-size: 1em;
+    height: auto;
+    line-height: $line-height;
     @include tp-space(padding, .5);
 }
 
-.naver-handle:after {
+.fs-navigation-handle.fs-navigation-enabled:after {
     display: block;
     border: none;
     background-size: contain;
@@ -102,19 +111,19 @@
     box-shadow: none;
     background-image: url(img/icons/menu.svg);
 
-    .naver.open & {
-        background-size: contain;
-        background-image: url(img/icons/cross.svg);
-        content: '';
-    }
+}
+.fs-navigation-handle.fs-navigation-enabled.fs-navigation-open:after {
+    background-size: contain;
+    background-image: url(img/icons/cross.svg);
+    content: '';
 }
 
-.naver.enabled .naver-container {
+.fs-navigation-toggle-nav.fs-navigation-enabled {
     background-color: $nav-bgc;
     color: $nav-link-c;
     border: none;
 }
 
-.naver-wrapper {
+.fs-navigation-toggle-nav {
     transition: all $transition-mid;
 }

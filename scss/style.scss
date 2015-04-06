@@ -13,19 +13,16 @@
 // @import "vendor/sassybuttons";
 @import "vendor/icons";
 
-// @import "vendor/fs/_boxer.scss";
-@import "vendor/fs/_naver.scss";
-// @import "vendor/fs/_pager.scss";
-@import "vendor/fs/_picker.scss";
-// @import "vendor/fs/_ranger.scss";
-// @import "vendor/fs/_roller.scss";
-// @import "vendor/fs/_scroller.scss";
-@import "vendor/fs/_selecter.scss";
-// @import "vendor/fs/_shifter.scss";
-// @import "vendor/fs/_stepper.scss";
-// @import "vendor/fs/_tabber.scss";
-// @import "vendor/fs/_wallpaper.scss";
-// @import "vendor/fs/_zoomer.scss";
+// @import "vendor/fs/_lightbox.scss";
+@import "vendor/fs/_navigation.scss";
+@import "vendor/fs/_checkbox.scss";
+// @import "vendor/fs/_range.scss";
+// @import "vendor/fs/_carousel.scss";
+// @import "vendor/fs/_scrollbar.scss";
+@import "vendor/fs/_dropdown.scss";
+// @import "vendor/fs/_number.scss";
+// @import "vendor/fs/_tabs.scss";
+// @import "vendor/fs/_background.scss";
 
 @import "layout/base";
 @import "layout/nav";

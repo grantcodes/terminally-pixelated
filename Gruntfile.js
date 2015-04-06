@@ -37,8 +37,12 @@ module.exports = function( grunt ) {
 
     // default watch configuration
     watch: {
+      js: {
+        files: 'js/**/*.js',
+        tasks: ['jsCompileDev']
+      },
       sass: {
-        files: '**/*.scss',
+        files: 'scss/**/*.scss',
         tasks: ['cssCompileDev']
       },
       tpconfig: {
@@ -90,21 +94,21 @@ module.exports = function( grunt ) {
         },
         files: {
           'lazysizes.js': 'lazysizes/lazysizes.min.js',
-          'fs/boxer.js': 'Boxer/jquery.fs.boxer.min.js',
-          'fs/naver.js': 'Naver/jquery.fs.naver.min.js',
-          'fs/pager.js': 'Pager/jquery.fs.pager.min.js',
-          'fs/picker.js': 'Picker/jquery.fs.picker.min.js',
-          'fs/ranger.js': 'Ranger/jquery.fs.ranger.min.js',
-          'fs/roller.js': 'Roller/jquery.fs.roller.min.js',
-          'fs/rubberband.js': 'Rubberband/jquery.fs.rubberband.min.js',
-          'fs/scroller.js': 'Scroller/jquery.fs.scroller.min.js',
-          'fs/selecter.js': 'Selecter/jquery.fs.selecter.min.js',
-          'fs/shifter.js': 'Shifter/jquery.fs.shifter.min.js',
-          'fs/sizer.js': 'Sizer/jquery.fs.sizer.min.js',
-          'fs/stepper.js': 'Stepper/jquery.fs.stepper.min.js',
-          'fs/tabber.js': 'Tabber/jquery.fs.tabber.min.js',
-          'fs/wallpaper.js': 'Wallpaper/jquery.fs.wallpaper.min.js',
-          'fs/zoomer.js': 'Zoomer/jquery.fs.zoomer.min.js'
+          'fs/core.js': 'formstone/dist/js/core.js',
+          'fs/swap.js': 'formstone/dist/js/swap.js',
+          'fs/touch.js': 'formstone/dist/js/touch.js',
+          'fs/lightbox.js': 'formstone/dist/js/lightbox.js',
+          'fs/navigation.js': 'formstone/dist/js/navigation.js',
+          'fs/checkbox.js': 'formstone/dist/js/checkbox.js',
+          'fs/range.js': 'formstone/dist/js/range.js',
+          'fs/carousel.js': 'formstone/dist/js/carousel.js',
+          'fs/mediaquery.js': 'formstone/dist/js/mediaquery.js',
+          'fs/srollbar.js': 'formstone/dist/js/srollbar.js',
+          'fs/dropdown.js': 'formstone/dist/js/dropdown.js',
+          'fs/equalize.js': 'formstone/dist/js/equalize.js',
+          'fs/number.js': 'formstone/dist/js/number.js',
+          'fs/tabs.js': 'formstone/dist/js/tabs.js',
+          'fs/background.js': 'formstone/dist/js/background.js',
         }
       },
       scss: {
@@ -120,19 +124,16 @@ module.exports = function( grunt ) {
           'susy': 'susy/sass/susy',
           '_modular-scale.scss': 'modular-scale/stylesheets/_modular-scale.scss',
           'modular-scale': 'modular-scale/stylesheets/modular-scale',
-          'fs/_boxer.scss': 'Boxer/jquery.fs.boxer.css',
-          'fs/_naver.scss': 'Naver/jquery.fs.naver.css',
-          'fs/_pager.scss': 'Pager/jquery.fs.pager.css',
-          'fs/_picker.scss': 'Picker/jquery.fs.picker.css',
-          'fs/_ranger.scss': 'Ranger/jquery.fs.ranger.css',
-          'fs/_roller.scss': 'Roller/jquery.fs.roller.css',
-          'fs/_scroller.scss': 'Scroller/jquery.fs.scroller.css',
-          'fs/_selecter.scss': 'Selecter/jquery.fs.selecter.css',
-          'fs/_shifter.scss': 'Shifter/jquery.fs.shifter.css',
-          'fs/_stepper.scss': 'Stepper/jquery.fs.stepper.css',
-          'fs/_tabber.scss': 'Tabber/jquery.fs.tabber.css',
-          'fs/_wallpaper.scss': 'Wallpaper/jquery.fs.wallpaper.css',
-          'fs/_zoomer.scss': 'Zoomer/jquery.fs.zoomer.css'
+          'fs/_lightbox.scss': 'formstone/dist/css/lightbox.css',
+          'fs/_navigation.scss': 'formstone/dist/css/navigation.css',
+          'fs/_checkbox.scss': 'formstone/dist/css/checkbox.css',
+          'fs/_range.scss': 'formstone/dist/css/range.css',
+          'fs/_carousel.scss': 'formstone/dist/css/carousel.css',
+          'fs/_srcollbar.scss': 'formstone/dist/css/scrollbar.css',
+          'fs/_dropdown.scss': 'formstone/dist/css/dropdown.css',
+          'fs/_number.scss': 'formstone/dist/css/number.css',
+          'fs/_tabs.scss': 'formstone/dist/css/tabs.css',
+          'fs/_background.scss': 'formstone/dist/css/background.css',
         }
       },
       php: {
@@ -237,16 +238,44 @@ module.exports = function( grunt ) {
                 }
             }
         }
+    },
+
+    uglify: {
+      dev: {
+        options: {
+          sourceMap: true,
+          sourceMapName: 'js/dist/main.map'
+        },
+        files: {
+          'js/dist/main.min.js': ['js/vendor/lazysizes.js', 'js/vendor/fs/core.js', 'js/vendor/fs/mediaquery.js', 'js/vendor/fs/swap.js', 'js/vendor/fs/touch.js', 'js/vendor/fs/navigation.js', 'js/vendor/fs/checkbox.js', 'js/vendor/fs/dropdown.js', 'js/src/main/*.js']
+        }
+      },
+      dist: {
+        options: {
+          sourceMap: false,
+          compress: {
+            drop_console: true
+          }
+        },
+        files: {
+          'js/dist/main.min.js': ['js/vendor/lazysizes.js', 'js/vendor/fs/core.js', 'js/vendor/fs/mediaquery.js', 'js/vendor/fs/swap.js', 'js/vendor/fs/touch.js', 'js/vendor/fs/navigation.js', 'js/vendor/fs/checkbox.js', 'js/vendor/fs/dropdown.js', 'js/src/main/*.js']
+        }
+      }
+    },
+
+    jshint: {
+      all: ['Gruntfile.js', 'js/src/*.js']
     }
 
 });
 
 grunt.registerTask('cssCompileDev', ['sass']);
 grunt.registerTask('cssCompileDist', ['webfont', 'sass', 'autoprefixer', 'csso']);
-grunt.registerTask('jsCompile', []);
+grunt.registerTask('jsCompileDev', ['jshint', 'uglify:dev']);
+grunt.registerTask('jsCompileDist', ['jshint', 'uglify:dist']);
 grunt.registerTask('iconsCompile', ['clean:icons', 'favicons']);
 grunt.registerTask('default', ['browserSync', 'watch']);
 grunt.registerTask('serve', ['default']);
-grunt.registerTask('build', ['bowercopy', 'shared_config', 'cssCompileDist', 'jsCompile', 'iconsCompile']);
+grunt.registerTask('build', ['bowercopy', 'shared_config', 'cssCompileDist', 'jsCompileDist', 'iconsCompile']);
 
 };

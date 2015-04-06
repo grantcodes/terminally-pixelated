@@ -119,27 +119,24 @@ class TerminallyPixelatedBase {
 
 	public function add_scripts() {
 		// Lazysizes for lazy loading images
-		TPHelpers::register( 'js/vendor/lazysizes.js' );
+		// TPHelpers::register( 'js/vendor/lazysizes.js' );
 		// Formstone scripts for various front end niceness
-		TPHelpers::register( 'js/vendor/fs/boxer.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/naver.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/pager.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/picker.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/ranger.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/roller.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/rubberband.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/scroller.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/selecter.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/shifter.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/sizer.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/stepper.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/tabber.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/wallpaper.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/zoomer.js', array( 'jquery' ) );
-		// Base script
-		TPHelpers::register( 'js/main.js', array( 'jquery', 'js/vendor/lazysizes.js', 'js/vendor/fs/naver.js', 'js/vendor/fs/picker.js', 'js/vendor/fs/selecter.js' ) );
-		wp_localize_script( 'js/main.js', 'TerminallyPixelated', TPHelpers::get_setting() );
-		wp_enqueue_script( 'js/main.js' );
+		TPHelpers::register( 'js/vendor/fs/lightbox.js', array( 'jquery' ) );
+		// TPHelpers::register( 'js/vendor/fs/navigation.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/checkbox.js', array( 'jquery' ) );
+		// TPHelpers::register( 'js/vendor/fs/range.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/carousel.js', array( 'jquery' ) );
+		// TPHelpers::register( 'js/vendor/fs/mediaquery.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/scrollbar.js', array( 'jquery' ) );
+		// TPHelpers::register( 'js/vendor/fs/dropdown.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/equalize.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/number.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/tabs.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/background.js', array( 'jquery' ) );
+		// Base script - includes all dependencies with uglify
+		TPHelpers::register( 'js/dist/main.min.js', array( 'jquery' ) );
+		wp_localize_script( 'js/dist/main.min.js', 'TerminallyPixelated', TPHelpers::get_setting() );
+		wp_enqueue_script( 'js/dist/main.min.js' );
 	}
 
 	public function add_sidebars() {

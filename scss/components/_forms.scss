@@ -31,6 +31,7 @@ input[type=search] {
     transition: all;
     outline: none;
     font-weight: normal;
+    vertical-align: bottom;
 
     &:hover {
         color: $input-c--hover;
@@ -94,6 +95,7 @@ input[type=search] {
 //     <option>Option</option>
 // </select>
 // <textarea class="{$modifiers}"></textarea>
+// <input type="checkbox" />
 //
 // Styleguide 2.1
 input,
@@ -353,174 +355,169 @@ input[type=submit] {
 
 // Custom select overwrites
 /*
- * Selecter v3.2.3 - 2014-10-24
+ * fs-dropdown v3.2.3 - 2014-10-24
  * A jQuery plugin for replacing default select elements. Part of the Formstone Library.
- * http://formstone.it/selecter/
+ * http://formstone.it/fs-dropdown/
  *
  * Copyright 2014 Ben Plum; MIT Licensed
  */
 
 
-.selecter {
+.fs-dropdown {
   margin: 0;
   max-width: 100%;
   display: inline-block;
+  vertical-align: bottom;
 }
 
-.selecter-selected {
+.fs-dropdown-selected {
   @extend %input;
   padding-right: $input-padding-horizontal * 2 + .6em;
   display: block;
 }
-.selecter-selected:after {
+.fs-dropdown-selected:after {
   right: $input-padding-horizontal;
   border-left: .3em solid transparent;
   border-right: .3em solid transparent;
   border-top: .3em solid darken($input-bg, 30%);
 }
-.no-touch .selecter-selected:hover {
+.no-touch .fs-dropdown-selected:hover {
   // color: #333333;
 }
-.no-touch .selecter.disabled .selecter-selected:hover {
+.no-touch .fs-dropdown.disabled .fs-dropdown-selected:hover {
   // color: #cccccc;
 }
-.selecter-options {
+.fs-dropdown-options {
   border: $input-border--active;
   border-top: none;
   background: $input-bg--active;
   border-radius: 0 0 $input-border-radius $input-border-radius;
   box-shadow: 0 0 .2em rgba(0,0,0,.3);
 }
-.selecter-group {
+.fs-dropdown-group {
   border-bottom: 1px solid darken($input-bg--active, 20%);
   color: darken($input-c--active, 20%);
   font-size: $input-font-size;
   padding: $input-padding-vertical $input-padding-horizontal;
   text-transform: uppercase;
 }
-.selecter-item {
+.fs-dropdown-item {
   background: $input-bg--active;
   border-bottom: 1px solid darken($input-bg--active, 20%);
   color: $input-c--active;
   font-size: $input-font-size;
   padding: $input-padding-vertical $input-padding-horizontal;
 }
-.selecter-item.selected {
+.fs-dropdown-item.selected {
   background: $input-bg;
 }
-.selecter-item.disabled {
+.fs-dropdown-item.disabled {
   color: tp-lighten($input-c, 30%);
 }
-.selecter-item:first-child {
+.fs-dropdown-item:first-child {
   border-radius: 0;
 }
-.selecter-item:last-child {
+.fs-dropdown-item:last-child {
   border-bottom: 0;
   border-radius: 0 0 $input-border-radius $input-border-radius;
 }
-.no-touch .selecter-item:hover,
-.no-touch .selecter-item.selected:hover {
+.no-touch .fs-dropdown-item:hover,
+.no-touch .fs-dropdown-item.selected:hover {
   color: #333333;
   background-color: #cccccc;
 }
-.selecter-item.disabled,
-.no-touch .selecter-item.disabled:hover {
+.fs-dropdown-item.disabled,
+.no-touch .fs-dropdown-item.disabled:hover {
   color: #cccccc;
   background-color: #ffffff;
 }
-.selecter.open .selecter-selected {
+.fs-dropdown.open .fs-dropdown-selected {
   border-radius: $input-border-radius $input-border-radius 0 0;
 }
-.selecter.open .selecter-selected,
-.selecter.focus .selecter-selected {
+.fs-dropdown.open .fs-dropdown-selected,
+.fs-dropdown.focus .fs-dropdown-selected {
   background-color: #ffffff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-.selecter.cover .selecter-options {
+.fs-dropdown.cover .fs-dropdown-options {
   border-width: 1px;
   border-radius: $input-border-radius;
 }
-.selecter.cover .selecter-options .selecter-item.first {
+.fs-dropdown.cover .fs-dropdown-options .fs-dropdown-item.first {
   border-radius: $input-border-radius $input-border-radius 0 0;
 }
-.selecter.cover.open .selecter-selected {
+.fs-dropdown.cover.open .fs-dropdown-selected {
   border-radius: $input-border-radius $input-border-radius 0 0;
 }
-.selecter.bottom .selecter-options {
+.fs-dropdown.bottom .fs-dropdown-options {
   border-width: 1px 1px 0;
 }
-.selecter.bottom .selecter-item:last-child {
+.fs-dropdown.bottom .fs-dropdown-item:last-child {
   border: none;
 }
-.selecter.bottom.open .selecter-selected {
+.fs-dropdown.bottom.open .fs-dropdown-selected {
   border-radius: 0 0 $input-border-radius $input-border-radius;
 }
-.selecter.bottom.open .selecter-options {
+.fs-dropdown.bottom.open .fs-dropdown-options {
   border-radius: $input-border-radius $input-border-radius 0 0;
 }
-.selecter.bottom .cover.open .selecter-selected {
+.fs-dropdown.bottom .cover.open .fs-dropdown-selected {
   border-radius: $input-border-radius;
 }
-.selecter.bottom .cover.open .selecter-options {
+.fs-dropdown.bottom .cover.open .fs-dropdown-options {
   border-radius: $input-border-radius;
 }
-.selecter.multiple .selecter-options {
+.fs-dropdown.multiple .fs-dropdown-options {
   border-width: 1px;
   border-radius: $input-border-radius;
 }
-.selecter.disabled .selecter-selected {
+.fs-dropdown.disabled .fs-dropdown-selected {
   background: #ffffff;
   border-color: #cccccc;
   color: #cccccc;
 }
-.selecter.disabled .selecter-options {
+.fs-dropdown.disabled .fs-dropdown-options {
   background: #ffffff;
   border-color: #cccccc;
 }
-.selecter.disabled .selecter-group,
-.selecter.disabled .selecter-item {
+.fs-dropdown.disabled .fs-dropdown-group,
+.fs-dropdown.disabled .fs-dropdown-item {
   border-color: #cccccc;
   color: #cccccc;
 }
-.selecter.disabled .selecter-item.selected,
-.no-touch .selecter.disabled .selecter-item.selected:hover {
+.fs-dropdown.disabled .fs-dropdown-item.selected,
+.no-touch .fs-dropdown.disabled .fs-dropdown-item.selected:hover {
   background: #fafafa;
 }
-.selecter.disabled .selecter-item,
-.no-touch .selecter.disabled .selecter-item:hover {
+.fs-dropdown.disabled .fs-dropdown-item,
+.no-touch .fs-dropdown.disabled .fs-dropdown-item:hover {
   color: #cccccc;
   background-color: #ffffff;
 }
 
 
-// Picker custom checkbox and radio overwrites
+// fs-checkbox custom checkbox and radio overwrites
 
-$picker-size: round($font-size * 16px);
+$fs-checkbox-size: round($font-size * 16px);
 
-.picker {
+.fs-checkbox {
   display: inline-block;
   overflow: visible;
 }
 
-.picker .picker-handle {
-  width: $picker-size;
-  height: $picker-size;
-  padding: 0;
-}
-
-.picker.picker-checkbox .picker-handle {
+.fs-checkbox.fs-checkbox-checkbox .fs-checkbox-handle {
   border: none;
   border-radius: 0;
 }
 
-.picker.picker-checkbox .picker-flag {
+.fs-checkbox-marker {
   @extend %input;
-  width: 100%;
-  height: 100%;
+  width: $fs-checkbox-size;
+  height: $fs-checkbox-size;
   padding: 0;
 }
 
-.picker.picker-checkbox.checked .picker-flag {
+.fs-checkbox.fs-checkbox-checkbox.checked .fs-checkbox-flag {
   background: url(img/icons/check.svg);
   background-repeat: no-repeat;
   background-size: 80% auto;
@@ -528,7 +525,7 @@ $picker-size: round($font-size * 16px);
 }
 
 
-.picker.picker-radio .picker-handle {
+.fs-checkbox.fs-checkbox-radio .fs-checkbox-handle {
   @extend %input;
   display: inline-block;
   border-width: 1px;
@@ -537,7 +534,7 @@ $picker-size: round($font-size * 16px);
   padding: 0;
 }
 
-.picker.picker-radio .picker-flag {
+.fs-checkbox.fs-checkbox-radio .fs-checkbox-flag {
   position: absolute;
   top: 4px;
   right: 4px;
@@ -545,11 +542,11 @@ $picker-size: round($font-size * 16px);
   bottom: 4px;
   border-radius: 100%;
   background: none;
-  width: $picker-size - 10px;
-  height: $picker-size - 10px;
+  width: $fs-checkbox-size - 10px;
+  height: $fs-checkbox-size - 10px;
   margin: 0;
 }
 
-.picker.picker-radio.checked .picker-flag {
+.fs-checkbox.fs-checkbox-radio.checked .fs-checkbox-flag {
   background-color: $input-c--hover;
 }

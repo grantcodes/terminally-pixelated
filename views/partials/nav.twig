@@ -1,4 +1,5 @@
-<nav class="{{nav_class}}" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+<span id="{{nav_class}}-handle">Menu</span>
+<nav class="{{nav_class}}" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" data-navigation-handle="#{{nav_class}}-handle">
     <ul class="{{nav_class}}__ul">
         {% for item in menu.get_items %}
             <li class="{{nav_class}}__li {{item.classes | join(' ')}}">
