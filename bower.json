@@ -30,7 +30,7 @@
     "modular-scale": "~2.0.6",
     "susy": "~2.2.2",
     "bxslider-4": "~4.2.2",
-    "lazysizes": "~0.7.2",
+    "lazysizes": "~1.0.1",
     "themehookalliance": "zamoose/themehookalliance",
     "compass-breakpoint": "~2.5.0",
     "TGM-Plugin-Activation": "thomasgriffin/TGM-Plugin-Activation#~2.4.0",
