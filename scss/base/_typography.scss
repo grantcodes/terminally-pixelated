@@ -5,24 +5,17 @@
 // Styleguide 1
 
 @include scut-reset-antialias;
-
+@include typographic();
 // Body text
 //
 // markup:
 // <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium autem cum necessitatibus veritatis ratione placeat fugit amet exercitationem labore, odit, adipisci ab molestiae cumque! Sed quos id possimus repellendus laboriosam nostrum laborum officiis expedita nulla, iusto consequatur velit, ducimus, numquam officia asperiores earum doloremque molestiae recusandae veritatis, animi quo. Suscipit.</p>
 //
 // Styleguide 1.1
-body {
-	font-family: $font-body;
-    font-weight: 300;
-	color: $text-c;
-	line-height: $line-height;
-	@include tp-fs(0);
-}
 
 p {
-	margin: 0;
-	@include tp-trailer();
+	// margin: 0;
+	// @include tp-trailer();
 }
 
 // Headings
@@ -34,7 +27,7 @@ p {
 // <h4>Heading 4</h4>
 // <h5>Heading 5</h5>
 // <h6>Heading 6</h6>
-// 
+//
 // Styleguide 1.2
 h1,
 h2,
@@ -42,41 +35,9 @@ h3,
 h4,
 h5,
 h6 {
-	line-height: 1.1;
 	a {
 		text-decoration: none;
 	}
-}
-
-h1 {
-	@include tp-fs(3);
-	@include tp-leader();
-	@include tp-trailer(2);
-}
-
-h2 {
-	@include tp-fs(2);
-	@include tp-trailer(2);
-}
-
-h3 {
-	@include tp-fs(1);
-	@include tp-trailer();
-}
-
-h4 {
-	@include tp-fs(0);
-	@include tp-trailer();
-}
-
-h5 {
-	@include tp-fs(0);
-	@include tp-trailer(.5);
-}
-
-h6 {
-	@include tp-fs(-1);
-	@include tp-trailer(.5);
 }
 
 .h1 {
@@ -109,7 +70,7 @@ dd,
 pre,
 address,
 blockquote {
-    @include tp-trailer();
+    // @include tp-trailer();
 }
 
 // Unordered Lists
@@ -135,7 +96,7 @@ blockquote {
 // Styleguide 1.4
 li > ul,
 li > ol {
-    margin-bottom: 0;
+    // margin-bottom: 0;
 }
 
 // Blockquotes

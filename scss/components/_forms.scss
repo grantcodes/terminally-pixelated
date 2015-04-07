@@ -19,6 +19,7 @@ input[type=search] {
   font-size: $input-font-size;
   padding: $input-padding-vertical $input-padding-horizontal;
   line-height: 1.2;
+  @include t-input();
 }
 
 @mixin tp-input {
@@ -368,12 +369,17 @@ input[type=submit] {
   max-width: 100%;
   display: inline-block;
   vertical-align: bottom;
+  margin-bottom: vr-block(.5, 7);
+  @media (min-width: $max-width) {
+    margin-bottom: vr-block(.25, 3.5);
+  }
 }
 
 .fs-dropdown-selected {
   @extend %input;
   padding-right: $input-padding-horizontal * 2 + .6em;
   display: block;
+  margin-bottom: 0;
 }
 .fs-dropdown-selected:after {
   right: $input-padding-horizontal;
@@ -407,6 +413,8 @@ input[type=submit] {
   color: $input-c--active;
   font-size: $input-font-size;
   padding: $input-padding-vertical $input-padding-horizontal;
+  height: auto;
+  line-height: 1.1;
 }
 .fs-dropdown-item.selected {
   background: $input-bg;
