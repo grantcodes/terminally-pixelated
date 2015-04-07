@@ -3,5 +3,7 @@ node_modules
 bower_components
 scss/vendor
 js/vendor
+js/dist
 lib/vendor
 *.map
+docs
