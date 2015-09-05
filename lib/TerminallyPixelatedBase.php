@@ -127,7 +127,6 @@ class TerminallyPixelatedBase {
 		// TPHelpers::register( 'js/vendor/fs/range.js', array( 'jquery' ) );
 		TPHelpers::register( 'js/vendor/fs/carousel.js', array( 'jquery' ) );
 		// TPHelpers::register( 'js/vendor/fs/mediaquery.js', array( 'jquery' ) );
-		TPHelpers::register( 'js/vendor/fs/scrollbar.js', array( 'jquery' ) );
 		// TPHelpers::register( 'js/vendor/fs/dropdown.js', array( 'jquery' ) );
 		TPHelpers::register( 'js/vendor/fs/equalize.js', array( 'jquery' ) );
 		TPHelpers::register( 'js/vendor/fs/number.js', array( 'jquery' ) );
