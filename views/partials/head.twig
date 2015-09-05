@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
+    <meta name="mobile-web-app-capable" value="yes">
     <link rel="pingback" href="{{ bloginfo('pingback_url') }}" />
     <!--[if IE]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -11,6 +12,5 @@
     {{wp_head}}
     {% block head %}
     {% endblock %}
-    {% include 'partials/icons.twig' %}
     {{fn('tha_head_bottom')}}
 </head>

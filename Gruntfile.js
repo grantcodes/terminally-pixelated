@@ -144,21 +144,6 @@ module.exports = function( grunt ) {
       }
     },
 
-    favicons: {
-      options: {
-        appleTouchBackgroundColor: '#FFFFFF',
-        trueColor: true,
-        tileColor: 'auto',
-        androidHomescreen: true,
-        html: 'views/partials/icons.twig',
-        HTMLPrefix: '{{icon_path}}'
-      },
-      icons: {
-        src: 'icons/icon.png',
-        dest: 'icons'
-      },
-    },
-
     clean: {
       icons: ['views/partials/icons.twig']
     },
@@ -270,9 +255,8 @@ grunt.registerTask('cssCompileDev', ['sass']);
 grunt.registerTask('cssCompileDist', ['webfont', 'sass', 'autoprefixer', 'csso']);
 grunt.registerTask('jsCompileDev', ['jshint', 'uglify:dev']);
 grunt.registerTask('jsCompileDist', ['jshint', 'uglify:dist']);
-grunt.registerTask('iconsCompile', ['clean:icons', 'favicons']);
 grunt.registerTask('default', ['browserSync', 'watch']);
 grunt.registerTask('serve', ['default']);
-grunt.registerTask('build', ['bowercopy', 'shared_config', 'cssCompileDist', 'jsCompileDist', 'iconsCompile']);
+grunt.registerTask('build', ['bowercopy', 'shared_config', 'cssCompileDist', 'jsCompileDist']);
 
 };
