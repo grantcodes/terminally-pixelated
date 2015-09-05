@@ -222,7 +222,7 @@ class TerminallyPixelatedBase {
 		$context['terminally_pixelated'] = TPHelpers::get_setting();
 
 		// Sidebar layout settings
-		if ( $layout = get_field( 'terminally_pixelated_sidebar' ) ) {
+		if ( function_exists( 'get_field' ) && ( $layout = get_field( 'terminally_pixelated_sidebar' ) ) ) {
 			if ( $layout == 'none' ) {
 				$context['main_sidebar'] = false;
 			}
