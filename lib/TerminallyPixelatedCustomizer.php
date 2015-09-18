@@ -8,6 +8,11 @@ class TerminallyPixelatedCustomizer {
         add_action( 'customize_register', array( $this, 'register' ) );
     }
 
+    /**
+     * Register various things fot the WordPress customiser
+     * @param  object $wp_customize The customizer object
+     * @return null
+     */
     public static function register( $wp_customize ) {
         $wp_customize->add_section( 'terminally_pixelated_settings', array(
             'title' => 'Theme Settings',

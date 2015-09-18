@@ -25,6 +25,9 @@ class TerminallyPixelatedBase {
 		add_action( 'tgmpa_register', array( $this, 'require_plugins' ) );
 	}
 
+	/**
+	 * Adds theme support for stuff
+	 */
 	private function add_support() {
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );
@@ -59,19 +62,35 @@ class TerminallyPixelatedBase {
 
 	}
 
+	/**
+	 * Misc init functions
+	 * @return null
+	 */
 	public function init() {
 		add_editor_style( TPHelpers::get_theme_resource_uri( '/editor-style.css' ) );
 	}
 
+	/**
+	 * Add some general nice things
+	 */
 	private function add_niceties() {
 		// Add shortcode support to widgets
 		add_filter( 'widget_text', 'do_shortcode' );
 	}
 
+	/**
+	 * Filter the excerpt ending string
+	 * @param  string $more The default more string
+	 * @return string       Updated more string
+	 */
 	public function excerpt_more( $more ) {
 		return '&hellip;';
 	}
 
+	/**
+	 * Removes useless junk
+	 * @return null
+	 */
 	public function remove_crap() {
 		if (!is_admin()) {
 		    remove_action( 'wp_head', 'feed_links_extra'); // Display the links to the extra feeds such as category feeds
@@ -86,6 +105,11 @@ class TerminallyPixelatedBase {
 		}
 	}
 
+	/**
+	 * Remove junk from style tag output
+	 * @param  string $input The dirty style tag string
+	 * @return string        The clean style tag string
+	 */
 	public function tidy_style_tag( $input ) {
 		// Nabbed from the roots theme
 		preg_match_all( "!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches );
@@ -94,6 +118,10 @@ class TerminallyPixelatedBase {
 		return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 	}
 
+	/**
+	 * Prevent images linking to themselves by default
+	 * @return null
+	 */
 	public function remove_image_links() {
 		$image_set = get_option( 'image_default_link_type' );
 
@@ -102,32 +130,32 @@ class TerminallyPixelatedBase {
 		}
 	}
 
-	public static function number_footer_widgets() {
-		return 4;
-	}
-
+	/**
+	 * Enqueue / register styles
+	 */
 	public function add_styles() {
 		wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,300italic,700italic|Merriweather:300italic,300,700,700italic', false );
 		if ( !defined( 'SCRIPT_DEBUG' ) || false === SCRIPT_DEBUG ) {
-			// wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/main.css' ), false, 1 );
 			TPHelpers::enqueue( 'main.css' );
 		} else {
-			// wp_enqueue_style( 'style', TPHelpers::get_theme_resource_uri( '/style.css' ), false, 0 );
 			TPHelpers::enqueue( 'style.css' );
 		}
 	}
 
+	/**
+	 * Register / enqueue scripts
+	 */
 	public function add_scripts() {
 		// Lazysizes for lazy loading images
-		// TPHelpers::register( 'js/vendor/lazysizes.js' );
+		// TPHelpers::register( 'js/vendor/lazysizes.js' ); // In core
 		// Formstone scripts for various front end niceness
 		TPHelpers::register( 'js/vendor/fs/lightbox.js', array( 'jquery' ) );
-		// TPHelpers::register( 'js/vendor/fs/navigation.js', array( 'jquery' ) );
+		// TPHelpers::register( 'js/vendor/fs/navigation.js', array( 'jquery' ) ); // In core
 		TPHelpers::register( 'js/vendor/fs/checkbox.js', array( 'jquery' ) );
-		// TPHelpers::register( 'js/vendor/fs/range.js', array( 'jquery' ) );
+		TPHelpers::register( 'js/vendor/fs/range.js', array( 'jquery' ) );
 		TPHelpers::register( 'js/vendor/fs/carousel.js', array( 'jquery' ) );
-		// TPHelpers::register( 'js/vendor/fs/mediaquery.js', array( 'jquery' ) );
-		// TPHelpers::register( 'js/vendor/fs/dropdown.js', array( 'jquery' ) );
+		// TPHelpers::register( 'js/vendor/fs/mediaquery.js', array( 'jquery' ) ); // In core
+		// TPHelpers::register( 'js/vendor/fs/dropdown.js', array( 'jquery' ) ); // In core
 		TPHelpers::register( 'js/vendor/fs/equalize.js', array( 'jquery' ) );
 		TPHelpers::register( 'js/vendor/fs/number.js', array( 'jquery' ) );
 		TPHelpers::register( 'js/vendor/fs/tabs.js', array( 'jquery' ) );
@@ -138,6 +166,10 @@ class TerminallyPixelatedBase {
 		wp_enqueue_script( 'js/dist/main.min.js' );
 	}
 
+
+	/**
+	 * Register sidebars
+	 */
 	public function add_sidebars() {
 		register_sidebar( array(
 			'name'          => __( 'Main Sidebar', 'terminally_pixelated' ),
@@ -150,7 +182,7 @@ class TerminallyPixelatedBase {
 			'after_title'   => '</h1>'
 		) );
 
-		for ( $i=1; $i <= $this->number_footer_widgets(); $i++ ) {
+		for ( $i=1; $i <= TPHelpers::get_setting( 'footer_widgets' ); $i++ ) {
 			register_sidebar( array(
 				'name'          => __( 'Footer Widgets ' . $i, 'terminally_pixelated' ),
 				'id'            => 'footer-widgets-' . $i,
@@ -164,14 +196,25 @@ class TerminallyPixelatedBase {
 		}
 	}
 
+	/**
+	 * Register menus
+	 */
 	private function add_menus() {
 		register_nav_menu( 'main', 'The main site navigation' );
 	}
 
+	/**
+	 * Add image sizes
+	 */
 	private function add_image_sizes() {
 		// add_image_size( 'post-thumbnail', 715, 400, true );
 	}
 
+	/**
+	 * Add some data to the timber context
+	 * @param  array  $context The original timber context
+	 * @return array           The updated timber context
+	 */
 	public function timber_context( $context ) {
 
 		// Add menu
@@ -181,8 +224,8 @@ class TerminallyPixelatedBase {
 		$context['main_sidebar'] = Timber::get_widgets( 'main-sidebar' );
 
 		// Add footer widgets
-		if ( $this->number_footer_widgets() ) {
-			for ( $i=1; $i <= $this->number_footer_widgets(); $i++ ) {
+		if ( $count = TPHelpers::get_setting( 'footer_widgets' ) ) {
+			for ( $i=1; $i <= $count; $i++ ) {
 				$context['footer_widgets'][$i + 1] = Timber::get_widgets( 'footer-widgets-' . $i );
 			}
 		}
@@ -232,6 +275,11 @@ class TerminallyPixelatedBase {
 		return $context;
 	}
 
+	/**
+	 * Add schema.ord data to the timber context
+	 * @param  array  $context The timber context
+	 * @return array           The timber context with schema data
+	 */
 	public function schema ( $context ) {
 		$context['schema'] = array();
 
@@ -252,6 +300,9 @@ class TerminallyPixelatedBase {
 		return $context;
 	}
 
+	/**
+	 * Add additional routes
+	 */
 	public function add_routes() {
 		// Timber::add_route( ':var/:var2', function( $params ) {
 		// 	$query = array( 'var' => $params['var'], 'var2' => $params['var2'] );
@@ -259,6 +310,10 @@ class TerminallyPixelatedBase {
 		// });
 	}
 
+	/**
+	 * Output google analytics script tag
+	 * @return null echos script tag
+	 */
 	public function google_analytics() {
 		if ( $ga_id = get_option( 'terminally_pixelated_googleanalytics' ) ) : ?>
 			<script>
@@ -272,8 +327,17 @@ class TerminallyPixelatedBase {
 		<?php endif;
 	}
 
+	/**
+	 * Generate html for lazy loading retina images
+	 * @param  string $html  The original image tag
+	 * @param  int    $id    The image ID
+	 * @param  string $alt   The alt attribute value
+	 * @param  string $title The title attribute value
+	 * @param  string $align The align direction
+	 * @param  string $size  The size string
+	 * @return string        The updated image html ready for lazy loading
+	 */
 	public function retina_lazyload_images( $html, $id, $alt, $title, $align, $size ) {
-		// var_dump( $html );
 		$img = new TimberImage( $id );
 		$context = array(
 			'id' => $id,
@@ -293,6 +357,10 @@ class TerminallyPixelatedBase {
 		return $img;
 	}
 
+	/**
+	 * Require plugins for installation using tgmpa plugin activation
+	 * @return null
+	 */
 	public function require_plugins() {
 		$plugins = array(
 			array(

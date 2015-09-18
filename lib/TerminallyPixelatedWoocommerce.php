@@ -15,10 +15,20 @@ class TerminallyPixelatedWoocommerce {
         }
     }
 
+    /**
+     * Add WooCommerce specific context stuff here
+     * @param  array  $context The timber context
+     * @return array           Updated timber context
+     */
     function timber_context( $context ) {
         return $context;
     }
 
+    /**
+     * Remove WooCommerce styles if you so wish
+     * @param  array  $styles Default list of stylesheets to use
+     * @return array          Updated list of styles to use
+     */
     function remove_styles( $styles ) {
         // unset( $styles['woocommerce-general'] );
         return $styles;
