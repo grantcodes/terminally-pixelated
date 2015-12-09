@@ -1,0 +1,562 @@
+// Forms
+//
+// Covers styles used for forms, such as the `<input>` and `<select>`
+// elements.
+//
+// Styleguide 2
+
+@include scut-reset-form;
+@include scut-reset-pointer;
+@include scut-reset-button;
+
+// Fixing something with normalize
+input[type=search] {
+    box-sizing: border-box;
+}
+
+@mixin input-structure($input-border-radius: $input-border-radius, $input-font-size: $input-font-size, $input-padding-vertical: $input-padding-vertical, $input-padding-horizontal: $input-padding-horizontal) {
+  border-radius: $input-border-radius;
+  font-size: $input-font-size;
+  padding: $input-padding-vertical $input-padding-horizontal;
+  line-height: 1.2;
+  @include t-input();
+}
+
+@mixin tp-input {
+    max-width: 100%;
+    @include input-structure();
+    color: $input-c;
+    background: $input-bg;
+    border: $input-border;
+    box-shadow: inset 0 0 .6em rgba(0,0,0,.07);
+    transition: all;
+    outline: none;
+    font-weight: normal;
+    vertical-align: bottom;
+
+    &:hover {
+        color: $input-c--hover;
+        background: $input-bg--hover;
+        border: $input-border--hover;
+        box-shadow: 0 0 .1em inset rgba(0,0,0,.3);
+    }
+
+    &:focus,
+    &:active {
+        color: $input-c--active;
+        background: $input-bg--active;
+        border: $input-border--active;
+        box-shadow: 0 0 .2em rgba(0,0,0,.3);
+    }
+}
+
+%input {
+  @include tp-input();
+}
+
+@mixin tp-button {
+    max-width: 100%;
+    text-align: center;
+    @include input-structure();
+    background-color: $button-bgc;
+    border: $button-border;
+    color: $button-c;
+    box-shadow: none;
+    text-shadow: none;
+    font-weight: normal;
+
+    &:hover,
+    &:focus {
+      background-color: $button-bgc--hover;
+      border: $button-border--hover;
+      color: $button-c--hover;
+    }
+
+    &:active {
+      background-color: $button-bgc--active;
+      border: $button-border--active;
+      color: $button-c--active;
+      transform: translate(1px 1px);
+    }
+}
+
+%button {
+  @include tp-button();
+}
+
+// General input styles
+//
+// : - Stardard style
+// :hover - Simple hover style
+// :focus - Focus and active styles
+// :active - Focus and active styles
+//
+// markup:
+// <input class="{$modifiers}" />
+// <select class="{$modifiers}">
+//     <option>Option</option>
+// </select>
+// <textarea class="{$modifiers}"></textarea>
+// <input type="checkbox" />
+//
+// Styleguide 2.1
+input,
+select,
+textarea {
+	@extend %input;
+}
+
+// Buttons
+//
+// : - Standard style
+// :hover - Simple hover style
+// :focus - Focus style
+// :active - Active style
+//
+// markup:
+// <button class="button {$modifiers}">Button</button>
+//
+// Styleguide 2.2
+button,
+.button,
+input[type=submit] {
+    @extend %button;
+}
+
+
+@if ($gravity-forms) {
+    .gform_fields {
+        @extend %scut-list-unstyled;
+        margin: 0;
+        padding: 0;
+    }
+
+    .gfield {
+        @include tp-trailer(.5);
+    }
+
+    .gfield_label {
+        display: inline-block;
+        @include tp-trailer(.5);
+    }
+
+    .gfield_required {
+        color: $error-c;
+        margin-left: 0.2em;
+    }
+
+    .gfield_description {
+        @include tp-leader(.5);
+        font-size: 0.8em;
+    }
+
+    .ginput_complex {
+        border-bottom: 1px solid $border-c;
+        border-top: 1px solid $border-c;
+        @include tp-padding-leader();
+        @include tp-padding-trailer();
+    }
+
+    .gfield_checkbox {
+        @extend %scut-list-inline;
+        margin: 0;
+
+        & > li {
+            @include typecsset-space(margin-right, 1);
+        }
+
+        input {
+            margin-right: 0.3em;
+        }
+    }
+
+
+    // Errors
+
+    .validation_error {
+        display: block;
+        background-color: $error-c;
+        color: tp-lighten($error-c, 40%);
+        padding: .5em .8em;
+        border: 1px solid tp-shade($error-c, 15%);
+        border-radius: .3em;
+        @include tp-trailer();
+    }
+
+    .gfield_error {
+        .gfield_description.validation_message {
+            @extend .validation_error;
+            margin-bottom: 0;
+            margin-top: 0.2em;
+            font-size: 0.8em;
+        }
+
+        input,
+        select,
+        textarea {
+            border-color: $error-c;
+        }
+    }
+
+    .gfield_creditcard_warning_message {
+            @extend .validation_error;
+
+    }
+
+
+    // Layouts
+
+    .gfield {
+        @extend %scut-clearfix;
+    }
+
+    .left_label {
+        @include breakpoint($mid-break) {
+            .gfield_label {
+                @include span(3 of 10);
+                // text-align: right;
+                margin-top: 0.3em;
+            }
+            .ginput_container {
+                @include span(last 7 of 10);
+            }
+            .gfield_checkbox {
+                margin-top: 0.3em;
+            }
+        }
+        @include breakpoint($large-break) {
+            .gfield_label {
+                @include span(2 of 10);
+                // text-align: right;
+                margin-top: 0.3em;
+            }
+            .ginput_container {
+                @include span(last 8 of 10);
+            }
+        }
+
+        &.gform_footer {
+            text-align: right;
+        }
+    }
+
+    .right_label {
+        @include breakpoint($mid-break) {
+            .gfield_label {
+                @include span(last 3 of 10);
+                margin-top: 0.3em;
+            }
+            .ginput_container {
+                @include span(7 of 10);
+            }
+        }
+    }
+
+    .ginput_left {
+        clear: left;
+        @include span(5 of 10);
+    }
+
+    .ginput_right {
+        clear: right;
+        @include span(last 5 of 10);
+    }
+
+    .large {
+        width: 100%;
+    }
+
+    .medium {
+        width: 75%;
+    }
+
+    .small {
+        width: 50%;
+    }
+
+    .ginput_complex {
+        @extend %scut-clearfix;
+
+        label {
+            display: block;
+            font-size: 0.8em;
+            @include tp-leader(.5);
+            clear: both;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+            width: auto;
+        }
+    }
+
+    .gfield_list {
+        table-layout: auto;
+        width: 100%;
+    }
+
+    .gfield_list_cell {
+        padding: 0;
+        @include tp-padding-trailer(.5);
+
+        input {
+            width: 100%;
+        }
+    }
+
+    .gfield_list_icons {
+        padding: 0;
+        text-align: right;
+        @include tp-padding-trailer(.5);
+    }
+
+    .ginput_full {
+        @extend %scut-clearfix;
+        display: block;
+        width: 100%;
+        @include tp-trailer(1);
+    }
+
+    .ginput_cardinfo_left {
+        @include breakpoint($mid-break) {
+            @include span(5 of 10);
+        }
+    }
+
+    .ginput_cardinfo_right {
+        @include breakpoint($mid-break) {
+            @include span(last 5 of 10);
+        }
+    }
+
+    .ginput_card_expiration_month {
+        @include span(5 of 10);
+        @include tp-trailer(.5);
+    }
+
+    .ginput_card_expiration_year {
+        @include span(last 5 of 10);
+        @include tp-trailer(.5);
+    }
+
+    .ginput_card_security_code_icon {
+        display: none;
+    }
+
+    .gform_card_icon_container {
+        display: none;
+    }
+
+}
+
+
+// Custom select overwrites
+/*
+ * fs-dropdown v3.2.3 - 2014-10-24
+ * A jQuery plugin for replacing default select elements. Part of the Formstone Library.
+ * http://formstone.it/fs-dropdown/
+ *
+ * Copyright 2014 Ben Plum; MIT Licensed
+ */
+
+
+.fs-dropdown {
+  margin: 0;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-bottom: vr-block(.5, 7);
+  @media (min-width: $max-width) {
+    margin-bottom: vr-block(.25, 3.5);
+  }
+}
+
+.fs-dropdown-selected {
+  @extend %input;
+  padding-right: $input-padding-horizontal * 2 + .6em;
+  display: block;
+  margin-bottom: 0;
+}
+.fs-dropdown-selected:after {
+  right: $input-padding-horizontal;
+  border-left: .3em solid transparent;
+  border-right: .3em solid transparent;
+  border-top: .3em solid darken($input-bg, 30%);
+}
+.no-touch .fs-dropdown-selected:hover {
+  // color: #333333;
+}
+.no-touch .fs-dropdown.disabled .fs-dropdown-selected:hover {
+  // color: #cccccc;
+}
+.fs-dropdown-options {
+  border: $input-border--active;
+  border-top: none;
+  background: $input-bg--active;
+  border-radius: 0 0 $input-border-radius $input-border-radius;
+  box-shadow: 0 0 .2em rgba(0,0,0,.3);
+}
+.fs-dropdown-group {
+  border-bottom: 1px solid darken($input-bg--active, 20%);
+  color: darken($input-c--active, 20%);
+  font-size: $input-font-size;
+  padding: $input-padding-vertical $input-padding-horizontal;
+  text-transform: uppercase;
+}
+.fs-dropdown-item {
+  background: $input-bg--active;
+  border-bottom: 1px solid darken($input-bg--active, 20%);
+  color: $input-c--active;
+  font-size: $input-font-size;
+  padding: $input-padding-vertical $input-padding-horizontal;
+  height: auto;
+  line-height: 1.1;
+}
+.fs-dropdown-item.selected {
+  background: $input-bg;
+}
+.fs-dropdown-item.disabled {
+  color: tp-lighten($input-c, 30%);
+}
+.fs-dropdown-item:first-child {
+  border-radius: 0;
+}
+.fs-dropdown-item:last-child {
+  border-bottom: 0;
+  border-radius: 0 0 $input-border-radius $input-border-radius;
+}
+.no-touch .fs-dropdown-item:hover,
+.no-touch .fs-dropdown-item.selected:hover {
+  color: #333333;
+  background-color: #cccccc;
+}
+.fs-dropdown-item.disabled,
+.no-touch .fs-dropdown-item.disabled:hover {
+  color: #cccccc;
+  background-color: #ffffff;
+}
+.fs-dropdown.open .fs-dropdown-selected {
+  border-radius: $input-border-radius $input-border-radius 0 0;
+}
+.fs-dropdown.open .fs-dropdown-selected,
+.fs-dropdown.focus .fs-dropdown-selected {
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.fs-dropdown.cover .fs-dropdown-options {
+  border-width: 1px;
+  border-radius: $input-border-radius;
+}
+.fs-dropdown.cover .fs-dropdown-options .fs-dropdown-item.first {
+  border-radius: $input-border-radius $input-border-radius 0 0;
+}
+.fs-dropdown.cover.open .fs-dropdown-selected {
+  border-radius: $input-border-radius $input-border-radius 0 0;
+}
+.fs-dropdown.bottom .fs-dropdown-options {
+  border-width: 1px 1px 0;
+}
+.fs-dropdown.bottom .fs-dropdown-item:last-child {
+  border: none;
+}
+.fs-dropdown.bottom.open .fs-dropdown-selected {
+  border-radius: 0 0 $input-border-radius $input-border-radius;
+}
+.fs-dropdown.bottom.open .fs-dropdown-options {
+  border-radius: $input-border-radius $input-border-radius 0 0;
+}
+.fs-dropdown.bottom .cover.open .fs-dropdown-selected {
+  border-radius: $input-border-radius;
+}
+.fs-dropdown.bottom .cover.open .fs-dropdown-options {
+  border-radius: $input-border-radius;
+}
+.fs-dropdown.multiple .fs-dropdown-options {
+  border-width: 1px;
+  border-radius: $input-border-radius;
+}
+.fs-dropdown.disabled .fs-dropdown-selected {
+  background: #ffffff;
+  border-color: #cccccc;
+  color: #cccccc;
+}
+.fs-dropdown.disabled .fs-dropdown-options {
+  background: #ffffff;
+  border-color: #cccccc;
+}
+.fs-dropdown.disabled .fs-dropdown-group,
+.fs-dropdown.disabled .fs-dropdown-item {
+  border-color: #cccccc;
+  color: #cccccc;
+}
+.fs-dropdown.disabled .fs-dropdown-item.selected,
+.no-touch .fs-dropdown.disabled .fs-dropdown-item.selected:hover {
+  background: #fafafa;
+}
+.fs-dropdown.disabled .fs-dropdown-item,
+.no-touch .fs-dropdown.disabled .fs-dropdown-item:hover {
+  color: #cccccc;
+  background-color: #ffffff;
+}
+
+
+// fs-checkbox custom checkbox and radio overwrites
+
+$fs-checkbox-size: round($font-size * 16px);
+
+.fs-checkbox {
+  display: inline-block;
+  overflow: visible;
+}
+
+.fs-checkbox.fs-checkbox-checkbox .fs-checkbox-handle {
+  border: none;
+  border-radius: 0;
+}
+
+.fs-checkbox-marker {
+  @extend %input;
+  width: $fs-checkbox-size;
+  height: $fs-checkbox-size;
+  padding: 0;
+}
+
+.fs-checkbox.fs-checkbox-checkbox.checked .fs-checkbox-flag {
+  background: url(img/icons/check.svg);
+  background-repeat: no-repeat;
+  background-size: 80% auto;
+  background-position: center;
+}
+
+
+.fs-checkbox.fs-checkbox-radio .fs-checkbox-handle {
+  @extend %input;
+  display: inline-block;
+  border-width: 1px;
+  border-radius: 100%;
+  position: relative;
+  padding: 0;
+}
+
+.fs-checkbox.fs-checkbox-radio .fs-checkbox-flag {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  left: 4px;
+  bottom: 4px;
+  border-radius: 100%;
+  background: none;
+  width: $fs-checkbox-size - 10px;
+  height: $fs-checkbox-size - 10px;
+  margin: 0;
+}
+
+.fs-checkbox.fs-checkbox-radio.checked .fs-checkbox-flag {
+  background-color: $input-c--hover;
+}

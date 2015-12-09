@@ -1,0 +1,63 @@
+@mixin tp-container() {
+    @include scut-clearfix;
+    @include container;
+    padding-left: $grid-padding;
+    padding-right: $grid-padding;
+}
+
+@mixin tp-fs($scale) {
+    $local-min-font: $min-font * (math-pow($header-ratio, $scale));
+    $local-max-font: $max-font * (math-pow($header-ratio, $scale));
+
+    font-size: $local-min-font;
+
+    @media (min-width: $min-width) {
+        font-size: calc( #{$local-min-font} + (#{_strip-units($local-max-font)} - #{_strip-units($local-min-font)}) * ((100vw - #{$min-width}) / (#{_strip-units($max-width)} - #{_strip-units($min-width)})) );
+    }
+
+    @media (min-width: $max-width) {
+        font-size: $local-max-font;
+    }
+}
+
+@mixin tp-space( $property, $count: 1, $important: false) {
+    $val: vr-block($count);
+    @if ($important) {
+        $val: $val + !important;
+    }
+    // Causes issues with the styleguide but works fine.
+    // styleguide:ignore:start
+    #{$property}: $val;
+    // styleguide:ignore:end
+}
+
+@mixin tp-icon() {
+
+}
+
+@mixin tp-leader($space: 1, $important: false) {
+    @include tp-space(margin-top, $space, $important);
+}
+
+@mixin tp-trailer($space: 1, $important: false) {
+    @include tp-space(margin-bottom, $space, $important);
+}
+
+@mixin tp-padding-leader($space: 1, $important: false) {
+    @include tp-space(padding-top, $space, $important);
+}
+
+@mixin tp-padding-trailer($space: 1, $important: false) {
+    @include tp-space(padding-bottom, $space, $important);
+}
+
+@mixin tp-breakpoint($breakpoint, $fallback: false) {
+    @media (min-width: #{$breakpoint}) {
+        @content;
+    }
+    @if ($fallback) {
+        #{$fallback} {
+            @content;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {% if is_archive %}
+        {% for post in posts %}
+                {% include ['components/preview-'~post.post_type~'.twig', 'components/preview.twig'] %}
+        {% endfor %}
+    {% else %}
+        {% if post %}
+            {% include ['partials/article-'~post.post_type~'.twig', 'partials/article.twig'] %}
+        {% else %}
+            {% for post in posts %}
+                    {% include ['partials/article-'~post.post_type~'.twig', 'partials/article.twig'] %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    {% if show_comments %}
+        {{fn('tha_comments_before')}}
+        {{fn('comments_template')}}
+        {{fn('tha_comments_after')}}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+.main-header-nav-wrap {
+	width: 100%;
+    max-height: 100%;
+    // overflow: auto;
+}
+
+.main-header {
+    background-color: $header-bgc;
+    color: $header-c;
+    width: 100%;
+    @include tp-padding-leader();
+    @include tp-padding-trailer();
+}
+
+.main-title {
+    margin: 0;
+}
+
+.headroom {
+    transition: transform 200ms linear;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+}
+.headroom--pinned {
+    transform: translateY(0%);
+}
+.headroom--unpinned {
+    transform: translateY(-100%);
+}

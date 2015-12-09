@@ -1,0 +1,19 @@
+{# <span id="{{nav_class}}-handle">Menu</span> #}
+<nav class="{{nav_class}}" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" data-navigation-handle="#{{nav_class}}-handle">
+    <ul class="{{nav_class}}__ul">
+        {% for item in menu.get_items %}
+            <li class="{{nav_class}}__li {{item.classes | join(' ')}}">
+                <a class="{{nav_class}}__a" href="{{item.get_path}}">{{item.title}}</a>
+                {% if item.get_children %}
+                    <ul class="{{nav_class}}__sub-nav">
+                        {% for child in item.get_children %}
+                            <li class="{{nav_class}}__sub-nav__li {{child.classes | join(' ')}}">
+                                <a class="{{nav_class}}__sub-nav__a" href="{{child.get_path}}">{{child.title}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
