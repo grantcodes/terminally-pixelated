@@ -33,6 +33,7 @@ var webpackConf = {
 gulp.task('clean', function(){
   return del([
     'src/scss/vendor',
+    'themes/terminally-pixelated/vendor',
     'themes/terminally-pixelated/styleguide',
     'themes/terminally-pixelated/js/app.js',
     'themes/terminally-pixelated/config.json',
@@ -130,6 +131,18 @@ gulp.task('copyfiles:breakpoint', function(){
   ], { base: 'bower_components/compass-breakpoint/stylesheets' })
   .pipe(gulp.dest('src/scss/vendor'));
 });
+gulp.task('copyfiles:tha', function(){
+  return gulp.src([
+    'bower_components/themehookalliance/tha-theme-hooks.php'
+  ], { base: 'bower_components/themehookalliance' })
+  .pipe(gulp.dest('themes/terminally-pixelated/vendor'));
+});
+gulp.task('copyfiles:tgm', function(){
+  return gulp.src([
+    'bower_components/TGM-Plugin-Activation/class-tgm-plugin-activation.php'
+  ], { base: 'bower_components/TGM-Plugin-Activation' })
+  .pipe(gulp.dest('themes/terminally-pixelated/vendor'));
+});
 
 gulp.task('copyfiles', function() {
   return runSequence(
@@ -138,7 +151,9 @@ gulp.task('copyfiles', function() {
     'copyfiles:scut',
     'copyfiles:typographic',
     'copyfiles:normalize',
-    'copyfiles:breakpoint'
+    'copyfiles:breakpoint',
+    'copyfiles:tha',
+    'copyfiles:tgm'
   );
 });
 
@@ -172,6 +187,8 @@ gulp.task('build', function() {
     'copyfiles:typographic',
     'copyfiles:normalize',
     'copyfiles:breakpoint',
+    'copyfiles:tha',
+    'copyfiles:tgm',
     'jsonconfig',
     'scss',
     'styleguide:generate',

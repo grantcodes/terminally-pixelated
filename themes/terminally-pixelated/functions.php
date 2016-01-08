@@ -26,5 +26,5 @@ terminally_pixelated_autoload( 'TerminallyPixelatedBase' );
 terminally_pixelated_autoload( 'TerminallyPixelatedCustom', true );
 terminally_pixelated_autoload( 'TerminallyPixelatedCustomizer', true );
 terminally_pixelated_autoload( 'TerminallyPixelatedWoocommerce', true );
-terminally_pixelated_autoload( 'vendor/tha-theme-hooks' );
-terminally_pixelated_autoload( 'vendor/class-tgm-plugin-activation' );
+require_once( 'vendor/tha-theme-hooks.php' );
+require_once( 'vendor/class-tgm-plugin-activation.php' );
