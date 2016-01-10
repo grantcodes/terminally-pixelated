@@ -3,7 +3,7 @@ node_modules
 .sass-cache
 bower_components
 src/scss/vendor
-src/utils/config.sass
+src/scss/utils/config.sass
 uploads
 js/vendor
 js/dist
@@ -14,5 +14,5 @@ themes/terminally-pixelated/style.css
 themes/terminally-pixelated/editor-style.css
 themes/terminally-pixelated/js/app.js
 themes/terminally-pixelated/styleguide
-themes/terminally-pixelated/lib/vendor
+themes/terminally-pixelated/vendor
 themes/terminally-pixelated/config.json
