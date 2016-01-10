@@ -1,6 +1,7 @@
 // ## Globals
 var browserSync    = require('browser-sync').create();
 var gulp           = require('gulp');
+var gutil          = require('gulp-util');
 var jsonSass       = require('gulp-json-sass');
 var plumber        = require('gulp-plumber');
 var sass           = require('gulp-sass');
@@ -33,8 +34,6 @@ var webpackConf = {
 
 gulp.task('clean', function(){
   return del([
-    'src/scss/vendor',
-    'themes/terminally-pixelated/vendor',
     'themes/terminally-pixelated/styleguide',
     'themes/terminally-pixelated/js/app.js',
     'themes/terminally-pixelated/config.json',
@@ -73,10 +72,7 @@ gulp.task('styleguide:generate', function() {
 
 gulp.task('styleguide:applystyles', function() {
   gulp.src('src/scss/style.scss')
-    .pipe(sass({
-      errLogToConsole: true,
-      importer: moduleImporter()
-    }))
+    .pipe(sass({ importer: moduleImporter() }).on('error', sass.logError))
     .pipe(styleguide.applyStyles())
     .pipe(gulp.dest('themes/terminally-pixelated/styleguide'));
 });
@@ -90,36 +86,18 @@ gulp.task('jsonconfig', function() {
 gulp.task('webpack', function() {
   return webpack(webpackConf, function(err, stats) {
     if (err) {
-      console.log(err);
+      gutil.beep();
+      throw new gutil.PluginError('webpack', err);
     }
+    gutil.log('[webpack]', stats.toString({}));
   });
 });
 
-gulp.task('copyfiles:config', function() {
+gulp.task('copyfiles', function() {
   return gulp.src(
     'src/config.json',
     { base: 'src' })
   .pipe(gulp.dest('themes/terminally-pixelated'));
-});
-gulp.task('copyfiles:tha', function(){
-  return gulp.src([
-    'bower_components/themehookalliance/tha-theme-hooks.php'
-  ], { base: 'bower_components/themehookalliance' })
-  .pipe(gulp.dest('themes/terminally-pixelated/vendor'));
-});
-gulp.task('copyfiles:tgm', function(){
-  return gulp.src([
-    'bower_components/TGM-Plugin-Activation/class-tgm-plugin-activation.php'
-  ], { base: 'bower_components/TGM-Plugin-Activation' })
-  .pipe(gulp.dest('themes/terminally-pixelated/vendor'));
-});
-
-gulp.task('copyfiles', function() {
-  return runSequence(
-    'copyfiles:config',
-    'copyfiles:tha',
-    'copyfiles:tgm'
-  );
 });
 
 gulp.task('watch', function() {
@@ -127,7 +105,7 @@ gulp.task('watch', function() {
     files: [
       'themes/terminally-pixelated/**/*.css',
       'themes/terminally-pixelated/**/*.php',
-      'themes/terminally-pixelated/views/**/*.php',
+      'themes/terminally-pixelated/views/**/*.twig',
       'themes/terminally-pixelated/js/app.js'
     ],
     open: false,
@@ -140,15 +118,12 @@ gulp.task('watch', function() {
   gulp.watch(['src/scss/**/*.scss'], ['scss', 'styleguide:generate', 'styleguide:applystyles']);
   gulp.watch(['src/config.json'], ['jsonconfig']);
   gulp.watch(['src/js/**/*.js'], ['webpack']);
-  gulp.watch(['bower.json'], ['build']);
 });
 
 gulp.task('build', function() {
   runSequence(
     'clean',
-    'copyfiles:config',
-    'copyfiles:tha',
-    'copyfiles:tgm',
+    'copyfiles',
     'jsonconfig',
     'scss',
     'styleguide:generate',
