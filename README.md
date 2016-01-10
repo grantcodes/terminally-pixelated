@@ -1,6 +1,6 @@
 # Terminally Pixelated
 
-Terminally Pixelated is a timber based WordPress starter theme with some gulp, Sass and webpack niceties.
+Terminally Pixelated is a timber based WordPress starter theme with some gulp, Sass, composer and webpack niceties.
 
 Developed by [Grant Richmond](http://grant.codes)
 
@@ -18,14 +18,15 @@ Terminally Pixelated comes jam packed full of greatness:
 - Automatic style guide creation
 - Webpack for JavaScript bundling
 - Browser sync for live reloading and development loveliness
+- Composer support
 
 ## Getting started
 
-To get started, download however you wish and edit `src/config.json` with your development url then run `npm install`, `bower install` and `gulp build` in the content directory to install the required gulp and bower modules and move them to the appropriate location.
+To get started, download however you wish and edit `src/config.json` with your development url then run `npm install`, `composer install` and `gulp build` in the content directory to install the required dependencies.
 
 Run `gulp watch` in the content directory to watch for file changes and start a browser sync server.
 
-Run `grunt build` to fully compile your theme.
+Run `gulp build` to fully compile your theme.
 
 ## Diving in
 
