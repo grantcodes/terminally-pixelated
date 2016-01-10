@@ -7,6 +7,7 @@
     "autoprefixer": "^6.0.3",
     "babel-core": "^5.8.29",
     "babel-loader": "^5.3.2",
+    "breakpoint-sass": "^2.6.1",
     "browser-sync": "^2.9.11",
     "cssnano": "^3.3.1",
     "del": "^2.1.0",
@@ -16,14 +17,18 @@
     "gulp-postcss": "^6.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.4",
+    "normalize-scss": "^4.0.3",
     "run-sequence": "^1.1.5",
+    "sass-module-importer": "^1.0.2",
     "sc5-styleguide": "^0.3.40",
+    "scut": "^1.3.0",
+    "susy": "^2.2.10",
+    "typographic": "^2.9.3",
     "webpack": "^1.12.9"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/terminalpixel/Terminally-Pixelated.git"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

@@ -1,16 +1,17 @@
 // ## Globals
-var browserSync  = require('browser-sync').create();
-var gulp         = require('gulp');
-var jsonSass     = require('gulp-json-sass');
-var plumber      = require('gulp-plumber');
-var sass         = require('gulp-sass');
-var postcss      = require('gulp-postcss');
-var cssnano      = require('cssnano');
-var runSequence  = require('run-sequence');
-var autoprefixer = require('autoprefixer');
-var styleguide   = require('sc5-styleguide');
-var webpack      = require('webpack');
-var del          = require('del');
+var browserSync    = require('browser-sync').create();
+var gulp           = require('gulp');
+var jsonSass       = require('gulp-json-sass');
+var plumber        = require('gulp-plumber');
+var sass           = require('gulp-sass');
+var moduleImporter = require('sass-module-importer');
+var postcss        = require('gulp-postcss');
+var cssnano        = require('cssnano');
+var runSequence    = require('run-sequence');
+var autoprefixer   = require('autoprefixer');
+var styleguide     = require('sc5-styleguide');
+var webpack        = require('webpack');
+var del            = require('del');
 
 var webpackConf = {
   entry: __dirname + "/src/js/app.js",
@@ -52,7 +53,7 @@ gulp.task('scss', function() {
     cssnano
   ];
   return gulp.src('src/scss/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({ importer: moduleImporter() }).on('error', sass.logError))
     .pipe(postcss(processors))
     .pipe(gulp.dest('themes/terminally-pixelated'));
 });
@@ -73,7 +74,8 @@ gulp.task('styleguide:generate', function() {
 gulp.task('styleguide:applystyles', function() {
   gulp.src('src/scss/style.scss')
     .pipe(sass({
-      errLogToConsole: true
+      errLogToConsole: true,
+      importer: moduleImporter()
     }))
     .pipe(styleguide.applyStyles())
     .pipe(gulp.dest('themes/terminally-pixelated/styleguide'));
@@ -99,38 +101,6 @@ gulp.task('copyfiles:config', function() {
     { base: 'src' })
   .pipe(gulp.dest('themes/terminally-pixelated'));
 });
-gulp.task('copyfiles:susy', function(){
-  return gulp.src([
-    'bower_components/susy/sass/susy/**/*',
-    'bower_components/susy/sass/_susy.scss'
-  ], { base: 'bower_components/susy/sass' })
-  .pipe(gulp.dest('src/scss/vendor'));
-});
-gulp.task('copyfiles:scut', function(){
-  return gulp.src([
-    'bower_components/scut/dist/_scut.scss'
-  ], { base: 'bower_components/scut/dist' })
-  .pipe(gulp.dest('src/scss/vendor'));
-});
-gulp.task('copyfiles:typographic', function(){
-  return gulp.src([
-    'bower_components/typographic/scss/typographic.scss'
-  ], { base: 'bower_components/typographic/scss' })
-  .pipe(gulp.dest('src/scss/vendor'));
-});
-gulp.task('copyfiles:normalize', function(){
-  return gulp.src([
-    'bower_components/normalize.scss/_normalize.scss'
-  ], { base: 'bower_components/normalize.scss' })
-  .pipe(gulp.dest('src/scss/vendor'));
-});
-gulp.task('copyfiles:breakpoint', function(){
-  return gulp.src([
-    'bower_components/compass-breakpoint/stylesheets/breakpoint/**/*',
-    'bower_components/compass-breakpoint/stylesheets/_breakpoint.scss'
-  ], { base: 'bower_components/compass-breakpoint/stylesheets' })
-  .pipe(gulp.dest('src/scss/vendor'));
-});
 gulp.task('copyfiles:tha', function(){
   return gulp.src([
     'bower_components/themehookalliance/tha-theme-hooks.php'
@@ -147,11 +117,6 @@ gulp.task('copyfiles:tgm', function(){
 gulp.task('copyfiles', function() {
   return runSequence(
     'copyfiles:config',
-    'copyfiles:susy',
-    'copyfiles:scut',
-    'copyfiles:typographic',
-    'copyfiles:normalize',
-    'copyfiles:breakpoint',
     'copyfiles:tha',
     'copyfiles:tgm'
   );
@@ -182,11 +147,6 @@ gulp.task('build', function() {
   runSequence(
     'clean',
     'copyfiles:config',
-    'copyfiles:susy',
-    'copyfiles:scut',
-    'copyfiles:typographic',
-    'copyfiles:normalize',
-    'copyfiles:breakpoint',
     'copyfiles:tha',
     'copyfiles:tgm',
     'jsonconfig',

@@ -1,6 +1,6 @@
-@import "vendor/breakpoint";
-@import "vendor/susy";
-@import "vendor/typographic";
+@import "breakpoint-sass";
+@import "susy";
+@import "../../node_modules/typographic/scss/typographic"; // Has a bug using the importer module
 
 @import "utils/wp-comment";
 @import "utils/config";
@@ -8,8 +8,8 @@
 @import "utils/variables";
 @import "utils/mixins";
 
-@import "vendor/normalize";
-@import "vendor/scut";
+@import "normalize-scss";
+@import "scut";
 // @import "vendor/sassybuttons";
 // @import "vendor/icons";
 

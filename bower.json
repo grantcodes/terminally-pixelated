@@ -25,14 +25,7 @@
     "tests"
   ],
   "dependencies": {
-    "scut": "~1.2.1",
-    "normalize.scss": "kristerkari/normalize.scss",
-    "susy": "~2.2.6",
-    "lazysizes": "~1.2.1",
     "themehookalliance": "zamoose/themehookalliance",
-    "compass-breakpoint": "~2.6.1",
-    "TGM-Plugin-Activation": "thomasgriffin/TGM-Plugin-Activation#~2.5.2",
-    "formstone": "~0.8.3",
-    "typographic": "~2.9.3"
+    "TGM-Plugin-Activation": "thomasgriffin/TGM-Plugin-Activation#~2.5.2"
   }
 }
