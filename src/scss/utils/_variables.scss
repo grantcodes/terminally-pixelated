@@ -2,6 +2,11 @@
 
 $legacy_support_for_ie: false;
 
+// Reassign some config variables for easier use
+$mid-break: map-get($tp-config, mid-break);
+$large-break: map-get($tp-config, large-break);
+$colors: map-get($tp-config, colors);
+
 // Typography
 
 $font-sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
@@ -55,44 +60,44 @@ $grid-padding: 1em;
 
 // Colors
 
-$text-c: $colors-black;
-$bgc: $colors-white;
+$text-c: map-get($colors, black);
+$bgc: map-get($colors, white);
 
 $body-color: $text-c;
 $header-color: $text-c;
 
 $border-c: mix($text-c, $bgc);
 
-$link-c: $colors-blue;
-$link-c--hover: $colors-red;
+$link-c: map-get($colors, blue);
+$link-c--hover: map-get($colors, red);
 
-$header-bgc: $colors-black;
-$header-c: $colors-white;
+$header-bgc: map-get($colors, black);
+$header-c: map-get($colors, white);
 
-$nav-bgc: $colors-blue;
+$nav-bgc: map-get($colors, blue);
 
-$nav-link-c: $colors-black;
+$nav-link-c: map-get($colors, black);
 $nav-link-bg: none;
 
-$nav-link-c--hover: $colors-white;
+$nav-link-c--hover: map-get($colors, white);
 $nav-link-bg--hover: none;
 
-$nav-link-c--current: $colors-white;
+$nav-link-c--current: map-get($colors, white);
 $nav-link-bg--current: none;
 
-$subnav-bgc: $colors-black;
+$subnav-bgc: map-get($colors, black);
 
-$subnav-link-c: $colors-blue;
+$subnav-link-c: map-get($colors, blue);
 $subnav-link-bg: $nav-link-bg;
 
-$subnav-link-c--hover: $colors-white;
+$subnav-link-c--hover: map-get($colors, white);
 $subnav-link-bg--hover: $nav-link-bg--hover;
 
-$subnav-link-c--current: $colors-white;
+$subnav-link-c--current: map-get($colors, white);
 $subnav-link-bg--current: $nav-link-bg--current;
 
-$footer-bgc: $colors-blue;
-$footer-c: $colors-white;
+$footer-bgc: map-get($colors, blue);
+$footer-c: map-get($colors, white);
 
 $input-c: tp-tint($text-c, 20%);
 $input-bg: tp-shade($bgc, 2%);
@@ -100,30 +105,30 @@ $input-border: 1px solid tp-shade($input-bg, 15%);
 
 $input-c--hover: $input-c;
 $input-bg--hover: $input-bg;
-$input-border--hover: 1px solid $colors-blue;
+$input-border--hover: 1px solid map-get($colors, blue);
 
 $input-c--active: $text-c;
 $input-bg--active: $bgc;
 $input-border--active: $input-border--hover;
 
-$button-bgc: $colors-blue;
-$button-c: $colors-white;
+$button-bgc: map-get($colors, blue);
+$button-c: map-get($colors, white);
 $button-border: 1px solid $button-bgc;
 
-$button-bgc--hover: darken($colors-blue, 20%);
-$button-c--hover: $colors-white;
+$button-bgc--hover: darken(map-get($colors, blue), 20%);
+$button-c--hover: map-get($colors, white);
 $button-border--hover: 1px solid $button-bgc--hover;
 
-$button-bgc--active: darken($colors-blue, 25%);
-$button-c--active: darken($colors-white, 10%);
+$button-bgc--active: darken(map-get($colors, blue), 25%);
+$button-c--active: darken(map-get($colors, white), 10%);
 $button-border--active: 1px solid $button-bgc--active;
 
-$error-c: $colors-red;
+$error-c: map-get($colors, red);
 
-$notification-c: $colors-blue;
-$notification-c--error: $colors-red;
-$notification-c--success: $colors-green;
-$notification-c--warning: $colors-orange;
+$notification-c: map-get($colors, blue);
+$notification-c--error: map-get($colors, red);
+$notification-c--success: map-get($colors, green);
+$notification-c--warning: map-get($colors, orange);
 
 // Transition Times
 

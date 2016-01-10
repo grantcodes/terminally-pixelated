@@ -18,6 +18,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.4",
     "gulp-util": "^3.0.7",
+    "json-sass": "^1.3.5",
     "normalize-scss": "^4.0.3",
     "run-sequence": "^1.1.5",
     "sass-module-importer": "^1.0.2",
@@ -25,6 +26,7 @@
     "scut": "^1.3.0",
     "susy": "^2.2.10",
     "typographic": "^2.9.3",
+    "vinyl-source-stream": "^1.1.0",
     "webpack": "^1.12.9"
   },
   "repository": {

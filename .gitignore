@@ -3,7 +3,7 @@ node_modules
 .sass-cache
 bower_components
 src/scss/vendor
-src/scss/utils/config.sass
+src/scss/utils/_config.scss
 uploads
 js/vendor
 js/dist

@@ -1,9 +1,11 @@
 // ## Globals
+var fs             = require('fs');
 var browserSync    = require('browser-sync').create();
 var gulp           = require('gulp');
 var gutil          = require('gulp-util');
-var jsonSass       = require('gulp-json-sass');
-var plumber        = require('gulp-plumber');
+var jsonSass       = require('json-sass');
+var source         = require('vinyl-source-stream');
+var rename         = require('gulp-rename');
 var sass           = require('gulp-sass');
 var moduleImporter = require('sass-module-importer');
 var postcss        = require('gulp-postcss');
@@ -13,12 +15,20 @@ var autoprefixer   = require('autoprefixer');
 var styleguide     = require('sc5-styleguide');
 var webpack        = require('webpack');
 var del            = require('del');
+var config         = require('./src/config');
+
+config.dirs = {
+  theme: __dirname + '/themes/' + config.theme,
+  src: __dirname + '/src',
+};
+// Cheeky hack since dots break sass variables
+config.devDomain = config.devDomain.replace('-dot-', '.');
 
 var webpackConf = {
-  entry: __dirname + "/src/js/app.js",
+  entry: config.dirs.src + '/js/app.js',
   output: {
-    path: __dirname + "/themes/terminally-pixelated/js",
-    filename: "app.js"
+    path: config.dirs.theme + '/js',
+    filename: 'app.js'
   },
   module: {
     loaders: [
@@ -34,15 +44,15 @@ var webpackConf = {
 
 gulp.task('clean', function(){
   return del([
-    'themes/terminally-pixelated/styleguide',
-    'themes/terminally-pixelated/js/app.js',
-    'themes/terminally-pixelated/config.json',
-    'themes/terminally-pixelated/main.css',
-    'themes/terminally-pixelated/main.css.map',
-    'themes/terminally-pixelated/style.css',
-    'themes/terminally-pixelated/style.css.map',
-    'themes/terminally-pixelated/editors-style.css',
-    'themes/terminally-pixelated/editors-style.css.map',
+    config.dirs.theme + '/styleguide',
+    config.dirs.theme + '/js/app.js',
+    config.dirs.theme + '/config.json',
+    config.dirs.theme + '/main.css',
+    config.dirs.theme + '/main.css.map',
+    config.dirs.theme + '/style.css',
+    config.dirs.theme + '/style.css.map',
+    config.dirs.theme + '/editors-style.css',
+    config.dirs.theme + '/editors-style.css.map',
   ]);
 });
 
@@ -51,36 +61,40 @@ gulp.task('scss', function() {
     autoprefixer({browsers: ['last 2 versions']}),
     cssnano
   ];
-  return gulp.src('src/scss/**/*.scss')
+  return gulp.src(config.dirs.src + '/scss/**/*.scss')
     .pipe(sass({ importer: moduleImporter() }).on('error', sass.logError))
     .pipe(postcss(processors))
-    .pipe(gulp.dest('themes/terminally-pixelated'));
+    .pipe(gulp.dest(config.dirs.theme));
 });
 
 gulp.task('styleguide:generate', function() {
-  gulp.src(['src/scss/**/_*.scss', '!src/scss/vendor/**/*'])
+  gulp.src([config.dirs.src + '/scss/**/_*.scss', '!src/scss/vendor/**/*'])
     .pipe(styleguide.generate({
         title: 'Style Guide',
-        rootPath: './themes/terminally-pixelated/styleguide',
+        rootPath: config.dirs.theme + '/styleguide',
         overviewPath: 'README.md',
-        appRoot: '/content/themes/terminally-pixelated/styleguide',
+        appRoot: config.wpContentFolder + '/themes/' + config.theme + '/styleguide',
         disableEncapsulation: true,
         disableHtml5Mode: true
       }))
-    .pipe(gulp.dest('themes/terminally-pixelated/styleguide'));
+    .pipe(gulp.dest(config.dirs.theme + '/styleguide'));
 });
 
 gulp.task('styleguide:applystyles', function() {
-  gulp.src('src/scss/style.scss')
+  gulp.src(config.dirs.src + '/scss/style.scss')
     .pipe(sass({ importer: moduleImporter() }).on('error', sass.logError))
     .pipe(styleguide.applyStyles())
-    .pipe(gulp.dest('themes/terminally-pixelated/styleguide'));
+    .pipe(gulp.dest(config.dirs.theme + '/styleguide'));
 });
 
 gulp.task('jsonconfig', function() {
-  return gulp.src('src/config.json')
-    .pipe(jsonSass({sass: true}))
-    .pipe(gulp.dest('src/scss/utils'));
+  return fs.createReadStream(config.dirs.src + '/config.json')
+    .pipe(jsonSass({
+      prefix: '$tp-config: ',
+    }))
+    .pipe(source(config.dirs.src + '/config.json'))
+    .pipe(rename('_config.scss'))
+    .pipe(gulp.dest(config.dirs.src + '/scss/utils'));
 });
 
 gulp.task('webpack', function() {
@@ -95,29 +109,29 @@ gulp.task('webpack', function() {
 
 gulp.task('copyfiles', function() {
   return gulp.src(
-    'src/config.json',
+    config.dirs.src + '/config.json',
     { base: 'src' })
-  .pipe(gulp.dest('themes/terminally-pixelated'));
+  .pipe(gulp.dest(config.dirs.theme));
 });
 
 gulp.task('watch', function() {
   browserSync.init({
     files: [
-      'themes/terminally-pixelated/**/*.css',
-      'themes/terminally-pixelated/**/*.php',
-      'themes/terminally-pixelated/views/**/*.twig',
-      'themes/terminally-pixelated/js/app.js'
+      config.dirs.theme + '/**/*.css',
+      config.dirs.theme + '/**/*.php',
+      config.dirs.theme + '/views/**/*.twig',
+      config.dirs.theme + '/js/app.js'
     ],
     open: false,
-    proxy: 'vagrant.local',
+    proxy: config.devDomain,
     snippetOptions: {
       whitelist: ['/wp-admin/admin-ajax.php'],
       blacklist: ['/wp-admin/**']
     }
   });
-  gulp.watch(['src/scss/**/*.scss'], ['scss', 'styleguide:generate', 'styleguide:applystyles']);
-  gulp.watch(['src/config.json'], ['jsonconfig']);
-  gulp.watch(['src/js/**/*.js'], ['webpack']);
+  gulp.watch([config.dirs.src + '/scss/**/*.scss'], ['scss', 'styleguide:generate', 'styleguide:applystyles']);
+  gulp.watch([config.dirs.src + '/config.json'], ['jsonconfig']);
+  gulp.watch([config.dirs.src + '/js/**/*.js'], ['webpack']);
 });
 
 gulp.task('build', function() {

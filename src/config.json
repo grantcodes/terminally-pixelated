@@ -1,5 +1,7 @@
 {
-    "devDomain": "'vagrant.local'",
+    "theme": "terminally-pixelated",
+    "devDomain": "vagrant-dot-local",
+    "wpContentFolder": "content",
     "mid-break": "30em",
     "large-break": "60em",
     "classes": {
