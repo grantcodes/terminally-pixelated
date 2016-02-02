@@ -22,7 +22,7 @@ config.dirs = {
   src: __dirname + '/src',
 };
 // Cheeky hack since dots break sass variables
-config.devDomain = config.devDomain.replace('-dot-', '.');
+config.devDomain = config.devDomain.replace(new RegExp('-dot-', 'g'), '.');
 
 var webpackConf = {
   entry: config.dirs.src + '/js/app.js',
