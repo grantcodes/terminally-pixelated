@@ -119,7 +119,7 @@ class TerminallyPixelatedBase {
 			'after_title'   => '</h1>',
 		) );
 
-		$footer_widget_count = TPHelpers::get_setting( 'footer_widgets' );
+		$footer_widget_count = TPHelpers::get_setting( 'footer-widgets' );
 		for ( $i = 1; $i <= $footer_widget_count; $i++ ) {
 			register_sidebar( array(
 				'name'          => __( 'Footer Widgets ' . $i, 'terminally_pixelated' ),
@@ -155,7 +155,7 @@ class TerminallyPixelatedBase {
 		$context['main_sidebar'] = Timber::get_widgets( 'main-sidebar' );
 
 		// Add footer widgets.
-		if ( $count = TPHelpers::get_setting( 'footer_widgets' ) ) {
+		if ( $count = TPHelpers::get_setting( 'footer-widgets' ) ) {
 			for ( $i = 1; $i <= $count; $i++ ) {
 				$context['footer_widgets'][ $i + 1 ] = Timber::get_widgets( 'footer-widgets-' . $i );
 			}
