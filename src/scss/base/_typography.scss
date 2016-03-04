@@ -5,7 +5,6 @@
 // Styleguide 1
 
 @include scut-reset-antialias;
-@include typographic();
 // Body text
 //
 // markup:
@@ -13,9 +12,18 @@
 //
 // Styleguide 1.1
 
+body {
+    line-height: $line-height;
+    font-family: $font-body;
+    @include tp-fs(0);
+}
+
 p {
-	// margin: 0;
-	// @include tp-trailer();
+	margin: 0;
+	@include tp-trailer();
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 // Headings
@@ -35,9 +43,38 @@ h3,
 h4,
 h5,
 h6 {
+    & {
+        line-height: 1.2;
+        margin: 0;
+    }
+
 	a {
 		text-decoration: none;
 	}
+}
+
+h1 {
+    @include tp-fs(4);
+    @include tp-leader();
+    @include tp-trailer(2);
+}
+h2 {
+    @include tp-fs(3);
+    @include tp-trailer(2);
+}
+h3 {
+    @include tp-fs(2);
+    @include tp-trailer(1);
+}
+h4 {
+    @include tp-fs(1);
+    @include tp-trailer(1);
+}
+h5 {
+    @include tp-fs(0);
+}
+h6 {
+    @include tp-fs(-1);
 }
 
 .h1 {

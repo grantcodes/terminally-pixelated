@@ -1,6 +1,6 @@
-@import "breakpoint-sass";
+@import "breakpoint";
 @import "susy";
-@import "../../node_modules/typographic/scss/typographic"; // Has a bug using the importer module
+@import 'modular-scale';
 
 @import "utils/wp-comment";
 @import "utils/config";
@@ -8,7 +8,7 @@
 @import "utils/variables";
 @import "utils/mixins";
 
-@import "normalize-scss";
+@import "../../node_modules/normalize.css/normalize"; // No eyeglass support yet
 @import "scut";
 // @import "vendor/sassybuttons";
 // @import "vendor/icons";

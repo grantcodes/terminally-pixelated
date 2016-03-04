@@ -6,22 +6,21 @@
 }
 
 @mixin tp-fs($scale) {
-    $local-min-font: $min-font * (math-pow($header-ratio, $scale));
-    $local-max-font: $max-font * (math-pow($header-ratio, $scale));
+    $local-min-font: ms($scale, $min-font);
+    $local-max-font: ms($scale, $max-font);
 
     font-size: $local-min-font;
 
-    @media (min-width: $min-width) {
-        font-size: calc( #{$local-min-font} + (#{_strip-units($local-max-font)} - #{_strip-units($local-min-font)}) * ((100vw - #{$min-width}) / (#{_strip-units($max-width)} - #{_strip-units($min-width)})) );
+    @include breakpoint($mid-break) {
+        font-size: calc( #{$local-min-font} + (#{scut-strip-unit($local-max-font)} - #{scut-strip-unit($local-min-font)}) * ((100vw - #{$mid-break}) / (#{scut-strip-unit($large-break)} - #{scut-strip-unit($mid-break)})) );
     }
-
-    @media (min-width: $max-width) {
+    @include breakpoint($large-break) {
         font-size: $local-max-font;
     }
 }
 
 @mixin tp-space( $property, $count: 1, $important: false) {
-    $val: vr-block($count);
+    $val: 1rem * $line-height * $count;
     @if ($important) {
         $val: $val + !important;
     }

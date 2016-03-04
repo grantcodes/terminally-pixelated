@@ -7,7 +7,7 @@ var jsonSass       = require('json-sass');
 var source         = require('vinyl-source-stream');
 var rename         = require('gulp-rename');
 var sass           = require('gulp-sass');
-var moduleImporter = require('sass-module-importer');
+var Eyeglass       = require('eyeglass');
 var postcss        = require('gulp-postcss');
 var cssnano        = require('cssnano');
 var runSequence    = require('run-sequence');
@@ -16,6 +16,12 @@ var styleguide     = require('sc5-styleguide');
 var webpack        = require('webpack');
 var del            = require('del');
 var config         = require('./src/config');
+
+var eyeglass = new Eyeglass({
+    importer: function(uri, prev, done) {
+        done(sass.compiler.types.NULL);
+    }
+});
 
 config.dirs = {
   theme: __dirname + '/themes/' + config.theme,
@@ -62,7 +68,7 @@ gulp.task('scss', function() {
     cssnano
   ];
   return gulp.src(config.dirs.src + '/scss/**/*.scss')
-    .pipe(sass({ importer: moduleImporter() }).on('error', sass.logError))
+    .pipe(sass(eyeglass.options).on("error", sass.logError))
     .pipe(postcss(processors))
     .pipe(gulp.dest(config.dirs.theme));
 });
@@ -73,7 +79,7 @@ gulp.task('styleguide:generate', function() {
         title: 'Style Guide',
         rootPath: config.dirs.theme + '/styleguide',
         overviewPath: 'README.md',
-        appRoot: config.wpContentFolder + '/themes/' + config.theme + '/styleguide',
+        appRoot: '/' + config.wpContentFolder + '/themes/' + config.theme + '/styleguide',
         disableEncapsulation: true,
         disableHtml5Mode: true
       }))
@@ -82,7 +88,7 @@ gulp.task('styleguide:generate', function() {
 
 gulp.task('styleguide:applystyles', function() {
   gulp.src(config.dirs.src + '/scss/style.scss')
-    .pipe(sass({ importer: moduleImporter() }).on('error', sass.logError))
+    .pipe(sass(eyeglass.options).on("error", sass.logError))
     .pipe(styleguide.applyStyles())
     .pipe(gulp.dest(config.dirs.theme + '/styleguide'));
 });

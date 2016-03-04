@@ -14,21 +14,13 @@ $font-serif: 'Merriweather' ,Georgia, serif;
 $font-h: $font-sans;
 $font-body: $font-sans;
 
+$ms-base: 1em;
+$ms-ratio: $fourth;
 $line-height: 1.5;
-$font-size: 1.1;
-$line-height-ratio: 1.75;
-$header-ratio: $golden;
 $body-font: $font-body;
 $body-font-weight: 300;
-$header-font: $font-h;
-$header-font-weight: 700;
-$min-font: 13px;
-$max-font: 18px;
-$min-width: $mid-break / 1em * 16px;
-$max-width: $large-break / 1em * 16px;
-$vertical-rhythm: true;
-
-$normalize_headings: false;
+$min-font: 1rem;
+$max-font: 1.3rem;
 
 // Grid
 
