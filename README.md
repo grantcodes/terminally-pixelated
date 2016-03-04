@@ -57,6 +57,16 @@ And an accompanying helper for getting the url of a theme resource:
 
 	TPHelpers::get_theme_resource_uri( '/path/to/file.txt' );
 
+## Svg icons
+
+Svg files that are placed in the `src/svgs/` folder are automatically squashed into a single svg and retrieved via svg symbols.
+
+To use an icon in a twig template you can simply use the `icon` function. For example to use an icon saved at `src/svgs/facebook.svg` you simply add `{{icon('facebook')}}` to your template at the appropriate point.
+
+There is also a function to grab the html for an icon in PHP. The previous example would then become:
+
+    $icon = TPHelpers::icon('facebook');
+
 ## Requirements
 
 There are a few dependencies required to build with Terminally Pixelated:

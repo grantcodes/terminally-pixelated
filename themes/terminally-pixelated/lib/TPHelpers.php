@@ -80,4 +80,18 @@ class TPHelpers {
 		}
 		return false;
 	}
+
+	/**
+	 * Get svg markup for an icon
+	 *
+	 * @param  string $icon The icon to use.
+	 * @param  string $svg  The url of the svg file.
+	 * @return string       The svg markup
+	 */
+	public static function icon( $icon, $svg = false ) {
+	    if ( ! $svg ) {
+	        $svg = TPHelpers::get_theme_resource_uri( 'img/symbol/svg/sprite.symbol.svg' );
+	    }
+	    return '<svg class="tp-icon tp-icon--' . $icon . '"><use xlink:href="' . $svg . '#' . $icon . '"></use></svg>';
+	}
 }

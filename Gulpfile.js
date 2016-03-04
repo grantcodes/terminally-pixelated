@@ -15,6 +15,7 @@ var autoprefixer   = require('autoprefixer');
 var styleguide     = require('sc5-styleguide');
 var webpack        = require('webpack');
 var del            = require('del');
+var svgSprite      = require('gulp-svg-sprite');
 var config         = require('./src/config');
 
 var eyeglass = new Eyeglass({
@@ -120,13 +121,25 @@ gulp.task('copyfiles', function() {
   .pipe(gulp.dest(config.dirs.theme));
 });
 
+gulp.task('svgs', function() {
+  var svgConfig = {
+    mode: {
+      symbol: true,
+    }
+  };
+  return gulp.src(config.dirs.src + '/svgs/**/*.svg')
+    .pipe(svgSprite(svgConfig))
+    .pipe(gulp.dest(config.dirs.theme + '/img'));
+});
+
 gulp.task('watch', function() {
   browserSync.init({
     files: [
       config.dirs.theme + '/**/*.css',
       config.dirs.theme + '/**/*.php',
       config.dirs.theme + '/views/**/*.twig',
-      config.dirs.theme + '/js/app.js'
+      config.dirs.theme + '/js/app.js',
+      config.dirs.theme + '/img/**/*'
     ],
     open: false,
     proxy: config.devDomain,
@@ -138,6 +151,7 @@ gulp.task('watch', function() {
   gulp.watch([config.dirs.src + '/scss/**/*.scss'], ['scss', 'styleguide:generate', 'styleguide:applystyles']);
   gulp.watch([config.dirs.src + '/config.json'], ['jsonconfig']);
   gulp.watch([config.dirs.src + '/js/**/*.js'], ['webpack']);
+  gulp.watch([config.dirs.src + '/svgs/**/*.svg'], ['svgs']);
 });
 
 gulp.task('build', function() {
@@ -146,6 +160,7 @@ gulp.task('build', function() {
     'copyfiles',
     'jsonconfig',
     'scss',
+    'svgs',
     'styleguide:generate',
     'styleguide:applystyles',
     'webpack'

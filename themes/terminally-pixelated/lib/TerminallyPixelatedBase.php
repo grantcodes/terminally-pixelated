@@ -24,6 +24,7 @@ class TerminallyPixelatedBase {
 		add_action( 'admin_init', array( $this, 'remove_image_links' ) );
 		add_filter( 'timber_context', array( $this, 'timber_context' ) );
 		add_filter( 'timber_context', array( $this, 'schema' ) );
+		add_filter( 'get_twig', array( $this, 'twig_extensions' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 		add_action( 'tgmpa_register', array( $this, 'require_plugins' ) );
 	}
@@ -191,6 +192,9 @@ class TerminallyPixelatedBase {
 		// Add json settings.
 		$context['terminally_pixelated'] = TPHelpers::get_setting();
 
+		// Add icon location.
+		$context['svg_sprite'] = TPHelpers::get_theme_resource_uri( 'img/symbol/svg/sprite.symbol.svg' );
+
 		return $context;
 	}
 
@@ -217,6 +221,19 @@ class TerminallyPixelatedBase {
 		$context['schema']['type'] = $type;
 
 		return $context;
+	}
+
+	/**
+	 * Adds custom extensions to twig
+	 * @param  object $twig The original twig object.
+	 * @return object       Updated twig object
+	 */
+	function twig_extensions( $twig ) {
+	    $icon_function = new Twig_SimpleFunction('icon', function ( $context, $icon ) {
+	        return TPHelpers::icon( $icon, $context['svg_sprite'] );
+	    }, array( 'needs_context' => true ) );
+	    $twig->addFunction( $icon_function );
+	    return $twig;
 	}
 
 	/**
