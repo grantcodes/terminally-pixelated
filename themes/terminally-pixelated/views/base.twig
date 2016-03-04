@@ -46,7 +46,7 @@
                         Sorry, no content
                         {% endblock %}
                         {% block after_content %}
-                            {% if pagination %}
+                            {% if pagination.pages %}
                                 {% include 'components/pagination.twig' %}
                             {% endif %}
                         {% endblock %}
