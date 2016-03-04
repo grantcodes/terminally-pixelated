@@ -19,6 +19,7 @@ Terminally Pixelated comes jam packed full of greatness:
 - Webpack for JavaScript bundling
 - Browser sync for live reloading and development loveliness
 - Composer support
+- Flickity for beautiful sliders (beware of licenses with this)
 
 ## Getting started
 
@@ -69,8 +70,7 @@ There is also a function to grab the html for an icon in PHP. The previous examp
 
 ## Requirements
 
-There are a few dependencies required to build with Terminally Pixelated:
+There are a couple of dependencies required to build with Terminally Pixelated:
 
-- NodeJS with some global packages:
-- - bower
-- - gulp
+- Gulp
+- Composer

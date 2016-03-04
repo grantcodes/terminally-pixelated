@@ -41,6 +41,7 @@ var webpackConf = {
     loaders: [
       { test: /\.js?$/, loaders: ['babel'], exclude: /node_modules/ },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+      { test: /(flickity|imagesloaded|fizzy-ui-utils|get-size|unipointer)/, loader: 'imports?define=>false&this=>window' },
     ]
   },
   plugins: [

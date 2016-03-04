@@ -10,19 +10,6 @@
 
 @import "../../node_modules/normalize.css/normalize"; // No eyeglass support yet
 @import "scut";
-// @import "vendor/sassybuttons";
-// @import "vendor/icons";
-
-// @import "vendor/fs/_lightbox.scss";
-// @import "vendor/fs/_navigation.scss";
-// @import "vendor/fs/_checkbox.scss";
-// @import "vendor/fs/_range.scss";
-// @import "vendor/fs/_carousel.scss";
-// @import "vendor/fs/_scrollbar.scss";
-// @import "vendor/fs/_dropdown.scss";
-// @import "vendor/fs/_number.scss";
-// @import "vendor/fs/_tabs.scss";
-// @import "vendor/fs/_background.scss";
 
 @import "layout/base";
 @import "layout/nav";
@@ -44,6 +31,10 @@
 @import "components/forms";
 @import "components/tp-icon";
 @import "components/pagination";
-@import "components/notifications";
+
+// Optional extras if you need them
+// @import "components/notifications";
 // @import "components/woocommerce";
+// @import "../../node_modules/flickity/css/flickity"; // No eyeglass support yet
+
 @import "base/animations";
