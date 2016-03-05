@@ -6,6 +6,6 @@ html, body {
     background-color: $bgc;
 }
 
-body {
-    padding: 1em;
+body.wp-autoresize.wp-editor {
+    padding: 1em !important;
 }
