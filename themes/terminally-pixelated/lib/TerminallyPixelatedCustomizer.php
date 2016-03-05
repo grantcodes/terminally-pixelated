@@ -64,5 +64,23 @@ class TerminallyPixelatedCustomizer {
 				)
 			)
 		);
+
+		$wp_customize->add_setting( 'terminally_pixelated_footer_text', array(
+			'default' => '',
+			'type' => 'option',
+			'capability' => 'edit_theme_options',
+		) );
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				'terminally_pixelated_footer_text',
+				array(
+					'label'          => 'Footer Text',
+					'section'        => 'terminally_pixelated_settings',
+					'settings'       => 'terminally_pixelated_footer_text',
+				)
+			)
+		);
 	}
 }

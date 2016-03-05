@@ -9,16 +9,16 @@ $colors: map-get($tp-config, colors);
 
 // Typography
 
-$font-sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-$font-serif: 'Merriweather' ,Georgia, serif;
-$font-h: $font-sans;
+$font-sans: 'Anonymous Pro', Helvetica, Arial, sans-serif;
+$font-serif: Georgia, serif;
+$font-h: 'Ubuntu', Helvetica, Arial, sans-serif;
 $font-body: $font-sans;
 
 $ms-base: 1em;
-$ms-ratio: $fourth;
+$ms-ratio: $minor-third;
 $line-height: 1.5;
 $body-font: $font-body;
-$body-font-weight: 300;
+$body-font-weight: 400;
 $min-font: 1rem;
 $max-font: 1.3rem;
 
@@ -42,7 +42,7 @@ $susy: (
     gutter-position: after
 );
 
-$grid-padding: 1em;
+$grid-padding: 1.5rem;
 // $column-width: 3;
 // $gutter-width: 1.5;
 
@@ -66,15 +66,15 @@ $link-c--hover: map-get($colors, red);
 $header-bgc: map-get($colors, black);
 $header-c: map-get($colors, white);
 
-$nav-bgc: map-get($colors, blue);
+$nav-bgc: rgba(map-get($colors, white), .95);
 
 $nav-link-c: map-get($colors, black);
 $nav-link-bg: none;
 
-$nav-link-c--hover: map-get($colors, white);
+$nav-link-c--hover: lighten($nav-link-c, 30%);
 $nav-link-bg--hover: none;
 
-$nav-link-c--current: map-get($colors, white);
+$nav-link-c--current: $nav-link-c--hover;
 $nav-link-bg--current: none;
 
 $subnav-bgc: map-get($colors, black);
@@ -88,32 +88,33 @@ $subnav-link-bg--hover: $nav-link-bg--hover;
 $subnav-link-c--current: map-get($colors, white);
 $subnav-link-bg--current: $nav-link-bg--current;
 
-$footer-bgc: map-get($colors, blue);
-$footer-c: map-get($colors, white);
+$footer-bgc: map-get($colors, black);
+$footer-c: lighten(map-get($colors, black), 40%);
+$footer-link-c: map-get($colors, white);
 
-$input-c: tp-tint($text-c, 20%);
-$input-bg: tp-shade($bgc, 2%);
-$input-border: 1px solid tp-shade($input-bg, 15%);
+$input-c: lighten($text-c, 20%);
+$input-bg: darken($bgc, 5%);
+$input-border: 3px solid darken($input-bg, 15%);
 
 $input-c--hover: $input-c;
 $input-bg--hover: $input-bg;
-$input-border--hover: 1px solid map-get($colors, blue);
+$input-border--hover: 3px solid map-get($colors, blue);
 
 $input-c--active: $text-c;
-$input-bg--active: $bgc;
+$input-bg--active: lighten($bgc, 50%);
 $input-border--active: $input-border--hover;
 
 $button-bgc: map-get($colors, blue);
 $button-c: map-get($colors, white);
-$button-border: 1px solid $button-bgc;
+$button-border: 3px solid $button-bgc;
 
 $button-bgc--hover: darken(map-get($colors, blue), 20%);
 $button-c--hover: map-get($colors, white);
-$button-border--hover: 1px solid $button-bgc--hover;
+$button-border--hover: 3px solid $button-bgc--hover;
 
 $button-bgc--active: darken(map-get($colors, blue), 25%);
 $button-c--active: darken(map-get($colors, white), 10%);
-$button-border--active: 1px solid $button-bgc--active;
+$button-border--active: 3px solid $button-bgc--active;
 
 $error-c: map-get($colors, red);
 
@@ -129,10 +130,10 @@ $transition-mid: $transition-fast * 2;
 $transition-slow: $transition-mid * 2;
 
 // Input structure
-$input-border-radius: .2em;
+$input-border-radius: 0;
 $input-font-size: 1em;
-$input-padding-vertical: .3em;
-$input-padding-horizontal: .5em;
+$input-padding-vertical: .5em;
+$input-padding-horizontal: .8em;
 
 // Misc
 

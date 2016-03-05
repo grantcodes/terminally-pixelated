@@ -26,27 +26,29 @@ input[type=search] {
     max-width: 100%;
     @include input-structure();
     color: $input-c;
-    background: $input-bg;
-    border: $input-border;
-    box-shadow: inset 0 0 .6em rgba(0,0,0,.07);
-    transition: all;
+    background-color: $input-bg;
+    border: none;
+    border-bottom: $input-border;
+    box-shadow: none;
+    // box-shadow: inset 0 0 .6em rgba(0,0,0,.07);
+    transition: all $transition-fast;
     outline: none;
     font-weight: normal;
     vertical-align: bottom;
 
     &:hover {
         color: $input-c--hover;
-        background: $input-bg--hover;
-        border: $input-border--hover;
-        box-shadow: 0 0 .1em inset rgba(0,0,0,.3);
+        background-color: $input-bg--hover;
+        border-bottom: $input-border--hover;
+        // box-shadow: 0 0 .1em inset rgba(0,0,0,.3);
     }
 
     &:focus,
     &:active {
         color: $input-c--active;
-        background: $input-bg--active;
-        border: $input-border--active;
-        box-shadow: 0 0 .2em rgba(0,0,0,.3);
+        background-color: $input-bg--active;
+        border-bottom: $input-border--active;
+        // box-shadow: 0 0 .2em rgba(0,0,0,.3);
     }
 }
 
@@ -63,7 +65,8 @@ input[type=search] {
     color: $button-c;
     box-shadow: none;
     text-shadow: none;
-    font-weight: normal;
+    font-weight: bold;
+    transition: background $transition-fast, border $transition-fast, color $transition-fast;
 
     &:hover,
     &:focus {
@@ -104,6 +107,80 @@ input,
 select,
 textarea {
 	@extend %input;
+}
+
+// Select fields
+select {
+    appearance: none;
+    padding-right: $input-padding-horizontal + 1.5em;
+    background-position: right $input-padding-horizontal center;
+    background-repeat: no-repeat;
+    background-size: .75em auto;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$input-c}" d="M0 0l4 4 4-4h-8z" transform="translate(0 2)" /></svg>');
+}
+
+// Radio buttons
+$radio-size: 1.5em;
+$radio-inner-size: .7em;
+input[type="radio"] {
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
+    height: $radio-size;
+    margin-right: .2em;
+    position: relative;
+    width: $radio-size;
+    appearance: none;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $input-bg--active;
+    }
+}
+input[type="radio"]:after {
+    content: '';
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    background-color: darken($input-bg, 40%);
+    height: $radio-inner-size;
+    width: $radio-inner-size;
+    left: ($radio-size - $radio-inner-size) / 2;
+    top: ($radio-size - $radio-inner-size) / 2;
+}
+input[type="radio"]:checked:after {
+    background-color: $link-c;
+}
+
+// Checkboxes
+$checkbox-size: 1.5em;
+input[type="checkbox"] {
+    display: inline-block;
+    cursor: pointer;
+    height: $checkbox-size;
+    margin-right: .2em;
+    position: relative;
+    width: $checkbox-size;
+    appearance: none;
+    text-align: center;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $input-c--active;
+        background-color: $input-bg--active;
+    }
+}
+input[type="checkbox"]:after {
+    content: " ";
+    display: block;
+    line-height: $checkbox-size;
+}
+input[type="checkbox"]:checked:after {
+    content: "✔";
 }
 
 // Buttons

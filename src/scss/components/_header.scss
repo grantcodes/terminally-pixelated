@@ -1,15 +1,30 @@
 .main-header-nav-wrap {
-	width: 100%;
-    max-height: 100%;
-    // overflow: auto;
+    & {
+        background-color: $header-bgc;
+        background-position: center;
+        background-size: cover;
+        @include tp-padding-leader();
+        @include tp-padding-trailer();
+    }
+
+    &--image {
+        min-height: 50vh;
+    }
+}
+
+.main-header-nav-wrap__title {
+    color: $header-c;
+    @include tp-leader();
+    .main-header-nav-wrap--image & {
+        text-shadow: 0 0 .5em rgba(0,0,0,.8);
+    }
 }
 
 .main-header {
-    background-color: $header-bgc;
+    // background-color: $header-bgc;
     color: $header-c;
-    width: 100%;
-    @include tp-padding-leader();
-    @include tp-padding-trailer();
+    // @include tp-padding-leader();
+    // @include tp-padding-trailer();
 }
 
 .main-title {

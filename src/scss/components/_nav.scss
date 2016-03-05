@@ -5,10 +5,17 @@
 // Styleguide 3
 
 .main-nav-wrapper {
-    background-color: $nav-bgc;
 }
 
 .main-nav {
+    transition: all $transition-mid;
+    background-color: $nav-bgc;
+    opacity: 0.5;
+
+    &:target,
+    &.is-active {
+        opacity: 1;
+    }
 }
 
 .main-nav__ul {
@@ -24,6 +31,7 @@
     background: $nav-link-bg;
     text-decoration: none;
     outline: none;
+    font-weight: bold;
     @include tp-padding-leader(.5);
     @include tp-padding-trailer(.5);
 
@@ -35,6 +43,13 @@
     &.is-current {
         color: $nav-link-c--current;
         background: $nav-link-bg--current;
+    }
+
+    @include breakpoint($mid-break) {
+        @include tp-fs(1);
+    }
+    @include breakpoint($large-break) {
+        @include tp-fs(2);
     }
 
 }
@@ -100,5 +115,56 @@
 
     a {
         color: $subnav-link-c;
+    }
+}
+
+.main-nav-toggle {
+    display: block;
+    height: 5rem;
+    line-height: 3rem;
+    padding: 1rem;
+    padding-right: 0;
+    color: $header-c;
+    text-decoration: none;
+    outline: none;
+    float: right;
+    @include breakpoint($mid-break) {
+        @include tp-fs(1);
+    }
+
+    @include scut-selected(true) {
+        color: $nav-link-c--hover;
+        background: $nav-link-bg--hover;
+    }
+
+    .main-header-nav-wrap--image & svg {
+        filter: drop-shadow(0 0 .5em rgba(0,0,0,.8));
+    }
+}
+
+.main-nav__close {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    color: $nav-link-c;
+    opacity: 0.8;
+    transition: opacity $transition-fast, transform $transition-fast;
+    @include breakpoint($mid-break) {
+        @include tp-fs(1);
+    }
+    @include breakpoint($large-break) {
+        @include tp-fs(2);
+    }
+
+    @include scut-selected(true) {
+        opacity: 1;
+        color: $nav-link-c;
+        transform: rotate(90deg);
+    }
+
+    .tp-icon {
+        display: block;
     }
 }

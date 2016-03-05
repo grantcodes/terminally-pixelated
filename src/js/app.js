@@ -3,6 +3,9 @@
 	// var React = require('react');
 	// var ReactDOM = require('react-dom');
 
+    var menuToggle = require('./modules/menu-toggle');
+    menuToggle();
+
     // Example to use a flickity slider on any element with class 'slider'
     // var slider = require('./modules/flickity-loader');
     // slider({

@@ -1,5 +1,5 @@
-%tp-container {
-	@include tp-container;
+.layout-wrapper {
+	@include tp-container();
 }
 
 @include global-box-sizing(border-box);
@@ -8,12 +8,7 @@
 	// @extend %tp-container;
 }
 
-.main-header__inner {
-	@extend %tp-container;
-}
-
 .main-content-sidebar-wrap {
-	@extend %tp-container;
 	@include tp-padding-leader(2);
 }
 

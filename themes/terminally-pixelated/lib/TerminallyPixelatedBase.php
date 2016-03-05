@@ -91,7 +91,7 @@ class TerminallyPixelatedBase {
 	 * Enqueue / register styles
 	 */
 	public function add_styles() {
-		wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,300italic,700italic|Merriweather:300italic,300,700,700italic', false );
+		wp_enqueue_style( 'brick-fonts', '//brick.a.ssl.fastly.net/Anonymous+Pro:400,400i/Ubuntu:700', false );
 		TPHelpers::enqueue( 'style.css' );
 	}
 
@@ -180,8 +180,12 @@ class TerminallyPixelatedBase {
 			} else if ( is_author() ) {
 				$context['title'] = get_the_author();
 			}
+		} else if ( is_home() ) {
+			$context['title'] = get_the_title( get_option( 'page_for_posts', true ) );
 		} else if ( is_search() ) {
 			$context['title'] = 'Search Results for: ' . get_search_query();
+		} else if ( is_singular() ) {
+			$context['title'] = get_the_title();
 		}
 
 		// Add breadcrumbs.
@@ -194,6 +198,13 @@ class TerminallyPixelatedBase {
 
 		// Add icon location.
 		$context['svg_sprite'] = TPHelpers::get_theme_resource_uri( 'img/symbol/svg/sprite.symbol.svg' );
+
+		// Footer text.
+		$footer_text = get_option( 'terminally_pixelated_footer_text' );
+		if ( ! $footer_text ) {
+			$footer_text = 'Copyright  ' . date( 'Y' ) . ' ' . get_bloginfo( 'name' ) . ' | All Rights Reserved.';
+		}
+		$context['footer_text'] = $footer_text;
 
 		return $context;
 	}

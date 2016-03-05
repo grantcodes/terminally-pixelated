@@ -1,5 +1,4 @@
-{# <span id="{{nav_class}}-handle">Menu</span> #}
-<nav class="{{nav_class}}" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" data-navigation-handle="#{{nav_class}}-handle">
+<nav class="{{nav_class}}" id="nav-{{nav_class}}" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
     <ul class="{{nav_class}}__ul">
         {% for item in menu.get_items %}
             <li class="{{nav_class}}__li {{item.classes | join(' ')}}">
@@ -16,4 +15,5 @@
             </li>
         {% endfor %}
     </ul>
+    <a href="#" class="{{nav_class}}__close" id="{{nav_class}}__close">{{icon('x')}}</a>
 </nav>

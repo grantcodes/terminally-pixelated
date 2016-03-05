@@ -1,9 +1,11 @@
 {{fn('tha_entry_before')}}
 <article class="{{post.post_class}} single-post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-    <header class="single-post__header">
-        <h1 class="single-post__title" itemprop="headline">{{post.title}}</h1>
-        {% include 'partials/postmeta.twig' %}
-    </header>
+    {% if not title %}
+        <header class="single-post__header">
+            <h1 class="single-post__title" itemprop="headline">{{post.title}}</h1>
+            {% include 'partials/postmeta.twig' %}
+        </header>
+    {% endif %}
     <div class="single-post__content" itemprop="text">
         {{fn('tha_entry_top')}}
         {{post.content}}

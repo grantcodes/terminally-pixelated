@@ -1,21 +1,21 @@
 {
     "theme": "terminally-pixelated",
-    "devDomain": "vagrant-dot-local",
-    "wpContentFolder": "content",
-    "mid-break": "30em",
-    "large-break": "60em",
+    "devDomain": "mozenix-dot-com-dot-dev",
+    "wpContentFolder": "wp-content",
+    "mid-break": "30rem",
+    "large-break": "60rem",
     "classes": {
         "nav": "main-nav",
         "content": "main-content",
         "footer": "main-footer"
     },
     "colors": {
-        "white": "#FCFCFC",
-        "black": "#222222",
-        "blue": "#478BC2",
-        "red": "#BF4240",
-        "orange": "#E27455",
-        "green": "#7FCD6A"
+        "white": "#f4f4f4",
+        "black": "#272627",
+        "blue": "#5396C6",
+        "red": "#B8473D",
+        "orange": "#C17644",
+        "green": "#80C95E"
     },
-    "footer-widgets": 4
+    "footer-widgets": 1
 }

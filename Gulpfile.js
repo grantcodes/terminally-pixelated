@@ -64,11 +64,11 @@ gulp.task('clean', function(){
   ]);
 });
 
+var processors = [
+  autoprefixer({browsers: ['last 2 versions']}),
+  cssnano
+];
 gulp.task('scss', function() {
-  var processors = [
-    autoprefixer({browsers: ['last 2 versions']}),
-    cssnano
-  ];
   return gulp.src(config.dirs.src + '/scss/**/*.scss')
     .pipe(sass(eyeglass.options).on("error", sass.logError))
     .pipe(postcss(processors))
@@ -91,6 +91,7 @@ gulp.task('styleguide:generate', function() {
 gulp.task('styleguide:applystyles', function() {
   gulp.src(config.dirs.src + '/scss/style.scss')
     .pipe(sass(eyeglass.options).on("error", sass.logError))
+    .pipe(postcss(processors))
     .pipe(styleguide.applyStyles())
     .pipe(gulp.dest(config.dirs.theme + '/styleguide'));
 });

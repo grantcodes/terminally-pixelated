@@ -4,7 +4,6 @@
 }
 
 .main-footer__inner {
-    @extend %tp-container;
 }
 
 .footer-widgets-wrapper {
@@ -15,11 +14,17 @@
 }
 
 .footer-widgets {
-    @include breakpoint($large-break) {
-        display: table-cell;
-        padding-left: $grid-padding;
-        &:first-child {
-            padding-left: 0;
+
+}
+
+.footer-widget {
+    @include tp-trailer();
+    @include breakpoint($mid-break) {
+        display: inline-block;
+        vertical-align: top;
+        @include tp-space(margin-right, 2);
+        &:last-child {
+            margin-right: 0;
         }
     }
 }
