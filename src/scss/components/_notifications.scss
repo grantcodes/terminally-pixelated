@@ -23,39 +23,21 @@
         display: block;
         text-align: left;
         width: 100%;
-        border-radius: 4px;
         position: relative;
         @include tp-space(padding, .5, true);
-        @include tp-space(padding-left, 2, true);
+        // @include tp-space(padding-left, 2, true);
         margin: 0 !important;
         @include tp-trailer(1, true);
         @include tp-fs(0);
-
         box-shadow: none;
         text-shadow: none;
         border: none;
-        background-color: $notification-c;
-        color: tp-readable-color($notification-c);
-        // @include tp-icon($icon-record);
-
-        &:before {
-            text-align: center;
-            line-height: $line-height;
-            position: absolute;
-            @include tp-space(width, 1);
-            @include tp-space(margin-right, .5);
-            @include tp-space(left, .5);
-            @include tp-space(top, .5);
-            padding: 0;
-
-            background: none;
-            box-shadow: none;
-            color: inherit;
-            text-shadow: inherit;
-        }
+        background: lighten($bgc, 20%);
+        border-bottom: .5em solid $notification-c;
+        color: $text-c;
 
         a {
-            color: tp-readable-color($notification-c);
+            color: inherit;
             transition: opacity $transition-fast;
             @include scut-selected(true) {
                 opacity: 0.4;
@@ -71,43 +53,13 @@
         }
     }
     @elseif ($type == 'error') {
-        background-color: $notification-c--error;
-        color: tp-readable-color($notification-c--error);
-        // @include tp-icon($icon-circle-cross);
-
-        &:before {
-            line-height: $line-height;
-        }
-
-        a {
-            color: tp-readable-color($notification-c--error);
-        }
+        border-color: $notification-c--error;
     }
     @elseif ($type == 'success') {
-        background-color: $notification-c--success;
-        color: tp-readable-color($notification-c--success);
-        // @include tp-icon($icon-circle-check);
-
-        &:before {
-            line-height: $line-height;
-        }
-
-        a {
-            color: tp-readable-color($notification-c--success);
-        }
+        border-color: $notification-c--success;
     }
     @elseif ($type == 'warning') {
-        background-color: $notification-c--warning;
-        color: tp-readable-color($notification-c--warning);
-        // @include tp-icon($icon-circle-minus);
-
-        &:before {
-            line-height: $line-height;
-        }
-
-        a {
-            color: tp-readable-color($notification-c--warning);
-        }
+        border-color: $notification-c--warning;
     }
 }
 
