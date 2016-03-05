@@ -25,6 +25,7 @@
     "json-sass": "^1.3.5",
     "modularscale-sass": "^2.1.1",
     "normalize.css": "^3.0.3",
+    "photoswipe": "^4.1.1",
     "run-sequence": "^1.1.5",
     "sc5-styleguide": "^0.3.40",
     "scut": "^1.3.0",
