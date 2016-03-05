@@ -1,3 +1,4 @@
+@import url("https://brick.a.ssl.fastly.net/Anonymous+Pro:400,400i/Ubuntu:700");
 @import "style";
 
 html, body {
@@ -6,6 +7,6 @@ html, body {
     background-color: $bgc;
 }
 
-body.wp-autoresize.wp-editor {
+#tinymce {
     padding: 1em !important;
 }
