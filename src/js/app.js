@@ -8,4 +8,8 @@
     // slider({
     //     selector: '.slider'
     // });
+
+    // Example to use photoswipe for image previews
+    // var photoswipe = require('./modules/photoswipe-loader');
+    // photoswipe('.gallery');
 })();

@@ -20,6 +20,7 @@ Terminally Pixelated comes jam packed full of greatness:
 - Browser sync for live reloading and development loveliness
 - Composer support
 - Flickity for beautiful sliders (beware of licenses with this)
+- Photoswipe for nice image zooming
 
 ## Getting started
 
@@ -67,6 +68,16 @@ To use an icon in a twig template you can simply use the `icon` function. For ex
 There is also a function to grab the html for an icon in PHP. The previous example would then become:
 
     $icon = TPHelpers::icon('facebook');
+
+## Photoswipe setup
+
+My photoswipe example require a simple html setup with images in `a` tags with data attributes for the width and height of the full size image:
+
+    <div class="gallery">
+        <a href="{{image.src}}" data-width="{{image.width}}" data-height="{{image.height}}">
+            <img src="{{image.src|resize(200,200)}}" alt="{{image.alt}}" />
+        </a>
+    </div>
 
 ## Requirements
 
