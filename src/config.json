@@ -1,6 +1,6 @@
 {
     "theme": "terminally-pixelated",
-    "devDomain": "mozenix-dot-com-dot-dev",
+    "devDomain": "local-dot-wordpress-dot-dev",
     "wpContentFolder": "wp-content",
     "mid-break": "30rem",
     "large-break": "60rem",
