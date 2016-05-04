@@ -100,8 +100,10 @@ class TerminallyPixelatedBase {
 	 * Register / enqueue scripts
 	 */
 	public function add_scripts() {
+		$config = TPHelpers::get_setting();
+		$config['svg_icon_url'] = TPHelpers::get_theme_resource_uri( 'img/symbol/svg/sprite.symbol.svg' );
 		TPHelpers::register( 'js/app.js' );
-		wp_localize_script( 'js/app.js', 'TerminallyPixelated', TPHelpers::get_setting() );
+		wp_localize_script( 'js/app.js', 'TerminallyPixelated', $config );
 		wp_enqueue_script( 'js/app.js' );
 	}
 
