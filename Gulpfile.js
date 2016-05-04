@@ -3,6 +3,7 @@ var fs             = require('fs');
 var browserSync    = require('browser-sync').create();
 var gulp           = require('gulp');
 var gutil          = require('gulp-util');
+var watch          = require('gulp-watch');
 var jsonSass       = require('json-sass');
 var source         = require('vinyl-source-stream');
 var rename         = require('gulp-rename');
@@ -150,10 +151,18 @@ gulp.task('watch', function() {
       blacklist: ['/wp-admin/**']
     }
   });
-  gulp.watch([config.dirs.src + '/scss/**/*.scss'], ['scss', 'styleguide:generate', 'styleguide:applystyles']);
-  gulp.watch([config.dirs.src + '/config.json'], ['jsonconfig']);
-  gulp.watch([config.dirs.src + '/js/**/*.js'], ['webpack']);
-  gulp.watch([config.dirs.src + '/svgs/**/*.svg'], ['svgs']);
+  watch([config.dirs.src + '/scss/**/*.scss'], function() {
+    gulp.start(['scss', 'styleguide:generate', 'styleguide:applystyles']);
+  });
+  watch([config.dirs.src + '/config.json'], function() {
+    gulp.start(['jsonconfig']);
+  });
+  watch([config.dirs.src + '/js/**/*.js'], function() {
+    gulp.start(['webpack']);
+  });
+  watch([config.dirs.src + '/svgs/**/*.svg'], function() {
+    gulp.start(['svgs']);
+  });
 });
 
 gulp.task('build', function() {
