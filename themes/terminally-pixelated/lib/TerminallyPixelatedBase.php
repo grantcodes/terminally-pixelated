@@ -38,6 +38,7 @@ class TerminallyPixelatedBase {
 		add_theme_support( 'menus' );
 		add_theme_support( 'html5' );
 		add_theme_support( 'title-tag' );
+		add_theme_support( 'custom-logo' );
 	}
 
 	/**
@@ -148,6 +149,9 @@ class TerminallyPixelatedBase {
 	 * @return array          The updated timber context
 	 */
 	public function timber_context( $context ) {
+
+		// Add logo.
+		$context['logo'] = get_custom_logo();
 
 		// Add menu.
 		$context['main_menu'] = new TimberMenu( 'main' );

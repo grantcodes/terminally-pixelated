@@ -14,14 +14,13 @@
                             <div class="main-header__inner">
                                 {{fn('tha_header_top')}}
                                 <h1 class="main-title" itemprop="headline">
-                                    <a href="{{site.url}}" rel="home">
-                                        {% if theme.theme_mod('terminally_pixelated_logo') %}
-                                            {% set logo = TimberImage(theme.theme_mod('terminally_pixelated_logo')) %}
-                                            <img src="{{logo.src}}" alt="{{site.name}}">
-                                        {% else %}
+                                    {% if logo %}
+                                        {{logo}}
+                                    {% else %}
+                                        <a href="{{site.url}}" rel="home">
                                             {{site.name}}
-                                        {% endif %}
-                                    </a>
+                                        </a>
+                                    {% endif %}
                                 </h1>
                                 {{fn('tha_header_bottom')}}
                             </div>
