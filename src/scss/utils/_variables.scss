@@ -9,9 +9,9 @@ $colors: map-get($tp-config, colors);
 
 // Typography
 
-$font-sans: 'Anonymous Pro', Helvetica, Arial, sans-serif;
+$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
 $font-serif: Georgia, serif;
-$font-h: 'Ubuntu', Helvetica, Arial, sans-serif;
+$font-h: $font-sans;
 $font-body: $font-sans;
 
 $ms-base: 1em;

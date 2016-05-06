@@ -92,7 +92,6 @@ class TerminallyPixelatedBase {
 	 * Enqueue / register styles
 	 */
 	public function add_styles() {
-		wp_enqueue_style( 'brick-fonts', 'https://brick.a.ssl.fastly.net/Anonymous+Pro:400,400i/Ubuntu:700', false );
 		TPHelpers::enqueue( 'style.css' );
 	}
 
