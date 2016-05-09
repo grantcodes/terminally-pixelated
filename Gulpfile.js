@@ -4,6 +4,7 @@ var browserSync    = require('browser-sync').create();
 var gulp           = require('gulp');
 var gutil          = require('gulp-util');
 var watch          = require('gulp-watch');
+var sourcemaps     = require('gulp-sourcemaps');
 var jsonSass       = require('json-sass');
 var source         = require('vinyl-source-stream');
 var rename         = require('gulp-rename');
@@ -38,6 +39,7 @@ var webpackConf = {
     path: config.dirs.theme + '/js',
     filename: 'app.js'
   },
+  devtool: 'source-maps',
   module: {
     loaders: [
       { test: /\.js?$/, loaders: ['babel'], exclude: /node_modules/ },
@@ -71,8 +73,10 @@ var processors = [
 ];
 gulp.task('scss', function() {
   return gulp.src(config.dirs.src + '/scss/**/*.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass(eyeglass.options).on("error", sass.logError))
     .pipe(postcss(processors))
+    .pipe(sourcemaps.write(config.dirs.theme))
     .pipe(gulp.dest(config.dirs.theme));
 });
 
