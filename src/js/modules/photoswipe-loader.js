@@ -1,7 +1,7 @@
-var PhotoSwipe = require('photoswipe');
-var PhotoSwipeUI_Default = require('photoswipe/dist/photoswipe-ui-default');
+import PhotoSwipe from 'photoswipe';
+import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 
-module.exports = function(selector) {
+export default function(selector) {
     var pswpElement = document.getElementById('pswp');
     var galleries = document.querySelectorAll(selector);
     var galleriesPhotos = {};
@@ -50,4 +50,4 @@ module.exports = function(selector) {
         galleriesPhotos[i] = items;
     }
 
-};
+}

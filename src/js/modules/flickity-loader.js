@@ -1,6 +1,6 @@
-var Flickity = require('flickity-imagesloaded');
+import Flickity from 'flickity-imagesloaded';
 
-module.exports = function(options) {
+export default function(options) {
 
     var settings = {
         selector: '.slider',
@@ -27,4 +27,4 @@ module.exports = function(options) {
             new Flickity(slider, settings);
         }
     }
-};
+}

@@ -1,18 +1,17 @@
-(function(){
-	var config = TerminallyPixelated;
-	// var React = require('react');
-	// var ReactDOM = require('react-dom');
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import slider from './modules/flickity-loader';
+// import photoswipe from './modules/photoswipe-loader';
+import menuToggle from './modules/menu-toggle';
 
-    var menuToggle = require('./modules/menu-toggle');
-    menuToggle();
+var config = TerminallyPixelated;
 
-    // Example to use a flickity slider on any element with class 'slider'
-    // var slider = require('./modules/flickity-loader');
-    // slider({
-    //     selector: '.slider'
-    // });
+menuToggle();
 
-    // Example to use photoswipe for image previews
-    // var photoswipe = require('./modules/photoswipe-loader');
-    // photoswipe('.gallery');
-})();
+// Example to use a flickity slider on any element with class 'slider'
+// slider({
+//     selector: '.slider'
+// });
+
+// Example to use photoswipe for image previews
+// photoswipe('.gallery');

@@ -1,4 +1,4 @@
-module.exports = function() {
+export default function() {
     var menu = document.getElementById('nav-main-nav');
     var menuToggle = document.getElementById('main-nav-toggle');
     var menuClose = document.getElementById('main-nav__close');
@@ -19,4 +19,4 @@ module.exports = function() {
             return false;
         });
     }
-};
+}
