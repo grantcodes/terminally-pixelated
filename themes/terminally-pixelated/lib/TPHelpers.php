@@ -70,7 +70,7 @@ class TPHelpers {
 	 */
 	public static function get_setting( $key = false ) {
 		if ( ! self::$json_settings ) {
-			$file = file_get_contents( get_stylesheet_directory() . '/config.json' );
+			$file = file_get_contents( dirname( __FILE__ ) . '/../config.json' );
 			self::$json_settings = (array) json_decode( $file );
 		}
 		if ( false === $key ) {

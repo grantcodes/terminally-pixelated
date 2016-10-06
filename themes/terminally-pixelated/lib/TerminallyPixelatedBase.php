@@ -13,9 +13,9 @@ class TerminallyPixelatedBase {
 	 * Let's go!
 	 */
 	function __construct() {
-		$this->add_support();
-		$this->add_sidebars();
-		$this->add_menus();
+		add_action( 'after_setup_theme', array( $this, 'add_support' ) );
+		add_action( 'widgets_init', array( $this, 'add_sidebars' ) );
+		add_action( 'after_setup_theme', array( $this, 'add_menus' ) );
 		add_action( 'init', array( $this, 'remove_crap' ) );
 		add_action( 'init', array( $this, 'editor_style' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
@@ -32,7 +32,7 @@ class TerminallyPixelatedBase {
 	/**
 	 * Adds theme support for stuff
 	 */
-	private function add_support() {
+	public function add_support() {
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'menus' );
@@ -140,7 +140,7 @@ class TerminallyPixelatedBase {
 	/**
 	 * Register menus
 	 */
-	private function add_menus() {
+	public function add_menus() {
 		register_nav_menu( 'main', 'The main site navigation' );
 	}
 
