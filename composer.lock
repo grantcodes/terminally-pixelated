@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "tgmpa/tgm-plugin-activation",
-            "version": "2.5.2",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TGMPA/TGM-Plugin-Activation.git",
-                "reference": "ba41c10e821a10d3d6c3b8e468a16716bb03f125"
+                "reference": "c626d0d91fc8ef24916e809c7b79eeafab1c1cac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TGMPA/TGM-Plugin-Activation/zipball/ba41c10e821a10d3d6c3b8e468a16716bb03f125",
-                "reference": "ba41c10e821a10d3d6c3b8e468a16716bb03f125",
+                "url": "https://api.github.com/repos/TGMPA/TGM-Plugin-Activation/zipball/c626d0d91fc8ef24916e809c7b79eeafab1c1cac",
+                "reference": "c626d0d91fc8ef24916e809c7b79eeafab1c1cac",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2015-07-16 08:59:11"
+            "time": "2016-05-19 15:46:51"
         },
         {
             "name": "zamoose/themehookalliance",
