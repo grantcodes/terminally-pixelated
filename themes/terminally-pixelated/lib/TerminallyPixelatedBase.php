@@ -26,7 +26,6 @@ class TerminallyPixelatedBase {
 		add_filter( 'timber_context', array( $this, 'schema' ) );
 		add_filter( 'get_twig', array( $this, 'twig_extensions' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
-		add_action( 'tgmpa_register', array( $this, 'require_plugins' ) );
 	}
 
 	/**
@@ -267,21 +266,5 @@ class TerminallyPixelatedBase {
 	            ga('create','<?php echo $ga_id; ?>');ga('send','pageview');
 	        </script>
 		<?php endif;
-	}
-
-	/**
-	 * Require plugins for installation using tgmpa plugin activation
-	 * @return void
-	 */
-	public function require_plugins() {
-		$plugins = array(
-			array(
-	            'name'             => 'Timber Library',
-	            'slug'             => 'timber-library',
-	            'required'         => true,
-	            'force_activation' => true,
-	        ),
-		);
-		tgmpa( $plugins );
 	}
 }

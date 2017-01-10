@@ -69,12 +69,17 @@ var processors = [
   autoprefixer({browsers: ['last 2 versions']}),
   cssnano
 ];
-gulp.task('scss', function() {
+gulp.task('scss:dev', function() {
   return gulp.src(config.dirs.src + '/scss/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass(eyeglass.options).on("error", sass.logError))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(config.dirs.theme));
+});
+gulp.task('scss:dist', function() {
+  return gulp.src(config.dirs.src + '/scss/**/*.scss')
+    .pipe(sass(eyeglass.options).on("error", sass.logError))
     .pipe(postcss(processors))
-    .pipe(sourcemaps.write(config.dirs.theme))
     .pipe(gulp.dest(config.dirs.theme));
 });
 
@@ -154,7 +159,7 @@ gulp.task('watch', function() {
     }
   });
   watch([config.dirs.src + '/scss/**/*.scss'], function() {
-    gulp.start(['scss', 'styleguide:generate', 'styleguide:applystyles']);
+    gulp.start(['scss:dev', 'styleguide:generate', 'styleguide:applystyles']);
   });
   watch([config.dirs.src + '/config.json'], function() {
     gulp.start(['jsonconfig']);
@@ -172,7 +177,7 @@ gulp.task('build', function() {
     'clean',
     'copyfiles',
     'jsonconfig',
-    'scss',
+    'scss:dist',
     'svgs',
     'styleguide:generate',
     'styleguide:applystyles',

@@ -12,7 +12,7 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "tgmpa/tgm-plugin-activation": "^2.5",
-        "zamoose/themehookalliance": "dev-master"
+        "zamoose/themehookalliance": "dev-master",
+        "timber/timber": "^1.2"
     }
 }
