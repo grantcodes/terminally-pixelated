@@ -62,3 +62,11 @@
         }
     }
 }
+
+@mixin tp-shadow($depth: 1, $distance-scale: .1rem) {
+    $distanceY: $distance-scale * $depth;
+    $distanceX: $distanceY * .6;
+    $blur: .1rem * ($depth * 3);
+    $opacity: .1 + $depth / 10;
+    box-shadow: $distanceX $distanceY $blur rgba(0,0,0,$opacity);
+}

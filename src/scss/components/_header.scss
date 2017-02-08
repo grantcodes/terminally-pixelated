@@ -1,6 +1,7 @@
 .main-header-nav-wrap {
     & {
         background-color: $header-bgc;
+        background-image: linear-gradient(120deg, $header-bgc, adjust-hue($header-bgc, -30deg));
         background-position: center;
         background-size: cover;
         @include tp-padding-leader();
@@ -29,6 +30,9 @@
 
 .main-title {
     margin: 0;
+    a {
+        color: inherit;
+    }
 }
 
 .headroom {

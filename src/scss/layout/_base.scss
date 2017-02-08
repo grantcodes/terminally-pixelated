@@ -10,6 +10,7 @@
 
 .main-content-sidebar-wrap {
 	@include tp-padding-leader(2);
+	@include tp-padding-trailer(2);
 }
 
 .main-content {

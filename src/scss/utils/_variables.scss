@@ -18,7 +18,7 @@ $ms-base: 1em;
 $ms-ratio: $minor-third;
 $line-height: 1.5;
 $body-font: $font-body;
-$body-font-weight: 400;
+$body-font-weight: 300;
 $min-font: 1rem;
 $max-font: 1.3rem;
 
@@ -52,6 +52,14 @@ $grid-padding: 1.5rem;
 
 // Colors
 
+@function tp-legible-color($background) {
+	@if (lightness($background) > 60) {
+		@return map-get($colors, black);
+	} @else {
+		@return map-get($colors, white);
+	}
+}
+
 $text-c: map-get($colors, black);
 $bgc: map-get($colors, white);
 
@@ -63,12 +71,12 @@ $border-c: mix($text-c, $bgc);
 $link-c: map-get($colors, blue);
 $link-c--hover: map-get($colors, red);
 
-$header-bgc: map-get($colors, black);
-$header-c: map-get($colors, white);
+$header-bgc: map-get($colors, blue);
+$header-c: tp-legible-color($header-bgc);
 
-$nav-bgc: rgba(map-get($colors, white), .95);
+$nav-bgc: map-get($colors, blue);
 
-$nav-link-c: map-get($colors, black);
+$nav-link-c: tp-legible-color($nav-bgc);
 $nav-link-bg: none;
 
 $nav-link-c--hover: lighten($nav-link-c, 30%);

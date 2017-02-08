@@ -10,12 +10,12 @@
         "footer": "main-footer"
     },
     "colors": {
-        "white": "#f4f4f4",
-        "black": "#272627",
-        "blue": "#5396C6",
-        "red": "#B8473D",
-        "orange": "#C17644",
-        "green": "#80C95E"
+        "white": "#fafafa",
+        "black": "#111111",
+        "blue": "#2196F3",
+        "red": "#F44336",
+        "orange": "#FF9800",
+        "green": "#4CAF50"
     },
     "footer-widgets": 1
 }
