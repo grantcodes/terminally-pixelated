@@ -10,6 +10,11 @@
     "config": {
     	"vendor-dir": "mu-plugins/terminally-pixelated/vendor"
     },
+    "autoload": {
+        "files": [
+            "mu-plugins/terminally-pixelated/vendor/zamoose/themehookalliance/tha-theme-hooks.php"
+        ]
+    },
     "minimum-stability": "dev",
     "require": {
         "zamoose/themehookalliance": "dev-master",

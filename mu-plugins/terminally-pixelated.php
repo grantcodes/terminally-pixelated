@@ -10,5 +10,4 @@
  */
 
 $loader = require_once( __DIR__ . '/terminally-pixelated/vendor/autoload.php' );
-require_once( __DIR__ . '/terminally-pixelated/vendor/zamoose/themehookalliance/tha-theme-hooks.php' );
 $timber = new \Timber\Timber();
