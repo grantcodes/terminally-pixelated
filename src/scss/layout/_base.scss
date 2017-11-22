@@ -1,8 +1,8 @@
+@include scut-reset-border-box;
+
 .layout-wrapper {
 	@include tp-container();
 }
-
-@include global-box-sizing(border-box);
 
 .main-wrapper {
 	// @extend %tp-container;
@@ -11,6 +11,9 @@
 .main-content-sidebar-wrap {
 	@include tp-padding-leader(2);
 	@include tp-padding-trailer(2);
+	@include breakpoint($mid-break) {
+		display: flex;
+	}
 }
 
 .main-content {
@@ -18,24 +21,24 @@
 
 	@include breakpoint($mid-break) {
 		margin-bottom: 0;
-		@include span($mid-content-cols of $mid-cols);
-		.sidebar-position-left & {
-			@include omega();
-		}
+		width: susy-span($mid-content-cols of $mid-cols);
+		margin-right: gutter($susy-mid);
 	}
 	@include breakpoint($large-break) {
-		@include span($large-content-cols of $large-cols);
-		.sidebar-position-left & {
-			@include omega();
-		}
+		width: span($large-content-cols, $susy-large);
+		margin-right: gutter($susy-large);
 	}
 
 	&--full-width {
 		@include breakpoint($mid-break) {
-			@include span($mid-cols of $mid-cols);
+			margin-right: 0;
+			margin-left: 0;
+			width: span($mid-cols of $mid-cols);
 		}
 		@include breakpoint($large-break) {
-			@include span($large-cols of $large-cols);
+			margin-right: 0;
+			margin-left: 0;
+			width: span($large-cols of $large-cols);
 		}
 	}
 }

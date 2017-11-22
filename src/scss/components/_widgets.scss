@@ -27,10 +27,11 @@
 .widget_search {
     .search-form {
         @extend %scut-clearfix;
+        display: flex;
 
         & > label {
             display: block;
-            @include span(6 of 10);
+            width: span(6 of 10);
         }
 
         .search-field {
@@ -39,7 +40,7 @@
 
         .search-submit {
             display: block;
-            @include span(last 4 of 10);
+            width: span(4 of 10);
         }
     }
 }

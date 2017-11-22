@@ -63,17 +63,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/asm89/twig-cache-extension.git",
-                "reference": "fdd0e5f5441b08c3beb25fa745ba6657ff0ebc05"
+                "reference": "630ea7abdc3fc62ba6786c02590a1560e449cf55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asm89/twig-cache-extension/zipball/fdd0e5f5441b08c3beb25fa745ba6657ff0ebc05",
-                "reference": "fdd0e5f5441b08c3beb25fa745ba6657ff0ebc05",
+                "url": "https://api.github.com/repos/asm89/twig-cache-extension/zipball/630ea7abdc3fc62ba6786c02590a1560e449cf55",
+                "reference": "630ea7abdc3fc62ba6786c02590a1560e449cf55",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "twig/twig": "~1.0"
+                "twig/twig": "^1.0|^2.0"
             },
             "require-dev": {
                 "doctrine/cache": "~1.0"
@@ -109,20 +109,20 @@
                 "extension",
                 "twig"
             ],
-            "time": "2016-12-30 09:44:56"
+            "time": "2017-01-10T22:04:15+00:00"
         },
         {
             "name": "composer/installers",
-            "version": "v1.2.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "d78064c68299743e0161004f2de3a0204e33b804"
+                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/d78064c68299743e0161004f2de3a0204e33b804",
-                "reference": "d78064c68299743e0161004f2de3a0204e33b804",
+                "url": "https://api.github.com/repos/composer/installers/zipball/9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
+                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
                 "shasum": ""
             },
             "require": {
@@ -164,12 +164,17 @@
             "keywords": [
                 "Craft",
                 "Dolibarr",
+                "Eliasis",
                 "Hurad",
                 "ImageCMS",
+                "Kanboard",
+                "Lan Management System",
                 "MODX Evo",
                 "Mautic",
+                "Maya",
                 "OXID",
                 "Plentymarkets",
+                "Porto",
                 "RadPHP",
                 "SMF",
                 "Thelia",
@@ -187,20 +192,24 @@
                 "croogo",
                 "dokuwiki",
                 "drupal",
+                "eZ Platform",
                 "elgg",
                 "expressionengine",
                 "fuelphp",
                 "grav",
                 "installer",
+                "itop",
                 "joomla",
                 "kohana",
                 "laravel",
+                "lavalite",
                 "lithium",
                 "magento",
                 "mako",
                 "mediawiki",
                 "modulework",
                 "moodle",
+                "osclass",
                 "phpbb",
                 "piwik",
                 "ppi",
@@ -209,6 +218,7 @@
                 "roundcube",
                 "shopware",
                 "silverstripe",
+                "sydes",
                 "symfony",
                 "typo3",
                 "wordpress",
@@ -216,36 +226,36 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-08-13T20:53:52+00:00"
+            "time": "2017-08-09T07:53:48+00:00"
         },
         {
             "name": "timber/timber",
-            "version": "1.2.0",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "b15ebfbf4bd19a2bd1a437601a6806630c3ce8c7"
+                "reference": "f566b4c3a1a778dab68afa154a4806b90287d6a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/b15ebfbf4bd19a2bd1a437601a6806630c3ce8c7",
-                "reference": "b15ebfbf4bd19a2bd1a437601a6806630c3ce8c7",
+                "url": "https://api.github.com/repos/timber/timber/zipball/f566b4c3a1a778dab68afa154a4806b90287d6a6",
+                "reference": "f566b4c3a1a778dab68afa154a4806b90287d6a6",
                 "shasum": ""
             },
             "require": {
                 "asm89/twig-cache-extension": "~1.0",
                 "composer/installers": "~1.0",
-                "php": ">=5.3.0",
-                "twig/twig": "1.*",
+                "php": ">=5.3.0|7.*",
+                "twig/twig": "^1.0|2.*",
                 "upstatement/routes": "0.4"
             },
             "require-dev": {
-                "jarednova/markdowndocs": "dev-master",
-                "phpdocumentor/phpdocumentor": "2.*",
-                "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "1.0.*",
+                "phpunit/phpunit": "5.7.16",
                 "wpackagist-plugin/advanced-custom-fields": "4.*",
                 "wpackagist-plugin/co-authors-plus": "3.*"
+            },
+            "suggest": {
+                "satooshi/php-coveralls": "1.0.* for code coverage"
             },
             "type": "library",
             "autoload": {
@@ -277,7 +287,7 @@
                 "timber",
                 "twig"
             ],
-            "time": "2016-12-30T03:17:17+00:00"
+            "time": "2017-10-12T17:30:04+00:00"
         },
         {
             "name": "twig/twig",
@@ -285,30 +295,34 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "d192cdce8cfdd1135a76c1c132ba2303c2b6fb60"
+                "reference": "5322c9b4ca5fbff5917ecbf0544b46fb2fa66086"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d192cdce8cfdd1135a76c1c132ba2303c2b6fb60",
-                "reference": "d192cdce8cfdd1135a76c1c132ba2303c2b6fb60",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5322c9b4ca5fbff5917ecbf0544b46fb2fa66086",
+                "reference": "5322c9b4ca5fbff5917ecbf0544b46fb2fa66086",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.7"
+                "php": ">=5.3.3"
             },
             "require-dev": {
+                "psr/container": "^1.0",
                 "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~3.2"
+                "symfony/phpunit-bridge": "~3.3@dev"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.30-dev"
+                    "dev-master": "1.35-dev"
                 }
             },
             "autoload": {
                 "psr-0": {
                     "Twig_": "lib/"
+                },
+                "psr-4": {
+                    "Twig\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -338,7 +352,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-01-09 20:28:52"
+            "time": "2017-11-12T18:47:15+00:00"
         },
         {
             "name": "upstatement/routes",
@@ -421,7 +435,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2015-08-05 03:42:29"
+            "time": "2015-08-05T03:42:29+00:00"
         }
     ],
     "packages-dev": [],

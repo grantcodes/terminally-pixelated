@@ -1,8 +1,8 @@
 @mixin tp-container() {
     @include scut-clearfix;
-    @include container;
     margin: 0 auto;
     width: 100%;
+    max-width: $large-break;
     padding-left: $grid-padding;
     padding-right: $grid-padding;
 }

@@ -1,15 +1,9 @@
 .main-aside {
     @include breakpoint($mid-break) {
-        @include span(last $mid-sidebar-cols of $mid-cols);
-        .sidebar-position-left & {
-            @include span(first $mid-sidebar-cols of $mid-cols);
-        }
+        width: span($mid-sidebar-cols, $susy-mid);
     }
     @include breakpoint($large-break) {
-        @include span(last $large-sidebar-cols of $large-cols);
-        .sidebar-position-left & {
-            @include span(first $large-sidebar-cols of $large-cols);
-        }
+        width: span($large-sidebar-cols, $susy-large);
     }
 
     .widget {

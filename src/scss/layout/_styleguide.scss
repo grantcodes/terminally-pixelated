@@ -21,7 +21,7 @@
 
 #kss-nav {
     @include breakpoint($mid-break) {
-        @include span($mid-sidebar-cols of $mid-cols);
+        width: span($mid-sidebar-cols, $susy-mid);
 
         &.is-fixed {
             position: fixed;
@@ -30,16 +30,18 @@
         }
     }
     @include breakpoint($large-break) {
-        @include span($large-sidebar-cols of $large-cols);
+        width: span($large-sidebar-cols, $susy-large);
     }
 }
 
 #kss-main {
     @include breakpoint($mid-break) {
-        @include span(last $mid-content-cols of $mid-cols);
+        float: right;
+        width: span($mid-content-cols, $susy-mid);
     }
     @include breakpoint($large-break) {
-        @include span(last $large-content-cols of $large-cols);
+        float: right;
+        width: span($large-content-cols, $susy-large);
     }
 }
 
