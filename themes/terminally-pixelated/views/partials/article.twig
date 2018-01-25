@@ -1,4 +1,3 @@
-{{fn('tha_entry_before')}}
 <article class="{{post.post_class}} single-post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
     {% if not title %}
         <header class="single-post__header">
@@ -7,9 +6,6 @@
         </header>
     {% endif %}
     <div class="single-post__content" itemprop="text">
-        {{fn('tha_entry_top')}}
         {{post.content}}
-        {{fn('tha_entry_bottom')}}
     </div>
 </article>
-{{fn('tha_entry_after')}}

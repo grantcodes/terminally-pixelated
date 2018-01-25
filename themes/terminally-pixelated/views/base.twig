@@ -42,15 +42,12 @@
                                 {% include 'components/pagination.twig' %}
                             {% endif %}
                         {% endblock %}
-                        {{fn('tha_content_bottom')}}
                     </div>
                 </main>
 
                 {% if main_sidebar %}
                     <aside class="main-aside {{sidebar_class}}">
-                        {{fn('tha_sidebar_top')}}
                         {{main_sidebar}}
-                        {{fn('tha_sidebar_bottom')}}
                     </aside>
                 {% endif %}
             </div>

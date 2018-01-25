@@ -19,7 +19,6 @@ Terminally Pixelated comes jam packed full of greatness:
 - Webpack for JavaScript bundling
 - Browser sync for live reloading and development loveliness
 - Composer support
-- Flickity for beautiful sliders (beware of licenses with this)
 - Photoswipe for nice image zooming
 
 ## Getting started
