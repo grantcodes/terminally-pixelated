@@ -220,3 +220,108 @@
 .no-comments {
   text-align: center;
 }
+
+// Gutenberg stuff
+[class^='wp-block-'] {
+  @include tp-trailer();
+}
+
+// Image block
+.wp-block-image {
+  margin: 0;
+  @include tp-trailer();
+}
+.wp-block-image img {
+  display: block;
+}
+.wp-block-image figcaption {
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+// Gallery block
+$gallery-margin: 0.25em;
+.wp-block-gallery,
+.wp-block-gallery.alignleft,
+.wp-block-gallery.alignright,
+.wp-block-gallery.aligncenter {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin-left: 0 - $gallery-margin;
+  margin-right: 0 - $gallery-margin;
+  margin-top: 0 - $gallery-margin;
+
+  .blocks-gallery-image,
+  .blocks-gallery-item {
+    margin: $gallery-margin;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+
+    figure {
+      height: 100%;
+      margin: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  // Cropped
+  &.is-cropped .blocks-gallery-image,
+  &.is-cropped .blocks-gallery-item {
+    img {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // Alas, IE11+ doesn't support object-fit
+    _:-ms-lang(x),
+    figure {
+      height: auto;
+      width: auto;
+    }
+  }
+
+  // Responsive fallback value, 2 columns
+  & .blocks-gallery-image,
+  & .blocks-gallery-item {
+    width: calc(100% / 2 - #{$gallery-margin * 2});
+  }
+
+  &.columns-1 .blocks-gallery-image,
+  &.columns-1 .blocks-gallery-item {
+    width: calc(100% / 1 - #{$gallery-margin * 2});
+  }
+
+  @include breakpoint(max-width, $mid-break) {
+    @for $i from 3 through 8 {
+      &.columns-#{ $i } .blocks-gallery-image,
+      &.columns-#{ $i } .blocks-gallery-item {
+        width: calc(100% / #{ $i } - #{$gallery-margin * 2});
+      }
+    }
+  }
+}
+
+// Cover Image
+.wp-block-cover-image {
+  h2 {
+    margin: 0;
+  }
+}
+
+// Pullquote
+.wp-block-pullquote {
+  border-left: none;
+  margin: 0;
+  padding: 3em 0;
+  @include tp-trailer();
+}

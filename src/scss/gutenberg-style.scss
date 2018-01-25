@@ -1,0 +1,42 @@
+@import 'breakpoint';
+@import 'susy';
+@import 'modularscale';
+@import 'scut';
+
+@import 'utils/wp-comment';
+@import 'utils/config';
+@import 'utils/functions';
+@import 'utils/variables';
+@import 'utils/mixins';
+
+.editor-visual-editor {
+  background-color: $bgc;
+  font-family: $font-body;
+}
+
+.editor-visual-editor * {
+  font-family: $font-body;
+}
+
+.editor-visual-editor,
+.editor-visual-editor p {
+  line-height: $line-height;
+  font-weight: $body-font-weight;
+  color: $text-c;
+  @include tp-fs(0);
+}
+
+// .editor-visual-editor p,
+textarea.editor-post-title__input {
+  font-family: $font-body;
+  color: $text-c;
+  @include tp-fs(3);
+}
+
+.editor-visual-editor {
+  @import 'base/fonts';
+  @import 'base/typography';
+  @import 'base/base';
+  @import 'base/helpers';
+  @import 'base/wordpress-defaults';
+}

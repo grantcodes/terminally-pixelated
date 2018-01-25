@@ -18,6 +18,7 @@ class TerminallyPixelatedBase {
 		add_action( 'after_setup_theme', array( $this, 'add_menus' ) );
 		add_action( 'init', array( $this, 'remove_crap' ) );
 		add_action( 'init', array( $this, 'editor_style' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'gutenberg_editor_style' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_action( 'wp_footer', array( $this, 'google_analytics' ), 100 );
@@ -38,6 +39,9 @@ class TerminallyPixelatedBase {
 		add_theme_support( 'html5' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'custom-logo' );
+		$theme_colors = (array) TPHelpers::get_setting( 'colors' );
+		array_unshift( $theme_colors, 'editor-color-palette' );
+		call_user_func_array( 'add_theme_support', array_values( $theme_colors ) );
 	}
 
 	/**
@@ -46,6 +50,15 @@ class TerminallyPixelatedBase {
 	 */
 	public function editor_style() {
 		add_editor_style( TPHelpers::get_theme_resource_uri( '/editor-style.css' ) );
+	}
+
+	/**
+	 * Add theme style to the gutenberg editor
+	 *
+	 * @return void
+	 */
+	public function gutenberg_editor_style() {
+		wp_enqueue_style( 'gutenbergtheme-blocks-style',  TPHelpers::get_theme_resource_uri( '/gutenberg-style.css' ) );
 	}
 
 	/**
@@ -63,15 +76,15 @@ class TerminallyPixelatedBase {
 	 */
 	public function remove_crap() {
 		if ( ! is_admin() ) {
-		    remove_action( 'wp_head', 'feed_links_extra' ); // Display the links to the extra feeds such as category feeds
-		    remove_action( 'wp_head', 'feed_links' ); // Display the links to the general feeds: Post and Comment Feed
-		    remove_action( 'wp_head', 'rsd_link' ); // Display the link to the Really Simple Discovery service endpoint, EditURI link
-		    remove_action( 'wp_head', 'wlwmanifest_link' ); // Display the link to the Windows Live Writer manifest file.
-		    remove_action( 'wp_head', 'index_rel_link' ); // index link
-		    remove_action( 'wp_head', 'parent_post_rel_link', 10 ); // prev link
-		    remove_action( 'wp_head', 'start_post_rel_link', 10 ); // start link
-		    remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10 ); // Display relational links for the posts adjacent to the current post.
-		    remove_action( 'wp_head', 'wp_generator' ); // Display the XHTML generator that is generated on the wp_head hook, WP version.
+				remove_action( 'wp_head', 'feed_links_extra' ); // Display the links to the extra feeds such as category feeds
+				remove_action( 'wp_head', 'feed_links' ); // Display the links to the general feeds: Post and Comment Feed
+				remove_action( 'wp_head', 'rsd_link' ); // Display the link to the Really Simple Discovery service endpoint, EditURI link
+				remove_action( 'wp_head', 'wlwmanifest_link' ); // Display the link to the Windows Live Writer manifest file.
+				remove_action( 'wp_head', 'index_rel_link' ); // index link
+				remove_action( 'wp_head', 'parent_post_rel_link', 10 ); // prev link
+				remove_action( 'wp_head', 'start_post_rel_link', 10 ); // start link
+				remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10 ); // Display relational links for the posts adjacent to the current post.
+				remove_action( 'wp_head', 'wp_generator' ); // Display the XHTML generator that is generated on the wp_head hook, WP version.
 		}
 	}
 
@@ -244,11 +257,11 @@ class TerminallyPixelatedBase {
 	 * @return object       Updated twig object
 	 */
 	function twig_extensions( $twig ) {
-	    $icon_function = new Twig_SimpleFunction('icon', function ( $context, $icon ) {
-	        return TPHelpers::icon( $icon, $context['svg_sprite'] );
-	    }, array( 'needs_context' => true ) );
-	    $twig->addFunction( $icon_function );
-	    return $twig;
+			$icon_function = new Twig_SimpleFunction('icon', function ( $context, $icon ) {
+					return TPHelpers::icon( $icon, $context['svg_sprite'] );
+			}, array( 'needs_context' => true ) );
+			$twig->addFunction( $icon_function );
+			return $twig;
 	}
 
 	/**
@@ -258,13 +271,13 @@ class TerminallyPixelatedBase {
 	public function google_analytics() {
 		if ( $ga_id = get_option( 'terminally_pixelated_googleanalytics' ) ) : ?>
 			<script>
-	            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-	            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-	            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-	            e.src='//www.google-analytics.com/analytics.js';
-	            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-	            ga('create','<?php echo $ga_id; ?>');ga('send','pageview');
-	        </script>
+							(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+							function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+							e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+							e.src='//www.google-analytics.com/analytics.js';
+							r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+							ga('create','<?php echo $ga_id; ?>');ga('send','pageview');
+					</script>
 		<?php endif;
 	}
 }

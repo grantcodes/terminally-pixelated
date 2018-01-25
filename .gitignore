@@ -12,6 +12,7 @@ lib/vendor
 docs
 themes/terminally-pixelated/style.css
 themes/terminally-pixelated/editor-style.css
+themes/terminally-pixelated/gutenberg-style.css
 themes/terminally-pixelated/js/app.js
 themes/terminally-pixelated/styleguide
 themes/terminally-pixelated/vendor
