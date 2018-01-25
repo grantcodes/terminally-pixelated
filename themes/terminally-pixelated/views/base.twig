@@ -1,18 +1,14 @@
-{{fn('tha_html_before')}}
 <!doctype html>
 <html class="no-js" {{language_attributes}}>
 {% include 'partials/head.twig' %}
 
     <body class="{{body_class}}" itemscope="itemscope" itemtype="http://schema.org/WebPage">
-        {{fn('tha_body_top')}}
         <div class="main-wrapper" id="main-wrapper">
             <div {% if header_image %}class="main-header-nav-wrap main-header-nav-wrap--image" style="background-image: url({{header_image.src|resize(1920, 800)}})"{% else %}class="main-header-nav-wrap" {% endif %}>
                 <div class="layout-wrapper main-header-nav-wrap__inner">
-                    {{fn('tha_header_before')}}
                     {% block header %}
                         <header class="main-header" role='banner' itemscope="itemscope" itemtype="http://schema.org/WPHeader">
                             <div class="main-header__inner">
-                                {{fn('tha_header_top')}}
                                 <h1 class="main-title" itemprop="headline">
                                     {% if logo %}
                                         {{logo}}
@@ -22,11 +18,9 @@
                                         </a>
                                     {% endif %}
                                 </h1>
-                                {{fn('tha_header_bottom')}}
                             </div>
                         </header>
                     {% endblock %}
-                    {{fn('tha_header_after')}}
                     <div class="main-nav-wrapper">
                         <a href="#nav-main-nav" class="main-nav-toggle" id="main-nav-toggle">{{icon('menu')}}</a>
                         {% include 'components/nav.twig' with { 'nav_class': terminally_pixelated.classes.nav, 'menu': main_menu } %}
@@ -37,11 +31,9 @@
                 {% endif %}
             </div>
 
-            {{fn('tha_content_before')}}
             <div class="main-content-sidebar-wrap layout-wrapper">
                 <main role="main" class="{{terminally_pixelated.classes.content}} {% if not main_sidebar %}{{terminally_pixelated.classes.content}}--full-width{% endif %}" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/{{schema.type}}">
                     <div class="wrapper">
-                        {{fn('tha_content_top')}}
                         {% block content %}
                         Sorry, no content
                         {% endblock %}
@@ -53,22 +45,17 @@
                         {{fn('tha_content_bottom')}}
                     </div>
                 </main>
-                {{fn('tha_content_after')}}
 
                 {% if main_sidebar %}
-                    {{fn('tha_sidebars_before')}}
                     <aside class="main-aside {{sidebar_class}}">
                         {{fn('tha_sidebar_top')}}
                         {{main_sidebar}}
                         {{fn('tha_sidebar_bottom')}}
                     </aside>
-                    {{fn('tha_sidebars_after')}}
                 {% endif %}
             </div>
-            {{fn('tha_footer_before')}}
             <footer class="{{terminally_pixelated.classes.footer}}" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
                 <div class="{{terminally_pixelated.classes.footer}}__inner layout-wrapper">
-                    {{fn('tha_footer_top')}}
                     {% if footer_widgets %}
                         <section class="footer-widgets-wrapper">
                             {% for widget_area in footer_widgets %}
@@ -81,13 +68,10 @@
                     <section class="footer-text">
                         <p>{{footer_text}}</p>
                     </section>
-                    {{fn('tha_footer_bottom')}}
                 </div>
             </footer>
-            {{fn('tha_footer_after')}}
         </div>
         {# {% include 'components/photoswipe.twig' %} #}
         {{wp_footer}}
-        {{fn('tha_body_bottom')}}
     </body>
 </html>
