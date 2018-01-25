@@ -1,22 +1,21 @@
 @function tp-tint($color, $percentage) {
-    @return mix(#fff, $color, $percentage);
+  @return mix(#fff, $color, $percentage);
 }
 
 @function tp-shade($color, $percentage) {
-    @return mix(#000, $color, $percentage);
+  @return mix(#000, $color, $percentage);
 }
 
 @function tp-readable-color($color) {
-    @if (lightness($color) > 90) {
-      @return tp-shade($color, 60%);
-    }
-    @if (lightness($color) < 10) {
-      @return tp-tint($color, 60%);
-    }
-    @elseif (lightness($color) > 50) {
-      @return #000000;
-    }
-    @else {
-      @return #FFFFFF;
-    }
+  @if (lightness($color) > 90) {
+    @return tp-shade($color, 60%);
+  }
+  @if (lightness($color) < 10) {
+    @return tp-tint($color, 60%);
+  }
+  @elseif (lightness($color) > 50) {
+    @return #000000;
+  } @else {
+    @return #FFFFFF;
+  }
 }

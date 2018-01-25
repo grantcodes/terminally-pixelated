@@ -1,38 +1,38 @@
-@import "breakpoint";
-@import "susy";
+@import 'breakpoint';
+@import 'susy';
 // @import "susy/plugins/svg-grid";
-@import "modularscale";
+@import 'modularscale';
 
-@import "utils/wp-comment";
-@import "utils/config";
-@import "utils/functions";
-@import "utils/variables";
-@import "utils/mixins";
+@import 'utils/wp-comment';
+@import 'utils/config';
+@import 'utils/functions';
+@import 'utils/variables';
+@import 'utils/mixins';
 
-@import "../../node_modules/normalize.css/normalize"; // No eyeglass support yet
-@import "scut";
+@import '../../node_modules/normalize.css/normalize'; // No eyeglass support yet
+@import 'scut';
 
-@import "layout/base";
-@import "layout/header";
-@import "layout/nav";
-@import "layout/sidebar";
-@import "layout/footer";
-@import "layout/styleguide";
-@import "layout/woocommerce";
+@import 'layout/base';
+@import 'layout/header';
+@import 'layout/nav';
+@import 'layout/sidebar';
+@import 'layout/footer';
+@import 'layout/styleguide';
+@import 'layout/woocommerce';
 
-@import "base/fonts";
-@import "base/typography";
-@import "base/base";
-@import "base/helpers";
-@import "base/wordpress-defaults";
+@import 'base/fonts';
+@import 'base/typography';
+@import 'base/base';
+@import 'base/helpers';
+@import 'base/wordpress-defaults';
 
-@import "components/header";
-@import "components/nav";
-@import "components/footer";
-@import "components/widgets";
-@import "components/forms";
-@import "components/tp-icon";
-@import "components/pagination";
+@import 'components/header';
+@import 'components/nav';
+@import 'components/footer';
+@import 'components/widgets';
+@import 'components/forms';
+@import 'components/tp-icon';
+@import 'components/pagination';
 
 // Optional extras if you need them
 // @import "components/notifications";
@@ -40,4 +40,4 @@
 // @import "components/photoswipe";
 // @import "../../node_modules/flickity/css/flickity"; // No eyeglass support yet
 
-@import "base/animations";
+@import 'base/animations';

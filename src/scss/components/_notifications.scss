@@ -19,66 +19,65 @@
 // Styleguide 4.1
 
 @mixin tp-notification($type: 'info') {
-    @if ($type == 'info') {
-        display: block;
-        text-align: left;
-        width: 100%;
-        position: relative;
-        @include tp-space(padding, .5, true);
-        // @include tp-space(padding-left, 2, true);
-        margin: 0 !important;
-        @include tp-trailer(1, true);
-        @include tp-fs(0);
-        box-shadow: none;
-        text-shadow: none;
-        border: none;
-        background: lighten($bgc, 20%);
-        border-bottom: .5em solid $notification-c;
-        color: $text-c;
+  @if ($type == 'info') {
+    display: block;
+    text-align: left;
+    width: 100%;
+    position: relative;
+    @include tp-space(padding, 0.5, true);
+    // @include tp-space(padding-left, 2, true);
+    margin: 0 !important;
+    @include tp-trailer(1, true);
+    @include tp-fs(0);
+    box-shadow: none;
+    text-shadow: none;
+    border: none;
+    background: lighten($bgc, 20%);
+    border-bottom: 0.5em solid $notification-c;
+    color: $text-c;
 
-        a {
-            color: inherit;
-            transition: opacity $transition-fast;
-            @include scut-selected(true) {
-                opacity: 0.4;
-            }
-        }
+    a {
+      color: inherit;
+      transition: opacity $transition-fast;
+      @include scut-selected(true) {
+        opacity: 0.4;
+      }
+    }
 
-        .button,
-        button {
-            float: right;
-            margin: -$input-padding-vertical;
-            margin: calc(-#{$input-padding-vertical} + 1px);
-            margin-left: 0.5em;
-        }
+    .button,
+    button {
+      float: right;
+      margin: -$input-padding-vertical;
+      margin: calc(-#{$input-padding-vertical} + 1px);
+      margin-left: 0.5em;
     }
-    @elseif ($type == 'error') {
-        border-color: $notification-c--error;
-    }
-    @elseif ($type == 'success') {
-        border-color: $notification-c--success;
-    }
-    @elseif ($type == 'warning') {
-        border-color: $notification-c--warning;
-    }
+  }
+  @elseif ($type == 'error') {
+    border-color: $notification-c--error;
+  }
+  @elseif ($type == 'success') {
+    border-color: $notification-c--success;
+  }
+  @elseif ($type == 'warning') {
+    border-color: $notification-c--warning;
+  }
 }
 
 .notification {
-    @include tp-notification();
+  @include tp-notification();
 }
 
 .notification--error {
-    @include tp-notification(error);
+  @include tp-notification(error);
 }
 
 .notification--success {
-    @include tp-notification(success);
+  @include tp-notification(success);
 }
 
 .notification--warning {
-    @include tp-notification(warning);
+  @include tp-notification(warning);
 }
 
 .notification__content {
-
 }

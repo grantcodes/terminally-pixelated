@@ -6,41 +6,40 @@
 .widget_recent_entries,
 .widget_rss,
 .widget_nav_menu {
-	ul {
-		@extend %scut-list-unstyled;
-        margin-left: 0;
+  ul {
+    @extend %scut-list-unstyled;
+    margin-left: 0;
 
-		ul {
-            @include tp-space(padding-left, 1);
-		}
-	}
+    ul {
+      @include tp-space(padding-left, 1);
+    }
+  }
 }
 
 .widgets {
-
 }
 
 .widgettitle {
-	@extend .h3;
+  @extend .h3;
 }
 
 .widget_search {
-    .search-form {
-        @extend %scut-clearfix;
-        display: flex;
+  .search-form {
+    @extend %scut-clearfix;
+    display: flex;
 
-        & > label {
-            display: block;
-            width: span(6 of 10);
-        }
-
-        .search-field {
-            width: 100%;
-        }
-
-        .search-submit {
-            display: block;
-            width: span(4 of 10);
-        }
+    & > label {
+      display: block;
+      width: span(6 of 10);
     }
+
+    .search-field {
+      width: 100%;
+    }
+
+    .search-submit {
+      display: block;
+      width: span(4 of 10);
+    }
+  }
 }

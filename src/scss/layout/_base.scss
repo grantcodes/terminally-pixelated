@@ -1,48 +1,48 @@
 @include scut-reset-border-box;
 
 .layout-wrapper {
-	@include tp-container();
+  @include tp-container();
 }
 
 .main-wrapper {
-	// @extend %tp-container;
+  // @extend %tp-container;
 }
 
 .main-content-sidebar-wrap {
-	@include tp-padding-leader(2);
-	@include tp-padding-trailer(2);
-	@include breakpoint($mid-break) {
-		display: flex;
-	}
+  @include tp-padding-leader(2);
+  @include tp-padding-trailer(2);
+  @include breakpoint($mid-break) {
+    display: flex;
+  }
 }
 
 .main-content {
-	@include tp-trailer(2);
+  @include tp-trailer(2);
 
-	@include breakpoint($mid-break) {
-		margin-bottom: 0;
-		width: susy-span($mid-content-cols of $mid-cols);
-		margin-right: gutter($susy-mid);
-	}
-	@include breakpoint($large-break) {
-		width: span($large-content-cols, $susy-large);
-		margin-right: gutter($susy-large);
-	}
+  @include breakpoint($mid-break) {
+    margin-bottom: 0;
+    width: susy-span($mid-content-cols of $mid-cols);
+    margin-right: gutter($susy-mid);
+  }
+  @include breakpoint($large-break) {
+    width: span($large-content-cols, $susy-large);
+    margin-right: gutter($susy-large);
+  }
 
-	&--full-width {
-		@include breakpoint($mid-break) {
-			margin-right: 0;
-			margin-left: 0;
-			width: span($mid-cols of $mid-cols);
-		}
-		@include breakpoint($large-break) {
-			margin-right: 0;
-			margin-left: 0;
-			width: span($large-cols of $large-cols);
-		}
-	}
+  &--full-width {
+    @include breakpoint($mid-break) {
+      margin-right: 0;
+      margin-left: 0;
+      width: span($mid-cols of $mid-cols);
+    }
+    @include breakpoint($large-break) {
+      margin-right: 0;
+      margin-left: 0;
+      width: span($large-cols of $large-cols);
+    }
+  }
 }
 
 .single-post__content {
-	@extend %scut-clearfix;
+  @extend %scut-clearfix;
 }

@@ -14,19 +14,19 @@
 
 html,
 body {
-    line-height: $line-height;
-    font-family: $font-body;
-    font-weight: $body-font-weight;
-    color: $text-c;
-    @include tp-fs(0);
+  line-height: $line-height;
+  font-family: $font-body;
+  font-weight: $body-font-weight;
+  color: $text-c;
+  @include tp-fs(0);
 }
 
 p {
-	margin: 0;
-	@include tp-trailer();
-    &:last-child {
-        margin-bottom: 0;
-    }
+  margin: 0;
+  @include tp-trailer();
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 // Headings
@@ -46,64 +46,64 @@ h3,
 h4,
 h5,
 h6 {
-    & {
-        line-height: 1.2;
-        margin: 0;
-        font-family: $font-h;
-        font-weight: 500;
-    }
+  & {
+    line-height: 1.2;
+    margin: 0;
+    font-family: $font-h;
+    font-weight: 500;
+  }
 
-	a {
-		text-decoration: none;
-	}
+  a {
+    text-decoration: none;
+  }
 }
 
 h1 {
-    @include tp-fs(4);
-    @include tp-leader();
-    @include tp-trailer(2);
+  @include tp-fs(4);
+  @include tp-leader();
+  @include tp-trailer(2);
 }
 h2 {
-    @include tp-fs(3);
-    @include tp-trailer(2);
+  @include tp-fs(3);
+  @include tp-trailer(2);
 }
 h3 {
-    @include tp-fs(2);
-    @include tp-trailer(1);
+  @include tp-fs(2);
+  @include tp-trailer(1);
 }
 h4 {
-    @include tp-fs(1);
-    @include tp-trailer(1);
+  @include tp-fs(1);
+  @include tp-trailer(1);
 }
 h5 {
-    @include tp-fs(0);
+  @include tp-fs(0);
 }
 h6 {
-    @include tp-fs(-1);
+  @include tp-fs(-1);
 }
 
 .h1 {
-	@extend h1;
+  @extend h1;
 }
 
 .h2 {
-	@extend h2;
+  @extend h2;
 }
 
 .h3 {
-	@extend h3;
+  @extend h3;
 }
 
 .h4 {
-	@extend h4;
+  @extend h4;
 }
 
 .h5 {
-	@extend h5;
+  @extend h5;
 }
 
 .h6 {
-	@extend h6;
+  @extend h6;
 }
 
 ul,
@@ -112,7 +112,7 @@ dd,
 pre,
 address,
 blockquote {
-    // @include tp-trailer();
+  // @include tp-trailer();
 }
 
 // Unordered Lists
@@ -138,7 +138,7 @@ blockquote {
 // Styleguide 1.4
 li > ul,
 li > ol {
-    // margin-bottom: 0;
+  // margin-bottom: 0;
 }
 
 // Blockquotes
@@ -150,15 +150,15 @@ li > ol {
 //
 // Styleguide 1.5
 blockquote {
-    border-left: 2px solid $text-c;
-    margin-left: 0;
-    font-family: $font-sans;
-    font-style: italic;
-    @include tp-space(padding-left, 1);
-    @include tp-padding-leader(.5);
-    @include tp-padding-trailer(.5);
+  border-left: 2px solid $text-c;
+  margin-left: 0;
+  font-family: $font-sans;
+  font-style: italic;
+  @include tp-space(padding-left, 1);
+  @include tp-padding-leader(0.5);
+  @include tp-padding-trailer(0.5);
 
-    p:last-child {
-        margin-bottom: 0;
-    }
+  p:last-child {
+    margin-bottom: 0;
+  }
 }

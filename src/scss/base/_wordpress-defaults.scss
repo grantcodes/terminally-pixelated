@@ -1,50 +1,48 @@
 .alignnone {
-    display: block;
-    @include tp-trailer();
+  display: block;
+  @include tp-trailer();
 }
 
 .aligncenter {
-    display: block;
-    margin: 0 auto;
-    @include tp-trailer();
+  display: block;
+  margin: 0 auto;
+  @include tp-trailer();
 }
 
 .alignright {
-    float:right;
-    @include tp-space(margin-left);
-    @include tp-trailer();
+  float: right;
+  @include tp-space(margin-left);
+  @include tp-trailer();
 }
 
 .alignleft {
-    float: left;
-    @include tp-space(margin-right);
-    @include tp-trailer();
+  float: left;
+  @include tp-space(margin-right);
+  @include tp-trailer();
 }
 
 .wp-caption {
-    background: #fff;
-    border: 1px solid #f0f0f0;
-    max-width: 100%;
-    @include tp-space(padding, .5);
-    text-align: center;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  max-width: 100%;
+  @include tp-space(padding, 0.5);
+  text-align: center;
 }
 
 .wp-caption img {
-    border: 0 none;
-    margin: 0;
-    padding: 0;
-    width: auto;
+  border: 0 none;
+  margin: 0;
+  padding: 0;
+  width: auto;
 }
 
 .wp-caption p {
-    @include tp-fs(-1);
-    margin: 0;
-    padding: 0 .5em;
+  @include tp-fs(-1);
+  margin: 0;
+  padding: 0 0.5em;
 }
 
-
 // Comments
-
 
 .comments-title,
 .comment-list,
@@ -52,97 +50,94 @@
 .must-log-in,
 .comment-respond .comment-form,
 .comment-respond iframe {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: 100%;
 }
 
 .comments-title {
-
 }
 
 .comment-list,
 .comment-list .children {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .comment-list .children {
-    margin-left: 1em;
+  margin-left: 1em;
 }
 
 .comment {
-    @extend %scut-clearfix;
+  @extend %scut-clearfix;
 }
 
 .comment-body {
-    padding: 2em 0;
-    position: relative;
+  padding: 2em 0;
+  position: relative;
 }
 
 .comment-author {
-    float: left;
-    width: 6em;
-    text-align: center;
-    margin-right: $grid-padding;
+  float: left;
+  width: 6em;
+  text-align: center;
+  margin-right: $grid-padding;
 }
 
 .comment-author .avatar {
-    display: block;
-    margin-bottom: 1em;
-    border-radius: 50%;
-    overflow: hidden;
+  display: block;
+  margin-bottom: 1em;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .comment-author .fn {
-    word-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .comment-author .fn,
 .comment-author .url,
 .comment-reply-link,
 .comment-reply-login {
-    color: #bc360a;
-    font-style: normal;
-    font-weight: normal;
+  color: #bc360a;
+  font-style: normal;
+  font-weight: normal;
 }
 
 .says {
-    display: none;
+  display: none;
 }
 
 .no-avatars .comment-author {
-    margin: 0 0 5px;
-    max-width: 100%;
-    position: relative;
+  margin: 0 0 5px;
+  max-width: 100%;
+  position: relative;
 }
 
 .no-avatars .comment-metadata,
 .no-avatars .comment-content,
 .no-avatars .comment-list .reply {
-    width: 100%;
+  width: 100%;
 }
 
 .comment-list .edit-link {
-    margin-left: 1em;
+  margin-left: 1em;
 }
 
 .comment-metadata,
 .comment-awaiting-moderation,
 .comment-content,
 .comment-list .reply {
-
 }
 
 .comment-meta,
 .comment-meta a {
-
 }
 
 .comment-metadata {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .ping-meta {
@@ -153,66 +148,65 @@
 
 /* Comment form */
 .comment-respond {
-    background-color: darken($bgc, 10%);
-    padding: $grid-padding;
+  background-color: darken($bgc, 10%);
+  padding: $grid-padding;
 }
-
 
 .comment-reply-title {
 }
 
 .comment-reply-title small a {
-    display: inline-block;
-    float: right;
-    overflow: hidden;
+  display: inline-block;
+  float: right;
+  overflow: hidden;
 }
 
 .comment-reply-title small a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .sidebar .comment-list .comment-reply-title,
 .sidebar .comment-list .comment-respond .comment-form {
-    padding: 0;
+  padding: 0;
 }
 
 .comment-form .comment-notes {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .comment-form .comment-form-author,
 .comment-form .comment-form-email,
 .comment-form .comment-form-url {
-    margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
-.comment-form [for="author"],
-.comment-form [for="email"],
-.comment-form [for="url"],
-.comment-form [for="comment"] {
-    float: left;
-    padding: .5em 0;
+.comment-form [for='author'],
+.comment-form [for='email'],
+.comment-form [for='url'],
+.comment-form [for='comment'] {
+  float: left;
+  padding: 0.5em 0;
 }
 
 .comment-form .required {
 }
 
-.comment-form input[type="text"],
-.comment-form input[type="email"],
-.comment-form input[type="url"] {
+.comment-form input[type='text'],
+.comment-form input[type='email'],
+.comment-form input[type='url'] {
 }
 
 .comment-form textarea {
-    width: 100%;
+  width: 100%;
 }
 
 .form-allowed-tags,
 .form-allowed-tags code {
-    @include tp-fs(-1);
+  @include tp-fs(-1);
 }
 
 .form-allowed-tags code {
-    @include tp-fs(-1);
+  @include tp-fs(-1);
 }
 
 .comment-list .pingback,
@@ -220,9 +214,9 @@
 }
 
 .comment-navigation {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .no-comments {
-    text-align: center;
+  text-align: center;
 }

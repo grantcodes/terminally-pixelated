@@ -1,16 +1,16 @@
 .main-aside {
-    @include breakpoint($mid-break) {
-        width: span($mid-sidebar-cols, $susy-mid);
-    }
-    @include breakpoint($large-break) {
-        width: span($large-sidebar-cols, $susy-large);
-    }
+  @include breakpoint($mid-break) {
+    width: span($mid-sidebar-cols, $susy-mid);
+  }
+  @include breakpoint($large-break) {
+    width: span($large-sidebar-cols, $susy-large);
+  }
 
-    .widget {
-        @include tp-trailer(2);
+  .widget {
+    @include tp-trailer(2);
 
-        &:last-child {
-            margin-bottom: 0;
-        }
+    &:last-child {
+      margin-bottom: 0;
     }
+  }
 }

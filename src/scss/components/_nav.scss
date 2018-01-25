@@ -8,164 +8,164 @@
 }
 
 .main-nav {
-    transition: all $transition-mid;
-    background: $nav-bgc;
-    background: linear-gradient(120deg, rgba($header-bgc, .95), rgba(adjust-hue($header-bgc, -30deg), .95));
-    opacity: 0.5;
+  transition: all $transition-mid;
+  background: $nav-bgc;
+  background: linear-gradient(
+    120deg,
+    rgba($header-bgc, 0.95),
+    rgba(adjust-hue($header-bgc, -30deg), 0.95)
+  );
+  opacity: 0.5;
 
-    &:target,
-    &.is-active {
-        opacity: 1;
-    }
+  &:target,
+  &.is-active {
+    opacity: 1;
+  }
 }
 
 .main-nav__ul {
-
 }
 
 .main-nav__li {
-
 }
 
 .main-nav__a {
-    color: $nav-link-c;
-    background: $nav-link-bg;
-    text-decoration: none;
-    outline: none;
-    font-weight: bold;
-    @include tp-padding-leader(.5);
-    @include tp-padding-trailer(.5);
+  color: $nav-link-c;
+  background: $nav-link-bg;
+  text-decoration: none;
+  outline: none;
+  font-weight: bold;
+  @include tp-padding-leader(0.5);
+  @include tp-padding-trailer(0.5);
 
-    @include scut-selected(true) {
-        color: $nav-link-c--hover;
-        background: $nav-link-bg--hover;
-    }
+  @include scut-selected(true) {
+    color: $nav-link-c--hover;
+    background: $nav-link-bg--hover;
+  }
 
-    &.is-current {
-        color: $nav-link-c--current;
-        background: $nav-link-bg--current;
-    }
+  &.is-current {
+    color: $nav-link-c--current;
+    background: $nav-link-bg--current;
+  }
 
-    @include breakpoint($mid-break) {
-        @include tp-fs(1);
-    }
-    @include breakpoint($large-break) {
-        @include tp-fs(2);
-    }
-
+  @include breakpoint($mid-break) {
+    @include tp-fs(1);
+  }
+  @include breakpoint($large-break) {
+    @include tp-fs(2);
+  }
 }
 
 // Unlike the main nav this is the ul element
 .main-nav__sub-nav {
-    background-color: $subnav-bgc;
-    @include tp-space(padding-left, .5);
-    @include tp-space(padding-right, .5);
+  background-color: $subnav-bgc;
+  @include tp-space(padding-left, 0.5);
+  @include tp-space(padding-right, 0.5);
 
-    transition: opacity $transition-mid, max-height $transition-mid;
+  transition: opacity $transition-mid, max-height $transition-mid;
 
-    @include breakpoint($mid-break) {
-        opacity: 0;
-    }
+  @include breakpoint($mid-break) {
+    opacity: 0;
+  }
 }
 
 .main-nav__li:hover > .main-nav__sub-nav,
 .main-nav__sub-nav:hover {
-    @include breakpoint($mid-break) {
-        opacity: 1;
-    }
+  @include breakpoint($mid-break) {
+    opacity: 1;
+  }
 }
 
 .main-nav__sub-nav__li {
-
 }
 
 .main-nav__sub-nav__a {
-    text-decoration: none;
-    color: $subnav-link-c;
-    background: $subnav-link-bg;
-    outline: none;
-    @include tp-padding-leader(.25);
-    @include tp-padding-trailer(.25);
+  text-decoration: none;
+  color: $subnav-link-c;
+  background: $subnav-link-bg;
+  outline: none;
+  @include tp-padding-leader(0.25);
+  @include tp-padding-trailer(0.25);
 
-    @include scut-selected(true) {
-        color: $subnav-link-c--hover;
-        background: $subnav-link-bg--hover;
-    }
+  @include scut-selected(true) {
+    color: $subnav-link-c--hover;
+    background: $subnav-link-bg--hover;
+  }
 
-    &.is-current {
-        color: $subnav-link-c--current;
-        background: $subnav-link-bg--current;
-    }
+  &.is-current {
+    color: $subnav-link-c--current;
+    background: $subnav-link-bg--current;
+  }
 }
 
 .nav__dropdown-toggle {
-    @extend .main-nav__a;
-    margin: 0;
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-        border: none;
-    }
+  @extend .main-nav__a;
+  margin: 0;
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    border: none;
+  }
 }
 
-.nav__dropdown{
-    background-color: $subnav-bgc;
-    @include tp-space(padding-left, .5);
-    @include tp-space(padding-right, .5);
+.nav__dropdown {
+  background-color: $subnav-bgc;
+  @include tp-space(padding-left, 0.5);
+  @include tp-space(padding-right, 0.5);
 
-    a {
-        color: $subnav-link-c;
-    }
+  a {
+    color: $subnav-link-c;
+  }
 }
 
 .main-nav-toggle {
-    display: block;
-    height: 5rem;
-    line-height: 3rem;
-    padding: 1rem;
-    padding-right: 0;
-    color: $header-c;
-    text-decoration: none;
-    outline: none;
-    float: right;
-    @include breakpoint($mid-break) {
-        @include tp-fs(1);
-    }
+  display: block;
+  height: 5rem;
+  line-height: 3rem;
+  padding: 1rem;
+  padding-right: 0;
+  color: $header-c;
+  text-decoration: none;
+  outline: none;
+  float: right;
+  @include breakpoint($mid-break) {
+    @include tp-fs(1);
+  }
 
-    @include scut-selected(true) {
-        color: $nav-link-c--hover;
-        background: $nav-link-bg--hover;
-    }
+  @include scut-selected(true) {
+    color: $nav-link-c--hover;
+    background: $nav-link-bg--hover;
+  }
 
-    .main-header-nav-wrap--image & svg {
-        filter: drop-shadow(0 0 .5em rgba(0,0,0,.8));
-    }
+  .main-header-nav-wrap--image & svg {
+    filter: drop-shadow(0 0 0.5em rgba(0, 0, 0, 0.8));
+  }
 }
 
 .main-nav__close {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 1rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  color: $nav-link-c;
+  opacity: 0.8;
+  transition: opacity $transition-fast, transform $transition-fast;
+  @include breakpoint($mid-break) {
+    @include tp-fs(1);
+  }
+  @include breakpoint($large-break) {
+    @include tp-fs(2);
+  }
+
+  @include scut-selected(true) {
+    opacity: 1;
     color: $nav-link-c;
-    opacity: 0.8;
-    transition: opacity $transition-fast, transform $transition-fast;
-    @include breakpoint($mid-break) {
-        @include tp-fs(1);
-    }
-    @include breakpoint($large-break) {
-        @include tp-fs(2);
-    }
+    transform: rotate(90deg);
+  }
 
-    @include scut-selected(true) {
-        opacity: 1;
-        color: $nav-link-c;
-        transform: rotate(90deg);
-    }
-
-    .tp-icon {
-        display: block;
-    }
+  .tp-icon {
+    display: block;
+  }
 }

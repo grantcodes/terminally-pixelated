@@ -1,29 +1,29 @@
 .main-footer {
-    color: $footer-c;
-    background-color: $footer-bgc;
-    @include tp-fs(-1);
-    @include tp-padding-leader(3);
-    @include tp-padding-trailer(3);
+  color: $footer-c;
+  background-color: $footer-bgc;
+  @include tp-fs(-1);
+  @include tp-padding-leader(3);
+  @include tp-padding-trailer(3);
 }
 
 .footer-widgets {
-    @include tp-trailer();
-    a {
-        display: inline-block;
-        text-decoration: none;
-        color: $footer-link-c;
-        @include tp-trailer(.25);
-        @include scut-selected(true) {
-            color: $link-c;
-        }
+  @include tp-trailer();
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: $footer-link-c;
+    @include tp-trailer(0.25);
+    @include scut-selected(true) {
+      color: $link-c;
     }
+  }
 }
 
 .footer-widgettitle {
-    @include tp-fs(0);
-    @include tp-trailer();
+  @include tp-fs(0);
+  @include tp-trailer();
 }
 
 .footer-text {
-    @include tp-fs(-2);
+  @include tp-fs(-2);
 }

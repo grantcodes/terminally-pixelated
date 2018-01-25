@@ -10,8 +10,8 @@
 @include scut-reset-button;
 
 // Fixing something with normalize
-input[type=search] {
-    box-sizing: border-box;
+input[type='search'] {
+  box-sizing: border-box;
 }
 
 @mixin input-structure($input-border-radius: $input-border-radius, $input-font-size: $input-font-size, $input-padding-vertical: $input-padding-vertical, $input-padding-horizontal: $input-padding-horizontal) {
@@ -23,33 +23,33 @@ input[type=search] {
 }
 
 @mixin tp-input {
-    max-width: 100%;
-    @include input-structure();
-    color: $input-c;
-    background-color: $input-bg;
-    border: none;
-    border-bottom: $input-border;
-    box-shadow: none;
-    // box-shadow: inset 0 0 .6em rgba(0,0,0,.07);
-    transition: all $transition-fast;
-    outline: none;
-    font-weight: normal;
-    vertical-align: bottom;
+  max-width: 100%;
+  @include input-structure();
+  color: $input-c;
+  background-color: $input-bg;
+  border: none;
+  border-bottom: $input-border;
+  box-shadow: none;
+  // box-shadow: inset 0 0 .6em rgba(0,0,0,.07);
+  transition: all $transition-fast;
+  outline: none;
+  font-weight: normal;
+  vertical-align: bottom;
 
-    &:hover {
-        color: $input-c--hover;
-        background-color: $input-bg--hover;
-        border-bottom: $input-border--hover;
-        // box-shadow: 0 0 .1em inset rgba(0,0,0,.3);
-    }
+  &:hover {
+    color: $input-c--hover;
+    background-color: $input-bg--hover;
+    border-bottom: $input-border--hover;
+    // box-shadow: 0 0 .1em inset rgba(0,0,0,.3);
+  }
 
-    &:focus,
-    &:active {
-        color: $input-c--active;
-        background-color: $input-bg--active;
-        border-bottom: $input-border--active;
-        // box-shadow: 0 0 .2em rgba(0,0,0,.3);
-    }
+  &:focus,
+  &:active {
+    color: $input-c--active;
+    background-color: $input-bg--active;
+    border-bottom: $input-border--active;
+    // box-shadow: 0 0 .2em rgba(0,0,0,.3);
+  }
 }
 
 %input {
@@ -57,30 +57,31 @@ input[type=search] {
 }
 
 @mixin tp-button {
-    max-width: 100%;
-    text-align: center;
-    @include input-structure();
-    background-color: $button-bgc;
-    border: $button-border;
-    color: $button-c;
-    box-shadow: none;
-    text-shadow: none;
-    font-weight: bold;
-    transition: background $transition-fast, border $transition-fast, color $transition-fast;
+  max-width: 100%;
+  text-align: center;
+  @include input-structure();
+  background-color: $button-bgc;
+  border: $button-border;
+  color: $button-c;
+  box-shadow: none;
+  text-shadow: none;
+  font-weight: bold;
+  transition: background $transition-fast, border $transition-fast,
+    color $transition-fast;
 
-    &:hover,
-    &:focus {
-      background-color: $button-bgc--hover;
-      border: $button-border--hover;
-      color: $button-c--hover;
-    }
+  &:hover,
+  &:focus {
+    background-color: $button-bgc--hover;
+    border: $button-border--hover;
+    color: $button-c--hover;
+  }
 
-    &:active {
-      background-color: $button-bgc--active;
-      border: $button-border--active;
-      color: $button-c--active;
-      transform: translate(1px 1px);
-    }
+  &:active {
+    background-color: $button-bgc--active;
+    border: $button-border--active;
+    color: $button-c--active;
+    transform: translate(1px 1px);
+  }
 }
 
 %button {
@@ -106,81 +107,81 @@ input[type=search] {
 input,
 select,
 textarea {
-	@extend %input;
+  @extend %input;
 }
 
 // Select fields
 select {
-    appearance: none;
-    padding-right: $input-padding-horizontal + 1.5em;
-    background-position: right $input-padding-horizontal center;
-    background-repeat: no-repeat;
-    background-size: .75em auto;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$input-c}" d="M0 0l4 4 4-4h-8z" transform="translate(0 2)" /></svg>');
+  appearance: none;
+  padding-right: $input-padding-horizontal + 1.5em;
+  background-position: right $input-padding-horizontal center;
+  background-repeat: no-repeat;
+  background-size: 0.75em auto;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="#{$input-c}" d="M0 0l4 4 4-4h-8z" transform="translate(0 2)" /></svg>');
 }
 
 // Radio buttons
 $radio-size: 1.5em;
-$radio-inner-size: .7em;
-input[type="radio"] {
-    display: inline-block;
-    border-radius: 50%;
-    cursor: pointer;
-    height: $radio-size;
-    margin-right: .2em;
-    position: relative;
-    width: $radio-size;
-    appearance: none;
-    border: none;
+$radio-inner-size: 0.7em;
+input[type='radio'] {
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  height: $radio-size;
+  margin-right: 0.2em;
+  position: relative;
+  width: $radio-size;
+  appearance: none;
+  border: none;
 
-    &:hover,
-    &:focus,
-    &:active {
-        background-color: $input-bg--active;
-    }
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $input-bg--active;
+  }
 }
-input[type="radio"]:after {
-    content: '';
-    display: block;
-    position: relative;
-    border-radius: 50%;
-    background-color: darken($input-bg, 40%);
-    height: $radio-inner-size;
-    width: $radio-inner-size;
-    left: ($radio-size - $radio-inner-size) / 2;
-    top: ($radio-size - $radio-inner-size) / 2;
+input[type='radio']:after {
+  content: '';
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  background-color: darken($input-bg, 40%);
+  height: $radio-inner-size;
+  width: $radio-inner-size;
+  left: ($radio-size - $radio-inner-size) / 2;
+  top: ($radio-size - $radio-inner-size) / 2;
 }
-input[type="radio"]:checked:after {
-    background-color: $link-c;
+input[type='radio']:checked:after {
+  background-color: $link-c;
 }
 
 // Checkboxes
 $checkbox-size: 1.5em;
-input[type="checkbox"] {
-    display: inline-block;
-    cursor: pointer;
-    height: $checkbox-size;
-    margin-right: .2em;
-    position: relative;
-    width: $checkbox-size;
-    appearance: none;
-    text-align: center;
-    border: none;
+input[type='checkbox'] {
+  display: inline-block;
+  cursor: pointer;
+  height: $checkbox-size;
+  margin-right: 0.2em;
+  position: relative;
+  width: $checkbox-size;
+  appearance: none;
+  text-align: center;
+  border: none;
 
-    &:hover,
-    &:focus,
-    &:active {
-        color: $input-c--active;
-        background-color: $input-bg--active;
-    }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $input-c--active;
+    background-color: $input-bg--active;
+  }
 }
-input[type="checkbox"]:after {
-    content: " ";
-    display: block;
-    line-height: $checkbox-size;
+input[type='checkbox']:after {
+  content: ' ';
+  display: block;
+  line-height: $checkbox-size;
 }
-input[type="checkbox"]:checked:after {
-    content: "✔";
+input[type='checkbox']:checked:after {
+  content: '✔';
 }
 
 // Buttons
@@ -196,238 +197,233 @@ input[type="checkbox"]:checked:after {
 // Styleguide 2.2
 button,
 .button,
-input[type=submit] {
-    @extend %button;
+input[type='submit'] {
+  @extend %button;
 }
 
-
 @if ($gravity-forms) {
-    .gform_fields {
-        @extend %scut-list-unstyled;
-        margin: 0;
-        padding: 0;
+  .gform_fields {
+    @extend %scut-list-unstyled;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gfield {
+    @include tp-trailer(0.5);
+  }
+
+  .gfield_label {
+    display: inline-block;
+    @include tp-trailer(0.5);
+  }
+
+  .gfield_required {
+    color: $error-c;
+    margin-left: 0.2em;
+  }
+
+  .gfield_description {
+    @include tp-leader(0.5);
+    font-size: 0.8em;
+  }
+
+  .ginput_complex {
+    border-bottom: 1px solid $border-c;
+    border-top: 1px solid $border-c;
+    @include tp-padding-leader();
+    @include tp-padding-trailer();
+  }
+
+  .gfield_checkbox {
+    @extend %scut-list-inline;
+    margin: 0;
+
+    & > li {
+      @include typecsset-space(margin-right, 1);
     }
 
-    .gfield {
-        @include tp-trailer(.5);
+    input {
+      margin-right: 0.3em;
+    }
+  }
+
+  // Errors
+
+  .validation_error {
+    display: block;
+    background-color: $error-c;
+    color: tp-lighten($error-c, 40%);
+    padding: 0.5em 0.8em;
+    border: 1px solid tp-shade($error-c, 15%);
+    border-radius: 0.3em;
+    @include tp-trailer();
+  }
+
+  .gfield_error {
+    .gfield_description.validation_message {
+      @extend .validation_error;
+      margin-bottom: 0;
+      margin-top: 0.2em;
+      font-size: 0.8em;
     }
 
-    .gfield_label {
-        display: inline-block;
-        @include tp-trailer(.5);
+    input,
+    select,
+    textarea {
+      border-color: $error-c;
+    }
+  }
+
+  .gfield_creditcard_warning_message {
+    @extend .validation_error;
+  }
+
+  // Layouts
+
+  .gfield {
+    @extend %scut-clearfix;
+  }
+
+  .left_label {
+    @include breakpoint($mid-break) {
+      .gfield_label {
+        @include span(3 of 10);
+        // text-align: right;
+        margin-top: 0.3em;
+      }
+      .ginput_container {
+        @include span(last 7 of 10);
+      }
+      .gfield_checkbox {
+        margin-top: 0.3em;
+      }
+    }
+    @include breakpoint($large-break) {
+      .gfield_label {
+        @include span(2 of 10);
+        // text-align: right;
+        margin-top: 0.3em;
+      }
+      .ginput_container {
+        @include span(last 8 of 10);
+      }
     }
 
-    .gfield_required {
-        color: $error-c;
-        margin-left: 0.2em;
+    &.gform_footer {
+      text-align: right;
+    }
+  }
+
+  .right_label {
+    @include breakpoint($mid-break) {
+      .gfield_label {
+        @include span(last 3 of 10);
+        margin-top: 0.3em;
+      }
+      .ginput_container {
+        @include span(7 of 10);
+      }
+    }
+  }
+
+  .ginput_left {
+    clear: left;
+    @include span(5 of 10);
+  }
+
+  .ginput_right {
+    clear: right;
+    @include span(last 5 of 10);
+  }
+
+  .large {
+    width: 100%;
+  }
+
+  .medium {
+    width: 75%;
+  }
+
+  .small {
+    width: 50%;
+  }
+
+  .ginput_complex {
+    @extend %scut-clearfix;
+
+    label {
+      display: block;
+      font-size: 0.8em;
+      @include tp-leader(0.5);
+      clear: both;
     }
 
-    .gfield_description {
-        @include tp-leader(.5);
-        font-size: 0.8em;
+    input,
+    select,
+    textarea {
+      width: 100%;
     }
 
-    .ginput_complex {
-        border-bottom: 1px solid $border-c;
-        border-top: 1px solid $border-c;
-        @include tp-padding-leader();
-        @include tp-padding-trailer();
+    input[type='radio'],
+    input[type='checkbox'] {
+      width: auto;
     }
+  }
 
-    .gfield_checkbox {
-        @extend %scut-list-inline;
-        margin: 0;
+  .gfield_list {
+    table-layout: auto;
+    width: 100%;
+  }
 
-        & > li {
-            @include typecsset-space(margin-right, 1);
-        }
+  .gfield_list_cell {
+    padding: 0;
+    @include tp-padding-trailer(0.5);
 
-        input {
-            margin-right: 0.3em;
-        }
+    input {
+      width: 100%;
     }
+  }
 
+  .gfield_list_icons {
+    padding: 0;
+    text-align: right;
+    @include tp-padding-trailer(0.5);
+  }
 
-    // Errors
+  .ginput_full {
+    @extend %scut-clearfix;
+    display: block;
+    width: 100%;
+    @include tp-trailer(1);
+  }
 
-    .validation_error {
-        display: block;
-        background-color: $error-c;
-        color: tp-lighten($error-c, 40%);
-        padding: .5em .8em;
-        border: 1px solid tp-shade($error-c, 15%);
-        border-radius: .3em;
-        @include tp-trailer();
+  .ginput_cardinfo_left {
+    @include breakpoint($mid-break) {
+      @include span(5 of 10);
     }
+  }
 
-    .gfield_error {
-        .gfield_description.validation_message {
-            @extend .validation_error;
-            margin-bottom: 0;
-            margin-top: 0.2em;
-            font-size: 0.8em;
-        }
-
-        input,
-        select,
-        textarea {
-            border-color: $error-c;
-        }
+  .ginput_cardinfo_right {
+    @include breakpoint($mid-break) {
+      @include span(last 5 of 10);
     }
+  }
 
-    .gfield_creditcard_warning_message {
-            @extend .validation_error;
+  .ginput_card_expiration_month {
+    @include span(5 of 10);
+    @include tp-trailer(0.5);
+  }
 
-    }
+  .ginput_card_expiration_year {
+    @include span(last 5 of 10);
+    @include tp-trailer(0.5);
+  }
 
+  .ginput_card_security_code_icon {
+    display: none;
+  }
 
-    // Layouts
-
-    .gfield {
-        @extend %scut-clearfix;
-    }
-
-    .left_label {
-        @include breakpoint($mid-break) {
-            .gfield_label {
-                @include span(3 of 10);
-                // text-align: right;
-                margin-top: 0.3em;
-            }
-            .ginput_container {
-                @include span(last 7 of 10);
-            }
-            .gfield_checkbox {
-                margin-top: 0.3em;
-            }
-        }
-        @include breakpoint($large-break) {
-            .gfield_label {
-                @include span(2 of 10);
-                // text-align: right;
-                margin-top: 0.3em;
-            }
-            .ginput_container {
-                @include span(last 8 of 10);
-            }
-        }
-
-        &.gform_footer {
-            text-align: right;
-        }
-    }
-
-    .right_label {
-        @include breakpoint($mid-break) {
-            .gfield_label {
-                @include span(last 3 of 10);
-                margin-top: 0.3em;
-            }
-            .ginput_container {
-                @include span(7 of 10);
-            }
-        }
-    }
-
-    .ginput_left {
-        clear: left;
-        @include span(5 of 10);
-    }
-
-    .ginput_right {
-        clear: right;
-        @include span(last 5 of 10);
-    }
-
-    .large {
-        width: 100%;
-    }
-
-    .medium {
-        width: 75%;
-    }
-
-    .small {
-        width: 50%;
-    }
-
-    .ginput_complex {
-        @extend %scut-clearfix;
-
-        label {
-            display: block;
-            font-size: 0.8em;
-            @include tp-leader(.5);
-            clear: both;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-        }
-
-        input[type=radio],
-        input[type=checkbox] {
-            width: auto;
-        }
-    }
-
-    .gfield_list {
-        table-layout: auto;
-        width: 100%;
-    }
-
-    .gfield_list_cell {
-        padding: 0;
-        @include tp-padding-trailer(.5);
-
-        input {
-            width: 100%;
-        }
-    }
-
-    .gfield_list_icons {
-        padding: 0;
-        text-align: right;
-        @include tp-padding-trailer(.5);
-    }
-
-    .ginput_full {
-        @extend %scut-clearfix;
-        display: block;
-        width: 100%;
-        @include tp-trailer(1);
-    }
-
-    .ginput_cardinfo_left {
-        @include breakpoint($mid-break) {
-            @include span(5 of 10);
-        }
-    }
-
-    .ginput_cardinfo_right {
-        @include breakpoint($mid-break) {
-            @include span(last 5 of 10);
-        }
-    }
-
-    .ginput_card_expiration_month {
-        @include span(5 of 10);
-        @include tp-trailer(.5);
-    }
-
-    .ginput_card_expiration_year {
-        @include span(last 5 of 10);
-        @include tp-trailer(.5);
-    }
-
-    .ginput_card_security_code_icon {
-        display: none;
-    }
-
-    .gform_card_icon_container {
-        display: none;
-    }
-
+  .gform_card_icon_container {
+    display: none;
+  }
 }

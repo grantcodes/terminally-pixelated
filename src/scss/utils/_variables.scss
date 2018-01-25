@@ -9,7 +9,8 @@ $colors: map-get($tp-config, colors);
 
 // Typography
 
-$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+$font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+  'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
 $font-serif: Georgia, serif;
 $font-h: $font-sans;
 $font-body: $font-sans;
@@ -35,24 +36,24 @@ $large-content-cols: 8;
 $large-sidebar-cols: 4;
 
 $susy: (
-	columns: susy-repeat($small-cols),
-	gutters: 0.25,
-	spread: 'narrow',
-	container-spread: 'narrow',
+  columns: susy-repeat($small-cols),
+  gutters: 0.25,
+  spread: 'narrow',
+  container-spread: 'narrow'
 );
 
 $susy-mid: (
-	columns: susy-repeat($mid-cols),
-	gutters: 0.25,
-	spread: 'narrow',
-	container-spread: 'narrow',
+  columns: susy-repeat($mid-cols),
+  gutters: 0.25,
+  spread: 'narrow',
+  container-spread: 'narrow'
 );
 
 $susy-large: (
-	columns: susy-repeat($large-cols),
-	gutters: 0.25,
-	spread: 'narrow',
-	container-spread: 'narrow',
+  columns: susy-repeat($large-cols),
+  gutters: 0.25,
+  spread: 'narrow',
+  container-spread: 'narrow'
 );
 
 $grid-padding: 1.5rem;
@@ -66,11 +67,11 @@ $grid-padding: 1.5rem;
 // Colors
 
 @function tp-legible-color($background) {
-	@if (lightness($background) > 60) {
-		@return map-get($colors, black);
-	} @else {
-		@return map-get($colors, white);
-	}
+  @if (lightness($background) > 60) {
+    @return map-get($colors, black);
+  } @else {
+    @return map-get($colors, white);
+  }
 }
 
 $text-c: map-get($colors, black);
@@ -146,15 +147,15 @@ $notification-c--warning: map-get($colors, orange);
 
 // Transition Times
 
-$transition-fast: .2s;
+$transition-fast: 0.2s;
 $transition-mid: $transition-fast * 2;
 $transition-slow: $transition-mid * 2;
 
 // Input structure
 $input-border-radius: 0;
 $input-font-size: 1em;
-$input-padding-vertical: .5em;
-$input-padding-horizontal: .8em;
+$input-padding-vertical: 0.5em;
+$input-padding-horizontal: 0.8em;
 
 // Misc
 

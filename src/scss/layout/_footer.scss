@@ -1,29 +1,28 @@
 .main-footer {
-    clear: both;
+  clear: both;
 }
 
 .main-footer__inner {
 }
 
 .footer-widgets-wrapper {
-    @include breakpoint($large-break) {
-        display: table;
-        width: 100%;
-    }
+  @include breakpoint($large-break) {
+    display: table;
+    width: 100%;
+  }
 }
 
 .footer-widgets {
-
 }
 
 .footer-widget {
-    @include tp-trailer();
-    @include breakpoint($mid-break) {
-        display: inline-block;
-        vertical-align: top;
-        @include tp-space(margin-right, 2);
-        &:last-child {
-            margin-right: 0;
-        }
+  @include tp-trailer();
+  @include breakpoint($mid-break) {
+    display: inline-block;
+    vertical-align: top;
+    @include tp-space(margin-right, 2);
+    &:last-child {
+      margin-right: 0;
     }
+  }
 }

@@ -1,50 +1,50 @@
 .kss-menu {
-    @include scut-list-inline;
-    @include breakpoint($mid-break) {
-        @include scut-list-unstyled;
-        li {
-            display: block;
-        }
-    }
-    @include tp-trailer();
-    @include tp-padding-leader(.5);
-    @include tp-padding-trailer(.5);
-
+  @include scut-list-inline;
+  @include breakpoint($mid-break) {
+    @include scut-list-unstyled;
     li {
-        margin-right: 0.5em;
+      display: block;
     }
+  }
+  @include tp-trailer();
+  @include tp-padding-leader(0.5);
+  @include tp-padding-trailer(0.5);
 
-    a {
-        text-decoration: none;
-    }
+  li {
+    margin-right: 0.5em;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }
 
 #kss-nav {
-    @include breakpoint($mid-break) {
-        width: span($mid-sidebar-cols, $susy-mid);
+  @include breakpoint($mid-break) {
+    width: span($mid-sidebar-cols, $susy-mid);
 
-        &.is-fixed {
-            position: fixed;
-            top: 0;
-            z-index: 100;
-        }
+    &.is-fixed {
+      position: fixed;
+      top: 0;
+      z-index: 100;
     }
-    @include breakpoint($large-break) {
-        width: span($large-sidebar-cols, $susy-large);
-    }
+  }
+  @include breakpoint($large-break) {
+    width: span($large-sidebar-cols, $susy-large);
+  }
 }
 
 #kss-main {
-    @include breakpoint($mid-break) {
-        float: right;
-        width: span($mid-content-cols, $susy-mid);
-    }
-    @include breakpoint($large-break) {
-        float: right;
-        width: span($large-content-cols, $susy-large);
-    }
+  @include breakpoint($mid-break) {
+    float: right;
+    width: span($mid-content-cols, $susy-mid);
+  }
+  @include breakpoint($large-break) {
+    float: right;
+    width: span($large-content-cols, $susy-large);
+  }
 }
 
 .kss-mod-list {
-    width: 100%;
+  width: 100%;
 }
