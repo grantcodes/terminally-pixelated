@@ -22,15 +22,22 @@
 .editor-visual-editor p {
   line-height: $line-height;
   font-weight: $body-font-weight;
+  font-family: $font-body;
   color: $text-c;
+  background-color: $bgc;
   @include tp-fs(0);
 }
 
 // .editor-visual-editor p,
 textarea.editor-post-title__input {
-  font-family: $font-body;
+  font-family: $font-h;
   color: $text-c;
+  background-color: $bgc;
   @include tp-fs(3);
+}
+
+.editor-block-list__block:not(.is-multi-selected) .wp-block-paragraph {
+  background-color: $bgc;
 }
 
 .editor-visual-editor {

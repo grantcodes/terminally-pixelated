@@ -22,11 +22,12 @@ class TerminallyPixelatedBase {
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_action( 'wp_footer', array( $this, 'google_analytics' ), 100 );
-		add_action( 'admin_init', array( $this, 'remove_image_links' ) );
+		// add_action( 'admin_init', array( $this, 'remove_image_links' ) );
 		add_filter( 'timber_context', array( $this, 'timber_context' ) );
 		add_filter( 'timber_context', array( $this, 'schema' ) );
 		add_filter( 'get_twig', array( $this, 'twig_extensions' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
+		add_filter( 'body_class', array( $this, 'body_class' ) );
 	}
 
 	/**
@@ -39,6 +40,7 @@ class TerminallyPixelatedBase {
 		add_theme_support( 'html5' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'custom-logo' );
+		add_theme_support( 'align-wide' );
 		$theme_colors = (array) TPHelpers::get_setting( 'colors' );
 		array_unshift( $theme_colors, 'editor-color-palette' );
 		call_user_func_array( 'add_theme_support', array_values( $theme_colors ) );
@@ -123,16 +125,16 @@ class TerminallyPixelatedBase {
 	 * Register sidebars
 	 */
 	public function add_sidebars() {
-		register_sidebar( array(
-			'name'          => __( 'Main Sidebar', 'terminally_pixelated' ),
-			'id'            => 'main-sidebar',
-			'class'         => 'main-sidebar',
-			'description'   => 'The main sidbar',
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h1 class="widgettitle">',
-			'after_title'   => '</h1>',
-		) );
+		// register_sidebar( array(
+		// 	'name'          => __( 'Main Sidebar', 'terminally_pixelated' ),
+		// 	'id'            => 'main-sidebar',
+		// 	'class'         => 'main-sidebar',
+		// 	'description'   => 'The main sidbar',
+		// 	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		// 	'after_widget'  => '</div>',
+		// 	'before_title'  => '<h1 class="widgettitle">',
+		// 	'after_title'   => '</h1>',
+		// ) );
 
 		$footer_widget_count = TPHelpers::get_setting( 'footer-widgets' );
 		for ( $i = 1; $i <= $footer_widget_count; $i++ ) {
@@ -279,5 +281,21 @@ class TerminallyPixelatedBase {
 							ga('create','<?php echo $ga_id; ?>');ga('send','pageview');
 					</script>
 		<?php endif;
+	}
+
+	/**
+	 * Adds extra body classes
+	 *
+	 * @param array $classes Original array of classes.
+	 * @return array         Updated array of classes
+	 */
+	function body_class( $classes ) {
+		if ( function_exists( 'gutenberg_init' ) && is_singular() ) {
+			$post = get_post();
+			if ( gutenberg_post_has_blocks( $post ) ) {
+				$classes[] = 'block-editor';
+			}
+		}
+		return $classes;
 	}
 }
