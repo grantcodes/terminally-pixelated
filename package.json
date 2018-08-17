@@ -40,5 +40,10 @@
     "type": "git",
     "url": "https://github.com/terminalpixel/Terminally-Pixelated.git"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "semi": false
+  }
 }

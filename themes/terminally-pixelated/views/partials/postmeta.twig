@@ -1,6 +1,10 @@
-{% if show_postmeta %}
-    <p class="postmeta">
-        <time class="postmeta__time" itemprop="datePublished" datetime="{{post.post_date|date('c')}}">{{post.post_date_gmt|time_ago}}</time>
-        by <span class="postmeta__author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><a href="{{post.author.link}}" class="postmeta__author__link" itemprop="url" rel="author"><span class="postmeta__author__link__name" itemprop="name">{{post.author.display_name}}</span></a></span>
-    </p>
-{% endif %}
+<p class="postmeta">
+    Posted
+    <time class="postmeta__time dt-published" datetime="{{post.post_date|date('c')}}">{{post.post_date_gmt|time_ago}}</time>
+    by
+    <span class="postmeta__author h-card p-author">
+        <a href="{{post.author.link}}" class="postmeta__author__link u-url" rel="author">
+            <span class="postmeta__author__link__name p-name">{{post.author.display_name}}</span>
+        </a>
+    </span>
+</p>

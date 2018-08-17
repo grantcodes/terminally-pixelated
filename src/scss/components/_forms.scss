@@ -14,7 +14,12 @@ input[type='search'] {
   box-sizing: border-box;
 }
 
-@mixin input-structure($input-border-radius: $input-border-radius, $input-font-size: $input-font-size, $input-padding-vertical: $input-padding-vertical, $input-padding-horizontal: $input-padding-horizontal) {
+@mixin input-structure(
+  $input-border-radius: $input-border-radius,
+  $input-font-size: $input-font-size,
+  $input-padding-vertical: $input-padding-vertical,
+  $input-padding-horizontal: $input-padding-horizontal
+) {
   border-radius: $input-border-radius;
   font-size: $input-font-size;
   padding: $input-padding-vertical $input-padding-horizontal;

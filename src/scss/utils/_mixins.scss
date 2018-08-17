@@ -16,14 +16,12 @@
 
   @include breakpoint($mid-break) {
     font-size: calc(
-      #{$local-min-font} +
-        (
+      #{$local-min-font} + (
           #{scut-strip-unit($local-max-font)} - #{scut-strip-unit(
               $local-min-font
             )}
-        ) * ((100vw - #{$mid-break}) / (#{scut-strip-unit($large-break)} - #{scut-strip-unit(
-                  $mid-break
-                )}))
+        ) * ((100vw - #{$mid-break}) /
+            (#{scut-strip-unit($large-break)} - #{scut-strip-unit($mid-break)}))
     );
   }
   @include breakpoint($large-break) {
@@ -31,7 +29,7 @@
   }
 }
 
-@mixin tp-space( $property, $count: 1, $important: false) {
+@mixin tp-space($property, $count: 1, $important: false) {
   $val: 1rem * $line-height * $count;
   @if ($important) {
     $val: $val + !important;

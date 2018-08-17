@@ -1,6 +1,7 @@
 <?php
 /**
  * Some useful helper functions
+ *
  * @package  terminally-pixelated
  */
 
@@ -11,12 +12,14 @@ class TPHelpers {
 
 	/**
 	 * Cache of the json settings file
+	 *
 	 * @var null
 	 */
 	static $json_settings = null;
 
 	/**
 	 * Returns the uri of a theme resource
+	 *
 	 * @param  string $resource relative resource uri with or without a starting /.
 	 * @return string           full resource uri
 	 */
@@ -29,6 +32,7 @@ class TPHelpers {
 
 	/**
 	 * A wrapper function to more easily enqueue js and css
+	 *
 	 * @param  string $resource the location of the file.
 	 * @param  array  $deps     the dependencies.
 	 * @return void
@@ -47,6 +51,7 @@ class TPHelpers {
 
 	/**
 	 * A wrapper function to more easily register js and css
+	 *
 	 * @param  string $resource the location of the file.
 	 * @param  array  $deps     the dependencies.
 	 * @return void
@@ -65,12 +70,13 @@ class TPHelpers {
 
 	/**
 	 * Gets a variable from the config.json file
+	 *
 	 * @param  string $key the variable to retrieve.
 	 * @return mixed  the value of the variable
 	 */
 	public static function get_setting( $key = false ) {
 		if ( ! self::$json_settings ) {
-			$file = file_get_contents( dirname( __FILE__ ) . '/../config.json' );
+			$file                = file_get_contents( dirname( __FILE__ ) . '/../config.json' );
 			self::$json_settings = (array) json_decode( $file );
 		}
 		if ( false === $key ) {
@@ -89,9 +95,9 @@ class TPHelpers {
 	 * @return string       The svg markup
 	 */
 	public static function icon( $icon, $svg = false ) {
-	    if ( ! $svg ) {
-	        $svg = TPHelpers::get_theme_resource_uri( 'img/symbol/svg/sprite.symbol.svg' );
-	    }
-	    return '<svg class="tp-icon tp-icon--' . $icon . '"><use xlink:href="' . $svg . '#' . $icon . '"></use></svg>';
+		if ( ! $svg ) {
+			$svg = TPHelpers::get_theme_resource_uri( 'img/symbol/svg/sprite.symbol.svg' );
+		}
+		return '<svg class="tp-icon tp-icon--' . $icon . '"><use xlink:href="' . $svg . '#' . $icon . '"></use></svg>';
 	}
 }

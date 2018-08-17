@@ -39,21 +39,21 @@ $susy: (
   columns: susy-repeat($small-cols),
   gutters: 0.25,
   spread: 'narrow',
-  container-spread: 'narrow'
+  container-spread: 'narrow',
 );
 
 $susy-mid: (
   columns: susy-repeat($mid-cols),
   gutters: 0.25,
   spread: 'narrow',
-  container-spread: 'narrow'
+  container-spread: 'narrow',
 );
 
 $susy-large: (
   columns: susy-repeat($large-cols),
   gutters: 0.25,
   spread: 'narrow',
-  container-spread: 'narrow'
+  container-spread: 'narrow',
 );
 
 $grid-padding: 1.5rem;

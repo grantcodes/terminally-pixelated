@@ -1,5 +1,6 @@
 <?php
 /**
- * Nothing tp see here
- * @package  terminally-pixelated
+ * Nothing to see here
+ *
+ * @package terminally-pixelated
  */

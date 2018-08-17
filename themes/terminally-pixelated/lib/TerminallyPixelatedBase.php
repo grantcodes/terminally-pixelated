@@ -1,7 +1,8 @@
 <?php
 /**
  * Basic setup for the WordPress Theme
- * @package  terminally-pixelated
+ *
+ * @package terminally-pixelated
  */
 
 /**
@@ -48,6 +49,7 @@ class TerminallyPixelatedBase {
 
 	/**
 	 * Add editor style
+	 *
 	 * @return void
 	 */
 	public function editor_style() {
@@ -60,11 +62,12 @@ class TerminallyPixelatedBase {
 	 * @return void
 	 */
 	public function gutenberg_editor_style() {
-		wp_enqueue_style( 'gutenbergtheme-blocks-style',  TPHelpers::get_theme_resource_uri( '/gutenberg-style.css' ) );
+		wp_enqueue_style( 'gutenbergtheme-blocks-style', TPHelpers::get_theme_resource_uri( '/gutenberg-style.css' ) );
 	}
 
 	/**
 	 * Filter the excerpt ending string
+	 *
 	 * @param  string $more The default more string.
 	 * @return string       Updated more string
 	 */
@@ -74,6 +77,7 @@ class TerminallyPixelatedBase {
 
 	/**
 	 * Removes useless junk
+	 *
 	 * @return void
 	 */
 	public function remove_crap() {
@@ -92,6 +96,7 @@ class TerminallyPixelatedBase {
 
 	/**
 	 * Prevent images linking to themselves by default
+	 *
 	 * @return void
 	 */
 	public function remove_image_links() {
@@ -113,7 +118,7 @@ class TerminallyPixelatedBase {
 	 * Register / enqueue scripts
 	 */
 	public function add_scripts() {
-		$config = TPHelpers::get_setting();
+		$config                 = TPHelpers::get_setting();
 		$config['svg_icon_url'] = TPHelpers::get_theme_resource_uri( 'img/symbol/svg/sprite.symbol.svg' );
 		TPHelpers::register( 'js/app.js' );
 		wp_localize_script( 'js/app.js', 'TerminallyPixelated', $config );
@@ -126,28 +131,29 @@ class TerminallyPixelatedBase {
 	 */
 	public function add_sidebars() {
 		// register_sidebar( array(
-		// 	'name'          => __( 'Main Sidebar', 'terminally_pixelated' ),
-		// 	'id'            => 'main-sidebar',
-		// 	'class'         => 'main-sidebar',
-		// 	'description'   => 'The main sidbar',
-		// 	'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		// 	'after_widget'  => '</div>',
-		// 	'before_title'  => '<h1 class="widgettitle">',
-		// 	'after_title'   => '</h1>',
+		// 'name'          => __( 'Main Sidebar', 'terminally_pixelated' ),
+		// 'id'            => 'main-sidebar',
+		// 'class'         => 'main-sidebar',
+		// 'description'   => 'The main sidbar',
+		// 'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		// 'after_widget'  => '</div>',
+		// 'before_title'  => '<h1 class="widgettitle">',
+		// 'after_title'   => '</h1>',
 		// ) );
-
 		$footer_widget_count = TPHelpers::get_setting( 'footer-widgets' );
 		for ( $i = 1; $i <= $footer_widget_count; $i++ ) {
-			register_sidebar( array(
-				'name'          => __( 'Footer Widgets ' . $i, 'terminally_pixelated' ),
-				'id'            => 'footer-widgets-' . $i,
-				'class'         => 'footer-widgets-' . $i,
-				'description'   => 'Footer widgets set ' . $i,
-				'before_widget' => '<div id="%1$s" class="footer-widget widget %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h1 class="widgettitle footer-widgettitle">',
-				'after_title'   => '</h1>',
-			) );
+			register_sidebar(
+				array(
+					'name'          => __( 'Footer Widgets ' . $i, 'terminally_pixelated' ),
+					'id'            => 'footer-widgets-' . $i,
+					'class'         => 'footer-widgets-' . $i,
+					'description'   => 'Footer widgets set ' . $i,
+					'before_widget' => '<div id="%1$s" class="footer-widget widget %2$s">',
+					'after_widget'  => '</div>',
+					'before_title'  => '<h1 class="widgettitle footer-widgettitle">',
+					'after_title'   => '</h1>',
+				)
+			);
 		}
 	}
 
@@ -160,6 +166,7 @@ class TerminallyPixelatedBase {
 
 	/**
 	 * Add some data to the timber context
+	 *
 	 * @param  array $context The original timber context.
 	 * @return array          The updated timber context
 	 */
@@ -186,30 +193,30 @@ class TerminallyPixelatedBase {
 			$context['title'] = 'Archive';
 			if ( is_day() ) {
 				$context['title'] = 'Archive: ' . get_the_date( 'D M Y' );
-			} else if ( is_month() ) {
+			} elseif ( is_month() ) {
 				$context['title'] = 'Archive: ' . get_the_date( 'M Y' );
-			} else if ( is_year() ) {
+			} elseif ( is_year() ) {
 				$context['title'] = 'Archive: ' . get_the_date( 'Y' );
-			} else if ( is_tag() ) {
+			} elseif ( is_tag() ) {
 				$context['title'] = single_tag_title( '', false );
-			} else if ( is_category() ) {
+			} elseif ( is_category() ) {
 				$context['title'] = single_cat_title( '', false );
-			} else if ( is_post_type_archive() ) {
+			} elseif ( is_post_type_archive() ) {
 				$context['title'] = post_type_archive_title( '', false );
-			} else if ( is_author() ) {
+			} elseif ( is_author() ) {
 				$context['title'] = get_the_author();
 			}
-		} else if ( is_home() ) {
+		} elseif ( is_home() ) {
 			$context['title'] = get_the_title( get_option( 'page_for_posts', true ) );
-		} else if ( is_search() ) {
+		} elseif ( is_search() ) {
 			$context['title'] = 'Search Results for: ' . get_search_query();
-		} else if ( is_singular() ) {
+		} elseif ( is_singular() ) {
 			$context['title'] = get_the_title();
 		}
 
 		// Add breadcrumbs.
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
-			$context['breadcrumbs'] = yoast_breadcrumb( '<nav id="breadcrumbs" class="main-breadcrumbs">','</nav>', false );
+			$context['breadcrumbs'] = yoast_breadcrumb( '<nav id="breadcrumbs" class="main-breadcrumbs">', '</nav>', false );
 		}
 
 		// Add json settings.
@@ -230,6 +237,7 @@ class TerminallyPixelatedBase {
 
 	/**
 	 * Add schema.org data to the timber context
+	 *
 	 * @param  array $context The timber context.
 	 * @return array          The timber context with schema data
 	 */
@@ -238,11 +246,11 @@ class TerminallyPixelatedBase {
 
 		if ( is_single() ) {
 			$type = 'Article';
-		} else if ( is_author() ) {
+		} elseif ( is_author() ) {
 			$type = 'ProfilePage';
-		} else if ( is_search() ) {
+		} elseif ( is_search() ) {
 			$type = 'SearchResultsPage';
-		} else if ( is_archive() ) {
+		} elseif ( is_archive() ) {
 			$type = 'Blog';
 		} else {
 			$type = 'WebPage';
@@ -255,19 +263,23 @@ class TerminallyPixelatedBase {
 
 	/**
 	 * Adds custom extensions to twig
+	 *
 	 * @param  object $twig The original twig object.
 	 * @return object       Updated twig object
 	 */
 	function twig_extensions( $twig ) {
-			$icon_function = new Twig_SimpleFunction('icon', function ( $context, $icon ) {
+			$icon_function = new Twig_SimpleFunction(
+				'icon', function ( $context, $icon ) {
 					return TPHelpers::icon( $icon, $context['svg_sprite'] );
-			}, array( 'needs_context' => true ) );
+				}, array( 'needs_context' => true )
+			);
 			$twig->addFunction( $icon_function );
 			return $twig;
 	}
 
 	/**
 	 * Output google analytics script tag
+	 *
 	 * @return void
 	 */
 	public function google_analytics() {
@@ -280,7 +292,8 @@ class TerminallyPixelatedBase {
 							r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
 							ga('create','<?php echo $ga_id; ?>');ga('send','pageview');
 					</script>
-		<?php endif;
+		<?php
+		endif;
 	}
 
 	/**

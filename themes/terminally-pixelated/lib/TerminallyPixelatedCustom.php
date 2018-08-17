@@ -1,6 +1,7 @@
 <?php
 /**
  * Add any extra minor functions in here
+ *
  * @package  terminally-pixelated
  */
 

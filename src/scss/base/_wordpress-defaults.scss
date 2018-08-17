@@ -150,6 +150,8 @@
 .comment-respond {
   background-color: darken($bgc, 10%);
   padding: $grid-padding;
+  @include tp-leader(2);
+  @include tp-trailer(2);
 }
 
 .comment-reply-title {
@@ -306,7 +308,7 @@ $gallery-margin: 0;
     @for $i from 3 through 8 {
       &.columns-#{ $i } .blocks-gallery-image,
       &.columns-#{ $i } .blocks-gallery-item {
-        width: calc(100% / #{ $i } - #{$gallery-margin * 2});
+        width: calc(100% / #{$i} - #{$gallery-margin * 2});
       }
     }
   }

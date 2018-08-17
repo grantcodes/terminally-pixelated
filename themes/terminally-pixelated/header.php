@@ -1,7 +1,8 @@
 <?php
 /**
  * The header template file
- * @package  terminally-pixelated
+ *
+ * @package terminally-pixelated
  */
 
 $GLOBALS['timberContext'] = Timber::get_context();

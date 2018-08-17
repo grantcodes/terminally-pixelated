@@ -1,7 +1,8 @@
 <?php
 /**
  * The woocommerce template file
- * @package  terminally-pixelated
+ *
+ * @package terminally-pixelated
  */
 
 $context = Timber::get_context();

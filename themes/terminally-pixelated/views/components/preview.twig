@@ -1,15 +1,17 @@
-<article class="{{post.post_class}} single-post-preview" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+<article class="{{post.post_class}} single-post-preview h-entry">
     {% block content %}
         <header class="single-post-preview__header">
-            <h1 class="single-post-preview__title" itemprop="headline">
-                <a href="{{post.link}}">
+            <h1 class="single-post-preview__title">
+                <a href="{{post.link}}" class="p-name u-url">
                     {{post.title}}
                 </a>
             </h1>
-            {% include 'partials/postmeta.twig' %}
         </header>
-        <div class="single-post-preview__content" itemprop="text">
+        <div class="single-post-preview__content p-summary">
             {{post.get_preview()}}
         </div>
+        <footer class="single-post-preview__footer">
+            {% include 'partials/postmeta.twig' %}
+        </footer>
     {% endblock %}
 </article>

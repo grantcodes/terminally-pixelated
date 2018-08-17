@@ -2,14 +2,14 @@
 <html class="no-js" {{language_attributes}}>
 {% include 'partials/head.twig' %}
 
-    <body class="{{body_class}}" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+    <body class="{{body_class}}">
         <div class="main-wrapper" id="main-wrapper">
             <div {% if header_image %}class="main-header-nav-wrap main-header-nav-wrap--image" style="background-image: url({{header_image.src|resize(1920, 800)}})"{% else %}class="main-header-nav-wrap" {% endif %}>
                 <div class="layout-wrapper main-header-nav-wrap__inner">
                     {% block header %}
-                        <header class="main-header" role='banner' itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+                        <header class="main-header">
                             <div class="main-header__inner">
-                                <h1 class="main-title" itemprop="headline">
+                                <h1 class="main-title">
                                     {% if logo %}
                                         {{logo}}
                                     {% else %}
@@ -26,13 +26,10 @@
                         {% include 'components/nav.twig' with { 'nav_class': terminally_pixelated.classes.nav, 'menu': main_menu } %}
                     </div>
                 </div>
-                {% if title %}
-                    <h1 class="posttitle p-name main-header-nav-wrap__title layout-wrapper">{{title}}</h1>
-                {% endif %}
             </div>
 
             <div class="main-content-sidebar-wrap layout-wrapper">
-                <main role="main" class="{{terminally_pixelated.classes.content}} {% if not main_sidebar %}{{terminally_pixelated.classes.content}}--full-width{% endif %}" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/{{schema.type}}">
+                <main role="main" class="{{terminally_pixelated.classes.content}} {% if not main_sidebar %}{{terminally_pixelated.classes.content}}--full-width{% endif %}">
                     <div class="wrapper">
                         {% block content %}
                         Sorry, no content
@@ -51,7 +48,7 @@
                     </aside>
                 {% endif %}
             </div>
-            <footer class="{{terminally_pixelated.classes.footer}}" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+            <footer class="{{terminally_pixelated.classes.footer}}">
                 <div class="{{terminally_pixelated.classes.footer}}__inner layout-wrapper">
                     {% if footer_widgets %}
                         <section class="footer-widgets-wrapper">

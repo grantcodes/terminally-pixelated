@@ -1,6 +1,7 @@
 <?php
 /**
  * Some extra bits and pieces to support woocommerce
+ *
  * @package  terminally-pixelated
  */
 
@@ -25,6 +26,7 @@ class TerminallyPixelatedWoocommerce {
 
 	/**
 	 * Add WooCommerce specific context stuff here
+	 *
 	 * @param  array $context The timber context.
 	 * @return array          Updated timber context
 	 */
@@ -34,6 +36,7 @@ class TerminallyPixelatedWoocommerce {
 
 	/**
 	 * Remove WooCommerce styles if you so wish
+	 *
 	 * @param  array $styles Default list of stylesheets to use.
 	 * @return array         Updated list of styles to use
 	 */

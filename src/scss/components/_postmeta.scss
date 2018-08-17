@@ -1,0 +1,6 @@
+.postmeta {
+  opacity: 0.6;
+  @include tp-fs(-2);
+  @include tp-trailer();
+  @include tp-leader();
+}
