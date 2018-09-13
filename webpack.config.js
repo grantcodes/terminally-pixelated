@@ -46,8 +46,12 @@ let webpackConfig = {
       `${dirs.src}/scss/main.scss`,
       ...glob.sync(`${dirs.src}/svgs/*.svg`),
     ],
+    gutenberg: [
+      `${dirs.src}/js/blocks/index.js`,
+      `${dirs.src}/scss/gutenberg.scss`,
+    ],
   },
-  context: dirs.src,
+  // context: dirs.src,
   output: {
     publicPath: '/wp-content/themes/theme/assets/',
     path: `${dirs.theme}/assets`,

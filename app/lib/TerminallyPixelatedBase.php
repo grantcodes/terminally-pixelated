@@ -19,7 +19,7 @@ class TerminallyPixelatedBase {
 		add_action( 'after_setup_theme', array( $this, 'add_menus' ) );
 		add_action( 'init', array( $this, 'remove_crap' ) );
 		add_action( 'init', array( $this, 'editor_style' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'gutenberg_editor_style' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'gutenberg_editor_assets' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_action( 'wp_footer', array( $this, 'google_analytics' ), 100 );
@@ -53,7 +53,7 @@ class TerminallyPixelatedBase {
 	 * @return void
 	 */
 	public function editor_style() {
-		add_editor_style( TPHelpers::get_theme_resource_uri( 'editor-style.css' ) );
+		add_editor_style( TPHelpers::get_theme_resource_uri( 'main.css' ) );
 	}
 
 	/**
@@ -61,8 +61,9 @@ class TerminallyPixelatedBase {
 	 *
 	 * @return void
 	 */
-	public function gutenberg_editor_style() {
-		wp_enqueue_style( 'gutenbergtheme-blocks-style', TPHelpers::get_theme_resource_uri( 'gutenberg-style.css' ) );
+	public function gutenberg_editor_assets() {
+		TPHelpers::enqueue( 'gutenberg.css' );
+		TPHelpers::enqueue( 'gutenberg.js' );
 	}
 
 	/**

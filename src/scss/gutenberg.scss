@@ -1,10 +1,9 @@
-@import 'breakpoint';
-@import 'susy';
-@import 'modularscale';
-@import 'scut';
+@import '~breakpoint-sass';
+@import '~susy';
+@import '~modularscale-sass';
+@import '~scut';
 
 @import 'utils/wp-comment';
-@import 'utils/config';
 @import 'utils/functions';
 @import 'utils/variables';
 @import 'utils/mixins';

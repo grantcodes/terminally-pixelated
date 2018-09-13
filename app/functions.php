@@ -26,5 +26,6 @@ function terminally_pixelated_autoload( $class_name, $instantiate = false ) {
 terminally_pixelated_autoload( 'TPHelpers' );
 terminally_pixelated_autoload( 'TerminallyPixelatedBase' );
 terminally_pixelated_autoload( 'TerminallyPixelatedCustom', true );
+terminally_pixelated_autoload( 'TerminallyPixelatedBlocks', true );
 terminally_pixelated_autoload( 'TerminallyPixelatedCustomizer', true );
 terminally_pixelated_autoload( 'TerminallyPixelatedWoocommerce', true );
