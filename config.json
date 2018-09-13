@@ -1,0 +1,21 @@
+{
+  "theme": "terminally-pixelated",
+  "devUrl": "http://indieweb-wp.test",
+  "wpContentFolder": "wp-content",
+  "mid-break": "30rem",
+  "large-break": "60rem",
+  "classes": {
+    "nav": "main-nav",
+    "content": "main-content",
+    "footer": "main-footer"
+  },
+  "colors": {
+    "white": "#fafafa",
+    "black": "#111111",
+    "blue": "#2196F3",
+    "red": "#F44336",
+    "orange": "#FF9800",
+    "green": "#4CAF50"
+  },
+  "footer-widgets": 1
+}

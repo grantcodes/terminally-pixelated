@@ -1,6 +1,6 @@
 # Terminally Pixelated
 
-Terminally Pixelated is a timber based WordPress starter theme with some gulp, Sass, composer and webpack niceties.
+Terminally Pixelated is a timber based WordPress starter theme with some Sass, composer and webpack niceties.
 
 Developed by [Grant Richmond](http://grant.codes)
 
@@ -15,7 +15,6 @@ Terminally Pixelated comes jam packed full of greatness:
 - Loosely follows the block, element, modifier methodology
 - Susy for super semantic grids
 - A shared config that is accessible via Sass, PHP and JavaScript
-- Automatic style guide creation
 - Webpack for JavaScript bundling
 - Browser sync for live reloading and development loveliness
 - Composer support
@@ -23,11 +22,11 @@ Terminally Pixelated comes jam packed full of greatness:
 
 ## Getting started
 
-To get started, download however you wish and edit `src/config.json` with your development url then run `npm install`, `composer install` and `gulp build` in the content directory to install the required dependencies.
+To get started, download however you wish and edit `src/config.json` with your development url then run `npm install`, `composer install` and `npm run build` in the content directory to install the required dependencies.
 
-Run `gulp watch` in the content directory to watch for file changes and start a browser sync server.
+Run `npm run start` in the content directory to watch for file changes and start a browser sync server.
 
-Run `gulp build` to fully compile your theme.
+Run `npm run build` to fully compile your theme.
 
 ## Diving in
 
@@ -51,12 +50,12 @@ There is also `tp-leader`, `tp-trailer`, `tp-padding-leader` and `tp-padding-tra
 
 There is a little wrapper to be able to quickly register or enqueue JavaScript and CSS files from your theme:
 
-	TPHelpers::register( 'js/app.js', array( 'jquery' ) );
-	TPHelpers::enqueue( 'css/style.css' );
+    TPHelpers::register( 'js/app.js', array( 'jquery' ) );
+    TPHelpers::enqueue( 'css/style.css' );
 
 And an accompanying helper for getting the url of a theme resource:
 
-	TPHelpers::get_theme_resource_uri( '/path/to/file.txt' );
+    TPHelpers::get_theme_resource_uri( '/path/to/file.txt' );
 
 ## Svg icons
 
@@ -82,5 +81,4 @@ My photoswipe example require a simple html setup with images in `a` tags with d
 
 There are a couple of dependencies required to build with Terminally Pixelated:
 
-- Gulp
 - Composer

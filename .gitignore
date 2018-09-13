@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 .sass-cache
+.cache-loader
 bower_components
 src/scss/vendor
 src/scss/utils/_config.scss
@@ -10,11 +11,5 @@ js/dist
 lib/vendor
 *.map
 docs
-themes/terminally-pixelated/style.css
-themes/terminally-pixelated/editor-style.css
-themes/terminally-pixelated/gutenberg-style.css
-themes/terminally-pixelated/js/app.js
-themes/terminally-pixelated/styleguide
-themes/terminally-pixelated/vendor
-themes/terminally-pixelated/config.json
+themes
 mu-plugins/terminally-pixelated/vendor

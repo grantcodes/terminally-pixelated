@@ -18,16 +18,29 @@ class TPHelpers {
 	static $json_settings = null;
 
 	/**
+	 * Cache of the asset manifest file
+	 */
+	static $asset_manifest = array();
+
+	/**
 	 * Returns the uri of a theme resource
 	 *
 	 * @param  string $resource relative resource uri with or without a starting /.
 	 * @return string           full resource uri
 	 */
 	public static function get_theme_resource_uri( $resource ) {
-		if ( '/' !== substr( $resource, 0, 1 ) ) {
-			$resource = '/' . $resource;
+		if ( ! self::$asset_manifest ) {
+			$file                 = file_get_contents( dirname( __FILE__ ) . '/../assets/manifest.json' );
+			self::$asset_manifest = (array) json_decode( $file );
 		}
-		return get_stylesheet_directory_uri() . $resource;
+		if ( isset( self::$asset_manifest[ $resource ] ) ) {
+			return self::$asset_manifest[ $resource ];
+		} else {
+			if ( '/' !== substr( $resource, 0, 1 ) ) {
+				$resource = '/' . $resource;
+			}
+			return get_stylesheet_directory_uri() . $resource;
+		}
 	}
 
 	/**

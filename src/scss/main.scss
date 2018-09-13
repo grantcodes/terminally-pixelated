@@ -1,16 +1,15 @@
-@import 'breakpoint';
-@import 'susy';
-// @import "susy/plugins/svg-grid";
-@import 'modularscale';
+@import '~breakpoint-sass';
+@import '~susy';
+// @import "~susy/plugins/svg-grid";
+@import '~modularscale-sass';
 
 @import 'utils/wp-comment';
-@import 'utils/config';
 @import 'utils/functions';
 @import 'utils/variables';
 @import 'utils/mixins';
 
-@import '../../node_modules/normalize.css/normalize'; // No eyeglass support yet
-@import 'scut';
+@import url('~normalize.css');
+@import '~scut';
 
 @import 'layout/base';
 @import 'layout/header';
@@ -37,9 +36,9 @@
 @import 'pages/single';
 
 // Optional extras if you need them
-// @import "components/notifications";
-// @import "components/woocommerce";
-// @import "components/photoswipe";
-// @import "../../node_modules/flickity/css/flickity"; // No eyeglass support yet
+// @import 'components/notifications';
+// @import 'components/woocommerce';
+// @import 'components/photoswipe';
+// @import '~flickity/css/flickity';
 
 @import 'base/animations';

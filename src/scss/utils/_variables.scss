@@ -1,11 +1,10 @@
 // No one likes you IE
-
 $legacy_support_for_ie: false;
 
 // Reassign some config variables for easier use
-$mid-break: map-get($tp-config, mid-break);
-$large-break: map-get($tp-config, large-break);
-$colors: map-get($tp-config, colors);
+$mid-break: map-get($config, mid-break);
+$large-break: map-get($config, large-break);
+$colors: map-get($config, colors);
 
 // Typography
 

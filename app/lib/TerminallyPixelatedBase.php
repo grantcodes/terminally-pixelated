@@ -53,7 +53,7 @@ class TerminallyPixelatedBase {
 	 * @return void
 	 */
 	public function editor_style() {
-		add_editor_style( TPHelpers::get_theme_resource_uri( '/editor-style.css' ) );
+		add_editor_style( TPHelpers::get_theme_resource_uri( 'editor-style.css' ) );
 	}
 
 	/**
@@ -62,7 +62,7 @@ class TerminallyPixelatedBase {
 	 * @return void
 	 */
 	public function gutenberg_editor_style() {
-		wp_enqueue_style( 'gutenbergtheme-blocks-style', TPHelpers::get_theme_resource_uri( '/gutenberg-style.css' ) );
+		wp_enqueue_style( 'gutenbergtheme-blocks-style', TPHelpers::get_theme_resource_uri( 'gutenberg-style.css' ) );
 	}
 
 	/**
@@ -111,18 +111,15 @@ class TerminallyPixelatedBase {
 	 * Enqueue / register styles
 	 */
 	public function add_styles() {
-		TPHelpers::enqueue( 'style.css' );
+		wp_dequeue_style( 'style.css-css' );
+		TPHelpers::enqueue( 'main.css' );
 	}
 
 	/**
 	 * Register / enqueue scripts
 	 */
 	public function add_scripts() {
-		$config                 = TPHelpers::get_setting();
-		$config['svg_icon_url'] = TPHelpers::get_theme_resource_uri( 'img/symbol/svg/sprite.symbol.svg' );
-		TPHelpers::register( 'js/app.js' );
-		wp_localize_script( 'js/app.js', 'TerminallyPixelated', $config );
-		wp_enqueue_script( 'js/app.js' );
+		TPHelpers::enqueue( 'main.js' );
 	}
 
 
@@ -223,7 +220,7 @@ class TerminallyPixelatedBase {
 		$context['terminally_pixelated'] = TPHelpers::get_setting();
 
 		// Add icon location.
-		$context['svg_sprite'] = TPHelpers::get_theme_resource_uri( 'img/symbol/svg/sprite.symbol.svg' );
+		$context['svg_sprite'] = TPHelpers::get_theme_resource_uri( 'sprite.svg' );
 
 		// Footer text.
 		$footer_text = get_option( 'terminally_pixelated_footer_text' );
@@ -305,7 +302,7 @@ class TerminallyPixelatedBase {
 	function body_class( $classes ) {
 		if ( function_exists( 'gutenberg_init' ) && is_singular() ) {
 			$post = get_post();
-			if ( gutenberg_post_has_blocks( $post ) ) {
+			if ( has_blocks( $post ) ) {
 				$classes[] = 'block-editor';
 			}
 		}

@@ -1,10 +1,14 @@
 {
-	"presets": [
-		"react",
-		["env", {
-			"targets": {
-				"browsers": ["last 2 versions"]
-			}
-		}]
-	]
+  "presets": [
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "targets": {
+          "browsers": [">2%"]
+        }
+      }
+    ]
+  ]
 }
