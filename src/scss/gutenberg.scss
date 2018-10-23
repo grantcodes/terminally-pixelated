@@ -53,4 +53,5 @@ body.gutenberg-editor-page .edit-post-visual-editor {
   @import 'base/wordpress-defaults';
   @import 'layout/blocks';
   @import './blocks/index';
+  @import 'components/preview';
 }

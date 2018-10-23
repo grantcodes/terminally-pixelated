@@ -1,10 +1,12 @@
-<p class="postmeta">
-    Posted
-    <time class="postmeta__time dt-published" datetime="{{post.post_date|date('c')}}">{{post.post_date_gmt|time_ago}}</time>
-    by
-    <span class="postmeta__author h-card p-author">
-        <a href="{{post.author.link}}" class="postmeta__author__link u-url" rel="author">
-            <span class="postmeta__author__link__name p-name">{{post.author.display_name}}</span>
-        </a>
-    </span>
-</p>
+{% if not hide_postmeta %}
+    <p class="postmeta">
+        Posted
+        <time class="postmeta__time dt-published" datetime="{{post.post_date|date('c')}}">{{post.post_date_gmt|time_ago}}</time>
+        by
+        <span class="postmeta__author h-card p-author">
+            <a href="{{post.author.link}}" class="postmeta__author__link u-url" rel="author">
+                <span class="postmeta__author__link__name p-name">{{post.author.display_name}}</span>
+            </a>
+        </span>
+    </p>
+{% endif %}

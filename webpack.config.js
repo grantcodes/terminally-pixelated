@@ -187,7 +187,7 @@ if (devMode) {
   console.log('Running in dev mode')
   webpackConfig.mode = 'development'
   webpackConfig.devtool = 'cheap-source-map'
-  webpackConfig.stats = false
+  // webpackConfig.stats = false
   webpackConfig.output.filename = '[name].js'
   webpackConfig.plugins.push(
     new BrowserSyncPlugin(

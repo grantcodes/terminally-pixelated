@@ -19,7 +19,7 @@ class TerminallyPixelatedBase {
 		add_action( 'after_setup_theme', array( $this, 'add_menus' ) );
 		add_action( 'init', array( $this, 'remove_crap' ) );
 		add_action( 'init', array( $this, 'editor_style' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'gutenberg_editor_assets' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'gutenberg_editor_assets' ), 99 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_action( 'wp_footer', array( $this, 'google_analytics' ), 100 );

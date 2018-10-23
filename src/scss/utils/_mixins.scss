@@ -84,6 +84,7 @@
   $input-padding-vertical: $input-padding-vertical,
   $input-padding-horizontal: $input-padding-horizontal
 ) {
+  display: inline-block;
   border-radius: $input-border-radius;
   font-size: $input-font-size;
   padding: $input-padding-vertical $input-padding-horizontal;
@@ -130,6 +131,7 @@
   color: $button-c;
   box-shadow: none;
   text-shadow: none;
+  text-decoration: none;
   font-weight: bold;
   transition: background $transition-fast, border $transition-fast,
     color $transition-fast;

@@ -5,7 +5,7 @@
  * Simple block, renders and saves the same content without any interactivity.
  */
 
-import template from '../../../../app/views/components/example-block.twig'
+import template from '../../../../app/views/blocks/example-block.twig'
 const { __ } = wp.i18n // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks // Import registerBlockType() from wp.blocks
 const { withSelect } = wp.data

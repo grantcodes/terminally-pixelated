@@ -5,6 +5,7 @@
 @import './pullquote';
 @import './separator';
 @import './gallery';
+@import './latest-posts';
 
 p.has-background {
   @include tp-container($block-width);

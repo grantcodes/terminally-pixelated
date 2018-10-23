@@ -1,11 +1,16 @@
 <article class="{{post.post_class}} single-post-preview h-entry">
     {% block content %}
         <header class="single-post-preview__header">
-            <h1 class="single-post-preview__title">
-                <a href="{{post.link}}" class="p-name u-url">
-                    {{post.title}}
-                </a>
-            </h1>
+            {% if post.title %}
+                <h1 class="single-post-preview__title">
+                    <a href="{{post.link}}" class="p-name u-url">
+                        {{post.title}}
+                    </a>
+                </h1>
+            {% endif %}
+            {% if post.thumbnail %}
+                <img class="single-post-preview__image" src="{{post.thumbnail.src('thumbnail')}}" alt="{{post.thumbnail.alt}}" />
+            {% endif %}
         </header>
         <div class="single-post-preview__content p-summary">
             {{post.get_preview()}}

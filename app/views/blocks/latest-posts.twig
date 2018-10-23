@@ -1,0 +1,5 @@
+<div class="wp-block-latest-posts {{align ? 'align' ~ align : ''}} {{postLayout == 'grid' ? 'is-grid' : ''}} {{columns ? 'columns-' ~ columns : ''}} {{className}}">
+  {% for post in posts %}
+    {% include 'components/preview.twig' %}
+  {% endfor %}
+</div>
