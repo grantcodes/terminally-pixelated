@@ -1,0 +1,30 @@
+$separator-max-width: $block-width - $grid-padding * 2;
+
+.wp-block-separator {
+  display: block;
+  box-sizing: border-box;
+  height: 1px;
+  background-color: $text-c;
+  border: none;
+  @include tp-container(10rem);
+  @include tp-leader(2);
+  @include tp-trailer(2);
+}
+
+.wp-block-separator.is-style-wide {
+  max-width: $separator-max-width;
+}
+
+.wp-block-separator.is-style-dots {
+  background: none;
+  height: auto;
+  max-width: 100%;
+  &:before {
+    color: $text-c;
+    content: '\00b7 \00b7 \00b7';
+    font-family: serif;
+    letter-spacing: 2rem;
+    padding-left: 2rem;
+    @include tp-fs(2);
+  }
+}

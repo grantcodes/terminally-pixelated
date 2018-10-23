@@ -1,0 +1,25 @@
+.wp-block-button .wp-block-button__link {
+  @include tp-button();
+}
+
+.wp-block-button.has-background .wp-block-button__link,
+.wp-block-button__link.has-background {
+  transition: opacity $transition-fast;
+  @include scut-selected(true) {
+    opacity: 0.8;
+  }
+}
+
+.wp-block-button.alignleft,
+.wp-block-button.alignright {
+  width: auto;
+  display: inline-block;
+}
+
+.wp-block-button.alignleft {
+  padding-right: 0;
+}
+
+.wp-block-button.alignright {
+  padding-left: 0;
+}

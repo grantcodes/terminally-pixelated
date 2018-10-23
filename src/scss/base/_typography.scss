@@ -152,7 +152,7 @@ li > ol {
 blockquote {
   border-left: 2px solid $text-c;
   margin-left: 0;
-  font-family: $font-sans;
+  font-family: $font-serif;
   font-style: italic;
   @include tp-space(padding-left, 1);
   @include tp-padding-leader(0.5);
@@ -161,4 +161,20 @@ blockquote {
   p:last-child {
     margin-bottom: 0;
   }
+
+  cite {
+    display: block;
+    font-family: $font-sans;
+    font-style: normal;
+    @include tp-fs(-1);
+  }
+}
+
+// Pre code blocks
+pre {
+  display: block;
+  overflow: auto;
+  background-color: darken($bgc, 3%);
+  @include tp-space(padding, 1);
+  @include tp-fs(-1);
 }

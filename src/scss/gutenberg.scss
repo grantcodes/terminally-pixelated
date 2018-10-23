@@ -8,41 +8,47 @@
 @import 'utils/variables';
 @import 'utils/mixins';
 
-.editor-visual-editor {
+body.gutenberg-editor-page .edit-post-visual-editor {
   background-color: $bgc;
-  font-family: $font-body;
-}
 
-.editor-visual-editor * {
-  font-family: $font-body;
-}
+  /* Main column width */
+  .editor-post-title__block,
+  .editor-default-block-appender,
+  .editor-block-list__block {
+    max-width: $block-width;
+  }
 
-.editor-visual-editor,
-.editor-visual-editor p {
-  line-height: $line-height;
-  font-weight: $body-font-weight;
-  font-family: $font-body;
-  color: $text-c;
-  background-color: $bgc;
-  @include tp-fs(0);
-}
+  /* Width of "wide" blocks */
+  .editor-block-list__block[data-align='wide'] {
+    max-width: $block-width--wide;
+  }
 
-// .editor-visual-editor p,
-textarea.editor-post-title__input {
-  font-family: $font-h;
-  color: $text-c;
-  background-color: $bgc;
-  @include tp-fs(3);
-}
+  /* Width of "full-wide" blocks */
+  .editor-block-list__block[data-align='full'] {
+    max-width: $block-width--full;
+  }
 
-.editor-block-list__block:not(.is-multi-selected) .wp-block-paragraph {
-  background-color: $bgc;
-}
+  .editor-post-title__input {
+    @extend h1;
+  }
 
-.editor-visual-editor {
+  .editor-block-list__block {
+    line-height: $line-height;
+    font-family: $font-body;
+    font-weight: $body-font-weight;
+    color: $text-c;
+    @include tp-fs(0);
+
+    p {
+      @include tp-fs(0);
+    }
+  }
+
   @import 'base/fonts';
   @import 'base/typography';
   @import 'base/base';
   @import 'base/helpers';
   @import 'base/wordpress-defaults';
+  @import 'layout/blocks';
+  @import './blocks/index';
 }

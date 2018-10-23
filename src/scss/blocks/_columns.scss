@@ -1,0 +1,21 @@
+.wp-block-columns {
+  padding-left: $grid-padding / 2;
+  padding-right: $grid-padding / 2;
+}
+
+.wp-block-columns > .wp-block-column {
+  padding-left: $grid-padding / 2;
+  padding-right: $grid-padding / 2;
+  margin-bottom: 0;
+}
+
+// Stack columns on small screens
+@media (max-width: $mid-break) {
+  .wp-block-columns {
+    flex-direction: column;
+  }
+
+  .wp-block-columns > .wp-block-column + .wp-block-column {
+    @include tp-leader();
+  }
+}

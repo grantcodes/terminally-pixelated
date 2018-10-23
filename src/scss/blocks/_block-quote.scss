@@ -1,0 +1,27 @@
+.wp-block-quote {
+}
+
+.wp-block-quote__citation {
+  margin-bottom: 0;
+  font-family: $font-sans;
+  @include tp-fs(-1);
+}
+
+.wp-block-quote.is-large,
+.wp-block-quote.is-style-large {
+  border-left-width: 4px;
+  @include tp-padding-leader();
+  @include tp-padding-trailer();
+  @include tp-container($block-width);
+
+  & > p {
+    @include tp-fs(1);
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  cite {
+    @include tp-fs(-1);
+    text-align: left;
+  }
+}

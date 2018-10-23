@@ -4,6 +4,8 @@
   "wpContentFolder": "wp-content",
   "mid-break": "30rem",
   "large-break": "60rem",
+  "block-width": "40rem",
+  "block-width--wide": "60rem",
   "classes": {
     "nav": "main-nav",
     "content": "main-content",

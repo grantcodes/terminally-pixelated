@@ -6,6 +6,11 @@ $mid-break: map-get($config, mid-break);
 $large-break: map-get($config, large-break);
 $colors: map-get($config, colors);
 
+// Block widths
+$block-width: map-get($config, block-width);
+$block-width--wide: map-get($config, block-width--wide);
+$block-width--full: 100%;
+
 // Typography
 
 $font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
@@ -127,15 +132,15 @@ $input-border--active: $input-border--hover;
 
 $button-bgc: map-get($colors, blue);
 $button-c: map-get($colors, white);
-$button-border: 3px solid $button-bgc;
+$button-border: 0px solid $button-bgc;
 
 $button-bgc--hover: darken(map-get($colors, blue), 20%);
 $button-c--hover: map-get($colors, white);
-$button-border--hover: 3px solid $button-bgc--hover;
+$button-border--hover: 0px solid $button-bgc--hover;
 
 $button-bgc--active: darken(map-get($colors, blue), 25%);
 $button-c--active: darken(map-get($colors, white), 10%);
-$button-border--active: 3px solid $button-bgc--active;
+$button-border--active: 0px solid $button-bgc--active;
 
 $error-c: map-get($colors, red);
 

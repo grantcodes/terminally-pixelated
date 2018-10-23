@@ -16,6 +16,7 @@
 @import 'layout/nav';
 @import 'layout/sidebar';
 @import 'layout/footer';
+@import 'layout/blocks';
 @import 'layout/styleguide';
 @import 'layout/woocommerce';
 
@@ -33,6 +34,12 @@
 @import 'components/tp-icon';
 @import 'components/pagination';
 @import 'components/postmeta';
+
+// Have to win a dumb specificity war
+.block-editor .main-entry-content {
+  @import 'blocks/index';
+}
+
 @import 'pages/single';
 
 // Optional extras if you need them

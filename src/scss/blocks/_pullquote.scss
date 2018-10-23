@@ -1,0 +1,45 @@
+.wp-block-pullquote {
+  border-top: 0.2rem solid;
+  border-bottom: 0.2rem solid;
+  @include tp-padding-leader(1);
+  @include tp-padding-trailer(1);
+}
+
+.wp-block-pullquote blockquote {
+  padding: 0;
+  border: none;
+  margin: 0;
+
+  cite {
+    margin-bottom: 0;
+    font-family: $font-sans;
+    @include tp-leader(0.5);
+  }
+}
+
+.wp-block-pullquote__citation {
+  font-family: $font-sans;
+  text-transform: none;
+  margin-bottom: 0;
+  @include tp-leader(0.5);
+}
+
+.wp-block-pullquote.is-style-solid-color {
+  border: none;
+  @include tp-padding-leader(2);
+  @include tp-padding-trailer(2);
+  blockquote {
+    margin: 0 auto;
+  }
+}
+
+// Fix quote font sizes
+.wp-block-pullquote.is-style-solid-color blockquote p {
+  @include tp-fs(1);
+}
+.wp-block-pullquote p,
+.wp-block-pullquote.alignleft p,
+.wp-block-pullquote.alignright p {
+  line-height: $line-height;
+  @include tp-fs(0);
+}

@@ -1,0 +1,60 @@
+// Gutenberg stuff
+
+// Set gutenberg pages to full width
+.block-editor .main-content-sidebar-wrap {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// Contain the header & footer
+.block-editor .single-post__header,
+.block-editor .single-post__footer {
+  @include tp-container($block-width);
+}
+
+// Contain all blocks by default
+.block-editor .main-entry-content > * {
+  @include tp-container($block-width);
+
+  &.alignwide {
+    max-width: $block-width--wide;
+  }
+
+  &.alignfull {
+    max-width: $block-width--full;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &.aligncenter {
+    text-align: center;
+  }
+
+  &.alignleft,
+  &.alignright {
+    max-width: 50%;
+    @include breakpoint($mid-break) {
+      max-width: $block-width--wide / 2;
+    }
+  }
+
+  &.alignleft {
+    margin-right: $grid-padding;
+    @include breakpoint($large-break) {
+      margin-left: calc(50vw - #{$block-width--wide / 2} - #{$grid-padding});
+    }
+  }
+
+  &.alignright {
+    margin-left: $grid-padding;
+    @include breakpoint($large-break) {
+      margin-right: calc(50vw - #{$block-width--wide / 2} - #{$grid-padding});
+    }
+  }
+}
+
+// Add margin to bottom of all blocks
+[class^='wp-block'] {
+  @include tp-trailer();
+}

@@ -1,0 +1,13 @@
+.wp-block-gallery {
+  display: flex;
+  margin-bottom: -16px;
+  @include tp-padding-trailer();
+}
+
+.wp-block-gallery .blocks-gallery-image figcaption,
+.wp-block-gallery .blocks-gallery-item figcaption {
+  @include tp-space(padding, 1);
+  @include tp-padding-leader(0.5);
+  @include tp-padding-trailer(0.5);
+  @include tp-fs(-3);
+}
