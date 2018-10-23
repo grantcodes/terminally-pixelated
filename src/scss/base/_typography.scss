@@ -27,6 +27,29 @@ p {
   &:last-child {
     margin-bottom: 0;
   }
+  &.has-drop-cap:first-letter {
+    float: left;
+    font-size: 2 * $line-height * 1em !important;
+    font-style: inherit !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+    margin: 0 0.1em 0 0 !important;
+    text-transform: uppercase;
+  }
+}
+
+// Font size classes
+.has-small-font-size {
+  @include tp-fs(-1);
+}
+.has-regular-font-size {
+  @include tp-fs(0);
+}
+.has-large-font-size {
+  @include tp-fs(1);
+}
+.has-extralarge-font-size {
+  @include tp-fs(2);
 }
 
 // Headings

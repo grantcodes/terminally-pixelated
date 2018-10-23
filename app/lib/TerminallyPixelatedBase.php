@@ -43,8 +43,40 @@ class TerminallyPixelatedBase {
 		add_theme_support( 'custom-logo' );
 		add_theme_support( 'align-wide' );
 		$theme_colors = (array) TPHelpers::get_setting( 'colors' );
-		array_unshift( $theme_colors, 'editor-color-palette' );
-		call_user_func_array( 'add_theme_support', array_values( $theme_colors ) );
+		foreach( $theme_colors as $name => $color ) {
+			$theme_colors[ $name ] = array(
+				'name' => $name,
+				'slug' => $name,
+				'color' => $color,
+			);
+		}
+		add_theme_support( 'editor-color-palette', array_values( $theme_colors ) );
+		add_theme_support( 'editor-font-sizes', array(
+			array(
+				'name' => __( 'small', 'terminally-pixelated' ),
+				'shortName' => __( 'S', 'terminally-pixelated' ),
+				'size' => '.7em',
+				'slug' => 'small'
+			),
+			array(
+				'name' => __( 'regular', 'terminally-pixelated' ),
+				'shortName' => __( 'M', 'terminally-pixelated' ),
+				'size' => '1em',
+				'slug' => 'regular'
+			),
+			array(
+				'name' => __( 'large', 'terminally-pixelated' ),
+				'shortName' => __( 'L', 'terminally-pixelated' ),
+				'size' => '1.5em',
+				'slug' => 'large'
+			),
+			array(
+				'name' => __( 'extra large', 'terminally-pixelated' ),
+				'shortName' => __( 'XL', 'terminally-pixelated' ),
+				'size' => '2.2em',
+				'slug' => 'extralarge'
+			)
+		) );
 	}
 
 	/**

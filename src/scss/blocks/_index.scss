@@ -5,3 +5,9 @@
 @import './pullquote';
 @import './separator';
 @import './gallery';
+
+p.has-background {
+  @include tp-container($block-width);
+  @include tp-padding-leader();
+  @include tp-padding-trailer();
+}

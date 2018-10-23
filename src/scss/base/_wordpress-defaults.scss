@@ -220,3 +220,13 @@
 .no-comments {
   text-align: center;
 }
+
+// Color classes
+@each $name, $value in $colors {
+  .has-#{$name}-color {
+    color: $value;
+  }
+  .has-#{$name}-background-color {
+    background-color: $value;
+  }
+}
