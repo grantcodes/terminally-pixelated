@@ -53,3 +53,10 @@ a {
     color: $link-c--hover;
   }
 }
+
+figure {
+  display: block;
+  margin: 0;
+  padding: 0;
+  @include tp-trailer();
+}
