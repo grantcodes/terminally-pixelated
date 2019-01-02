@@ -3,28 +3,36 @@
 // Set gutenberg pages to full width
 .block-editor .main-content-sidebar-wrap {
   max-width: 100%;
-  padding-left: 0;
-  padding-right: 0;
 }
 
 // Contain the header & footer
 .block-editor .single-post__header,
 .block-editor .single-post__footer {
-  @include tp-container($block-width);
+  > * {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: $block-width;
+  }
 }
 
 // Contain all blocks by default
 .block-editor .main-entry-content > * {
-  @include tp-container($block-width);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: $block-width;
 
   &.alignwide {
     max-width: $block-width--wide;
   }
 
   &.alignfull {
-    max-width: $block-width--full;
-    padding-left: 0;
-    padding-right: 0;
+    width: auto;
+    max-width: none;
+    min-width: calc(100% + #{$grid-padding * 2});
+    margin-left: 0 - $grid-padding;
+    margin-right: 0 - $grid-padding;
   }
 
   &.aligncenter {
@@ -34,21 +42,21 @@
   &.alignleft,
   &.alignright {
     max-width: 50%;
-    @include breakpoint($mid-break) {
+    @media (min-width: $mid-break) {
       max-width: $block-width--wide / 2;
     }
   }
 
   &.alignleft {
     margin-right: $grid-padding;
-    @include breakpoint($large-break) {
+    @media (min-width: $large-break) {
       margin-left: calc(50vw - #{$block-width--wide / 2} - #{$grid-padding});
     }
   }
 
   &.alignright {
     margin-left: $grid-padding;
-    @include breakpoint($large-break) {
+    @media (min-width: $large-break) {
       margin-right: calc(50vw - #{$block-width--wide / 2} - #{$grid-padding});
     }
   }

@@ -1,57 +1,64 @@
-@import '~breakpoint-sass';
 @import '~susy';
 @import '~modularscale-sass';
 @import '~scut';
 
-@import 'utils/wp-comment';
 @import 'utils/functions';
 @import 'utils/variables';
+
+// Reassign rems to px for gutenberg purposes
+$mid-break: tp-rem-to-px($mid-break);
+$large-break: tp-rem-to-px($large-break);
+$block-width: tp-rem-to-px($block-width);
+$block-width--wide: tp-rem-to-px($block-width--wide);
+$min-font: tp-rem-to-px($min-font);
+$max-font: tp-rem-to-px($max-font);
+
 @import 'utils/mixins';
 
-body.gutenberg-editor-page .edit-post-visual-editor {
+@import '~normalize.css';
+@import '~scut';
+
+@import 'base/fonts';
+@import 'base/typography';
+@import 'base/base';
+@import 'base/helpers';
+@import 'base/wordpress-defaults';
+@import 'layout/blocks';
+@import 'blocks/index';
+@import 'components/preview';
+
+body {
   background-color: $bgc;
+  // Using rems for font sizing is a bit off because the base size is defined by the wp admin css
+  // @include tp-fs(0);
+  // font-size: tp-rem-to-px(1rem);
+}
 
-  /* Main column width */
-  .editor-post-title__block,
-  .editor-default-block-appender,
-  .editor-block-list__block {
-    max-width: $block-width;
-  }
+.editor-post-title__block .editor-post-title__input {
+  line-height: 1.2;
+  margin: 0;
+  font-family: $font-h;
+  font-weight: 500;
+  @include tp-fs(4);
+  @include tp-leader();
+  @include tp-trailer(2);
+}
 
-  /* Width of "wide" blocks */
-  .editor-block-list__block[data-align='wide'] {
-    max-width: $block-width--wide;
-  }
+.wp-block {
+  max-width: $block-width;
+}
 
-  /* Width of "full-wide" blocks */
-  .editor-block-list__block[data-align='full'] {
-    // max-width: $block-width--full;
-    // This needs to be none to not break the dumb margins
-    max-width: none;
-  }
+/* Width of "wide" blocks */
+.wp-block[data-align='wide'] {
+  max-width: $block-width--wide;
+}
 
-  .editor-post-title__input {
-    @extend h1;
-  }
+/* Width of "full-wide" blocks */
+.wp-block[data-align='full'] {
+  max-width: none;
+}
 
-  .editor-block-list__block {
-    line-height: $line-height;
-    font-family: $font-body;
-    font-weight: $body-font-weight;
-    color: $text-c;
-    @include tp-fs(0);
-
-    p {
-      @include tp-fs(0);
-    }
-  }
-
-  @import 'base/fonts';
-  @import 'base/typography';
-  @import 'base/base';
-  @import 'base/helpers';
-  @import 'base/wordpress-defaults';
-  @import 'layout/blocks';
-  @import './blocks/index';
-  @import 'components/preview';
+// Need to fix this for some reason
+.editor-block-switcher__toggle {
+  overflow: hidden;
 }

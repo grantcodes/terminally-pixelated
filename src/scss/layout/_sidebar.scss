@@ -1,8 +1,8 @@
 .main-aside {
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     width: span($mid-sidebar-cols, $susy-mid);
   }
-  @include breakpoint($large-break) {
+  @media (min-width: $large-break) {
     width: span($large-sidebar-cols, $susy-large);
   }
 

@@ -1,6 +1,6 @@
 .kss-menu {
   @include scut-list-inline;
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     @include scut-list-unstyled;
     li {
       display: block;
@@ -20,7 +20,7 @@
 }
 
 #kss-nav {
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     width: span($mid-sidebar-cols, $susy-mid);
 
     &.is-fixed {
@@ -29,17 +29,17 @@
       z-index: 100;
     }
   }
-  @include breakpoint($large-break) {
+  @media (min-width: $large-break) {
     width: span($large-sidebar-cols, $susy-large);
   }
 }
 
 #kss-main {
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     float: right;
     width: span($mid-content-cols, $susy-mid);
   }
-  @include breakpoint($large-break) {
+  @media (min-width: $large-break) {
     float: right;
     width: span($large-content-cols, $susy-large);
   }

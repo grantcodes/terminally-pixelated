@@ -18,7 +18,6 @@ class TerminallyPixelatedBase {
 		add_action( 'widgets_init', array( $this, 'add_sidebars' ) );
 		add_action( 'after_setup_theme', array( $this, 'add_menus' ) );
 		add_action( 'init', array( $this, 'remove_crap' ) );
-		add_action( 'init', array( $this, 'editor_style' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'gutenberg_editor_assets' ), 99 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
@@ -42,6 +41,10 @@ class TerminallyPixelatedBase {
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'custom-logo' );
 		add_theme_support( 'align-wide' );
+		add_theme_support( 'editor-styles' );
+		add_editor_style( TPHelpers::get_asset_path( 'gutenberg.css' ) );
+		add_theme_support( 'responsive-embeds' );
+		add_theme_support( 'wp-block-styles' );
 		$theme_colors = (array) TPHelpers::get_setting( 'colors' );
 		foreach( $theme_colors as $name => $color ) {
 			$theme_colors[ $name ] = array(
@@ -51,41 +54,6 @@ class TerminallyPixelatedBase {
 			);
 		}
 		add_theme_support( 'editor-color-palette', array_values( $theme_colors ) );
-		add_theme_support( 'editor-font-sizes', array(
-			array(
-				'name' => __( 'small', 'terminally-pixelated' ),
-				'shortName' => __( 'S', 'terminally-pixelated' ),
-				'size' => '.7em',
-				'slug' => 'small'
-			),
-			array(
-				'name' => __( 'regular', 'terminally-pixelated' ),
-				'shortName' => __( 'M', 'terminally-pixelated' ),
-				'size' => '1em',
-				'slug' => 'regular'
-			),
-			array(
-				'name' => __( 'large', 'terminally-pixelated' ),
-				'shortName' => __( 'L', 'terminally-pixelated' ),
-				'size' => '1.5em',
-				'slug' => 'large'
-			),
-			array(
-				'name' => __( 'extra large', 'terminally-pixelated' ),
-				'shortName' => __( 'XL', 'terminally-pixelated' ),
-				'size' => '2.2em',
-				'slug' => 'extralarge'
-			)
-		) );
-	}
-
-	/**
-	 * Add editor style
-	 *
-	 * @return void
-	 */
-	public function editor_style() {
-		add_editor_style( TPHelpers::get_theme_resource_uri( 'main.css' ) );
 	}
 
 	/**
@@ -94,8 +62,7 @@ class TerminallyPixelatedBase {
 	 * @return void
 	 */
 	public function gutenberg_editor_assets() {
-		TPHelpers::enqueue( 'gutenberg.css' );
-		TPHelpers::enqueue( 'gutenberg.js' );
+		TPHelpers::enqueue( 'gutenberg.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'lodash' ) );
 	}
 
 	/**
@@ -333,7 +300,7 @@ class TerminallyPixelatedBase {
 	 * @return array         Updated array of classes
 	 */
 	function body_class( $classes ) {
-		if ( function_exists( 'gutenberg_init' ) && is_singular() ) {
+		if ( function_exists( 'has_blocks' ) && is_singular() ) {
 			$post = get_post();
 			if ( has_blocks( $post ) ) {
 				$classes[] = 'block-editor';

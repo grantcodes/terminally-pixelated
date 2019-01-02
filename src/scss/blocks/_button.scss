@@ -1,5 +1,43 @@
 .wp-block-button .wp-block-button__link {
-  @include tp-button();
+  // @include tp-button();
+  // border-radius: 1.5em;
+  max-width: 100%;
+  text-align: center;
+  background-color: $button-bgc;
+  border: $button-border;
+  color: $button-c;
+  box-shadow: none;
+  text-shadow: none;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background $transition-fast, border $transition-fast,
+    color $transition-fast;
+  &:hover,
+  &:focus {
+    background-color: $button-bgc--hover;
+    border: $button-border--hover;
+    color: $button-c--hover;
+  }
+
+  &:active {
+    background-color: $button-bgc--active;
+    border: $button-border--active;
+    color: $button-c--active;
+    transform: translate(1px 1px);
+  }
+}
+.wp-block-button.is-style-squared .wp-block-button__link {
+  // border-radius: 0;
+}
+.wp-block-button.is-style-outline .wp-block-button__link {
+  background: transparent;
+  border: 2px solid $button-bgc;
+  color: $button-bgc;
+  &:hover,
+  &:focus {
+    border-color: $button-bgc--hover;
+    color: $button-bgc--hover;
+  }
 }
 
 .wp-block-button.has-background .wp-block-button__link,

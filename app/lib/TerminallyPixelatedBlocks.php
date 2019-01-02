@@ -76,11 +76,11 @@ class TerminallyPixelatedBlocks {
 	function latest_posts( $attributes ) {
 		$attributes['posts'] = Timber::get_posts(
 			array(
-				'numberposts' => $attributes['postsToShow'],
+				'numberposts' => isset( $attributes['postsToShow'] ) ? $attributes['postsToShow'] : null,
 				'post_status' => 'publish',
-				'order'       => $attributes['order'],
-				'orderby'     => $attributes['orderBy'],
-				'category'    => $attributes['categories'],
+				'order'       => isset( $attributes['order'] ) ? $attributes['order'] : null,
+				'orderby'     => isset( $attributes['orderBy'] ) ? $attributes['orderBy'] : null,
+				'category'    => isset( $attributes['categories'] ) ? $attributes['categories'] : null,
 			)
 		);
 		$attributes['hide_postmeta'] = ! $attributes['displayPostDate'];

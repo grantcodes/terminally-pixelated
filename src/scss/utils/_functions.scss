@@ -19,3 +19,15 @@
     @return #ffffff;
   }
 }
+
+@function tp-strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function tp-rem-to-px($size) {
+  $browser-base: 16px;
+  $size: tp-strip-unit($size / 1rem);
+  $local-max-font: tp-strip-unit(ms(0, $max-font) / 1rem);
+  $px: $local-max-font * $size * $browser-base;
+  @return $px;
+}

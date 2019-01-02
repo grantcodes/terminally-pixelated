@@ -48,10 +48,10 @@
     background: $nav-link-bg--current;
   }
 
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     @include tp-fs(1);
   }
-  @include breakpoint($large-break) {
+  @media (min-width: $large-break) {
     @include tp-fs(2);
   }
 }
@@ -64,14 +64,14 @@
 
   transition: opacity $transition-mid, max-height $transition-mid;
 
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     opacity: 0;
   }
 }
 
 .main-nav__li:hover > .main-nav__sub-nav,
 .main-nav__sub-nav:hover {
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     opacity: 1;
   }
 }
@@ -129,7 +129,7 @@
   text-decoration: none;
   outline: none;
   float: right;
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     @include tp-fs(1);
   }
 
@@ -152,10 +152,10 @@
   color: $nav-link-c;
   opacity: 0.8;
   transition: opacity $transition-fast, transform $transition-fast;
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     @include tp-fs(1);
   }
-  @include breakpoint($large-break) {
+  @media (min-width: $large-break) {
     @include tp-fs(2);
   }
 

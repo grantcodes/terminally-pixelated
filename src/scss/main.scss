@@ -1,14 +1,12 @@
-@import '~breakpoint-sass';
 @import '~susy';
 // @import "~susy/plugins/svg-grid";
 @import '~modularscale-sass';
 
-@import 'utils/wp-comment';
 @import 'utils/functions';
 @import 'utils/variables';
 @import 'utils/mixins';
 
-@import url('~normalize.css');
+@import '~normalize.css';
 @import '~scut';
 
 @import 'layout/base';

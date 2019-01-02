@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { isUndefined, pickBy } from 'lodash'
+const { isUndefined, pickBy } = lodash
 
 /**
  * WordPress dependencies

@@ -9,7 +9,8 @@ const { __ } = wp.i18n // Import __() from wp.i18n
 const { registerBlockType, unregisterBlockType } = wp.blocks // Import registerBlockType() from wp.blocks
 
 // Disable built in latest posts
-setTimeout(() => unregisterBlockType('core/latest-posts'), 1000)
+// setTimeout(() => unregisterBlockType('core/latest-posts'), 1000)
+window.onload = () => unregisterBlockType('core/latest-posts')
 
 registerBlockType('terminally-pixelated/latest-posts', {
   title: __('Latest Posts'),

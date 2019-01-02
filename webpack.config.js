@@ -14,7 +14,7 @@ const devMode = process.env.NODE_ENV !== 'production'
 const dirs = {
   src: __dirname + '/src',
   app: __dirname + '/app',
-  theme: __dirname + '/themes/theme',
+  theme: __dirname + '/themes/' + config.theme,
 }
 
 const sassMap = data => {
@@ -53,7 +53,7 @@ let webpackConfig = {
   },
   // context: dirs.src,
   output: {
-    publicPath: '/wp-content/themes/theme/assets/',
+    publicPath: `/wp-content/themes/${config.theme}/assets/`,
     path: `${dirs.theme}/assets`,
     filename: '[name]_[hash].js',
   },

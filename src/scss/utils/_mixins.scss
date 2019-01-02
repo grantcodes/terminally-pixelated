@@ -1,5 +1,4 @@
 @mixin tp-container($max-width: $large-break) {
-  @include scut-clearfix;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -14,7 +13,7 @@
 
   font-size: $local-min-font;
 
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     font-size: calc(
       #{$local-min-font} + (
           #{scut-strip-unit($local-max-font)} - #{scut-strip-unit(
@@ -24,7 +23,7 @@
             (#{scut-strip-unit($large-break)} - #{scut-strip-unit($mid-break)}))
     );
   }
-  @include breakpoint($large-break) {
+  @media (min-width: $large-break) {
     font-size: $local-max-font;
   }
 }

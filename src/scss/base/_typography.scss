@@ -23,6 +23,8 @@ body {
 
 p {
   margin: 0;
+  font-size: 1em;
+  @include tp-leader();
   @include tp-trailer();
   &:last-child {
     margin-bottom: 0;
@@ -173,11 +175,10 @@ li > ol {
 //
 // Styleguide 1.5
 blockquote {
-  border-left: 2px solid $text-c;
   margin-left: 0;
   font-family: $font-serif;
   font-style: italic;
-  @include tp-space(padding-left, 1);
+  @include tp-space(padding, 1);
   @include tp-padding-leader(0.5);
   @include tp-padding-trailer(0.5);
 

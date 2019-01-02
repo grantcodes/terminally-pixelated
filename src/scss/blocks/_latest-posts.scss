@@ -8,7 +8,7 @@
     width: 100%;
   }
 
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     &.is-grid {
       flex-direction: row;
       flex-wrap: wrap;

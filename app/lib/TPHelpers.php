@@ -22,6 +22,29 @@ class TPHelpers {
 	 */
 	static $asset_manifest = array();
 
+		/**
+	 * Returns the path of a theme asset (relative to theme directory)
+	 *
+	 * @param  string $asset relative asset uri with or without a starting /.
+	 * @return string           full asset uri
+	 */
+	public static function get_asset_path( $asset ) {
+		if ( ! self::$asset_manifest ) {
+			$file                 = file_get_contents( dirname( __FILE__ ) . '/../assets/manifest.json' );
+			self::$asset_manifest = (array) json_decode( $file );
+		}
+		if ( isset( self::$asset_manifest[ $asset ] ) ) {
+			$theme_folder = static::get_setting( 'theme' );
+			$asset_path = self::$asset_manifest[ $asset ];
+			$asset_path = str_replace( '/wp-content/themes/', '', $asset_path );
+			$asset_path = str_replace( $theme_folder . '/', '', $asset_path );
+			return $asset_path;
+		} else {
+			return null;
+		}
+	}
+
+
 	/**
 	 * Returns the uri of a theme resource
 	 *

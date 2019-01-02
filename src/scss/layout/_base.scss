@@ -9,9 +9,9 @@
 }
 
 .main-content-sidebar-wrap {
-  @include tp-padding-leader(2);
-  @include tp-padding-trailer(2);
-  @include breakpoint($mid-break) {
+  @include tp-padding-leader();
+  @include tp-padding-trailer();
+  @media (min-width: $mid-break) {
     display: flex;
   }
 }
@@ -19,23 +19,23 @@
 .main-content {
   @include tp-trailer(2);
 
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     margin-bottom: 0;
     width: susy-span($mid-content-cols of $mid-cols);
     margin-right: gutter($susy-mid);
   }
-  @include breakpoint($large-break) {
+  @media (min-width: $large-break) {
     width: span($large-content-cols, $susy-large);
     margin-right: gutter($susy-large);
   }
 
   &--full-width {
-    @include breakpoint($mid-break) {
+    @media (min-width: $mid-break) {
       margin-right: 0;
       margin-left: 0;
       width: span($mid-cols of $mid-cols);
     }
-    @include breakpoint($large-break) {
+    @media (min-width: $large-break) {
       margin-right: 0;
       margin-left: 0;
       width: span($large-cols of $large-cols);

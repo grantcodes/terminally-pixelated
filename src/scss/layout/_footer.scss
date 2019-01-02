@@ -6,7 +6,7 @@
 }
 
 .footer-widgets-wrapper {
-  @include breakpoint($large-break) {
+  @media (min-width: $large-break) {
     display: table;
     width: 100%;
   }
@@ -17,7 +17,7 @@
 
 .footer-widget {
   @include tp-trailer();
-  @include breakpoint($mid-break) {
+  @media (min-width: $mid-break) {
     display: inline-block;
     vertical-align: top;
     @include tp-space(margin-right, 2);
