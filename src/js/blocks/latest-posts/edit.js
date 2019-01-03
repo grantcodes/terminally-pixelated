@@ -18,16 +18,46 @@ const {
   ServerSideRender,
 } = wp.components
 const { __ } = wp.i18n
+const { addQueryArgs } = wp.url
 const { InspectorControls, BlockAlignmentToolbar, BlockControls } = wp.editor
 const { withSelect } = wp.data
-
+/**
+ * Module Constants
+ */
+const CATEGORIES_LIST_QUERY = {
+  per_page: -1,
+}
 const MAX_POSTS_COLUMNS = 6
 
 class LatestPostsEdit extends Component {
   constructor() {
     super(...arguments)
-
+    this.state = {
+      categoriesList: [],
+    }
     this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind(this)
+  }
+
+  componentWillMount() {
+    this.isStillMounted = true
+    this.fetchRequest = wp
+      .apiFetch({
+        path: addQueryArgs(`/wp/v2/categories`, CATEGORIES_LIST_QUERY),
+      })
+      .then(categoriesList => {
+        if (this.isStillMounted) {
+          this.setState({ categoriesList })
+        }
+      })
+      .catch(() => {
+        if (this.isStillMounted) {
+          this.setState({ categoriesList: [] })
+        }
+      })
+  }
+
+  componentWillUnmount() {
+    this.isStillMounted = false
   }
 
   toggleDisplayPostDate() {
@@ -38,12 +68,8 @@ class LatestPostsEdit extends Component {
   }
 
   render() {
-    const {
-      attributes,
-      categoriesList,
-      setAttributes,
-      latestPosts,
-    } = this.props
+    const { attributes, setAttributes, latestPosts } = this.props
+    const { categoriesList } = this.state
     const {
       displayPostDate,
       align,
@@ -106,6 +132,12 @@ class LatestPostsEdit extends Component {
       )
     }
 
+    // Removing posts from display should be instant.
+    const displayPosts =
+      latestPosts.length > postsToShow
+        ? latestPosts.slice(0, postsToShow)
+        : latestPosts
+
     const layoutControls = [
       {
         icon: 'list-view',
@@ -155,15 +187,7 @@ export default withSelect((select, props) => {
     },
     value => !isUndefined(value)
   )
-  const categoriesListQuery = {
-    per_page: 100,
-  }
   return {
     latestPosts: getEntityRecords('postType', 'post', latestPostsQuery),
-    categoriesList: getEntityRecords(
-      'taxonomy',
-      'category',
-      categoriesListQuery
-    ),
   }
 })(LatestPostsEdit)

@@ -1,16 +1,16 @@
 {
-    "name": "terminalpixel/terminally-pixelated",
-    "description": "A bare bones WordPress themes using modern build methods",
-    "authors": [
-        {
-            "name": "Grant Richmond",
-            "email": "accounts@terminalpixel.co.uk"
-        }
-    ],
-    "config": {
-    	"vendor-dir": "mu-plugins/terminally-pixelated/vendor"
-    },
-    "require": {
-        "timber/timber": "^1.7"
+  "name": "terminalpixel/terminally-pixelated",
+  "description": "A bare bones WordPress themes using modern build methods",
+  "authors": [
+    {
+      "name": "Grant Richmond",
+      "email": "accounts@terminalpixel.co.uk"
     }
+  ],
+  "config": {
+    "vendor-dir": "mu-plugins/terminally-pixelated/vendor"
+  },
+  "require": {
+    "timber/timber": "^1.8"
+  }
 }

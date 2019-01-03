@@ -60,9 +60,9 @@
       margin-right: calc(50vw - #{$block-width--wide / 2} - #{$grid-padding});
     }
   }
-}
 
-// Add margin to bottom of all blocks
-[class^='wp-block'] {
-  @include tp-trailer();
+  // Add margin to bottom of all blocks
+  &[class^='wp-block'] {
+    @include tp-trailer();
+  }
 }

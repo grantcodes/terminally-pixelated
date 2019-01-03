@@ -14,9 +14,6 @@ class TerminallyPixelatedBlocks {
 	 * Register the blocks
 	 */
 	function __construct() {
-		register_block_type( 'terminally-pixelated/example-block', array(
-			'render_callback' => array( $this, 'example_block' ),
-		) );
 		register_block_type( 'terminally-pixelated/latest-posts', array(
 			'attributes'      => array(
 				'categories'      => array(
@@ -55,16 +52,22 @@ class TerminallyPixelatedBlocks {
 			),
 			'render_callback' => array( $this, 'latest_posts' ),
 		) );
+		add_filter( 'render_block', array( $this, 'remove_autop' ), 10, 2 );
 	}
 
+
 	/**
-	 * An example block
+	 * Don't run wpautop on certain blocks
 	 *
-	 * @param array $attributes Gutenberg block attributes.
-	 * @return string Compiled block html
+	 * @param string $block_content The block html string
+	 * @param array $block The block info.
+	 * @return void
 	 */
-	function example_block( $attributes ) {
-		return Timber::compile( 'blocks/example-block.twig', $attributes );
+	function remove_autop( $block_content, $block ) {
+		if ( 'terminally-pixelated/latest-posts' === $block['blockName'] ) {
+			remove_filter( 'the_content', 'wpautop' );
+		}
+		return $block_content;
 	}
 
 	/**
