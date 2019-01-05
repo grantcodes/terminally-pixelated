@@ -23,7 +23,9 @@
   },
   "require-dev": {
     "wpackagist-plugin/theme-check": "*",
-    "wpackagist-plugin/user-switching": "*"
+    "wpackagist-plugin/user-switching": "*",
+    "wpackagist-plugin/debug-bar": "*",
+    "wpackagist-plugin/debug-bar-timber": "*"
   },
   "extra": {
     "wordpress-install-dir": "wp"
