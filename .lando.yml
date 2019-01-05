@@ -1,0 +1,49 @@
+name: terminally-pixelated
+recipe: wordpress
+config:
+  via: nginx
+  webroot: .
+  xdebug: true
+  conf:
+    php: .vscode/php.ini
+services:
+  appserver:
+    install_dependencies_as_me:
+      - 'cd $LANDO_MOUNT && composer install'
+  node:
+    type: node:10
+    install_dependencies_as_me:
+      - 'cd $LANDO_MOUNT && npm install'
+      - 'cd $LANDO_MOUNT && npm run build'
+    overrides:
+      services:
+        ports: [3333:3333]
+proxy:
+  node:
+    - hot.lndo.site:3333
+tooling:
+  npm:
+    service: node
+  node:
+    service: node
+  watch:
+    service: appserver
+    description: 'Watch local files and rebuild and reload site'
+    cmd: echo Starting webpack...
+  install:
+    service: appserver
+    description: 'Install all dependencies'
+    cmd: echo Installing dependencies...
+  build:
+    service: appserver
+    description: 'Create a production build'
+    cmd: echo Building site...
+events:
+  post-watch:
+    - node: cd $LANDO_MOUNT && npm run start
+  post-install:
+    - appserver: cd $LANDO_MOUNT && composer install
+    - node: cd $LANDO_MOUNT && npm install
+    - node: cd $LANDO_MOUNT && npm run build
+  post-build:
+    - node: cd $LANDO_MOUNT && npm run build

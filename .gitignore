@@ -1,15 +1,10 @@
 .DS_Store
-node_modules
-.sass-cache
 .cache-loader
-bower_components
-src/scss/vendor
-src/scss/utils/_config.scss
-uploads
-js/vendor
-js/dist
-lib/vendor
-*.map
-docs
-themes
-mu-plugins/terminally-pixelated/vendor
+node_modules
+wp
+wp-content
+# Note: If you are writing custom plugins for your site, you may want to ignore individual plugins instead of the entire directory
+# wp-content/themes
+# wp-content/uploads
+# wp-content/plugins/theme-check
+# wp-content/plugins/user-switching

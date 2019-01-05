@@ -1,13 +1,18 @@
 # Terminally Pixelated
 
-Terminally Pixelated is a timber based WordPress starter theme with some Sass, composer and webpack niceties.
+Terminally Pixelated is a highly opinionated WordPress development environment.
 
-Developed by [Grant Richmond](http://grant.codes)
+Everything is run via [Lando](https://devwithlando.io) so you will need that installed and set up to get started.
+
+Note that the WordPress admin will be available at `/wp/wp-admin` instead of just `/wp-admin`.
+
+Developed by [Grant Richmond](https://grant.codes)
 
 ## What's in the box?
 
 Terminally Pixelated comes jam packed full of greatness:
 
+- Lando for instant development server setup
 - Timber for superior WordPress templating
 - Auto css compression & optimisation
 - Magical font sizing
@@ -19,14 +24,19 @@ Terminally Pixelated comes jam packed full of greatness:
 - Browser sync for live reloading and development loveliness
 - Composer support
 - Photoswipe for nice image zooming
+- .vscode project configuration files
 
 ## Getting started
 
-To get started, download however you wish and edit `src/config.json` with your development url then run `npm install`, `composer install` and `npm run build` in the content directory to install the required dependencies.
+To get started, download however you wish and edit `.lando.yml` with your project / theme folder name then run `lando start`, `lando watch` to get the show on the road with hot reloading and everything. You'll probably want to change the 'app/style.css' file as well to change the theme details.
 
-Run `npm run start` in the content directory to watch for file changes and start a browser sync server.
+To install more dependencies I recommend using `lando npm install` and `lando composer require` to keep everything inside of lando.
 
-Run `npm run build` to fully compile your theme.
+Run `lando build` to fully compile and compress everything.
+
+## Known issues
+
+- While running `lando watch` the WordPress admin area doesn't work perfectly. If you want to test the admin area you will need to run `lando build` first
 
 ## Diving in
 
@@ -79,6 +89,12 @@ My photoswipe example require a simple html setup with images in `a` tags with d
 
 ## Requirements
 
-There are a couple of dependencies required to build with Terminally Pixelated:
+You just need lando installed and set up and you're good to go!
 
-- Composer
+## Deployment
+
+When deploying a site you should first run `lando build`, then after that it all depends on your WordPress hosting setup.
+
+You definitely shouldn't deploy the `.vscode`, `app`, `bin`, `src` or `tests` folders.
+
+By default composer is set up to install WordPress into the `/wp` directory and has a `wp-config.php` file in the root directory that loads vendor files from `wp-content/vendor`

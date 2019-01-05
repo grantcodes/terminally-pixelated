@@ -1,16 +1,8 @@
 {
-  "theme": "terminally-pixelated",
-  "devUrl": "http://indieweb-wp.test",
-  "wpContentFolder": "wp-content",
   "mid-break": "30rem",
   "large-break": "60rem",
   "block-width": "40rem",
   "block-width--wide": "60rem",
-  "classes": {
-    "nav": "main-nav",
-    "content": "main-content",
-    "footer": "main-footer"
-  },
   "colors": {
     "white": "#fafafa",
     "black": "#111111",

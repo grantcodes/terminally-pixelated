@@ -5,12 +5,15 @@
  * @package terminally-pixelated
  */
 
+// Start by loading timber.
+$timber = new \Timber\Timber();
+
 /**
  * A simple autoloader function to load our classes
  *
- * @param  string  $class_name The class name.
+ * @param  string  $class_name  The class name.
  * @param  boolean $instantiate Should the class be instantiated or not.
- * @return object             The class or false if not exists
+ * @return object               The class or false if not exists
  */
 function terminally_pixelated_autoload( $class_name, $instantiate = false ) {
 	if ( file_exists( dirname( __FILE__ ) . '/lib/' . $class_name . '.php' ) && ! class_exists( $class_name ) ) {

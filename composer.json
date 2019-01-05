@@ -1,16 +1,31 @@
 {
-  "name": "terminalpixel/terminally-pixelated",
-  "description": "A bare bones WordPress themes using modern build methods",
+  "name": "grantcodes/terminally-pixelated",
+  "description": "A WordPress setup",
+  "type": "project",
   "authors": [
     {
       "name": "Grant Richmond",
-      "email": "accounts@terminalpixel.co.uk"
+      "email": "mail@grant.codes"
+    }
+  ],
+  "require": {
+    "johnpbloch/wordpress": ">=4.9",
+    "timber/timber": "^1.8"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
     }
   ],
   "config": {
-    "vendor-dir": "mu-plugins/terminally-pixelated/vendor"
+    "vendor-dir": "wp-content/vendor"
   },
-  "require": {
-    "timber/timber": "^1.8"
+  "require-dev": {
+    "wpackagist-plugin/theme-check": "*",
+    "wpackagist-plugin/user-switching": "*"
+  },
+  "extra": {
+    "wordpress-install-dir": "wp"
   }
 }

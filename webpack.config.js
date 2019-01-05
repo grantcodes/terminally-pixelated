@@ -6,15 +6,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-const config = require('./config')
+const WriteFilePlugin = require('write-file-webpack-plugin')
+const config = require('./src/config.json')
 
 const devMode = process.env.NODE_ENV !== 'production'
+const appName = process.env.LANDO_APP_NAME
 
 const dirs = {
   src: __dirname + '/src',
   app: __dirname + '/app',
-  theme: __dirname + '/themes/' + config.theme,
+  theme: __dirname + '/wp-content/themes/' + appName,
 }
 
 const sassMap = data => {
@@ -24,11 +25,6 @@ const sassMap = data => {
       let value = data[key]
       if (typeof value === 'object') {
         value = sassMap(value)
-      } else if (typeof value === 'string') {
-        value = value
-          .replace('.', '')
-          .replace('http://', '')
-          .replace('https://', '')
       }
       map += `${key}: ${value},`
     }
@@ -41,8 +37,7 @@ let webpackConfig = {
   mode: 'production',
   entry: {
     main: [
-      // `${dirs.src}/js/hot.js`,
-      `${dirs.src}/js/main.js`,
+      devMode ? `${dirs.src}/js/hot.js` : `${dirs.src}/js/main.js`,
       `${dirs.src}/scss/main.scss`,
       ...glob.sync(`${dirs.src}/svgs/*.svg`),
     ],
@@ -51,11 +46,10 @@ let webpackConfig = {
       `${dirs.src}/scss/gutenberg.scss`,
     ],
   },
-  // context: dirs.src,
   output: {
-    publicPath: `/wp-content/themes/${config.theme}/assets/`,
+    publicPath: `/wp-content/themes/${appName}/assets/`,
     path: `${dirs.theme}/assets`,
-    filename: '[name]_[hash].js',
+    filename: '[name].[hash].js',
   },
   devtool: false,
   module: {
@@ -77,7 +71,7 @@ let webpackConfig = {
 
         use: [
           // { loader: 'cache-loader' }, // Breaks css extraction for some reason
-          { loader: MiniCssExtractPlugin.loader },
+          { loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader },
           {
             loader: 'css-loader',
             options: { sourceMap: devMode },
@@ -108,9 +102,10 @@ let webpackConfig = {
         loader: 'svg-sprite-loader',
         options: {
           extract: true,
-          spriteFilename: devMode
-            ? null
-            : svgPath => `sprite_[hash]${svgPath.substr(-4)}`,
+          // TODO: Hashing svg name seems to break stuf
+          // spriteFilename: devMode
+          //   ? null
+          //   : svgPath => `sprite.[hash]${svgPath.substr(-4)}`,
         },
       },
     ],
@@ -134,7 +129,7 @@ let webpackConfig = {
       [
         { from: `${dirs.app}/**/*`, to: dirs.theme },
         { from: `${dirs.src}/img/**/*`, to: dirs.theme },
-        { from: `${__dirname}/config.json`, to: dirs.theme },
+        { from: `${__dirname}/src/config.json`, to: dirs.theme },
       ],
       {
         context: dirs.app,
@@ -146,61 +141,56 @@ let webpackConfig = {
         quality: '95-100',
       },
     }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: !devMode,
-      debug: devMode,
-      stats: { colors: true },
-    }),
-    new webpack.LoaderOptionsPlugin({
-      test: /\.s?css$/,
-      options: {
-        output: { path: dirs.theme },
-        context: dirs.theme,
-      },
-    }),
-    new webpack.LoaderOptionsPlugin({
-      test: /\.js$/,
-      options: {
-        eslint: { failOnWarning: false, failOnError: true },
-      },
-    }),
+    // new webpack.LoaderOptionsPlugin({
+    //   minimize: !devMode,
+    //   debug: devMode,
+    //   stats: { colors: true },
+    // }),
+    // new webpack.LoaderOptionsPlugin({
+    //   test: /\.s?css$/,
+    //   options: {
+    //     output: { path: dirs.theme },
+    //     context: dirs.theme,
+    //   },
+    // }),
+    // new webpack.LoaderOptionsPlugin({
+    //   test: /\.js$/,
+    //   options: {
+    //     eslint: { failOnWarning: false, failOnError: true },
+    //   },
+    // }),
   ],
-  // TODO: Tried to use webpack dev server as a proxy instead of browsersync,
-  // but ended up with issues as php is still looking for files inside the
-  // theme folder, which doesn't get created when using the server
-  // devServer: {
-  //   index: '',
-  //   port: 3333,
-  //   contentBase: dirs.app,
-  //   watchContentBase: true,
-  //   proxy: {
-  //     '/': {
-  //       target: 'http://indieweb-wp.test',
-  //       secure: false,
-  //       changeOrigin: true,
-  //     },
-  //   },
-  // },
+  devServer: {
+    index: '',
+    port: 3333,
+    host: '0.0.0.0',
+    disableHostCheck: true,
+    hot: true,
+    contentBase: dirs.app,
+    watchContentBase: true,
+    public: `hot.${process.env.LANDO_DOMAIN}`,
+    watchOptions: {
+      poll: true,
+    },
+    proxy: {
+      '/': {
+        target: 'https://nginx',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 }
 
 if (devMode) {
-  console.log('Running in dev mode')
   webpackConfig.mode = 'development'
   webpackConfig.devtool = 'cheap-source-map'
-  // webpackConfig.stats = false
+  webpack.optimization = false
   webpackConfig.output.filename = '[name].js'
-  webpackConfig.plugins.push(
-    new BrowserSyncPlugin(
-      {
-        port: 3333,
-        proxy: config.devUrl,
-      }
-      // { reload: false, injectCss: true }
-    )
-  )
-  // webpack.plugins.unshift(new webpack.HotModuleReplacementPlugin())
-} else {
-  console.log('Building in production mode')
+  // This forces php files to be moved to the theme so it still works with the dev server.
+  webpackConfig.plugins.unshift(new WriteFilePlugin())
+  // Enable hot loading.
+  webpackConfig.plugins.unshift(new webpack.HotModuleReplacementPlugin())
 }
 
 module.exports = webpackConfig

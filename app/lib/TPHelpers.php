@@ -29,12 +29,10 @@ class TPHelpers {
 	 * @return string           full asset uri
 	 */
 	public static function get_asset_path( $asset ) {
-		if ( ! self::$asset_manifest ) {
-			$file                 = file_get_contents( dirname( __FILE__ ) . '/../assets/manifest.json' );
-			self::$asset_manifest = (array) json_decode( $file );
-		}
-		if ( isset( self::$asset_manifest[ $asset ] ) ) {
-			$theme_folder = static::get_setting( 'theme' );
+		$url = static::get_theme_resource_uri( $asset );
+		if ( $url ) {
+			// $theme_folder = static::get_setting( 'theme' );
+			$theme_folder = get_template();
 			$asset_path = self::$asset_manifest[ $asset ];
 			$asset_path = str_replace( '/wp-content/themes/', '', $asset_path );
 			$asset_path = str_replace( $theme_folder . '/', '', $asset_path );
@@ -53,8 +51,10 @@ class TPHelpers {
 	 */
 	public static function get_theme_resource_uri( $resource ) {
 		if ( ! self::$asset_manifest ) {
-			$file                 = file_get_contents( dirname( __FILE__ ) . '/../assets/manifest.json' );
-			self::$asset_manifest = (array) json_decode( $file );
+			$file = file_get_contents( dirname( __FILE__ ) . '/../assets/manifest.json' );
+			if ( $file ) {
+				self::$asset_manifest = (array) json_decode( $file );
+			}
 		}
 		if ( isset( self::$asset_manifest[ $resource ] ) ) {
 			return self::$asset_manifest[ $resource ];

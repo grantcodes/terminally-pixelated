@@ -23,13 +23,13 @@
                     {% endblock %}
                     <div class="main-nav-wrapper">
                         <a href="#nav-main-nav" class="main-nav-toggle" id="main-nav-toggle">{{icon('menu')}}</a>
-                        {% include 'components/nav.twig' with { 'nav_class': terminally_pixelated.classes.nav, 'menu': main_menu } %}
+                        {% include 'components/nav.twig' with { 'nav_class': 'main-nav', 'menu': main_menu } %}
                     </div>
                 </div>
             </div>
 
             <div class="main-content-sidebar-wrap layout-wrapper">
-                <main role="main" class="{{terminally_pixelated.classes.content}} {% if not main_sidebar %}{{terminally_pixelated.classes.content}}--full-width{% endif %}">
+                <main role="main" class="main-content {% if not main_sidebar %}main-content--full-width{% endif %}">
                     <div class="wrapper">
                         {% block content %}
                         Sorry, no content
@@ -48,8 +48,8 @@
                     </aside>
                 {% endif %}
             </div>
-            <footer class="{{terminally_pixelated.classes.footer}}">
-                <div class="{{terminally_pixelated.classes.footer}}__inner layout-wrapper">
+            <footer class="main-footer">
+                <div class="main-footer__inner layout-wrapper">
                     {% if footer_widgets %}
                         <section class="footer-widgets-wrapper">
                             {% for widget_area in footer_widgets %}

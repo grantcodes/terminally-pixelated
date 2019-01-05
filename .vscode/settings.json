@@ -1,0 +1,16 @@
+{
+  "search.exclude": {
+    ".DS_Store": true,
+    ".cache-loader": true,
+    "node_modules": true,
+    "wp": true,
+    "wp-content": true
+  },
+  "files.exclude": {
+    ".DS_Store": true,
+    ".cache-loader": true,
+    "node_modules": true,
+    "wp": true,
+    "wp-content": true
+  }
+}
