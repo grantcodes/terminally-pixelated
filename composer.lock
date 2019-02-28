@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c2419692b4c7711c6ea2981306213b6",
+    "content-hash": "845c4d6ab387a9c177b980eb4fe26b15",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -233,20 +233,20 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "5.0.2",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "572ca625f4ee58414bf6c1955105f7fb3a636aa8"
+                "reference": "bdb6632aea9872b7c71322c724a8acfc0ec9ee7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/572ca625f4ee58414bf6c1955105f7fb3a636aa8",
-                "reference": "572ca625f4ee58414bf6c1955105f7fb3a636aa8",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/bdb6632aea9872b7c71322c724a8acfc0ec9ee7f",
+                "reference": "bdb6632aea9872b7c71322c724a8acfc0ec9ee7f",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "5.0.2",
+                "johnpbloch/wordpress-core": "5.1.0",
                 "johnpbloch/wordpress-core-installer": "^1.0",
                 "php": ">=5.3.2"
             },
@@ -268,27 +268,27 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2018-12-19T23:42:21+00:00"
+            "time": "2019-02-22T18:16:29+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "5.0.2",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "5b941ba835e52dc919bd11e49ab5fc75a71e29e0"
+                "reference": "07c57b738c9967e5643641a44e659b5851c066af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/5b941ba835e52dc919bd11e49ab5fc75a71e29e0",
-                "reference": "5b941ba835e52dc919bd11e49ab5fc75a71e29e0",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/07c57b738c9967e5643641a44e659b5851c066af",
+                "reference": "07c57b738c9967e5643641a44e659b5851c066af",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "provide": {
-                "wordpress/core-implementation": "5.0.2"
+                "wordpress/core-implementation": "5.1.0"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -308,7 +308,7 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2018-12-19T23:42:15+00:00"
+            "time": "2019-02-22T18:16:24+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -478,16 +478,16 @@
         },
         {
             "name": "timber/timber",
-            "version": "1.8.4",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "c194fe745b29152e36c6aa6f269e0fc1b536b8ec"
+                "reference": "66f914dd14cde8550c22d40b909f67bce388872d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/c194fe745b29152e36c6aa6f269e0fc1b536b8ec",
-                "reference": "c194fe745b29152e36c6aa6f269e0fc1b536b8ec",
+                "url": "https://api.github.com/repos/timber/timber/zipball/66f914dd14cde8550c22d40b909f67bce388872d",
+                "reference": "66f914dd14cde8550c22d40b909f67bce388872d",
                 "shasum": ""
             },
             "require": {
@@ -536,20 +536,20 @@
                 "timber",
                 "twig"
             ],
-            "time": "2018-12-20T22:28:04+00:00"
+            "time": "2019-02-14T15:33:22+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v2.6.0",
+            "version": "v2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "a11dd39f5b6589e14f0ff3b36675d06047c589b1"
+                "reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a11dd39f5b6589e14f0ff3b36675d06047c589b1",
-                "reference": "a11dd39f5b6589e14f0ff3b36675d06047c589b1",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
+                "reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
                 "shasum": ""
             },
             "require": {
@@ -603,7 +603,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2018-12-16T10:36:48+00:00"
+            "time": "2019-01-14T15:00:48+00:00"
         },
         {
             "name": "upstatement/routes",
@@ -699,16 +699,36 @@
             "homepage": "https://wordpress.org/plugins/debug-bar-timber/"
         },
         {
-            "name": "wpackagist-plugin/theme-check",
-            "version": "20160523.1",
+            "name": "wpackagist-plugin/query-monitor",
+            "version": "3.3.1",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/theme-check/",
-                "reference": "tags/20160523.1"
+                "url": "https://plugins.svn.wordpress.org/query-monitor/",
+                "reference": "tags/3.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/theme-check.20160523.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/query-monitor.3.3.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/query-monitor/"
+        },
+        {
+            "name": "wpackagist-plugin/theme-check",
+            "version": "20190208.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/theme-check/",
+                "reference": "tags/20190208.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/theme-check.20190208.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -720,15 +740,15 @@
         },
         {
             "name": "wpackagist-plugin/user-switching",
-            "version": "1.4.0",
+            "version": "1.4.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/user-switching/",
-                "reference": "tags/1.4.0"
+                "reference": "tags/1.4.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/user-switching.1.4.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/user-switching.1.4.2.zip",
                 "reference": null,
                 "shasum": null
             },

@@ -9,8 +9,8 @@
     }
   ],
   "require": {
-    "johnpbloch/wordpress": ">=4.9",
-    "timber/timber": "^1.8"
+    "johnpbloch/wordpress": "^5.1",
+    "timber/timber": "^1.9"
   },
   "repositories": [
     {
@@ -25,7 +25,8 @@
     "wpackagist-plugin/theme-check": "*",
     "wpackagist-plugin/user-switching": "*",
     "wpackagist-plugin/debug-bar": "*",
-    "wpackagist-plugin/debug-bar-timber": "*"
+    "wpackagist-plugin/debug-bar-timber": "*",
+    "wpackagist-plugin/query-monitor": "*"
   },
   "extra": {
     "wordpress-install-dir": "wp"
